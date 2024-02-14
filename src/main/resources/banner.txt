@@ -1,0 +1,11 @@
+           _____ __  __ ______    _____ ______   _____ _   _  _____   
+     /\   / ____|  \/  |  ____|  / ____|  ____| |_   _| \ | |/ ____|  
+    /  \ | |    | \  / | |__    | (___ | |__      | | |  \| | |       
+   / /\ \| |    | |\/| |  __|    \___ \|  __|     | | | . ` | |       
+  / ____ \ |____| |  | | |____   ____) | |       _| |_| |\  | |____ _ 
+ /_/    \_\_____|_|  |_|______| |_____/|_|      |_____|_| \_|\_____(_)                    
+
+Application:          ${acme.application.versioned-name}
+Application endpoint: http://localhost:${server.port}${server.servlet.contextPath}
+Database endpoint:    ${spring.datasource.url}
+Powered by:           Spring Boot ${spring-boot.version}, ${acme.framework.display-name} ${acme.framework.version}

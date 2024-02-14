@@ -1,0 +1,18 @@
+# company-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+master.company.title = The company
+master.company.text = \
+Acme Software Factory, Inc. is a company that specialises in helping organisations get started on a variety of topics related to the management and development of software projects.
+master.company.name = Acme Software Factory, Inc.
+master.company.address = Ave. de la Reina Mercedes, s/n, 41012 Seville
+master.company.phone = +34 635 321 212
+master.company.email = info@acme-sf.com
+
