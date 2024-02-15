@@ -20,6 +20,7 @@
 	<acme:menu-left>
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-Josue" action="https://cosmere.es/que-es-el-cosmere/"/>
+			<acme:menu-suboption code="master.menu.anonymous.favourite-link-David" action="https://www.betisweb.com/foro/principal/real-betis-balompi%C3%A9"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
