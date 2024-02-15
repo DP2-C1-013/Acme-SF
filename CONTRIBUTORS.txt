@@ -8,7 +8,8 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-- Miguel Galán Lerate (miggaller@alum.us.es)
 - David Fuentelsaz Rodríguez (davfuerod@alum.us.es)
-- Óscar Zurita Urpina  (osczururp@alum.us.es)
+- Miguel Galán Lerate (miggaller@alum.us.es)
 - Antonio Jiménez Ortega (antjimort@alum.us.es)
+- Josué Rodríguez López (josrodlop19@alum.us.es)
+- Óscar Zurita Urpina  (osczururp@alum.us.es)
