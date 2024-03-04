@@ -1,7 +1,7 @@
 
 package acme.entities.claim;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,7 +38,7 @@ public class Claim extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
 	@Past
-	private LocalDateTime		instantiationMoment;
+	private Date				instantiationMoment;
 
 	@NotBlank
 	@Length(max = 75)
