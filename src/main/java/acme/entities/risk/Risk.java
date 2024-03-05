@@ -32,25 +32,25 @@ public class Risk extends AbstractEntity {
 	@NotBlank
 	@Column(unique = true)
 	@Pattern(regexp = "R-[0-9]{3}", message = "Reference code not valid")
-	String						reference;
+	private String				reference;
 
 	@Past
 	@Temporal(TemporalType.DATE)
-	LocalDate					idDate;
+	private LocalDate			idDate;
 
 	@PositiveOrZero
-	Double						impact;
+	private Double				impact;
 
 	@DecimalMin("0.0")
 	@DecimalMax("1.0")
-	Double						probability;
+	private Double				probability;
 
 	@NotBlank
 	@Size(max = 101)
-	String						description;
+	private String				description;
 
 	@URL
-	String						optionalLink;
+	private String				optionalLink;
 
 
 	public Double value() {

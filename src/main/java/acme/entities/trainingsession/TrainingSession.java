@@ -31,27 +31,27 @@ public class TrainingSession extends AbstractEntity {
 	@NotBlank
 	@Column(unique = true)
 	@Pattern(regexp = "TS-[A-Z]{1,3}-[0-9]{3}", message = "Training session code not valid")
-	String						code;
+	private String				code;
 
-	Period						period;
-
-	@Size(max = 76)
-	@NotBlank
-	String						location;
+	private Period				period;
 
 	@Size(max = 76)
 	@NotBlank
-	String						instructor;
+	private String				location;
+
+	@Size(max = 76)
+	@NotBlank
+	private String				instructor;
 
 	@NotNull
 	@Email
-	String						contactEmail;
+	private String				contactEmail;
 
 	@URL
-	String						optionalLink;
+	private String				optionalLink;
 
 	@ManyToOne
 	@JoinColumn(name = "module_id")
-	TrainingModule				trainingModule;
+	private TrainingModule		trainingModule;
 
 }

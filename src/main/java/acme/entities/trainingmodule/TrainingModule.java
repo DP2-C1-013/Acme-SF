@@ -29,26 +29,26 @@ public class TrainingModule extends AbstractEntity {
 	@NotBlank
 	@Column(unique = true)
 	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "Training module code not valid")
-	String						code;
+	private String				code;
 
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	LocalDateTime				creationMoment;
+	private LocalDateTime		creationMoment;
 
 	@NotBlank
 	@Size(max = 101)
-	String						details;
+	private String				details;
 
-	DifficultyLevel				difficultyLevel;
+	private DifficultyLevel		difficultyLevel;
 
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	LocalDateTime				updateMoment;
+	private LocalDateTime		updateMoment;
 
 	@URL
-	String						optionalLink;
+	private String				optionalLink;
 
-	String						estimatedTotalTime;
+	private String				estimatedTotalTime;
 
 	//	@OneToMany(mappedBy = "trainingModule", cascade = CascadeType.ALL, orphanRemoval = true)
 	//	private List<TrainingSession>	trainingSessions;
