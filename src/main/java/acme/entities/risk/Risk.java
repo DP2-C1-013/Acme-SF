@@ -1,7 +1,7 @@
 
 package acme.entities.risk;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,7 +36,7 @@ public class Risk extends AbstractEntity {
 
 	@Past
 	@Temporal(TemporalType.DATE)
-	private LocalDate			idDate;
+	private Date				idDate;
 
 	@PositiveOrZero
 	private Double				impact;
