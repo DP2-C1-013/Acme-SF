@@ -52,4 +52,5 @@ public class TrainingModule extends AbstractEntity {
 
 	//	@OneToMany(mappedBy = "trainingModule", cascade = CascadeType.ALL, orphanRemoval = true)
 	//	private List<TrainingSession>	trainingSessions;
+	//
 }
