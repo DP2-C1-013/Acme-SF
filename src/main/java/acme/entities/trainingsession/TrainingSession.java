@@ -53,4 +53,5 @@ public class TrainingSession extends AbstractEntity {
 	@ManyToOne
 	@JoinColumn(name = "module_id")
 	TrainingModule				trainingModule;
+
 }
