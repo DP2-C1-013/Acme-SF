@@ -4,6 +4,7 @@ package acme.entities.invoice;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -17,9 +18,15 @@ import javax.validation.constraints.Positive;
 
 import org.hibernate.validator.constraints.URL;
 
+import acme.client.data.AbstractEntity;
 import acme.entities.sponsorship.Sponsorship;
+import lombok.Getter;
+import lombok.Setter;
 
-public class Invoice {
+@Entity
+@Getter
+@Setter
+public class Invoice extends AbstractEntity {
 
 	// Serialization indentifier --------------------------------------------------------
 
