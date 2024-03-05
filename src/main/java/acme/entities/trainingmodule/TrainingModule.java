@@ -1,7 +1,7 @@
 
 package acme.entities.trainingmodule;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,7 +33,7 @@ public class TrainingModule extends AbstractEntity {
 
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	private LocalDateTime		creationMoment;
+	private Date				creationMoment;
 
 	@NotBlank
 	@Size(max = 101)
@@ -43,7 +43,7 @@ public class TrainingModule extends AbstractEntity {
 
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	private LocalDateTime		updateMoment;
+	private Date				updateMoment;
 
 	@URL
 	private String				optionalLink;
