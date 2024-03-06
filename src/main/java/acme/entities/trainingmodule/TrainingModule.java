@@ -48,7 +48,7 @@ public class TrainingModule extends AbstractEntity {
 	@URL
 	private String				optionalLink;
 
-	private String				estimatedTotalTime;
+	private Integer				estimatedTotalTime;
 
 	//	@OneToMany(mappedBy = "trainingModule", cascade = CascadeType.ALL, orphanRemoval = true)
 	//	private List<TrainingSession>	trainingSessions;
