@@ -1,12 +1,14 @@
 
 package acme.entities.trainingsession;
 
-import java.time.Period;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -33,7 +35,11 @@ public class TrainingSession extends AbstractEntity {
 	@Pattern(regexp = "TS-[A-Z]{1,3}-[0-9]{3}", message = "Training session code not valid")
 	private String				code;
 
-	private Period				period;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				startDate;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				endDate;
 
 	@Size(max = 76)
 	@NotBlank
