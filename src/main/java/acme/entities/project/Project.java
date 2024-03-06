@@ -3,15 +3,14 @@ package acme.entities.project;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.datatypes.Money;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -39,12 +38,11 @@ public class Project extends AbstractEntity {
 	@Length(max = 100)
 	private String				abstractText;
 
-	@NotNull
-	private Boolean				hasFatalErrors;
+	private boolean				hasFatalErrors;
 
-	@NotNull
-	@Min(0)
-	private Double				cost;
+	private Money				cost;
+
+	private boolean				draftMode;
 
 	@URL
 	private String				link;
