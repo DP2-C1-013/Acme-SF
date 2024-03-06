@@ -12,6 +12,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.datatypes.Money;
 import acme.entities.project.Project;
 import lombok.Getter;
 import lombok.Setter;
@@ -34,15 +35,13 @@ public class UserStory extends AbstractEntity {
 	@Length(max = 100)
 	private String				description;
 
-	@NotNull
 	@Positive
-	private Double				estimatedCost;
+	private Money				estimatedCost;
 
 	@NotBlank
 	@Length(max = 100)
 	private String				acceptanceCriteria;
 
-	@NotNull
 	private Priority			priority;
 
 	@URL
@@ -50,6 +49,6 @@ public class UserStory extends AbstractEntity {
 
 	@NotNull
 	@Valid
-	@ManyToOne()
+	@ManyToOne(optional = false)
 	private Project				project;
 }
