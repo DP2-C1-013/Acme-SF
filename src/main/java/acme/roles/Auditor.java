@@ -7,13 +7,14 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.URL;
 
+import acme.client.data.AbstractRole;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Auditor {
+public class Auditor extends AbstractRole {
 
 	@NotBlank
 	@Size(max = 75)
