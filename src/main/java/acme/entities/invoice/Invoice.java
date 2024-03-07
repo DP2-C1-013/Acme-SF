@@ -51,7 +51,6 @@ public class Invoice extends AbstractEntity {
 
 	@NotNull
 	@Valid
-	@Min(0)
 	private Money				quantity;
 
 	@NotNull
