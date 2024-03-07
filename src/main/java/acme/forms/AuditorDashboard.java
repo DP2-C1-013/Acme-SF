@@ -10,32 +10,36 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AuditorDashboard extends AbstractForm {
+	//Serialization indentifier --------------------------------------------------------
+
+	private static final long	serialVersionUID	= 1L;
+
+	//Atributes ------------------------------------------------------------------------
+	@NotNull
+	public Integer				numCodeAuditsStaticOrDinamyc;
 
 	@NotNull
-	public Integer	numCodeAuditsStaticOrDinamyc;
+	public Double				averageNumAuditRecords;
 
 	@NotNull
-	public Double	averageNumAuditRecords;
+	public Double				deviationNumAuditRecords;
 
 	@NotNull
-	public Double	deviationNumAuditRecords;
+	public Double				minNumAuditRecords;
 
 	@NotNull
-	public Double	minNumAuditRecords;
+	public Double				maxNumAuditRecords;
 
 	@NotNull
-	public Double	maxNumAuditRecords;
+	public Double				averagePeriodLength;
 
 	@NotNull
-	public Double	averagePeriodLength;
+	public Double				deviationPeriodLength;
 
 	@NotNull
-	public Double	deviationPeriodLength;
+	public Double				minPeriodLength;
 
 	@NotNull
-	public Double	minPeriodLength;
-
-	@NotNull
-	public Double	maxPeriodLength;
+	public Double				maxPeriodLength;
 
 }
