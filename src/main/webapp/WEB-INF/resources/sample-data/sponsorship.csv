@@ -15,6 +15,6 @@ sponsorship-13,XYZ-109,2020/11/16 22:30,2020/12/25 18:30,"USD 5,000.00",Financia
 sponsorship-14,XYZ-110,2020/11/16 22:30,2020/12/25 18:30,"USD 0.00",In_kind,alaric@amce.com,https://example.com/sponsorship1,false,project-01
 sponsorship-15,XYZ-111,2020/11/16 22:30,2020/12/25 18:30,"USD 0.00",In_kind,dionne@amce.com,https://example.com/sponsorship1,false,project-01
 sponsorship-16,XYZ-112,2020/11/16 22:30,2020/12/25 18:30,"USD 0.00",In_kind,alaric@amce.com,https://example.com/sponsorship2,false,project-01
-sponsorship-17,XYZ-113,2020/11/16 22:30,2020/12/25 18:30,"USD 0.00",In_kind,alaric@amce.com,https://example.com/sponsorship2,true,project-01
-sponsorship-18,XYZ-114,2020/11/16 22:30,2020/12/25 18:30,"USD 0.00",In_kind,alaric@amce.com,https://example.com/sponsorship2,true,project-01
+sponsorship-17,XYZ-113,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship2,true,project-01
+sponsorship-18,XYZ-114,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship2,true,project-01
 sponsorship-19,DEF-100,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,false,project-02
