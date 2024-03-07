@@ -10,6 +10,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.PositiveOrZero;
@@ -38,9 +39,11 @@ public class Risk extends AbstractEntity {
 	@Temporal(TemporalType.DATE)
 	private Date				idDate;
 
+	@NotNull
 	@PositiveOrZero
 	private Double				impact;
 
+	@NotNull
 	@DecimalMin("0.0")
 	@DecimalMax("1.0")
 	private Double				probability;

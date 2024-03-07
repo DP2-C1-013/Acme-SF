@@ -35,9 +35,11 @@ public class TrainingSession extends AbstractEntity {
 	@Pattern(regexp = "TS-[A-Z]{1,3}-[0-9]{3}", message = "Training session code not valid")
 	private String				code;
 
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				startDate;
 
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				endDate;
 
