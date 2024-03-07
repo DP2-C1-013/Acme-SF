@@ -11,8 +11,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
@@ -37,7 +37,7 @@ public class TrainingModule extends AbstractEntity {
 	private Date				creationMoment;
 
 	@NotBlank
-	@Size(max = 101)
+	@Length(max = 100)
 	private String				details;
 
 	private DifficultyLevel		difficultyLevel;

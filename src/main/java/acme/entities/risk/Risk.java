@@ -13,8 +13,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.PositiveOrZero;
-import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
@@ -46,7 +46,7 @@ public class Risk extends AbstractEntity {
 	private Double				probability;
 
 	@NotBlank
-	@Size(max = 101)
+	@Length(max = 100)
 	private String				description;
 
 	@URL
