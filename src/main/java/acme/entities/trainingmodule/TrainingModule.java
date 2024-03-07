@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -49,6 +50,9 @@ public class TrainingModule extends AbstractEntity {
 	private String				optionalLink;
 
 	private Integer				estimatedTotalTime;
+
+	@NotNull
+	private Boolean				draftMode;
 
 	//	@OneToMany(mappedBy = "trainingModule", cascade = CascadeType.ALL, orphanRemoval = true)
 	//	private List<TrainingSession>	trainingSessions;
