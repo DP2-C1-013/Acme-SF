@@ -13,8 +13,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
@@ -41,11 +41,11 @@ public class TrainingSession extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				endDate;
 
-	@Size(max = 76)
+	@Length(max = 75)
 	@NotBlank
 	private String				location;
 
-	@Size(max = 76)
+	@Length(max = 75)
 	@NotBlank
 	private String				instructor;
 
