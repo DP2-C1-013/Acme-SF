@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>96</x>
+      <y>544</y>
+      <w>104</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enumeration&gt;&gt;
+Priority
+--
+Low
+Medium
+High</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>336</x>
+      <y>784</y>
+      <w>352</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Notice
+--
++instantiationMoment: Date {NotNull, Past, Temporal(TIMESTAMP)}
++title: String {NotBlank, Length(max=75)}
++author: String {NotBlank, Length(max=75)}
++message: String{NotBlank, Length(max=100)}
++email: String{Email}
++link: String{URL}
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>336</x>
+      <y>456</y>
+      <w>352</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Objective
+--
++instantiationMoment: Date {NotNull, Past, Temporal(TIMESTAMP)}
++title: String {NotBlank, Length(max=75)}
++description: String {NotBlank, Length(max=100)}
++priority: Priority {NotNull}
++isCritical: boolean {NotNull}
++duration: Date {NotNull, Temporal(TIMESTAMP)}
++link: String {URL}
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>336</x>
+      <y>288</y>
+      <w>312</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Claim
+--
++code: String {Pattern("C-[0-9]{4}"), NotBlank, Unique}
++instantiationMoment: Date {NotNull, Past, Temporal(TIMESTAMP)}
++heading: String {NotBlank, Length(max=75)}
++description: String {NotBlank, Length(max=100)}
++department: String {NotBlank, Length(max=100)}
++email: String {Email}
++link: String {URL}
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>336</x>
+      <y>632</y>
+      <w>328</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Risk
+--
++reference: String {Pattern("R-[0-9]{3}"), NotBlank, Unique}
++identificationDate: Date {NotNull, Past, Temporal(TIMESTAMP)}
++impact: Double {NotNull, Min(1)}
++probability: Double {NotNull, Min(0), Max(1)}
++description: String {NotBlank, Length(max=100)}
++link: String {URL}
++ / value: double {Transient}
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>872</x>
+      <y>800</y>
+      <w>256</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Banner
+--
++instantiationOrUpdateMoment: Date {NotNull, Past, Temporal(TIMESTAMP)}
++displayPeriod: Date {Temporal(TIMESTAMP)}
++picture: String{NotBlank, URL}
++slogan: String{NotBlank, Length(max=75)}
++link: String{NotBlank, URL}
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>712</x>
+      <y>728</y>
+      <w>184</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Display period must start at any
+moment after the 
+instantiation/update moment
+and must last for at least one week
+bg=white
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>768</x>
+      <y>776</y>
+      <w>120</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>128</x>
+      <y>440</y>
+      <w>184</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Duration must start at any
+moment after the 
+instantiation moment
+
+bg=white
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>200</x>
+      <y>488</y>
+      <w>152</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;170.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>88</x>
+      <y>664</y>
+      <w>144</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Value is the result of
+the multiplication of impact
+and probability
+
+bg=white
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>224</x>
+      <y>680</y>
+      <w>128</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;140.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>56</x>
+      <y>784</y>
+      <w>168</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Author must be computed
+as follows: 
+“〈username〉 - 〈surname, name〉”
+
+bg=white
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>216</x>
+      <y>808</y>
+      <w>136</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;150.0;50.0</additional_attributes>
+  </element>
+</diagram>
