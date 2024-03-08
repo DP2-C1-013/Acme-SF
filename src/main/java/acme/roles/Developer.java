@@ -30,7 +30,7 @@ public class Developer extends AbstractRole {
 
 	@NotBlank
 	@Length(max = 100)
-	private String				speciatisation;
+	private String				specialisation;
 
 	@NotBlank
 	@Length(max = 100)
