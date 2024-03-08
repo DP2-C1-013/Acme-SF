@@ -12,4 +12,6 @@ user-account-auditor-02,true,"UserIdentity{name:'Clay', surname:'Smith', email:'
 user-account-client-01,true,"UserIdentity{name: 'John', surname: 'Doe', email: 'client1@acme.com'}",client1,client1
 user-account-client-02,true,"UserIdentity{name: 'Jane', surname: 'Doe', email: 'client2@acme.com'}",client2,client2
 user-account-developer-01,true,"UserIdentity{name: 'Jack', surname: 'Harrison', email: 'jack.harrison@example.com'}",developer1,developer1
-user-account-developer-02,true,"UserIdentity{name: 'Jane', surname: 'Tully', email: 'jane.tully@example.com'}",developer1,developer2
+user-account-developer-02,true,"UserIdentity{name: 'Jane', surname: 'Tully', email: 'jane.tully@example.com'}",developer2,developer2
+user-account-administrator-02,true,"UserIdentity{name: 'Administrator', surname: 'Acme', email: 'administrator@acme.com'}",administrator1,administrator1
+user-account-administrator-03,true,"UserIdentity{name: 'Peter', surname: 'Parker', email: 'spidey@acme.com'}",administrator2,administrator2

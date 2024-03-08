@@ -1,0 +1,16 @@
+key,code,creationMoment,details,difficultyLevel,updateMoment,optionalLink,estimatedTotalTime,draftMode,key:project
+training-module-01,ABC-001,2020/01/15 12:30,Introduction to Java Programming,Basic,2020/01/20 10:45,http://example.com/java-tutorial,120,true,project-01
+training-module-02,XYZ-002,2020/02/10 09:15,Web Development Basics,Intermediate,2020/02/15 14:20,http://example.com/web-dev-basics,90,false,project-02
+training-module-03,PQR-003,2020/03/05 14:45,Advanced Database Management,Advanced,2020/03/10 11:30,http://example.com/db-management,180,true,project-03
+training-module-04,LMN-004,2020/04/20 08:00,Machine Learning Fundamentals,Advanced,,http://example.com/ml-fundamentals,240,false,project-04
+training-module-05,EFG-005,2020/05/12 16:20,Mobile App Development Basics,Basic,2020/05/18 13:10,,150,true,project-05
+training-module-06,JKL-006,2021/06/01 14:00,वेब सुरक्षा की आधारभूत,Basic,2021/06/05 09:30,http://example.com/security-basics,120,false,project-06
+training-module-07,OPQ-007,2021/07/30 20:45,पायथन का परिचय,Advanced,2021/08/05 17:30,http://example.com/python-intro,90,true,project-07
+training-module-08,RST-008,2021/08/25 11:00,モバイルアプリデザイン原則,Intermediate,2021/09/01 14:20,http://example.com/app-design,150,false,project-08
+training-module-09,UVW-009,2021/09/18 14:30,先進的な機械学習,Basic,2021/09/25 09:15,http://example.com/advanced-ml,180,true,project-09
+training-module-10,XYZ-010,2021/10/10 08:30,Cloud Computing Fundamentals,Basic,2021/10/15 12:45,http://example.com/cloud-fundamentals,120,false,project-10
+training-module-11,ABC-011,2021/11/05 15:45,Data Science for Beginners,Basic,2021/11/10 10:30,http://example.com/data-science-basics,90,true,project-01
+training-module-12,DEF-012,2021/12/20 12:00,Advanced Web Development,Advanced,,http://example.com/advanced-web-dev,240,false,project-01
+training-module-13,GHI-013,2022/01/12 18:20,Introduction to Artificial Intelligence,Intermediate,2022/01/18 14:15,http://example.com/ai-intro,150,true,project-01
+training-module-14,JKL-014,2022/02/05 10:30,Blockchain Fundamentals,Advanced,2022/02/10 16:20,http://example.com/blockchain-basics,180,false,project-02
+training-module-15,MNO-015,2022/03/25 14:15,Quantum Computing Basics,Intermediate,2022/03/30 09:45,http://example.com/quantum-computing,120,true,project-02

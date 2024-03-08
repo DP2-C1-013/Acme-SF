@@ -4,6 +4,7 @@ package acme.forms;
 import javax.validation.constraints.NotNull;
 
 import acme.client.data.AbstractForm;
+import acme.client.data.datatypes.Money;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,27 +25,27 @@ public class SponsorDashboard extends AbstractForm {
 	public Integer				numLinkedSponsorship;
 
 	@NotNull
-	public Double				averageAmountSponsorship;
+	public Money				averageAmountSponsorship;
 
 	@NotNull
-	public Double				deviationAmountSponsorship;
+	public Money				deviationAmountSponsorship;
 
 	@NotNull
-	public Double				minAmountSponsorship;
+	public Money				minAmountSponsorship;
 
 	@NotNull
-	public Double				maxAmountSponsorship;
+	public Money				maxAmountSponsorship;
 
 	@NotNull
-	public Double				averageQuantityInvoices;
+	public Money				averageQuantityInvoices;
 
 	@NotNull
-	public Double				deviationQuantityInvoices;
+	public Money				deviationQuantityInvoices;
 
 	@NotNull
-	public Double				minQuantityInvoices;
+	public Money				minQuantityInvoices;
 
 	@NotNull
-	public Double				maxQuantityInvoices;
+	public Money				maxQuantityInvoices;
 
 }
