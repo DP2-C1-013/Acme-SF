@@ -18,14 +18,6 @@
 
 <acme:menu-bar code="master.menu.home">
 	<acme:menu-left>
-		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link-Josue" action="https://cosmere.es/que-es-el-cosmere/"/>
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link-David" action="https://www.betisweb.com/foro/principal/real-betis-balompi%C3%A9"/>
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link-Antonio" action="https://www.udemy.com/"/>
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link-Oscar" action="https://www.freecodecamp.org/"/>
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link-Miguel" action="https://tinder.com/"/>
-		</acme:menu-option>
-
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-separator/>
