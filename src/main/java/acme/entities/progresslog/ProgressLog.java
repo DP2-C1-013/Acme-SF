@@ -1,5 +1,5 @@
 
-package acme.entities.codeaudit;
+package acme.entities.progresslog;
 
 import java.util.Date;
 
@@ -9,60 +9,56 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
-import acme.entities.project.Project;
+import acme.entities.contract.Contract;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-
-public class CodeAudit extends AbstractEntity {
+public class ProgressLog extends AbstractEntity {
 
 	//Serialization indentifier --------------------------------------------------------
 
 	private static final long	serialVersionUID	= 1L;
 
 	//Atributes ------------------------------------------------------------------------
-
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "{validation.codeAudit.code}")
-	private String				code;
+	@Pattern(regexp = "[A-Z]{1,2}-[0-9]{3}")
+	private String				recordId;
+
+	@NotNull
+	@Min(0)
+	private Double				completeness;
+
+	@NotBlank
+	@Length(max = 100)
+	private String				comment;
 
 	@NotNull
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				executionDate;
+	private Date				registrationMoment;
 
-	@NotNull
-	private CodeAuditType		type;
+	@NotBlank
+	@Length(max = 75)
+	private String				responsiblePerson;
 
-	@NotNull
-	@Length(max = 100)
-	private String				correctiveActions;
-
-	//Nullable in case that the code audit does not have any audit records
-	private Double				mark;
-
-	@URL
-	private String				link;
-
-	@NotNull
-	private Boolean				draftMode;
+	// Relationships --------------------------------------------------------------------
 
 	@NotNull
 	@Valid
 	@ManyToOne()
-	private Project				project;
+	private Contract			contract;
 
 }

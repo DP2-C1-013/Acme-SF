@@ -1,0 +1,16 @@
+key,instantiationMoment,title,author,message,email,link
+notice-01,2020/11/16 22:30,Important Announcement,John Doe,This is an important announcement.,null,https://example.com/announcement
+notice-02,2020/11/16 22:30,Reminder,Emily Smith,Just a friendly reminder about the upcoming event.,emilysmith@example.com,null
+notice-03,2020/11/16 22:30,Update,Michael Johnson,Update regarding our services.,null,https://example.com/update
+notice-04,2020/11/16 22:30,Notification,Susan Brown,A notification for all members.,susanbrown@example.com,null
+notice-05,2020/11/16 22:30,Alert,David Wilson,This is an urgent alert!,null,https://example.com/alert
+notice-06,2020/11/16 22:30,Holiday Closure,Emma Garcia,Our office will be closed for the holiday season.,emmagarcia@example.com,null
+notice-07,2014/6/14 13:00,Meeting Invitation,James Anderson,Invitation to our quarterly meeting.,null,https://example.com/meeting
+notice-08,2014/6/14 13:00,Product Launch,Olivia Martinez,Exciting news about our new product launch!,oliviamartinez@example.com,null
+notice-09,2014/6/14 13:00,Training Session,Nathan Taylor,Details about our upcoming training session.,null,https://example.com/training
+notice-10,2014/6/14 13:00,Website Maintenance,Ava Hernandez,Our website will be undergoing maintenance.,avahernandez@example.com,null
+notice-11,2014/6/14 13:00,Policy Update,Liam Brown,Important updates to our company policies.,null,https://example.com/policy-update
+notice-12,2014/6/14 13:00,Feedback Request,Charlotte Rodriguez,We'd love to hear your feedback!,charlotterodriguez@example.com,null
+notice-13,2014/6/15 15:00,Event Announcement,Ethan Garcia,Announcing our upcoming company event.,ethangarcia@example.com,null
+notice-14,2014/6/15 15:00,New Feature Release,Sophia Lee,Exciting news about our latest feature release.,null,https://example.com/feature-release
+notice-15,2014/6/15 15:00,Security Alert,Noah Perez,Important security update for all users.,noahperez@example.com,null

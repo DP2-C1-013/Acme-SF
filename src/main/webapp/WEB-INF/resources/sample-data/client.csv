@@ -1,0 +1,3 @@
+key,identification,companyName,type,email,link,key:userAccount
+client-01,CLI-0001,Acme Corporation,COMPANY,info@acme.com,https://example.com/acme,user-account-client-01
+client-02,CLI-0002,Beta Industries,INDIVIDUAL,beta@example.com,https://example.com/beta,user-account-client-02

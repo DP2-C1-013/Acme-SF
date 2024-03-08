@@ -1,5 +1,5 @@
 
-package acme.entities.codeaudit;
+package acme.entities.contract;
 
 import java.util.Date;
 
@@ -15,54 +15,62 @@ import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.client.data.datatypes.Money;
 import acme.entities.project.Project;
+import acme.roles.client.Client;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-
-public class CodeAudit extends AbstractEntity {
+public class Contract extends AbstractEntity {
 
 	//Serialization indentifier --------------------------------------------------------
 
 	private static final long	serialVersionUID	= 1L;
 
 	//Atributes ------------------------------------------------------------------------
-
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "{validation.codeAudit.code}")
+	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{4}")
 	private String				code;
 
 	@NotNull
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				executionDate;
+	private Date				instantationMoment;
 
-	@NotNull
-	private CodeAuditType		type;
+	@NotBlank
+	@Length(max = 75)
+	private String				providerName;
 
-	@NotNull
+	@NotBlank
+	@Length(max = 75)
+	private String				customerName;
+
+	@NotBlank
 	@Length(max = 100)
-	private String				correctiveActions;
+	private String				goal;
 
-	//Nullable in case that the code audit does not have any audit records
-	private Double				mark;
-
-	@URL
-	private String				link;
+	@NotNull
+	@Valid
+	private Money				budget;
 
 	@NotNull
 	private Boolean				draftMode;
+
+	// Relationships --------------------------------------------------------------------
 
 	@NotNull
 	@Valid
 	@ManyToOne()
 	private Project				project;
 
+	@NotNull
+	@Valid
+	@ManyToOne()
+	private Client				client;
 }

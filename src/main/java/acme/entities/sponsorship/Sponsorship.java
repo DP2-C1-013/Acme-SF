@@ -60,6 +60,9 @@ public class Sponsorship extends AbstractEntity {
 	@URL
 	private String				link;
 
+	@NotNull
+	private Boolean				draftMode;
+
 	// Relationships --------------------------------------------------------------------
 
 	@NotNull
