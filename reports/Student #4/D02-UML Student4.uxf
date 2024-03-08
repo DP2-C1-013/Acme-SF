@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>594</x>
-      <y>261</y>
+      <x>774</x>
+      <y>288</y>
       <w>351</w>
       <h>171</h>
     </coordinates>
@@ -25,8 +25,8 @@ Sponsorship
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>621</x>
-      <y>90</y>
+      <x>801</x>
+      <y>117</y>
       <w>297</w>
       <h>72</h>
     </coordinates>
@@ -39,8 +39,8 @@ Project
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>27</x>
-      <y>243</y>
+      <x>207</x>
+      <y>270</y>
       <w>297</w>
       <h>189</h>
     </coordinates>
@@ -49,22 +49,22 @@ SponsorDashboard
 --
 + numInvoicesLessTax: Integer
 + numLinkedSponsorship: Integer
-+ averageAmountSponsorship: Double
-+ deviationAmountSponsorship: Double
-+ minAmountSponsorship: Double
-+ maxAmountSponsorship: Double
-+ averageQuantityInvoices: Double
-+ deviationQuantityInvoices: Double
-+ minQuantityInvoices: Double
-+ maxQuantityInvoices: Double</panel_attributes>
++ averageAmountSponsorship: Money
++ deviationAmountSponsorship: Money
++ minAmountSponsorship: Money
++ maxAmountSponsorship: Money
++ averageQuantityInvoices: Money
++ deviationQuantityInvoices: Money
++ minQuantityInvoices: Money
++ maxQuantityInvoices: Money</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>594</x>
-      <y>522</y>
-      <w>351</w>
+      <x>774</x>
+      <y>549</y>
+      <w>378</w>
       <h>144</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
@@ -82,8 +82,8 @@ Invoice
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>396</x>
-      <y>567</y>
+      <x>576</x>
+      <y>594</y>
       <w>144</w>
       <h>63</h>
     </coordinates>
@@ -95,8 +95,8 @@ of the registration time</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>405</x>
-      <y>360</y>
+      <x>585</x>
+      <y>387</y>
       <w>144</w>
       <h>63</h>
     </coordinates>
@@ -108,8 +108,8 @@ of the registration time</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>531</x>
-      <y>594</y>
+      <x>711</x>
+      <y>621</y>
       <w>81</w>
       <h>27</h>
     </coordinates>
@@ -119,8 +119,8 @@ of the registration time</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>540</x>
-      <y>342</y>
+      <x>720</x>
+      <y>369</y>
       <w>72</w>
       <h>72</h>
     </coordinates>
@@ -130,8 +130,8 @@ of the registration time</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>756</x>
-      <y>153</y>
+      <x>936</x>
+      <y>180</y>
       <w>99</w>
       <h>126</h>
     </coordinates>
@@ -144,8 +144,8 @@ m2=0..*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>756</x>
-      <y>423</y>
+      <x>936</x>
+      <y>450</y>
       <w>45</w>
       <h>117</h>
     </coordinates>
@@ -156,8 +156,8 @@ m2=1..*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>27</x>
-      <y>99</y>
+      <x>207</x>
+      <y>126</y>
       <w>297</w>
       <h>72</h>
     </coordinates>
@@ -171,8 +171,8 @@ In_kind</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>27</x>
-      <y>504</y>
+      <x>207</x>
+      <y>531</y>
       <w>297</w>
       <h>108</h>
     </coordinates>
@@ -186,8 +186,8 @@ Sponsor
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>342</x>
-      <y>657</y>
+      <x>522</x>
+      <y>684</y>
       <w>198</w>
       <h>81</h>
     </coordinates>
@@ -201,8 +201,8 @@ the corresponding sponsorship</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>531</x>
-      <y>594</y>
+      <x>711</x>
+      <y>621</y>
       <w>81</w>
       <h>117</h>
     </coordinates>
@@ -212,8 +212,8 @@ the corresponding sponsorship</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>351</x>
-      <y>477</y>
+      <x>531</x>
+      <y>504</y>
       <w>189</w>
       <h>63</h>
     </coordinates>
@@ -225,8 +225,8 @@ quantity and the tax applied</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>531</x>
-      <y>504</y>
+      <x>711</x>
+      <y>531</y>
       <w>81</w>
       <h>117</h>
     </coordinates>
@@ -236,8 +236,8 @@ quantity and the tax applied</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>405</x>
-      <y>261</y>
+      <x>585</x>
+      <y>288</y>
       <w>144</w>
       <h>63</h>
     </coordinates>
@@ -248,8 +248,8 @@ if type value is In_kind</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>540</x>
-      <y>288</y>
+      <x>720</x>
+      <y>315</y>
       <w>72</w>
       <h>81</h>
     </coordinates>
