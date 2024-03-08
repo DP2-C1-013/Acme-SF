@@ -45,7 +45,7 @@ public class AuditRecord extends AbstractEntity {
 	private Date				endDate;
 
 	@NotNull
-	private AuditRecordMark		mark;
+	private AuditMark			mark;
 
 	@URL
 	private String				link;
