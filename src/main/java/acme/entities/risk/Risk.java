@@ -10,11 +10,12 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.PositiveOrZero;
-import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
@@ -38,15 +39,17 @@ public class Risk extends AbstractEntity {
 	@Temporal(TemporalType.DATE)
 	private Date				idDate;
 
+	@NotNull
 	@PositiveOrZero
 	private Double				impact;
 
+	@NotNull
 	@DecimalMin("0.0")
 	@DecimalMax("1.0")
 	private Double				probability;
 
 	@NotBlank
-	@Size(max = 101)
+	@Length(max = 100)
 	private String				description;
 
 	@URL

@@ -2,7 +2,9 @@
 package acme.roles;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -14,7 +16,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Sponsor extends AbstractRole {
+public class Developer extends AbstractRole {
 
 	//Serialization indentifier --------------------------------------------------------
 
@@ -23,10 +25,22 @@ public class Sponsor extends AbstractRole {
 	// Attributes -------------------------------------------------------------
 
 	@NotBlank
+	@Length(max = 75)
+	private String				degree;
+
+	@NotBlank
 	@Length(max = 100)
-	private String				benefits;
+	private String				speciatisation;
+
+	@NotBlank
+	@Length(max = 100)
+	private String				skills;
+
+	@NotNull
+	@Email
+	private String				email;
 
 	@URL
-	private String				link;
+	private String				optionalLink;
 
 }

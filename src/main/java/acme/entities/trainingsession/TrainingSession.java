@@ -13,8 +13,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
@@ -35,17 +35,19 @@ public class TrainingSession extends AbstractEntity {
 	@Pattern(regexp = "TS-[A-Z]{1,3}-[0-9]{3}", message = "Training session code not valid")
 	private String				code;
 
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				startDate;
 
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				endDate;
 
-	@Size(max = 76)
+	@Length(max = 75)
 	@NotBlank
 	private String				location;
 
-	@Size(max = 76)
+	@Length(max = 75)
 	@NotBlank
 	private String				instructor;
 

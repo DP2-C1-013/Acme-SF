@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>594</x>
+      <y>261</y>
+      <w>351</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Sponsorship
+--
++ code: String {Pattern([A-Z]{1,3}-[0-9]{3}	), NotBlank, Unique}
++ moment: Date {Past, Temporal(TIMESTAMP),NotNull}
++ duration: Date {Temporal(TIMESTAMP), NotNull}
++ amount: Money {NotNull, Min(0)}
++ type: enum {NotNull}
++ email: String {Email}
++ link: String {URL}
++ draftMode: Boolean {NotNull}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>621</x>
+      <y>90</y>
+      <w>297</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Project
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>27</x>
+      <y>243</y>
+      <w>297</w>
+      <h>189</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+SponsorDashboard
+--
++ numInvoicesLessTax: Integer
++ numLinkedSponsorship: Integer
++ averageAmountSponsorship: Double
++ deviationAmountSponsorship: Double
++ minAmountSponsorship: Double
++ maxAmountSponsorship: Double
++ averageQuantityInvoices: Double
++ deviationQuantityInvoices: Double
++ minQuantityInvoices: Double
++ maxQuantityInvoices: Double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>594</x>
+      <y>522</y>
+      <w>351</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Invoice
+--
++ code: String {Pattern(IN-[0-9]{4}-[0-9]{4}), NotBlank, Unique}
++ registrationTime: Date {Past, Temporal(TIMESTAMP), NotNull}
++ dueDate: Date {Temporal(TIMESTAMP), NotNull}
++ quantity: Money {NotNull, Min(0)}
++ tax: double {Min(0), Max(1), NotNull}
+/ totalAmount: Money {transient}
++ link: String {URL}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>396</x>
+      <y>567</y>
+      <w>144</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>Due date must be at 
+least one month ahead 
+of the registration time</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>405</x>
+      <y>360</y>
+      <w>144</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>Duration must be at 
+least one month ahead 
+of the registration time</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>531</x>
+      <y>594</y>
+      <w>81</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>342</y>
+      <w>72</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>60.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>756</x>
+      <y>153</y>
+      <w>99</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+Related to ^
+m1=1
+m2=0..*</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>756</x>
+      <y>423</y>
+      <w>45</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-x
+m2=1..*</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>27</x>
+      <y>99</y>
+      <w>297</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enumerate&gt;&gt;
+SponsorshipType
+--
+Financial
+In_kind</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>27</x>
+      <y>504</y>
+      <w>297</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
+Sponsor
+--
++ benefits: String {Length(max(100), NotBlank}
++ link: String {URL}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>342</x>
+      <y>657</y>
+      <w>198</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>The sum of the quantity of 
+invoices (including taxes)
+must add up and never exceed
+the amount of money to be paid in
+the corresponding sponsorship</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>531</x>
+      <y>594</y>
+      <w>81</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;110.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>351</x>
+      <y>477</y>
+      <w>189</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>totalAmount is calculated
+by adding together the 
+quantity and the tax applied</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>531</x>
+      <y>504</y>
+      <w>81</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>405</x>
+      <y>261</y>
+      <w>144</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>Amount can only be 0 
+if type value is In_kind</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>288</y>
+      <w>72</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>60.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
