@@ -18,6 +18,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
+import acme.entities.auditrecord.AuditMark;
 import acme.entities.project.Project;
 import lombok.Getter;
 import lombok.Setter;
@@ -52,7 +53,7 @@ public class CodeAudit extends AbstractEntity {
 	private String				correctiveActions;
 
 	//Nullable in case that the code audit does not have any audit records
-	private Double				mark;
+	private AuditMark			mark;
 
 	@URL
 	private String				link;

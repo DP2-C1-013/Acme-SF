@@ -11,3 +11,5 @@ user-account-auditor-01,true,"UserIdentity{name:'Tom', surname:'Innit', email:'t
 user-account-auditor-02,true,"UserIdentity{name:'Clay', surname:'Smith', email:'DClay@acme.com'}",auditor2,auditor2
 user-account-client-01,true,"UserIdentity{name: 'John', surname: 'Doe', email: 'client1@acme.com'}",client1,client1
 user-account-client-02,true,"UserIdentity{name: 'Jane', surname: 'Doe', email: 'client2@acme.com'}",client2,client2
+user-account-administrator-01,true,"UserIdentity{name: 'Juan', surname: 'Delgado', email: 'JuanD@acme.com'}",administrator1,administrator1
+user-account-administrator-02,true,"UserIdentity{name: 'Peter', surname: 'Parker', email: 'spidey@acme.com'}",administrator1,administrator1

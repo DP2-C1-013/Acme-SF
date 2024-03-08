@@ -22,6 +22,21 @@ public class AdministratorDashboard extends AbstractForm {
 	public Integer				totalSponsorsPrincipals;
 
 	@NotNull
+	public Integer				totalClientsPrincipals;
+
+	@NotNull
+	public Integer				totalAuditorsPrincipals;
+
+	@NotNull
+	public Integer				totalConsumersPrincipals;
+
+	@NotNull
+	public Integer				totalDevelopersPrincipals;
+
+	@NotNull
+	public Integer				totalPovidersPrincipals;
+
+	@NotNull
 	public Double				noticeEmailLinkRatio;
 
 	@NotNull
