@@ -1,0 +1,11 @@
+key,recordId,completeness,comment,registrationMoment,responsiblePerson,key:contract
+progress-log-01,PL-001,50.0,"Completed half of the tasks",2022/07/29 22:30,John Doe,contract-01
+progress-log-02,PL-002,75.0,"Almost done",2022/07/28 22:30,Jane Smith,contract-02
+progress-log-03,PL-003,25.0,"Started working on the project",2022/07/27 22:30,Alice Johnson,contract-03
+progress-log-04,PL-004,90.0,"Finishing touches remaining",2022/07/26 22:30,Bob Wilson,contract-04
+progress-log-05,PL-005,10.0,"Just getting started",2022/07/25 22:30,Emily Brown,contract-05
+progress-log-06,PL-006,40.0,"Making good progress",2022/07/24 22:30,David Martinez,contract-06
+progress-log-07,PL-007,85.0,"Almost there",2022/07/23 22:30,Sarah Taylor,contract-07
+progress-log-08,PL-008,20.0,"Struggling with some tasks",2022/07/22 22:30,Michael Clark,contract-08
+progress-log-09,PL-009,60.0,"Halfway through",2022/07/21 22:30,Laura Rodriguez,contract-09
+progress-log-10,PL-010,95.0,"Final adjustments",2022/07/20 22:30,Christopher Lee,contract-10
