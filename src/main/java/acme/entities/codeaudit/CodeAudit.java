@@ -58,6 +58,9 @@ public class CodeAudit extends AbstractEntity {
 	private String				link;
 
 	@NotNull
+	private Boolean				draftMode;
+
+	@NotNull
 	@Valid
 	@ManyToOne()
 	private Project				project;
