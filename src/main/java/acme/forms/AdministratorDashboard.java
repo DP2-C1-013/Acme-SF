@@ -49,9 +49,9 @@ public class AdministratorDashboard extends AbstractForm {
 	public Double				claimsLast10WeeksDeviation;
 
 	@NotNull
-	public Double				minClaimsLast10Weeks;
+	public Integer				minClaimsLast10Weeks;
 
 	@NotNull
-	public Double				maxClaimsLast10Weeks;
+	public Integer				maxClaimsLast10Weeks;
 
 }
