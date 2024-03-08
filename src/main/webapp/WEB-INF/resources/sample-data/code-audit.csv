@@ -1,11 +1,11 @@
 key,code,execution-date,type,corrective-actions,mark,link,draftMode,key:project
-code-audit-01,ABC-123,2020/11/16 22:30,Static,Improve group work,6.7,http://exampleCodeAudit.com,false,project-01
-code-audit-02,XYZ-456,2021/02/20 14:45,Dynamic,Fix security vulnerabilities,8.5,http://auditReportXYZ.com,false,project-01
-code-audit-03,PQR-789,2021/05/10 18:00,Static,Optimize code performance,7.2,http://auditPQR-789.com,false,project-01
+code-audit-01,ABC-123,2020/11/16 22:30,Static,Improve group work,10.0,http://exampleCodeAudit.com,false,project-01
+code-audit-02,XYZ-456,2021/02/20 14:45,Dynamic,Fix security vulnerabilities,9.0,http://auditReportXYZ.com,false,project-01
+code-audit-03,PQR-789,2021/05/10 18:00,Static,Optimize code performance,7.0,http://auditPQR-789.com,false,project-01
 code-audit-04,MNO-321,2021/08/05 10:15,Dynamic,Address code maintainability issues,9.0,http://exampleMNO-321.com,true,project-02
 code-audit-05,DEF-654,2021/11/30 08:30,Static,Enhance code readability,7.8,http://auditReportDEF-654.com,false,project-01
 code-audit-06,GHI-987,2022/03/25 16:45,Dynamic,Resolve code duplication,8.3,http://auditGHI-987.com,false,project-01
 code-audit-07,JKL-210,2022/06/15 12:00,Static,Update coding standards compliance,7.1,http://auditJKL-210.com,false,project-01
-code-audit-08,RST-543,2022/09/08 09:20,Dynamic,Implement error handling improvements,8.7,http://auditRST-543.com,true,project-01
-code-audit-09,WXY-876,2022/12/03 07:00,Static,Optimize database queries,7.5,http://auditWXY-876.com,false,project-01
-code-audit-10,LMN-098,2023/03/18 14:30,Dynamic,改进代码,8.2,http://auditLMN-098.com,false,project-01
+code-audit-08,RST-543,2012/09/08 09:20,Dynamic,Implement error handling improvements,7.0,http://auditRST-543.com,true,project-01
+code-audit-09,WXY-876,2000/12/03 07:00,Static,Optimize database queries,0.1,http://auditWXY-876.com,false,project-01
+code-audit-10,LMN-098,2003/03/18 14:30,Dynamic,改进代码,0.0,http://auditLMN-098.com,false,project-01

@@ -7,3 +7,5 @@ user-account-sponsor-01,true,"UserIdentity{name: 'Alaric', surname: 'Ankhyara', 
 user-account-sponsor-02,true,"UserIdentity{name: 'Dionne', surname: 'Briarwood', email: 'dionne@acme.com'}",sponsor2,sponsor2
 user-account-manager-01,true,"UserIdentity{name: 'James', surname: 'Gadner', email: 'james.gadner@acme.com'}",manager1,manager1
 user-account-manager-02,true,"UserIdentity{name: 'David', surname: 'Maddison', email: 'david.maddison@acme.com'}",manager2,manager2
+user-account-auditor-01,true,"UserIdentity{name:'Tom', surname:'Innit', email:'tominn@acme.com'}",auditor1,auditor1
+user-account-auditor-02,true,"UserIdentity{name:'Clay', surname:'Smith', email:'DClay@acme.com'}",auditor2,auditor2

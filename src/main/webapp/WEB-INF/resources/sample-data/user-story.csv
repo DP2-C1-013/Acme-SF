@@ -13,4 +13,3 @@ user-story-08-01,Añadir función de personalización de temas,Personalizar el t
 user-story-09-01,Implementar sistema de comentarios en publicaciones,Dejar comentarios en las publicaciones.,USD 900.00,Los usuarios pueden interactuar y compartir sus opiniones en las publicaciones.,COULD,null,project-09,manager-01
 user-story-10-01,Desarrollar función de seguimiento de actividades,Realizar seguimiento de sus actividades dentro de la aplicación.,GBP 800.00,Los usuarios pueden monitorear su actividad y progreso en la aplicación.,SHOULD,https://example.com/user-story-17,project-10,manager-01
 user-story-10-02,Agregar opción de compartir en redes sociales,Se debe agregar la opción de compartir contenido en redes sociales.,USD 700.00,Los usuarios pueden compartir contenido de la aplicación en sus redes sociales.,MUST,null,project-10,manager-02
->>>>>>> master
