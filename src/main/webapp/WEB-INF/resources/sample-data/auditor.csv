@@ -1,0 +1,3 @@
+key,firm,professionalId,certifications,link,key:userAccount
+auditor-01,ABC Audit Firm,001,"CPA, IAP",http://auditor1example.com,user-account-auditor-01
+auditor-02,Meta Audit Firm,002,CPA,http://auditor1example.com,user-account-auditor-02
