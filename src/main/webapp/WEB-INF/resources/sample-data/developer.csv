@@ -1,0 +1,3 @@
+key,degree,specialisation,skills,email,optionalLink,key:userAccount
+developer-01,Degree in Software Engineering,Development,"Java, Python, C++, Git",developer1@example.com,https://example.com/developer1,user-account-developer-01
+developer-02,Degree in Computer Science,Data Science,"JavaScript, SQL, Python, Git",developer2@example.com,https://example.com/developer2,user-account-developer-02
