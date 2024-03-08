@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>8</zoom_level>
+  <zoom_level>6</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>96</x>
-      <y>544</y>
-      <w>104</w>
-      <h>80</h>
+      <x>138</x>
+      <y>186</y>
+      <w>78</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Enumeration&gt;&gt;
 Priority
@@ -20,10 +20,10 @@ High</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>336</x>
-      <y>784</y>
-      <w>352</w>
-      <h>136</h>
+      <x>318</x>
+      <y>366</y>
+      <w>264</w>
+      <h>102</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Notice
@@ -40,10 +40,10 @@ Notice
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>336</x>
-      <y>456</y>
-      <w>352</w>
-      <h>136</h>
+      <x>318</x>
+      <y>120</y>
+      <w>264</w>
+      <h>102</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Objective
@@ -61,10 +61,10 @@ Objective
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>336</x>
-      <y>288</y>
-      <w>312</w>
-      <h>136</h>
+      <x>318</x>
+      <y>0</y>
+      <w>264</w>
+      <h>102</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Claim
@@ -82,10 +82,10 @@ Claim
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>336</x>
-      <y>632</y>
-      <w>328</w>
-      <h>136</h>
+      <x>318</x>
+      <y>252</y>
+      <w>264</w>
+      <h>102</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Risk
@@ -103,10 +103,10 @@ Risk
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>872</x>
-      <y>800</y>
-      <w>256</w>
-      <h>104</h>
+      <x>300</x>
+      <y>510</y>
+      <w>300</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Banner
@@ -122,10 +122,10 @@ Banner
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>712</x>
-      <y>728</y>
-      <w>184</w>
-      <h>56</h>
+      <x>114</x>
+      <y>540</y>
+      <w>138</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>Display period must start at any
 moment after the 
@@ -138,21 +138,21 @@ bg=white
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>768</x>
-      <y>776</y>
-      <w>120</w>
-      <h>88</h>
+      <x>246</x>
+      <y>558</y>
+      <w>66</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;130.0;90.0</additional_attributes>
+    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>128</x>
-      <y>440</y>
-      <w>184</w>
-      <h>56</h>
+      <x>162</x>
+      <y>108</y>
+      <w>138</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>Duration must start at any
 moment after the 
@@ -165,10 +165,10 @@ bg=white
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>200</x>
-      <y>488</y>
-      <w>152</w>
-      <h>88</h>
+      <x>216</x>
+      <y>144</y>
+      <w>114</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;170.0;90.0</additional_attributes>
@@ -176,10 +176,10 @@ bg=white
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>88</x>
-      <y>664</y>
-      <w>144</w>
-      <h>56</h>
+      <x>132</x>
+      <y>276</y>
+      <w>108</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>Value is the result of
 the multiplication of impact
@@ -192,10 +192,10 @@ bg=white
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>224</x>
-      <y>680</y>
-      <w>128</w>
-      <h>80</h>
+      <x>234</x>
+      <y>288</y>
+      <w>96</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;140.0;80.0</additional_attributes>
@@ -203,10 +203,10 @@ bg=white
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>56</x>
-      <y>784</y>
-      <w>168</w>
-      <h>56</h>
+      <x>108</x>
+      <y>366</y>
+      <w>126</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>Author must be computed
 as follows: 
@@ -219,10 +219,10 @@ bg=white
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>216</x>
-      <y>808</y>
-      <w>136</w>
-      <h>56</h>
+      <x>228</x>
+      <y>384</y>
+      <w>102</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;150.0;50.0</additional_attributes>

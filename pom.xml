@@ -21,8 +21,8 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>Acme-SF-D01</artifactId>
-  <name>Acme-SF-D01</name>
+	<artifactId>Acme-SF-D02</artifactId>
+  <name>Acme-SF-D02</name>
   <description>WIS to help Acme Software Factory, Inc. to manage their business.</description>
 
 	<packaging>war</packaging>
