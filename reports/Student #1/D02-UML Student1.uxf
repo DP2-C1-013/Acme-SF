@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>144</x>
+      <y>252</y>
+      <w>243</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+ManagerDashBoard
+--
++numOfMustUserStories: Integer
++numOfShouldUserStories: Integer
++numOfCouldUserStories: Integer
++numOfWontUserStories: Integer
++averageEstimatedCost: Double
++deviationEstimatedCost: Double
++minEstimatedCost: Double
++maxEstimatedCost: Double
++averageCost: Double
++deviationCost: Double
++minCost: Double
++maxCost: Double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>198</x>
+      <y>135</y>
+      <w>108</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enumeration&gt;&gt;
+Priority
+--
+Must
+Should
+Could
+Won't</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>306</x>
+      <y>495</y>
+      <w>351</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Project
+--
++code: String {Pattern("[A-Z]{3}-[0-9]{4}"), NotBlank, Unique}
++title: String {NotBlank, Length(max=75)}
++abstractText: String {NotBlank, Length(max=100)}
++hasFatalErrors: boolean
++cost: Money {NotNull}
++draftMode: boolean
++link: String {URL}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>855</x>
+      <y>486</y>
+      <w>333</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+UserStory
+--
++title: String {NotBlank, Length(max=75)}
++description: String {NotBlank, Length(max=100)}
++estimatedCost: Money {NotNull}
++acceptanceCriteria: String {NotBlank, Length(max=100)}
++priority: Priority
++link: String {URL}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>657</x>
+      <y>432</y>
+      <w>171</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>Estimated cost (in hours) 
+must be positive, not nought
+
+bg=white
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>729</x>
+      <y>477</y>
+      <w>144</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;140.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>837</x>
+      <y>567</y>
+      <w>18</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>type=termination</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>648</x>
+      <y>567</y>
+      <w>225</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=1..*</panel_attributes>
+    <additional_attributes>10.0;10.0;230.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>837</x>
+      <y>234</y>
+      <w>351</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
+Manager
+--
++degree: String {NotBlank, Length(max=75)}
++overview: String {NotBlank, Length(max=100)}
++certifications: String {NotBlank, Length(max=100)}
++link: String {URL}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1017</x>
+      <y>333</y>
+      <w>99</w>
+      <h>171</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+m1=1
+m2=1..*
+elicited by ^
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;170.0</additional_attributes>
+  </element>
+</diagram>
