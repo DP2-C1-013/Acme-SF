@@ -8,6 +8,6 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-authenticated.project.list.label.code = Code
-authenticated.project.list.label.title = Title
-authenticated.project.list.label.cost = Cost
+manager.project.list.label.code = Code
+manager.project.list.label.title = Title
+manager.project.list.label.cost = Cost

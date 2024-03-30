@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.project;
+package acme.features.manager;
 
 import java.util.Collection;
 
@@ -11,7 +11,7 @@ import acme.entities.project.Project;
 import acme.roles.Manager;
 
 @Repository
-public interface AuthenticatedProjectRepository extends AbstractRepository {
+public interface ManagerProjectRepository extends AbstractRepository {
 
 	@Query("SELECT m FROM Manager m WHERE m.userAccount.id = :id")
 	Manager findOneManagerByUserAccountId(int id);

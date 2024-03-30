@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.project;
+package acme.features.manager;
 
 import java.util.Collection;
 
@@ -12,11 +12,11 @@ import acme.entities.project.Project;
 import acme.roles.Manager;
 
 @Service
-public class AuthenticatedProjectListService extends AbstractService<Manager, Project> {
+public class ManagerProjectListService extends AbstractService<Manager, Project> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedProjectRepository repository;
+	private ManagerProjectRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
