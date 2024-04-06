@@ -12,4 +12,12 @@ manager.userstory.list.label.title = Título
 manager.userstory.list.label.description = Descripción
 manager.userstory.list.label.estimatedcost = Coste Estimado
 
+manager.userstory.form.label.title = Título
+manager.userstory.form.label.description = Descripción
+manager.userstory.form.label.estimatedcost = Coste Estimado
+manager.userstory.form.label.acceptancecriteria = Criterio de Aceptación
+manager.userstory.form.label.priority = Prioridad
+manager.userstory.form.label.link = Link
+
+
 

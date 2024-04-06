@@ -1,5 +1,5 @@
 
-package acme.features.manager.userStory;
+package acme.features.manager.userstory;
 
 import java.util.Collection;
 
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 import acme.entities.project.Project;
-import acme.entities.userStory.UserStory;
+import acme.entities.userstory.UserStory;
 
 @Repository
 public interface ManagerUserStoryRepository extends AbstractRepository {
