@@ -18,10 +18,10 @@
 <acme:form readonly='true'>
 	<acme:input-textbox code="manager.project.form.label.code" path="code"/>
 	<acme:input-textbox code="manager.project.form.label.title" path="title"/>
-	<acme:input-textbox code="manager.project.form.label.abstractText" path="abstractText"/>
+	<acme:input-textarea code="manager.project.form.label.abstractText" path="abstractText"/>
 	<acme:input-textbox code="manager.project.form.label.hasFatalErrors" path="hasFatalErrors"/>
-	<acme:input-textbox code="manager.project.form.label.cost" path="cost"/>
-	<acme:input-textbox code="manager.project.form.label.link" path="link"/>
+	<acme:input-money code="manager.project.form.label.cost" path="cost"/>
+	<acme:input-url code="manager.project.form.label.link" path="link"/>
 	
 	<jstl:choose>	 
 		<jstl:when test="${_command == 'show' && draftMode == false}">
