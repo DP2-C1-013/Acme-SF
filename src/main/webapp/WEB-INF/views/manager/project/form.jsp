@@ -22,4 +22,10 @@
 	<acme:input-textbox code="manager.project.form.label.hasFatalErrors" path="hasFatalErrors"/>
 	<acme:input-textbox code="manager.project.form.label.cost" path="cost"/>
 	<acme:input-textbox code="manager.project.form.label.link" path="link"/>
+	
+	<jstl:choose>	 
+		<jstl:when test="${_command == 'show' && draftMode == false}">
+			<acme:button code="manager.project.form.button.userStories" action="/manager/user-story/list?projectId=${id}"/>			
+		</jstl:when>	
+	</jstl:choose>
 </acme:form>

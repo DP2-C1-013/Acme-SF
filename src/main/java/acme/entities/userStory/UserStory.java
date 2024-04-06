@@ -1,5 +1,5 @@
 
-package acme.entities.userstory;
+package acme.entities.userStory;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
