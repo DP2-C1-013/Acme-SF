@@ -19,3 +19,7 @@ manager.project.form.label.abstractText = Abstract text
 manager.project.form.label.hasFatalErrors = Has fatal errors
 manager.project.form.label.cost = Cost
 manager.project.form.label.link = Link
+
+
+manager.project.form.button.userStories = User Stories
+

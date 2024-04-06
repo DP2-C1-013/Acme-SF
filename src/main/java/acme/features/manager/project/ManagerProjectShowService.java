@@ -1,5 +1,5 @@
 
-package acme.features.manager;
+package acme.features.manager.project;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,7 +46,7 @@ public class ManagerProjectShowService extends AbstractService<Manager, Project>
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "title", "abstractText", "hasFatalErrors", "cost", "link");
+		dataset = super.unbind(object, "code", "title", "abstractText", "hasFatalErrors", "cost", "link", "draftMode");
 
 		super.getResponse().addData(dataset);
 	}
