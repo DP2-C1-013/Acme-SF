@@ -19,5 +19,6 @@ manager.project.form.label.abstractText = Texto abstracto
 manager.project.form.label.hasFatalErrors = Tiene errores graves
 manager.project.form.label.cost = Coste
 manager.project.form.label.link = Link
+manager.project.form.label.draftmode = Draft Mode
 
 manager.project.form.button.userStories = Historias de usuario

@@ -20,6 +20,12 @@
 	<acme:input-textarea code="manager.userstory.form.label.description" path="description"/>
 	<acme:input-money code="manager.userstory.form.label.estimatedcost" path="estimatedCost"/>
 	<acme:input-textarea code="manager.userstory.form.label.acceptancecriteria" path="acceptanceCriteria"/>
-	<acme:input-textbox code="manager.userstory.form.label.priority" path="priority"/>
+	<acme:input-select code="manager.userstory.form.label.priority" path="priority" choices="${priorities}"/>
 	<acme:input-url code="manager.userstory.form.label.link" path="link"/>
+	
+	<jstl:choose>
+		<jstl:when test="${_command == 'create'}">
+			<acme:submit code="manager.userstory.form.button.create" action="/manager/user-story/create?projectId=${projectId}"/>
+		</jstl:when>		
+	</jstl:choose>	
 </acme:form>
