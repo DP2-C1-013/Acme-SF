@@ -8,6 +8,9 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
+authenticated.claim.list.title = All claims
+authenticated.claim.form.title = Claim details
+
 authenticated.claim.list.label.code = Code
 authenticated.claim.list.label.moment = Date
 authenticated.claim.list.label.heading = Heading

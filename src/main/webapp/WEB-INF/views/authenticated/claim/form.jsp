@@ -17,10 +17,10 @@
 
 <acme:form readonly='true'>
 	<acme:input-textbox code="authenticated.claim.form.label.code" path="code"/>
-	<acme:input-textbox code="authenticated.claim.form.label.moment" path="instantiationMoment"/>
+	<acme:input-moment code="authenticated.claim.form.label.moment" path="instantiationMoment"/>
 	<acme:input-textbox code="authenticated.claim.form.label.heading" path="heading"/>
-	<acme:input-textbox code="authenticated.claim.form.label.description" path="description"/>
+	<acme:input-textarea code="authenticated.claim.form.label.description" path="description"/>
 	<acme:input-textbox code="authenticated.claim.form.label.department" path="department"/>
 	<acme:input-textbox code="authenticated.claim.form.label.email" path="email"/>
-	<acme:input-textbox code="authenticated.claim.form.label.link" path="link"/>
+	<acme:input-url code="authenticated.claim.form.label.link" path="link"/>
 </acme:form>
