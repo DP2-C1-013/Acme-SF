@@ -24,7 +24,20 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 	public void authorise() {
 		boolean status;
 
-		status = super.getRequest().getPrincipal().hasRole(Sponsor.class);
+		var request = super.getRequest();
+
+		int userAccountId;
+		int sponsorId;
+		int sponsorshipId;
+
+		sponsorshipId = request.getData("id", int.class);
+
+		userAccountId = request.getPrincipal().getAccountId();
+		sponsorId = this.repository.findOneSponsorByUserAccountId(userAccountId).getId();
+
+		Sponsorship object = this.repository.findOneSponsorshipById(sponsorshipId);
+
+		status = object != null && request.getPrincipal().hasRole(Sponsor.class) && object.getSponsor().getId() == sponsorId;
 
 		super.getResponse().setAuthorised(status);
 	}
