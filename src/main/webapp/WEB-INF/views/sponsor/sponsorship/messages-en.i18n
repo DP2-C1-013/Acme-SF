@@ -9,7 +9,16 @@
 # they accept any liabilities with respect to them.
 
 sponsor.sponsorship.list.title = Your sponsorships
+sponsor.sponsorship.form.title = Sponsorship details
 
 sponsor.sponsorship.list.label.code = Code
 sponsor.sponsorship.list.label.moment = Start date
 sponsor.sponsorship.list.label.type = Type
+
+sponsor.sponsorship.form.label.code = Code
+sponsor.sponsorship.form.label.moment = Start date
+sponsor.sponsorship.form.label.duration = End date
+sponsor.sponsorship.form.label.amount = Cost
+sponsor.sponsorship.form.label.type = Type
+sponsor.sponsorship.form.label.email = Email
+sponsor.sponsorship.form.label.link = Link
