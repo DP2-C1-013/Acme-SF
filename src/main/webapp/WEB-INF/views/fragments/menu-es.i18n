@@ -55,6 +55,7 @@ master.menu.user-account.become-consumer = Hazte consumidor
 # master.menu.authenticated ####################################################
 master.menu.authenticated = Autenticado
 master.menu.authenticated.claim = Reclamaciones
+master.menu.authenticated.risk = Riesgos
 
 # master.menu.manager ########################################################
 
