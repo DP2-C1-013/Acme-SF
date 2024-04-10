@@ -52,10 +52,10 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 		object = new UserStory();
 		object.setTitle("");
 		object.setDescription("");
-		//		object.setEstimatedCost(new Money());
 		object.setAcceptanceCriteria("");
 		object.setPriority(Priority.MUST);
 		object.setLink("");
+		object.setDraftMode(true);
 		object.setProject(project);
 		object.setManager(manager);
 

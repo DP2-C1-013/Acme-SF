@@ -21,8 +21,10 @@ manager.userstory.form.label.estimatedcost = Coste Estimado
 manager.userstory.form.label.acceptancecriteria = Criterio de Aceptación
 manager.userstory.form.label.priority = Prioridad
 manager.userstory.form.label.link = Link
+manager.userstory.form.label.draftmode = Draft Mode
 
 manager.userstory.form.button.create = Crear
+manager.userstory.form.button.publish = Publicar
 
 manager.userstory.form.error.not-positive-estimatedcost = El coste estimado tiene que ser positivo
 
