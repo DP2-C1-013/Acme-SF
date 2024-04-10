@@ -42,7 +42,7 @@ public class AuthenticatedRiskShowService extends AbstractService<Authenticated,
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "reference", "idDate", "impact", "probability", "description");
+		dataset = super.unbind(object, "reference", "idDate", "impact", "probability", "description", "optionalLink");
 
 		super.getResponse().addData(dataset);
 	}
