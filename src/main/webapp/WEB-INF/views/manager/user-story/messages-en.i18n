@@ -12,11 +12,22 @@ manager.userstory.list.label.title = Title
 manager.userstory.list.label.description = Description
 manager.userstory.list.label.estimatedcost = Estimated Cost
 
+manager.userstory.list.button.create = Create
+
+manager.user-story.form.title = User Story
 manager.userstory.form.label.title = Title
 manager.userstory.form.label.description = Description
 manager.userstory.form.label.estimatedcost = Estimated Cost
 manager.userstory.form.label.acceptancecriteria = Acceptance Criteria
 manager.userstory.form.label.priority = Priority
 manager.userstory.form.label.link = Link
+manager.userstory.form.label.draftmode = Draft Mode
+
+manager.user-story.list.title = User Stories
+
+manager.userstory.form.button.create = Create
+manager.userstory.form.button.publish = Publish
+
+manager.userstory.form.error.not-positive-estimatedcost = The estimated cost must be positive
 
 

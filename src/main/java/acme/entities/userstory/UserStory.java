@@ -48,6 +48,8 @@ public class UserStory extends AbstractEntity {
 	@URL
 	private String				link;
 
+	private boolean				draftMode;
+
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
@@ -57,4 +59,5 @@ public class UserStory extends AbstractEntity {
 	@Valid
 	@ManyToOne(optional = false)
 	private Manager				manager;
+
 }

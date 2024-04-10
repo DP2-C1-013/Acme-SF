@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.entities.project.Project;
 import acme.entities.userstory.UserStory;
 import acme.roles.Manager;
 
@@ -53,20 +54,20 @@ public class ManagerUserStoryListService extends AbstractService<Manager, UserSt
 		super.getResponse().addData(dataset);
 	}
 
-	//	@Override
-	//	public void unbind(final Collection<UserStory> objects) {
-	//		assert objects != null;
-	//
-	//		int projectId;
-	//		Project project;
-	//		final boolean showCreate;
-	//
-	//		projectId = super.getRequest().getData("projectId", int.class);
-	//		project = this.repository.findOneProjectById(projectId);
-	//		showCreate = project.isDraftMode() && super.getRequest().getPrincipal().hasRole(Manager.class);
-	//
-	//		super.getResponse().addGlobal("projectId", projectId);
-	//		super.getResponse().addGlobal("showCreate", showCreate);
-	//	}
+	@Override
+	public void unbind(final Collection<UserStory> objects) {
+		assert objects != null;
+
+		int projectId;
+		Project project;
+		final boolean showCreate;
+
+		projectId = super.getRequest().getData("projectId", int.class);
+		project = this.repository.findOneProjectById(projectId);
+		showCreate = project.isDraftMode() && super.getRequest().getPrincipal().hasRole(Manager.class);
+
+		super.getResponse().addGlobal("projectId", projectId);
+		super.getResponse().addGlobal("showCreate", showCreate);
+	}
 
 }
