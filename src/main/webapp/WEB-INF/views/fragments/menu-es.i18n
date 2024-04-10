@@ -60,7 +60,7 @@ master.menu.authenticated.risk = Riesgos
 # master.menu.manager ########################################################
 
 master.menu.manager = Manager
-master.menu.manager.projects = Proyectos
+master.menu.manager.project = Projects
 
 # master.menu.sponsor ####################################################
 master.menu.sponsor = Patrocinador
