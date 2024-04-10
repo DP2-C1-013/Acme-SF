@@ -21,4 +21,5 @@
 	<acme:input-textbox code="authenticated.risk.form.label.impact" path="impact"/>
 	<acme:input-textbox code="authenticated.risk.form.label.probability" path="probability"/>
 	<acme:input-textbox code="authenticated.risk.form.label.description" path="description"/>	
+	<acme:input-textbox code="authenticated.risk.form.label.optionalLink" path="optionalLink"/>
 </acme:form>
