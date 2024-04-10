@@ -8,6 +8,9 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
+authenticated.claim.list.title = Todas las reclamaciones
+authenticated.claim.form.title = Detalles de la reclamación
+
 authenticated.claim.list.label.code = Código
 authenticated.claim.list.label.moment = Fecha
 authenticated.claim.list.label.heading = Encabezado

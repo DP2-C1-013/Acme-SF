@@ -27,6 +27,8 @@
 			access="isAuthenticated()">
 			<acme:menu-suboption code="master.menu.authenticated.claim"
 				action="/authenticated/claim/list" />
+			<acme:menu-suboption code="master.menu.authenticated.risk"
+				action="/authenticated/risk/list" />
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator"
@@ -42,6 +44,12 @@
 			<acme:menu-separator />
 			<acme:menu-suboption code="master.menu.administrator.shut-down"
 				action="/administrator/system/shut-down" />
+		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.sponsor"
+			access="hasRole('Sponsor')">
+			<acme:menu-suboption code="master.menu.sponsor.sponsorship"
+				action="/sponsor/sponsorship/list" />
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.provider"

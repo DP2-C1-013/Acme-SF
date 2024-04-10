@@ -16,11 +16,10 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form readonly='true'>
-	<acme:input-textbox code="authenticated.claim.form.label.code" path="code"/>
-	<acme:input-moment code="authenticated.claim.form.label.moment" path="instantiationMoment"/>
-	<acme:input-textbox code="authenticated.claim.form.label.heading" path="heading"/>
-	<acme:input-textarea code="authenticated.claim.form.label.description" path="description"/>
-	<acme:input-textbox code="authenticated.claim.form.label.department" path="department"/>
-	<acme:input-textbox code="authenticated.claim.form.label.email" path="email"/>
-	<acme:input-url code="authenticated.claim.form.label.link" path="link"/>
+	<acme:input-textbox code="authenticated.risk.form.label.reference" path="reference"/>
+	<acme:input-textbox code="authenticated.risk.form.label.idDate" path="idDate"/>
+	<acme:input-textbox code="authenticated.risk.form.label.impact" path="impact"/>
+	<acme:input-textbox code="authenticated.risk.form.label.probability" path="probability"/>
+	<acme:input-textbox code="authenticated.risk.form.label.description" path="description"/>	
+	<acme:input-textbox code="authenticated.risk.form.label.optionalLink" path="optionalLink"/>
 </acme:form>

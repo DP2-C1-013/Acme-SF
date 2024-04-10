@@ -55,8 +55,13 @@ master.menu.user-account.become-consumer = Hazte consumidor
 # master.menu.authenticated ####################################################
 master.menu.authenticated = Autenticado
 master.menu.authenticated.claim = Reclamaciones
+master.menu.authenticated.risk = Riesgos
 
 # master.menu.manager ########################################################
 
 master.menu.manager = Manager
 master.menu.manager.projects = Proyectos
+
+# master.menu.sponsor ####################################################
+master.menu.sponsor = Patrocinador
+master.menu.sponsor.sponsorship = Patrocinios
