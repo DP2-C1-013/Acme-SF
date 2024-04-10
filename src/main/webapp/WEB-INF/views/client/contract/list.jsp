@@ -16,9 +16,8 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="manager.userstory.list.label.title" path="title" width="40%"/>	
-	<acme:list-column code="manager.userstory.list.label.description" path="description" width="50%"/>
-	<acme:list-column code="manager.userstory.list.label.estimatedcost" path="estimatedCost" width="10%"/>
+	<acme:list-column code="client.contract.list.label.code" path="code" width="10%"/>
+	<acme:list-column code="client.contract.list.label.providerName" path="providerName" width="20%"/>
+	<acme:list-column code="client.contract.list.label.customerName" path="customerName" width="20%"/>
+	<acme:list-column code="client.contract.list.label.goal" path="goal" width="20%"/>
 </acme:list>
-
-<acme:button test="${showCreate}" code="manager.userstory.list.button.create" action="/manager/user-story/create?projectId=${projectId}"/>

@@ -7,13 +7,12 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
-import acme.entities.project.Project;
 import acme.entities.userstory.Priority;
 import acme.entities.userstory.UserStory;
 import acme.roles.Manager;
 
 @Service
-public class ManagerUserStoryShowService extends AbstractService<Manager, UserStory> {
+public class ManagerUserStoryPublishService extends AbstractService<Manager, UserStory> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -27,11 +26,13 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 	public void authorise() {
 		boolean status;
 		int userStoryId;
-		Project project;
+		UserStory userStory;
+		Manager manager;
 
 		userStoryId = super.getRequest().getData("id", int.class);
-		project = this.repository.findOneProjectByUserStoryId(userStoryId);
-		status = project != null && (!project.isDraftMode() || super.getRequest().getPrincipal().hasRole(Manager.class));
+		userStory = this.repository.findOneUserStoryById(userStoryId);
+		manager = userStory == null ? null : userStory.getManager();
+		status = userStory != null && userStory.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -48,17 +49,43 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 	}
 
 	@Override
+	public void bind(final UserStory object) {
+		assert object != null;
+
+		super.bind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
+	}
+
+	@Override
+	public void validate(final UserStory object) {
+		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("estimatedCost"))
+			super.state(object.getEstimatedCost().getAmount() > 0., "estimatedCost", "manager.userstory.form.error.not-positive-estimatedcost");
+	}
+
+	@Override
+	public void perform(final UserStory object) {
+		assert object != null;
+
+		object.setDraftMode(false);
+		this.repository.save(object);
+	}
+
+	@Override
 	public void unbind(final UserStory object) {
 		assert object != null;
 
 		Dataset dataset;
 		SelectChoices choices;
+
 		choices = SelectChoices.from(Priority.class, object.getPriority());
 
-		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link", "draftMode");
-		dataset.put("projectId", object.getProject().getId());
+		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
+		dataset.put("projectId", super.getRequest().getData("projectId", int.class));
+		dataset.put("draftMode", object.getProject().isDraftMode());
 		dataset.put("priorities", choices);
 
 		super.getResponse().addData(dataset);
 	}
+
 }
