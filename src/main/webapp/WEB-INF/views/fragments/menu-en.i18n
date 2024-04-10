@@ -65,3 +65,8 @@ master.menu.manager.project = Projects
 # master.menu.sponsor ####################################################
 master.menu.sponsor = Sponsor
 master.menu.sponsor.sponsorship = Sponsorships
+
+# master.menu.manager ########################################################
+
+master.menu.client = Client
+master.menu.client.contract = Contrats
