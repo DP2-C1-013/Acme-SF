@@ -1,6 +1,8 @@
 
 package acme.features.manager.userstory;
 
+import java.util.Collection;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -18,7 +20,10 @@ public interface ManagerUserStoryRepository extends AbstractRepository {
 	@Query("SELECT us FROM UserStory us WHERE us.id = :id")
 	UserStory findOneUserStoryById(int id);
 
-	@Query("SELECT m FROM Manager m WHERE m.userAccount.id = :id")
-	Manager findOneManagerByUserAccountId(int id);
+	@Query("SELECT m FROM Manager m WHERE m.id = :id")
+	Manager findOneManagerById(int id);
+
+	@Query("SELECT us FROM ProjectUserStory pus LEFT JOIN UserStory us ON pus.userStory.id = us.id WHERE pus.project.id = :id")
+	Collection<UserStory> findManyUserStoriesByProjectId(int id);
 
 }
