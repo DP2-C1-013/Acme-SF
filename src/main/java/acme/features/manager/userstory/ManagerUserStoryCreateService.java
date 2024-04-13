@@ -56,7 +56,6 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 		object.setPriority(Priority.MUST);
 		object.setLink("");
 		object.setDraftMode(true);
-		object.setProject(project);
 		object.setManager(manager);
 
 		super.getBuffer().addData(object);
