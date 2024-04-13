@@ -28,10 +28,12 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 		boolean status;
 		int userStoryId;
 		Project project;
+		Manager manager;
 
+		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
 		userStoryId = super.getRequest().getData("id", int.class);
 		project = this.repository.findOneProjectByUserStoryId(userStoryId);
-		status = project != null && (!project.isDraftMode() || super.getRequest().getPrincipal().hasRole(Manager.class));
+		status = project != null && (!project.isDraftMode() || super.getRequest().getPrincipal().hasRole(manager));
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -53,10 +55,13 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 
 		Dataset dataset;
 		SelectChoices choices;
+		int projectId;
+
 		choices = SelectChoices.from(Priority.class, object.getPriority());
+		projectId = this.repository.findOneProjectByUserStoryId(object.getId()).getId();
 
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link", "draftMode");
-		dataset.put("projectId", object.getProject().getId());
+		dataset.put("projectId", projectId);
 		dataset.put("priorities", choices);
 
 		super.getResponse().addData(dataset);

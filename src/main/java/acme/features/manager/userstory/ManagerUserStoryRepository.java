@@ -23,6 +23,9 @@ public interface ManagerUserStoryRepository extends AbstractRepository {
 	@Query("SELECT m FROM Manager m WHERE m.id = :id")
 	Manager findOneManagerById(int id);
 
+	@Query("SELECT pus.project FROM ProjectUserStory pus WHERE pus.userStory.id = :id")
+	Project findOneProjectByUserStoryId(int id);
+
 	@Query("SELECT us FROM ProjectUserStory pus LEFT JOIN UserStory us ON pus.userStory.id = us.id WHERE pus.project.id = :id")
 	Collection<UserStory> findManyUserStoriesByProjectId(int id);
 
