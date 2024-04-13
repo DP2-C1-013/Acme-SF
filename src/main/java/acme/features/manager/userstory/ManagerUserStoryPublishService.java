@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.entities.project.Project;
 import acme.entities.userstory.Priority;
 import acme.entities.userstory.UserStory;
 import acme.roles.Manager;
@@ -77,12 +78,14 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 
 		Dataset dataset;
 		SelectChoices choices;
+		Project project;
 
 		choices = SelectChoices.from(Priority.class, object.getPriority());
+		project = this.repository.findOneProjectByUserStoryId(object.getId());
 
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
 		dataset.put("projectId", super.getRequest().getData("projectId", int.class));
-		dataset.put("draftMode", object.getProject().isDraftMode());
+		dataset.put("draftMode", project.isDraftMode());
 		dataset.put("priorities", choices);
 
 		super.getResponse().addData(dataset);
