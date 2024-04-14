@@ -29,6 +29,8 @@ manager.user-story.form.title = Historia de Usuario
 
 manager.userstory.form.button.create = Crear
 manager.userstory.form.button.publish = Publicar
+manager.userstory.form.button.update = Actualizar
+manager.userstory.form.button.delete = Eliminar
 
 manager.userstory.form.error.not-positive-estimatedcost = El coste estimado tiene que ser positivo
 

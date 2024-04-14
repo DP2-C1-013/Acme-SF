@@ -13,12 +13,14 @@ import acme.entities.userstory.UserStory;
 import acme.roles.Manager;
 
 @Service
-public class ManagerUserStoryPublishService extends AbstractService<Manager, UserStory> {
+public class ManagerUserStoryUpdateService extends AbstractService<Manager, UserStory> {
+
+	private static final String			PROJECT_ID	= "projectId";
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerUserStoryRepository repository;
+	private ManagerUserStoryRepository	repository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -27,13 +29,13 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 	public void authorise() {
 		boolean status;
 		int userStoryId;
-		UserStory userStory;
+		Project project;
 		Manager manager;
 
+		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
 		userStoryId = super.getRequest().getData("id", int.class);
-		userStory = this.repository.findOneUserStoryById(userStoryId);
-		manager = userStory == null ? null : userStory.getManager();
-		status = userStory != null && userStory.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
+		project = this.repository.findOneProjectByUserStoryId(userStoryId);
+		status = project != null && project.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -53,7 +55,7 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 	public void bind(final UserStory object) {
 		assert object != null;
 
-		super.bind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
+		super.bind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link", "draftMode");
 	}
 
 	@Override
@@ -68,7 +70,6 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 	public void perform(final UserStory object) {
 		assert object != null;
 
-		object.setDraftMode(false);
 		this.repository.save(object);
 	}
 
@@ -79,16 +80,18 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 		Dataset dataset;
 		SelectChoices choices;
 		Project project;
+		int projectId;
 
 		choices = SelectChoices.from(Priority.class, object.getPriority());
-		project = this.repository.findOneProjectByUserStoryId(object.getId());
+
+		projectId = super.getRequest().getData(ManagerUserStoryUpdateService.PROJECT_ID, int.class);
+		project = this.repository.findOneProjectById(projectId);
 
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
-		dataset.put("projectId", super.getRequest().getData("projectId", int.class));
+		dataset.put(ManagerUserStoryUpdateService.PROJECT_ID, super.getRequest().getData(ManagerUserStoryUpdateService.PROJECT_ID, int.class));
 		dataset.put("draftMode", project.isDraftMode());
 		dataset.put("priorities", choices);
 
 		super.getResponse().addData(dataset);
 	}
-
 }

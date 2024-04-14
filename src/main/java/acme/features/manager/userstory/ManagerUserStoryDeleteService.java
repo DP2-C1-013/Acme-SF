@@ -6,19 +6,24 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.client.views.SelectChoices;
 import acme.entities.project.Project;
-import acme.entities.userstory.Priority;
+import acme.entities.projectuserstory.ProjectUserStory;
 import acme.entities.userstory.UserStory;
+import acme.features.manager.projectuserstory.ManagerProjectUserStoryRepository;
 import acme.roles.Manager;
 
 @Service
-public class ManagerUserStoryPublishService extends AbstractService<Manager, UserStory> {
+public class ManagerUserStoryDeleteService extends AbstractService<Manager, UserStory> {
+
+	private static final String					PROJECT_ID	= "projectId";
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerUserStoryRepository repository;
+	private ManagerUserStoryRepository			repository;
+
+	@Autowired
+	private ManagerProjectUserStoryRepository	managerProjectUserStoryRepository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -27,13 +32,13 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 	public void authorise() {
 		boolean status;
 		int userStoryId;
-		UserStory userStory;
+		Project project;
 		Manager manager;
 
+		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
 		userStoryId = super.getRequest().getData("id", int.class);
-		userStory = this.repository.findOneUserStoryById(userStoryId);
-		manager = userStory == null ? null : userStory.getManager();
-		status = userStory != null && userStory.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
+		project = this.repository.findOneProjectByUserStoryId(userStoryId);
+		status = project != null && project.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -53,23 +58,22 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 	public void bind(final UserStory object) {
 		assert object != null;
 
-		super.bind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
+		super.bind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link", "draftMode");
 	}
 
 	@Override
 	public void validate(final UserStory object) {
 		assert object != null;
-
-		if (!super.getBuffer().getErrors().hasErrors("estimatedCost"))
-			super.state(object.getEstimatedCost().getAmount() > 0., "estimatedCost", "manager.userstory.form.error.not-positive-estimatedcost");
 	}
 
 	@Override
 	public void perform(final UserStory object) {
 		assert object != null;
 
-		object.setDraftMode(false);
-		this.repository.save(object);
+		ProjectUserStory projectUserStory = this.managerProjectUserStoryRepository.findOneProjectUserStoryByUserStoryId(object.getId());
+
+		this.managerProjectUserStoryRepository.delete(projectUserStory);
+		this.repository.delete(object);
 	}
 
 	@Override
@@ -77,18 +81,16 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 		assert object != null;
 
 		Dataset dataset;
-		SelectChoices choices;
 		Project project;
+		int projectId;
 
-		choices = SelectChoices.from(Priority.class, object.getPriority());
-		project = this.repository.findOneProjectByUserStoryId(object.getId());
+		projectId = super.getRequest().getData(ManagerUserStoryDeleteService.PROJECT_ID, int.class);
+		project = this.repository.findOneProjectById(projectId);
 
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
-		dataset.put("projectId", super.getRequest().getData("projectId", int.class));
+		dataset.put(ManagerUserStoryDeleteService.PROJECT_ID, project.getId());
 		dataset.put("draftMode", project.isDraftMode());
-		dataset.put("priorities", choices);
 
 		super.getResponse().addData(dataset);
 	}
-
 }
