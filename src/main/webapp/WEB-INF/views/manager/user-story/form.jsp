@@ -28,8 +28,10 @@
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="manager.userstory.form.button.create" action="/manager/user-story/create?projectId=${projectId}"/>
 		</jstl:when>
-		<jstl:when test="${acme:anyOf(_command, 'show') && draftMode == true}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && draftMode == true}">
 			<acme:submit code="manager.userstory.form.button.publish" action="/manager/user-story/publish"/>
+			<acme:submit code="manager.userstory.form.button.update" action="/manager/user-story/update"/>
+			<acme:submit code="manager.userstory.form.button.delete" action="/manager/user-story/delete"/>
 		</jstl:when>		
 	</jstl:choose>	
 </acme:form>

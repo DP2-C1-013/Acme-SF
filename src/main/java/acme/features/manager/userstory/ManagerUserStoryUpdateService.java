@@ -8,24 +8,19 @@ import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.project.Project;
-import acme.entities.projectuserstory.ProjectUserStory;
 import acme.entities.userstory.Priority;
 import acme.entities.userstory.UserStory;
-import acme.features.manager.projectuserstory.ManagerProjectUserStoryRepository;
 import acme.roles.Manager;
 
 @Service
-public class ManagerUserStoryCreateService extends AbstractService<Manager, UserStory> {
+public class ManagerUserStoryUpdateService extends AbstractService<Manager, UserStory> {
 
-	private static final String					PROJECT_ID	= "projectId";
+	private static final String			PROJECT_ID	= "projectId";
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerUserStoryRepository			repository;
-
-	@Autowired
-	private ManagerProjectUserStoryRepository	managerProjectUserStoryRepository;
+	private ManagerUserStoryRepository	repository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -33,12 +28,14 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 	@Override
 	public void authorise() {
 		boolean status;
-		int projectId;
+		int userStoryId;
 		Project project;
+		Manager manager;
 
-		projectId = super.getRequest().getData(ManagerUserStoryCreateService.PROJECT_ID, int.class);
-		project = this.repository.findOneProjectById(projectId);
-		status = project != null && project.isDraftMode() && super.getRequest().getPrincipal().hasRole(Manager.class);
+		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+		userStoryId = super.getRequest().getData("id", int.class);
+		project = this.repository.findOneProjectByUserStoryId(userStoryId);
+		status = project != null && project.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -46,18 +43,10 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 	@Override
 	public void load() {
 		UserStory object;
-		Manager manager;
+		int id;
 
-		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
-
-		object = new UserStory();
-		object.setTitle("");
-		object.setDescription("");
-		object.setAcceptanceCriteria("");
-		object.setPriority(Priority.MUST);
-		object.setLink("");
-		object.setDraftMode(true);
-		object.setManager(manager);
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneUserStoryById(id);
 
 		super.getBuffer().addData(object);
 	}
@@ -66,7 +55,7 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 	public void bind(final UserStory object) {
 		assert object != null;
 
-		super.bind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
+		super.bind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link", "draftMode");
 	}
 
 	@Override
@@ -81,18 +70,7 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 	public void perform(final UserStory object) {
 		assert object != null;
 
-		ProjectUserStory pus = new ProjectUserStory();
-		int projectId;
-		Project project;
-
-		projectId = super.getRequest().getData(ManagerUserStoryCreateService.PROJECT_ID, int.class);
-		project = this.repository.findOneProjectById(projectId);
-
-		pus.setProject(project);
-		pus.setUserStory(object);
-
 		this.repository.save(object);
-		this.managerProjectUserStoryRepository.save(pus);
 	}
 
 	@Override
@@ -106,11 +84,11 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 
 		choices = SelectChoices.from(Priority.class, object.getPriority());
 
-		projectId = super.getRequest().getData(ManagerUserStoryCreateService.PROJECT_ID, int.class);
+		projectId = super.getRequest().getData(ManagerUserStoryUpdateService.PROJECT_ID, int.class);
 		project = this.repository.findOneProjectById(projectId);
 
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
-		dataset.put(ManagerUserStoryCreateService.PROJECT_ID, super.getRequest().getData(ManagerUserStoryCreateService.PROJECT_ID, int.class));
+		dataset.put(ManagerUserStoryUpdateService.PROJECT_ID, super.getRequest().getData(ManagerUserStoryUpdateService.PROJECT_ID, int.class));
 		dataset.put("draftMode", project.isDraftMode());
 		dataset.put("priorities", choices);
 
