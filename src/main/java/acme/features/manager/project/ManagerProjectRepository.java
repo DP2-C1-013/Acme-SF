@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 import acme.entities.project.Project;
+import acme.entities.userstory.UserStory;
 import acme.roles.Manager;
 
 @Repository
@@ -24,5 +25,8 @@ public interface ManagerProjectRepository extends AbstractRepository {
 
 	@Query("SELECT p FROM Project p WHERE p.manager.id = :id")
 	Collection<Project> findCreatedProjectsByManagerId(int id);
+
+	@Query("SELECT pus.userStory from ProjectUserStory pus WHERE pus.project.id = :id")
+	Collection<UserStory> findManyUserStoriesByProjectId(int id);
 
 }
