@@ -3,6 +3,7 @@ package acme.entities.project;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -13,6 +14,7 @@ import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
 import acme.client.data.datatypes.Money;
+import acme.roles.Manager;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -50,4 +52,9 @@ public class Project extends AbstractEntity {
 
 	@URL
 	private String				link;
+
+	@ManyToOne(optional = false)
+	@NotNull
+	@Valid
+	private Manager				manager;
 }
