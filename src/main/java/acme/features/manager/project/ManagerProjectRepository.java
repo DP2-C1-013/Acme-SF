@@ -19,7 +19,10 @@ public interface ManagerProjectRepository extends AbstractRepository {
 	@Query("SELECT p FROM Project p WHERE p.id = :id")
 	Project findOneProjectById(int id);
 
-	@Query("SELECT DISTINCT pus.project FROM UserStory us LEFT JOIN ProjectUserStory pus ON us.id = pus.userStory.id WHERE us.manager.id = :id ")
+	@Query("SELECT p FROM Project p WHERE p.code = :code")
+	Project findOneProjectByCode(String code);
+
+	@Query("SELECT p FROM Project p WHERE p.manager.id = :id")
 	Collection<Project> findCreatedProjectsByManagerId(int id);
 
 }
