@@ -24,6 +24,7 @@ manager.project.form.label.draftmode = Draft Mode
 
 manager.project.form.title = Proyecto
 manager.project.form.button.create = Crear
+manager.project.form.button.publish = Publicar
 
 manager.project.form.button.userStories = Historias de usuario
 manager.project.form.error.duplicated = Existe un proyecto con este código

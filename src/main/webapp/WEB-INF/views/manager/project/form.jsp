@@ -25,11 +25,16 @@
 	<acme:input-textbox code="manager.project.form.label.draftmode" path="draftMode" readonly="true"/>
 	
 	<jstl:choose>	 
-		<jstl:when test="${_command == 'show'}">
+		<jstl:when test="${_command == 'show' && draftMode == false}">
 			<acme:button code="manager.project.form.button.userStories" action="/manager/user-story/list?projectId=${id}"/>			
+		</jstl:when>
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
+			<acme:button code="manager.project.form.button.userStories" action="/manager/user-story/list?projectId=${id}"/>			
+			<acme:submit test="${showPublish}" code="manager.project.form.button.publish" action="/manager/project/publish"/>
 		</jstl:when>	
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="manager.project.form.button.create" action="/manager/project/create"/>
 		</jstl:when>	
+		
 	</jstl:choose>
 </acme:form>
