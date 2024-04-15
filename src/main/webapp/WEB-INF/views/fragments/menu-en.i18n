@@ -29,6 +29,7 @@ master.menu.anonymous.favourite-link-Miguel = 77861656D: Galán Lerate, Miguel
 master.menu.administrator = Administrator
 master.menu.administrator.dashboard = Dashboard
 master.menu.administrator.user-accounts = User accounts
+master.menu.administrator.banners = Banners
 master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shut-down = Shut down

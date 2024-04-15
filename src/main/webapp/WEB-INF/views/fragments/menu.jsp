@@ -33,13 +33,18 @@
 
 		<acme:menu-option code="master.menu.administrator"
 			access="hasRole('Administrator')">
-			<acme:menu-suboption code="master.menu.administrator.user-accounts"
+			<acme:menu-suboption 
+				code="master.menu.administrator.user-accounts"
 				action="/administrator/user-account/list" />
+			<acme:menu-suboption 
+				code="master.menu.administrator.banners"
+				action="/administrator/banner/list" />
 			<acme:menu-separator />
 			<acme:menu-suboption
 				code="master.menu.administrator.populate-initial"
 				action="/administrator/system/populate-initial" />
-			<acme:menu-suboption code="master.menu.administrator.populate-sample"
+			<acme:menu-suboption 
+				code="master.menu.administrator.populate-sample"
 				action="/administrator/system/populate-sample" />
 			<acme:menu-separator />
 			<acme:menu-suboption code="master.menu.administrator.shut-down"
