@@ -2,12 +2,14 @@
 package acme.features.administrator.banner;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import acme.client.data.accounts.Administrator;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.banner.Banner;
 
+@Service
 public class AdministratorBannerShowService extends AbstractService<Administrator, Banner> {
 
 	// Internal state ---------------------------------------------------------
@@ -15,7 +17,7 @@ public class AdministratorBannerShowService extends AbstractService<Administrato
 	@Autowired
 	private AdministratorBannerRepository repository;
 
-	// AdministratorService<Administrator, Banner> ---------------------------
+	// AbstractService<Administrator, Banner> ---------------------------
 
 
 	@Override
