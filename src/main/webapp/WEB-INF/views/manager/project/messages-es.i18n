@@ -12,6 +12,7 @@ manager.project.list.label.code = Código
 manager.project.list.label.title = Título
 manager.project.list.label.cost = Coste
 
+manager.project.list.button.create = Crear
 
 manager.project.form.label.code = Código
 manager.project.form.label.title = Título
@@ -22,5 +23,8 @@ manager.project.form.label.link = Link
 manager.project.form.label.draftmode = Draft Mode
 
 manager.project.form.title = Proyecto
+manager.project.form.button.create = Crear
 
 manager.project.form.button.userStories = Historias de usuario
+manager.project.form.error.duplicated = Existe un proyecto con este código
+
