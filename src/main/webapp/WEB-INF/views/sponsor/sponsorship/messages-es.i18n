@@ -14,6 +14,9 @@ sponsor.sponsorship.form.title = Detalles del patrocinio
 sponsor.sponsorship.list.label.code = Código
 sponsor.sponsorship.list.label.moment = Fecha de inicio
 sponsor.sponsorship.list.label.type = Tipo
+sponsor.sponsorship.list.label.project = Proyecto
+sponsor.sponsorship.list.label.draftMode = Borrador
+sponsor.sponsorship.list.button.create = Crear
 
 sponsor.sponsorship.form.label.code = Código
 sponsor.sponsorship.form.label.moment = Fecha de inicio
@@ -22,3 +25,6 @@ sponsor.sponsorship.form.label.amount = Coste
 sponsor.sponsorship.form.label.type = Tipo
 sponsor.sponsorship.form.label.email = Email
 sponsor.sponsorship.form.label.link = Link
+sponsor.sponsorship.form.label.project = Proyecto
+sponsor.sponsorship.form.label.draftMode = Borrador
+sponsor.sponsorship.form.button.create = Crear

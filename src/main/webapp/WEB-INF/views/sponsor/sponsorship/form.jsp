@@ -15,12 +15,16 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
-<acme:form readonly='true'>
+<acme:form readonly="false">
 	<acme:input-textbox code="sponsor.sponsorship.form.label.code" path="code"/>
 	<acme:input-moment code="sponsor.sponsorship.form.label.moment" path="moment"/>
 	<acme:input-moment code="sponsor.sponsorship.form.label.duration" path="duration"/>
 	<acme:input-money code="sponsor.sponsorship.form.label.amount" path="amount"/>
-	<acme:input-textbox code="sponsor.sponsorship.form.label.type" path="type"/>
+	<acme:input-select code="sponsor.sponsorship.form.label.type" path="type" choices="${types}"/>
 	<acme:input-textbox code="sponsor.sponsorship.form.label.email" path="email"/>
 	<acme:input-url code="sponsor.sponsorship.form.label.link" path="link"/>
+	<acme:input-select code="sponsor.sponsorship.form.label.project" path="project" choices="${projects}"/>
+	<acme:input-checkbox code="sponsor.sponsorship.form.label.draftMode" path="draftMode" readonly="true"/>
+	
+	<acme:submit test="${_command == 'create'}" code="sponsor.sponsorship.form.button.create" action="/sponsor/sponsorship/create"/>
 </acme:form>
