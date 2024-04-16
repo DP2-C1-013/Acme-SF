@@ -5,10 +5,10 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -51,7 +51,7 @@ public class TrainingSession extends AbstractEntity {
 	@NotBlank
 	private String				instructor;
 
-	@NotNull
+	@NotBlank
 	@Email
 	private String				contactEmail;
 
@@ -59,7 +59,8 @@ public class TrainingSession extends AbstractEntity {
 	private String				optionalLink;
 
 	@ManyToOne
-	@JoinColumn(name = "module_id")
+	@Valid
+	@NotNull
 	private TrainingModule		trainingModule;
 
 }
