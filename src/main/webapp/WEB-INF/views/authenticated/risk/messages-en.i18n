@@ -8,6 +8,9 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
+authenticated.risk.form.title = Risk
+authenticated.risk.list.title = All risks
+
 authenticated.risk.list.label.reference = Reference
 authenticated.risk.list.label.idDate = Identification date
 authenticated.risk.list.label.description = Description
@@ -17,4 +20,4 @@ authenticated.risk.form.label.idDate = Identification date
 authenticated.risk.form.label.impact = Impact
 authenticated.risk.form.label.probability = Probability
 authenticated.risk.form.label.description = Description
-authenticated.risk.form.label.link = Link
+authenticated.risk.form.label.optionalLink = Link

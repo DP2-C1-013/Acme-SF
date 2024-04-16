@@ -8,9 +8,13 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
+manager.project.list.title = Proyectos
 manager.userstory.list.label.title = Título
 manager.userstory.list.label.description = Descripción
 manager.userstory.list.label.estimatedcost = Coste Estimado
+
+manager.userstory.list.button.create = Crear
+
 
 manager.userstory.form.label.title = Título
 manager.userstory.form.label.description = Descripción
@@ -18,6 +22,15 @@ manager.userstory.form.label.estimatedcost = Coste Estimado
 manager.userstory.form.label.acceptancecriteria = Criterio de Aceptación
 manager.userstory.form.label.priority = Prioridad
 manager.userstory.form.label.link = Link
+manager.userstory.form.label.draftmode = Draft Mode
 
+manager.user-story.list.title = Historias de Usuario	
+manager.user-story.form.title = Historia de Usuario
 
+manager.userstory.form.button.create = Crear
+manager.userstory.form.button.publish = Publicar
+manager.userstory.form.button.update = Actualizar
+manager.userstory.form.button.delete = Eliminar
+
+manager.userstory.form.error.not-positive-estimatedcost = El coste estimado tiene que ser positivo
 

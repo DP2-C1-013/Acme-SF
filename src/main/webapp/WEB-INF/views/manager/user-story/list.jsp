@@ -20,3 +20,5 @@
 	<acme:list-column code="manager.userstory.list.label.description" path="description" width="50%"/>
 	<acme:list-column code="manager.userstory.list.label.estimatedcost" path="estimatedCost" width="10%"/>
 </acme:list>
+
+<acme:button test="${showCreate}" code="manager.userstory.list.button.create" action="/manager/user-story/create?projectId=${projectId}"/>

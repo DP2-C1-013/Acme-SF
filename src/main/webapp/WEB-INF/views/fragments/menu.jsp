@@ -33,13 +33,18 @@
 
 		<acme:menu-option code="master.menu.administrator"
 			access="hasRole('Administrator')">
-			<acme:menu-suboption code="master.menu.administrator.user-accounts"
+			<acme:menu-suboption 
+				code="master.menu.administrator.user-accounts"
 				action="/administrator/user-account/list" />
+			<acme:menu-suboption 
+				code="master.menu.administrator.banners"
+				action="/administrator/banner/list" />
 			<acme:menu-separator />
 			<acme:menu-suboption
 				code="master.menu.administrator.populate-initial"
 				action="/administrator/system/populate-initial" />
-			<acme:menu-suboption code="master.menu.administrator.populate-sample"
+			<acme:menu-suboption 
+				code="master.menu.administrator.populate-sample"
 				action="/administrator/system/populate-sample" />
 			<acme:menu-separator />
 			<acme:menu-suboption code="master.menu.administrator.shut-down"
@@ -68,6 +73,12 @@
 			access="hasRole('Manager')">
 			<acme:menu-suboption code="master.menu.manager.project"
 				action="/manager/project/list" />
+		</acme:menu-option>	
+		
+		<acme:menu-option code="master.menu.client"
+			access="hasRole('Client')">
+			<acme:menu-suboption code="master.menu.client.contract"
+				action="/client/contract/list" />
 		</acme:menu-option>
 	</acme:menu-left>
 

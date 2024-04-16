@@ -8,10 +8,15 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
+manager.project.list.title = Projects
 manager.project.list.label.code = Code
 manager.project.list.label.title = Title
 manager.project.list.label.cost = Cost
 
+manager.project.list.button.create = Create
+
+
+manager.project.form.title = Project
 
 manager.project.form.label.code = Code
 manager.project.form.label.title = Title
@@ -19,7 +24,11 @@ manager.project.form.label.abstractText = Abstract text
 manager.project.form.label.hasFatalErrors = Has fatal errors
 manager.project.form.label.cost = Cost
 manager.project.form.label.link = Link
+manager.project.form.label.draftmode = Draft Mode
 
-
+manager.project.form.button.create = Create
 manager.project.form.button.userStories = User Stories
+manager.project.form.button.publish = Publish
+
+manager.project.form.error.duplicated = This code is taken
 
