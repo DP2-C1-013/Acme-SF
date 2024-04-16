@@ -21,6 +21,6 @@
 	<acme:input-textbox code="authenticated.claim.form.label.heading" path="heading"/>
 	<acme:input-textarea code="authenticated.claim.form.label.description" path="description"/>
 	<acme:input-textbox code="authenticated.claim.form.label.department" path="department"/>
-	<acme:input-textbox code="authenticated.claim.form.label.email" path="email"/>
+	<acme:input-email code="authenticated.claim.form.label.email" path="email"/>
 	<acme:input-url code="authenticated.claim.form.label.link" path="link"/>
 </acme:form>
