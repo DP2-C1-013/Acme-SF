@@ -7,6 +7,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.helpers.PrincipalHelper;
@@ -18,8 +19,7 @@ import acme.entities.sponsorship.SponsorshipType;
 import acme.roles.Sponsor;
 
 @Service
-public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sponsorship> {
-
+public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, Sponsorship> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -71,7 +71,6 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 
 		super.bind(object, "code", "moment", "duration", "amount", "type", "email", "link");
 		object.setProject(project);
-		object.setDraftMode(true);
 	}
 
 	@Override
@@ -95,11 +94,18 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 			super.state(existingProject != null && existingProject.isDraftMode() && object.getProject().isDraftMode(), "project", "sponsor.sponsorship.form.error.invalid-project");
 		}
 
+		Double sumAmountInvoices;
+		Double amountSponsorship = this.getRequest().getData("amount", Money.class).getAmount();
+		sumAmountInvoices = this.repository.findSumAmountInvoicesBySponsorshipId(this.getRequest().getData("id", int.class));
+		super.state(sumAmountInvoices == amountSponsorship, "*", "sponsor.sponsorship.form.error.invoice-sum-not-valid");
+
 	}
 
 	@Override
 	public void perform(final Sponsorship object) {
 		assert object != null;
+
+		object.setDraftMode(false);
 
 		this.repository.save(object);
 	}

@@ -54,8 +54,11 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 	public void bind(final Sponsorship object) {
 		assert object != null;
 
+		String projectCode;
 		Project project;
-		project = this.getRequest().getData("project", Project.class);
+
+		projectCode = this.getRequest().getData("project", Project.class).getCode();
+		project = this.repository.findOneProjectByCode(projectCode);
 
 		super.bind(object, "code", "moment", "duration", "amount", "type", "email", "link");
 		object.setProject(project);

@@ -30,3 +30,4 @@ sponsor.sponsorship.form.label.draftMode = Borrador
 sponsor.sponsorship.form.button.create = Crear
 sponsor.sponsorship.form.button.delete = Eliminar
 sponsor.sponsorship.form.button.update = Modificar
+sponsor.sponsorship.form.button.publish = Publicar
