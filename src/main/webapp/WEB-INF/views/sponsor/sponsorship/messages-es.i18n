@@ -28,4 +28,5 @@ sponsor.sponsorship.form.label.link = Link
 sponsor.sponsorship.form.label.project = Proyecto
 sponsor.sponsorship.form.label.draftMode = Borrador
 sponsor.sponsorship.form.button.create = Crear
-sponsor.sponsorship.form.button.delete = Delete
+sponsor.sponsorship.form.button.delete = Eliminar
+sponsor.sponsorship.form.button.update = Modificar

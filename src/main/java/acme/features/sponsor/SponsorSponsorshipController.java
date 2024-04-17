@@ -27,6 +27,9 @@ public class SponsorSponsorshipController extends AbstractController<Sponsor, Sp
 	@Autowired
 	private SponsorSponsorshipDeleteService	deleteService;
 
+	@Autowired
+	private SponsorSponsorshipUpdateService	updateService;
+
 	// Constructors -----------------------------------------------------------
 
 
@@ -36,5 +39,6 @@ public class SponsorSponsorshipController extends AbstractController<Sponsor, Sp
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
 		super.addBasicCommand("delete", this.deleteService);
+		super.addBasicCommand("update", this.updateService);
 	}
 }
