@@ -1,5 +1,5 @@
 
-package acme.features.sponsor;
+package acme.features.sponsor.sponsorship;
 
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
@@ -7,6 +7,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.helpers.PrincipalHelper;
@@ -18,8 +19,7 @@ import acme.entities.sponsorship.SponsorshipType;
 import acme.roles.Sponsor;
 
 @Service
-public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sponsorship> {
-
+public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, Sponsorship> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -32,7 +32,18 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 	public void authorise() {
 		boolean status;
 
-		status = super.getRequest().getPrincipal().hasRole(Sponsor.class);
+		var request = super.getRequest();
+
+		int sponsorId;
+		int sponsorshipId;
+
+		sponsorshipId = request.getData("id", int.class);
+
+		sponsorId = request.getPrincipal().getActiveRoleId();
+
+		Sponsorship object = this.repository.findOneSponsorshipById(sponsorshipId);
+
+		status = object != null && request.getPrincipal().hasRole(Sponsor.class) && object.getSponsor().getId() == sponsorId && object.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -40,13 +51,11 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 	@Override
 	public void load() {
 		Sponsorship object;
-		Sponsor sponsor;
+		int id;
 
-		sponsor = this.repository.findOneSponsorBySponsorId(this.getRequest().getPrincipal().getActiveRoleId());
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneSponsorshipById(id);
 
-		object = new Sponsorship();
-		object.setDraftMode(true);
-		object.setSponsor(sponsor);
 		super.getBuffer().addData(object);
 	}
 
@@ -62,18 +71,11 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 
 		super.bind(object, "code", "moment", "duration", "amount", "type", "email", "link");
 		object.setProject(project);
-		object.setDraftMode(true);
 	}
 
 	@Override
 	public void validate(final Sponsorship object) {
 		assert object != null;
-
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			Sponsorship existing;
-			existing = this.repository.findOneSponsorshipByCode(object.getCode());
-			super.state(existing == null, "code", "sponsor.sponsorship.form.error.duplicated");
-		}
 
 		if (!super.getBuffer().getErrors().hasErrors("duration")) {
 			Date minimunDuration;
@@ -92,11 +94,18 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 			super.state(existingProject != null && existingProject.isDraftMode() && object.getProject().isDraftMode(), "project", "sponsor.sponsorship.form.error.invalid-project");
 		}
 
+		Double sumAmountInvoices;
+		Double amountSponsorship = this.getRequest().getData("amount", Money.class).getAmount();
+		sumAmountInvoices = this.repository.findSumAmountInvoicesBySponsorshipId(this.getRequest().getData("id", int.class));
+		super.state(sumAmountInvoices == amountSponsorship, "*", "sponsor.sponsorship.form.error.invoice-sum-not-valid");
+
 	}
 
 	@Override
 	public void perform(final Sponsorship object) {
 		assert object != null;
+
+		object.setDraftMode(false);
 
 		this.repository.save(object);
 	}
@@ -115,15 +124,14 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 		dataset = super.unbind(object, "code", "moment", "duration", "amount", "type", "email", "link", "draftMode");
 		dataset.put("types", types);
 		dataset.put("projects", projects);
-		dataset.put("project", projects.getSelected().getKey());
+		dataset.put("project", projects.getSelected());
 
 		super.getResponse().addData(dataset);
 	}
 
 	@Override
 	public void onSuccess() {
-		if (super.getRequest().getMethod().equals("POST"))
+		if (super.getRequest().getMethod().equals("PUT"))
 			PrincipalHelper.handleUpdate();
 	}
-
 }

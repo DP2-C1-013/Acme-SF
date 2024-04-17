@@ -1,5 +1,5 @@
 
-package acme.features.sponsor;
+package acme.features.sponsor.sponsorship;
 
 import java.util.Collection;
 
@@ -36,7 +36,7 @@ public interface SponsorSponsorshipRepository extends AbstractRepository {
 	@Query("SELECT p FROM Project p WHERE p.code = :code")
 	Project findOneProjectByCode(String code);
 
-	@Query("SELECT SUM(i.quantity.amount) FROM Invoice i WHERE i.sponsorship.id = :id")
+	@Query("SELECT SUM(i.quantity.amount) FROM Invoice i WHERE i.sponsorship.id = :id  and i.draftMode = false")
 	Double findSumAmountInvoicesBySponsorshipId(int id);
 
 	@Query("SELECT DISTINCT i FROM Invoice i WHERE i.sponsorship.id = :id")
