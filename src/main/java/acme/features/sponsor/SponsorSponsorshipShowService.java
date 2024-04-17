@@ -33,7 +33,7 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 
 		sponsorshipId = request.getData("id", int.class);
 
-		sponsorId = this.getRequest().getPrincipal().getActiveRoleId();
+		sponsorId = request.getPrincipal().getActiveRoleId();
 
 		Sponsorship object = this.repository.findOneSponsorshipById(sponsorshipId);
 
