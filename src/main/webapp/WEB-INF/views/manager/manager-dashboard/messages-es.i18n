@@ -1,0 +1,14 @@
+manager.manager-dashboard.form.title = Panel de información del manager
+manager.dashboard.form.title.general-indicators: Indicadores generales
+manager.dashboard.form.label.number-must-user-stories: Número de historias de usuario imprescindibles
+manager.dashboard.form.label.number-should-user-stories: Número de historias de usuario recomendadas
+manager.dashboard.form.label.number-could-user-stories: Número de historias de usuario opcionales
+manager.dashboard.form.label.number-wont-user-stories: Número de historias de usuario que no se realizarán
+manager.dashboard.form.label.average-estimated-cost: Costo estimado promedio de historias de usuario
+manager.dashboard.form.label.deviation-estimated-cost: Desviación del costo estimado de historias de usuario
+manager.dashboard.form.label.min-estimated-cost: Costo estimado mínimo de historias de usuario
+manager.dashboard.form.label.max-estimated-cost: Costo estimado máximo de historias de usuario
+manager.dashboard.form.label.average-cost: Costo promedio de proyectos
+manager.dashboard.form.label.deviation-cost: Desviación del costo de proyectos
+manager.dashboard.form.label.min-cost: Costo mínimo de proyectos
+manager.dashboard.form.label.max-cost: Costo máximo de proyectos
