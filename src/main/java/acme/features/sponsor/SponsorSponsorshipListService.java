@@ -19,7 +19,7 @@ public class SponsorSponsorshipListService extends AbstractService<Sponsor, Spon
 	@Autowired
 	private SponsorSponsorshipRepository repository;
 
-	// AbstractService<Authenticated, Claim> ---------------------------
+	// AbstractService<Sponsor, Sponsorship> ---------------------------
 
 
 	@Override
@@ -34,11 +34,9 @@ public class SponsorSponsorshipListService extends AbstractService<Sponsor, Spon
 	@Override
 	public void load() {
 		Collection<Sponsorship> objects;
-		int userAccountId;
 		int sponsorId;
 
-		userAccountId = super.getRequest().getPrincipal().getAccountId();
-		sponsorId = this.repository.findOneSponsorByUserAccountId(userAccountId).getId();
+		sponsorId = this.getRequest().getPrincipal().getActiveRoleId();
 		objects = this.repository.findCreatedSponsorshipsBySponsorId(sponsorId);
 
 		super.getBuffer().addData(objects);
@@ -50,7 +48,8 @@ public class SponsorSponsorshipListService extends AbstractService<Sponsor, Spon
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "moment", "type");
+		dataset = super.unbind(object, "code", "moment", "type", "draftMode");
+		dataset.put("project", object.getProject().getCode());
 
 		super.getResponse().addData(dataset);
 	}
