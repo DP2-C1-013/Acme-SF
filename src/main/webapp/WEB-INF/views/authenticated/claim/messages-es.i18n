@@ -14,6 +14,7 @@ authenticated.claim.form.title = Detalles de la reclamación
 authenticated.claim.list.label.code = Código
 authenticated.claim.list.label.moment = Fecha
 authenticated.claim.list.label.heading = Encabezado
+authenticated.claim.list.label.draftmode = DraftMode
 
 authenticated.claim.form.label.code = Código
 authenticated.claim.form.label.moment = Fecha
@@ -22,3 +23,9 @@ authenticated.claim.form.label.description = Descripción
 authenticated.claim.form.label.department = Departamento
 authenticated.claim.form.label.email = Email
 authenticated.claim.form.label.link = Link
+authenticated.claim.form.label.draftmode = DraftMode
+
+authenticated.claim.form.button.publish = Publicar
+authenticated.claim.form.label.confirmation = Confirme antes de publicar
+
+error.confirmation.required = Confirmación obligatoria
