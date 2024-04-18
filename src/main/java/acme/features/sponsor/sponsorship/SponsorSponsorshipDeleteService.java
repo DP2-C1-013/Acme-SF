@@ -1,25 +1,22 @@
 
-package acme.features.sponsor;
+package acme.features.sponsor.sponsorship;
 
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
-import acme.client.helpers.MomentHelper;
-import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.entities.invoice.Invoice;
 import acme.entities.project.Project;
 import acme.entities.sponsorship.Sponsorship;
 import acme.entities.sponsorship.SponsorshipType;
 import acme.roles.Sponsor;
 
 @Service
-public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sponsorship> {
-
+public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sponsorship> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -63,45 +60,32 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 	public void bind(final Sponsorship object) {
 		assert object != null;
 
-		String projectCode;
 		Project project;
-
-		projectCode = this.getRequest().getData("project", Project.class).getCode();
-		project = this.repository.findOneProjectByCode(projectCode);
+		project = this.getRequest().getData("project", Project.class);
 
 		super.bind(object, "code", "moment", "duration", "amount", "type", "email", "link");
 		object.setProject(project);
-		object.setDraftMode(true);
+
 	}
 
 	@Override
 	public void validate(final Sponsorship object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("duration")) {
-			Date minimunDuration;
-			minimunDuration = MomentHelper.deltaFromMoment(object.getMoment(), 30, ChronoUnit.DAYS);
-			super.state(MomentHelper.isAfterOrEqual(object.getDuration(), minimunDuration), "duration", "sponsor.sponsorship.form.error.invalid-duration");
-		}
+		boolean status;
+		status = object.isDraftMode();
 
-		if (!super.getBuffer().getErrors().hasErrors("amount")) {
-			Double amount = object.getAmount().getAmount();
-			SponsorshipType type = object.getType();
-			super.state(amount > 0. && type.equals(SponsorshipType.Financial) || amount.equals(0.) && type.equals(SponsorshipType.In_kind), "amount", "sponsor.sponsorship.form.error.invalid-amount");
-		}
-
-		if (!super.getBuffer().getErrors().hasErrors("project")) {
-			Project existingProject = this.repository.findOneProjectByCode(object.getProject().getCode());
-			super.state(existingProject != null && existingProject.isDraftMode() && object.getProject().isDraftMode(), "project", "sponsor.sponsorship.form.error.invalid-project");
-		}
-
+		super.state(status, "*", "sponsor.sponsorship.delete.is-draftMode");
 	}
 
 	@Override
 	public void perform(final Sponsorship object) {
 		assert object != null;
 
-		this.repository.save(object);
+		Collection<Invoice> invoices = this.repository.findManyInvoicesBySponsorshipId(object.getId());
+
+		this.repository.deleteAll(invoices);
+		this.repository.delete(object);
 	}
 
 	@Override
@@ -118,14 +102,8 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 		dataset = super.unbind(object, "code", "moment", "duration", "amount", "type", "email", "link", "draftMode");
 		dataset.put("types", types);
 		dataset.put("projects", projects);
-		dataset.put("project", projects.getSelected());
+		dataset.put("project", projects.getSelected().getKey());
 
 		super.getResponse().addData(dataset);
-	}
-
-	@Override
-	public void onSuccess() {
-		if (super.getRequest().getMethod().equals("POST"))
-			PrincipalHelper.handleUpdate();
 	}
 }

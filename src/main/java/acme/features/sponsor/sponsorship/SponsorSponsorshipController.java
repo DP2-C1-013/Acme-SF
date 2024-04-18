@@ -1,5 +1,5 @@
 
-package acme.features.sponsor;
+package acme.features.sponsor.sponsorship;
 
 import javax.annotation.PostConstruct;
 
