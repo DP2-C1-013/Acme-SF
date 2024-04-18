@@ -11,6 +11,7 @@
 manager.userstory.list.label.title = Title
 manager.userstory.list.label.description = Description
 manager.userstory.list.label.estimatedcost = Estimated Cost
+manager.userstory.list.label.draftmode = DraftMode
 
 manager.userstory.list.button.create = Create
 

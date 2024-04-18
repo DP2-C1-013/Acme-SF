@@ -12,6 +12,7 @@ manager.project.list.title = Proyectos
 manager.userstory.list.label.title = Título
 manager.userstory.list.label.description = Descripción
 manager.userstory.list.label.estimatedcost = Coste Estimado
+manager.userstory.list.label.draftmode = DraftMode
 
 manager.userstory.list.button.create = Crear
 

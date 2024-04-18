@@ -31,11 +31,13 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 		int userStoryId;
 		Project project;
 		Manager manager;
+		UserStory userStory;
 
 		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
 		userStoryId = super.getRequest().getData("id", int.class);
+		userStory = this.repository.findOneUserStoryById(userStoryId);
 		project = this.repository.findOneProjectByUserStoryId(userStoryId);
-		status = project != null && project.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
+		status = project != null && userStory.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -80,16 +82,14 @@ public class ManagerUserStoryUpdateService extends AbstractService<Manager, User
 		Dataset dataset;
 		SelectChoices choices;
 		Project project;
-		int projectId;
 
 		choices = SelectChoices.from(Priority.class, object.getPriority());
 
-		projectId = super.getRequest().getData(ManagerUserStoryUpdateService.PROJECT_ID, int.class);
-		project = this.repository.findOneProjectById(projectId);
+		project = this.repository.findOneProjectByUserStoryId(object.getId());
 
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
-		dataset.put(ManagerUserStoryUpdateService.PROJECT_ID, super.getRequest().getData(ManagerUserStoryUpdateService.PROJECT_ID, int.class));
-		dataset.put("draftMode", project.isDraftMode());
+		dataset.put(ManagerUserStoryUpdateService.PROJECT_ID, project.getId());
+		dataset.put("draftMode", object.isDraftMode());
 		dataset.put("priorities", choices);
 
 		super.getResponse().addData(dataset);
