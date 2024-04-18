@@ -16,3 +16,6 @@ trainingmodule.code.error = El código debe tener de 1 a 3 letras mayúsculas, s
 
 # trainingsession.code #################################################################
 trainingsession.code.error = El código debe tener "TS-" seguido de 1, 2 o 3 letras mayúsculas, un guión y tres números.
+
+# project.code #################################################################
+project.code.error = El código debe tener 3 letras mayúsculas, seguidas de un guión y luego cuatro números.

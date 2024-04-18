@@ -16,3 +16,6 @@ trainingmodule.code.error = The code must have from 1 to 3 capital letters, foll
 
 # trainingsession.code #################################################################
 trainingsession.code.error = The code must have "TS-" followed by 1, 2 or 3 capital letters, a dash, then three numbers.
+
+# project.code #################################################################
+project.code.error = The code must have 3 capital letters, a dash, then four numbers.
