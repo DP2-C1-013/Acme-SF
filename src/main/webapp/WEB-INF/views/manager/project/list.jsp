@@ -22,6 +22,8 @@
 		width="20%" />
 	<acme:list-column code="manager.project.list.label.cost" path="cost"
 		width="70%" />
+	<acme:list-column code="manager.project.list.label.draftmode" path="draftMode"
+		width="10%" />
 </acme:list>
 
 <acme:button code="manager.project.list.button.create"

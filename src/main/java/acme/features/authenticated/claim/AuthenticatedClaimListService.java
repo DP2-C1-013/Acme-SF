@@ -40,7 +40,7 @@ public class AuthenticatedClaimListService extends AbstractService<Authenticated
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "instantiationMoment", "heading");
+		dataset = super.unbind(object, "code", "instantiationMoment", "heading", "draftMode");
 
 		super.getResponse().addData(dataset);
 	}
