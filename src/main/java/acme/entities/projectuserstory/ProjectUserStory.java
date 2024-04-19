@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import acme.client.data.AbstractEntity;
 import acme.entities.project.Project;
 import acme.entities.userstory.UserStory;
@@ -24,6 +27,7 @@ public class ProjectUserStory extends AbstractEntity {
 
 	@ManyToOne(optional = false)
 	@Valid
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Project				project;
 
 	@ManyToOne(optional = false)

@@ -19,10 +19,11 @@
 	<acme:input-textbox code="manager.project.form.label.code" path="code"/>
 	<acme:input-textbox code="manager.project.form.label.title" path="title"/>
 	<acme:input-textarea code="manager.project.form.label.abstractText" path="abstractText"/>
-	<acme:input-textbox code="manager.project.form.label.hasFatalErrors" path="hasFatalErrors" readonly="${readonly }"/>
 	<acme:input-money code="manager.project.form.label.cost" path="cost"/>
 	<acme:input-url code="manager.project.form.label.link" path="link"/>
+	<acme:input-checkbox code="manager.project.form.label.hasFatalErrors" path="hasFatalErrors" readonly="${readonly }"/>
 	<acme:input-checkbox code="manager.project.form.label.draftmode" path="draftMode" readonly="true"/>
+	
 	
 	<jstl:choose>	 
 		<jstl:when test="${_command == 'show' && draftMode == false}">
@@ -30,7 +31,8 @@
 		</jstl:when>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
 			<acme:button code="manager.project.form.button.userStories" action="/manager/user-story/list?projectId=${id}"/>
-			<acme:submit code="manager.project.form.button.update" action="/manager/project/update"/>			
+			<acme:submit code="manager.project.form.button.update" action="/manager/project/update"/>
+			<acme:submit code="manager.project.form.button.delete" action="/manager/project/delete"/>				
 			<acme:submit test="${showPublish}" code="manager.project.form.button.publish" action="/manager/project/publish"/>
 		</jstl:when>	
 		<jstl:when test="${_command == 'create'}">
