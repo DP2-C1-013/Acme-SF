@@ -65,6 +65,7 @@ master.menu.authenticated.risk = Risks
 master.menu.manager = Manager
 master.menu.manager.project = Projects
 master.menu.manager.dashboard = Dashboard
+master.menu.user-account.become-manager = Become a manager
 
 # master.menu.sponsor ####################################################
 master.menu.sponsor = Sponsor
