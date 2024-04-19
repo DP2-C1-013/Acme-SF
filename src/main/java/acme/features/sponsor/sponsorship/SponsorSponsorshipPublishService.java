@@ -20,6 +20,7 @@ import acme.roles.Sponsor;
 
 @Service
 public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, Sponsorship> {
+
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
