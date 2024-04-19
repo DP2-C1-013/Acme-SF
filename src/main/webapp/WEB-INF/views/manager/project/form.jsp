@@ -22,7 +22,7 @@
 	<acme:input-textbox code="manager.project.form.label.hasFatalErrors" path="hasFatalErrors" readonly="${readonly }"/>
 	<acme:input-money code="manager.project.form.label.cost" path="cost"/>
 	<acme:input-url code="manager.project.form.label.link" path="link"/>
-	<acme:input-textbox code="manager.project.form.label.draftmode" path="draftMode" readonly="true"/>
+	<acme:input-checkbox code="manager.project.form.label.draftmode" path="draftMode" readonly="true"/>
 	
 	<jstl:choose>	 
 		<jstl:when test="${_command == 'show' && draftMode == false}">

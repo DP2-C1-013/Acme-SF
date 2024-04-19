@@ -16,10 +16,13 @@ public class AuthenticatedClaimController extends AbstractController<Authenticat
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedClaimListService	listService;
+	private AuthenticatedClaimListService		listService;
 
 	@Autowired
-	private AuthenticatedClaimShowService	showService;
+	private AuthenticatedClaimShowService		showService;
+
+	@Autowired
+	private AuthenticatedClaimPublishService	publishService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -28,6 +31,9 @@ public class AuthenticatedClaimController extends AbstractController<Authenticat
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
+
+		super.addCustomCommand("publish", "update", this.publishService);
+
 	}
 
 }

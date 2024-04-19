@@ -11,6 +11,8 @@
 manager.project.list.label.code = Código
 manager.project.list.label.title = Título
 manager.project.list.label.cost = Coste
+manager.project.list.label.draftmode = DraftMode
+
 
 manager.project.list.button.create = Crear
 

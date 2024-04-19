@@ -1,12 +1,14 @@
 
-package acme.features.sponsor;
+package acme.features.sponsor.sponsorship;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.sponsorship.Sponsorship;
+import acme.entities.sponsorship.SponsorshipType;
 import acme.roles.Sponsor;
 
 @Service
@@ -26,14 +28,12 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 
 		var request = super.getRequest();
 
-		int userAccountId;
 		int sponsorId;
 		int sponsorshipId;
 
 		sponsorshipId = request.getData("id", int.class);
 
-		userAccountId = request.getPrincipal().getAccountId();
-		sponsorId = this.repository.findOneSponsorByUserAccountId(userAccountId).getId();
+		sponsorId = request.getPrincipal().getActiveRoleId();
 
 		Sponsorship object = this.repository.findOneSponsorshipById(sponsorshipId);
 
@@ -57,9 +57,16 @@ public class SponsorSponsorshipShowService extends AbstractService<Sponsor, Spon
 	public void unbind(final Sponsorship object) {
 		assert object != null;
 
+		SelectChoices choices;
+		SelectChoices projects;
 		Dataset dataset;
 
+		choices = SelectChoices.from(SponsorshipType.class, object.getType());
+		projects = SelectChoices.from(this.repository.findAllProjects(), "code", object.getProject());
+
 		dataset = super.unbind(object, "code", "moment", "duration", "amount", "type", "email", "link", "draftMode");
+		dataset.put("types", choices);
+		dataset.put("projects", projects);
 
 		super.getResponse().addData(dataset);
 	}

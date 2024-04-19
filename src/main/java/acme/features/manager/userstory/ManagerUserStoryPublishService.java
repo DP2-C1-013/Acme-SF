@@ -81,11 +81,12 @@ public class ManagerUserStoryPublishService extends AbstractService<Manager, Use
 		Project project;
 
 		choices = SelectChoices.from(Priority.class, object.getPriority());
+
 		project = this.repository.findOneProjectByUserStoryId(object.getId());
 
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
-		dataset.put("projectId", super.getRequest().getData("projectId", int.class));
-		dataset.put("draftMode", project.isDraftMode());
+		dataset.put("projectId", project.getId());
+		dataset.put("draftMode", object.isDraftMode());
 		dataset.put("priorities", choices);
 
 		super.getResponse().addData(dataset);

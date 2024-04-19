@@ -9,6 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
@@ -33,7 +34,7 @@ public class TrainingModule extends AbstractEntity {
 
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "Training module code not valid")
+	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "{trainingmodule.code.error}")
 	private String				code;
 
 	@NotNull
@@ -53,14 +54,18 @@ public class TrainingModule extends AbstractEntity {
 	private Date				updateMoment;
 
 	@URL
+	@Length(max = 256)
 	private String				optionalLink;
 
 	@NotNull
+	@Min(value = 1)
 	private Integer				estimatedTotalTime;
 
 	@NotNull
-	private Boolean				draftMode;
+	private boolean				draftMode;
 
+	// Relationships --------------------------------------------------------------------
+	
 	@NotNull
 	@Valid
 	@ManyToOne

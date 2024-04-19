@@ -31,7 +31,7 @@ public class Project extends AbstractEntity {
 
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "[A-Z]{3}-[0-9]{4}")
+	@Pattern(regexp = "[A-Z]{3}-[0-9]{4}", message = "{project.code.error}")
 	private String				code;
 
 	@NotBlank
@@ -45,12 +45,12 @@ public class Project extends AbstractEntity {
 	private boolean				hasFatalErrors;
 
 	@NotNull
-	@Valid
 	private Money				cost;
 
 	private boolean				draftMode;
 
 	@URL
+	@Length(max = 255)
 	private String				link;
 
 	@ManyToOne(optional = false)
