@@ -30,6 +30,9 @@ manager.project.form.label.draftmode = Draft Mode
 manager.project.form.button.create = Create
 manager.project.form.button.userStories = User Stories
 manager.project.form.button.publish = Publish
+manager.project.form.button.update = Update
+manager.project.form.button.delete = Delete
+
 
 manager.project.form.error.duplicated = This code is taken
 
