@@ -64,14 +64,15 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 	public void bind(final Sponsorship object) {
 		assert object != null;
 
-		String projectCode;
 		Project project;
 
-		projectCode = this.getRequest().getData("project", Project.class).getCode();
-		project = this.repository.findOneProjectByCode(projectCode);
+		project = this.getRequest().getData("project", Project.class);
+		if (project != null)
+			project = this.repository.findOneProjectByCode(project.getCode());
 
 		super.bind(object, "code", "moment", "duration", "amount", "type", "email", "link");
 		object.setProject(project);
+		object.setDraftMode(true);
 	}
 
 	@Override
