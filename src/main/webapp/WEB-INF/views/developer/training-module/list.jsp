@@ -16,9 +16,11 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="developer.trainingModule.list.label.code" path="code" width="15%"/>
-	<acme:list-column code="developer.trainingModule.list.label.creationMoment" path="creationMoment" width="25%"/>
-	<acme:list-column code="developer.trainingModule.list.label.difficultyLevel" path="difficultyLevel" width="25%"/>
-	<acme:list-column code="developer.trainingModule.list.label.project" path="project" width="25%"/>
-	<acme:list-column code="developer.trainingModule.list.label.draftMode" path="draftMode" width="10%"/>
+	<acme:list-column code="developer.training-module.list.label.code" path="code" width="15%"/>
+	<acme:list-column code="developer.training-module.list.label.creationMoment" path="creationMoment" width="25%"/>
+	<acme:list-column code="developer.training-module.list.label.difficultyLevel" path="difficultyLevel" width="25%"/>
+	<acme:list-column code="developer.training-module.list.label.project" path="project" width="25%"/>
+	<acme:list-column code="developer.training-module.list.label.draftMode" path="draftMode" width="10%"/>
 </acme:list>
+
+<acme:button code="developer.training-module.list.button.create" action="/developer/training-module/create"/>

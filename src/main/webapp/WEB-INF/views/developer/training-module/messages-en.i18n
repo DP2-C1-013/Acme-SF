@@ -16,6 +16,7 @@ developer.training-module.list.label.creationMoment = Creation moment
 developer.training-module.list.label.difficultyLevel = Difficulty level
 developer.training-module.list.label.draftMode = Draft mode
 developer.training-module.list.label.project = Project
+developer.training-module.list.button.create = Create
 
 developer.training-module.form.label.code = Code
 developer.training-module.form.label.creationMoment = Creation moment
@@ -26,3 +27,8 @@ developer.training-module.form.label.optionalLink = Optional link
 developer.training-module.form.label.estimatedTotalTime = Estimated total time
 developer.training-module.form.label.project = Project
 developer.training-module.form.label.draftMode = Draft mode
+
+
+developer.training-module.form.error.duplicated = This code already exists.
+developer.training-module.form.error.invalid-update-moment = The update moment must be at least a week after the creation moment.
+developer.training-module.form.error.invalid-difficulty-level = The difficulty level entered must be Basic, Intermediate or Advanced.
