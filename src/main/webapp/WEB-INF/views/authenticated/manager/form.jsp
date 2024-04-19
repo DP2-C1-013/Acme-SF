@@ -22,4 +22,6 @@
 	<acme:input-textarea code="authenticated.manager.form.label.link" path="link"/>
 	
 	<acme:submit test="${_command == 'create'}" code="authenticated.manager.form.button.create" action="/authenticated/manager/create"/>
+	<acme:submit test="${_command == 'update'}" code="authenticated.manager.form.button.update" action="/authenticated/manager/update"/>
+	
 </acme:form>
