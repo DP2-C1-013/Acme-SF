@@ -72,3 +72,8 @@ master.menu.sponsor.sponsorship = Patrocinios
 
 master.menu.client = Cliente
 master.menu.client.contract = Contratos
+
+# master.menu.developer ########################################################
+
+master.menu.developer = Desarrollador
+master.menu.developer.trainingModule = Módulos de entrenamiento

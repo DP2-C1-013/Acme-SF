@@ -64,6 +64,8 @@ public class TrainingModule extends AbstractEntity {
 	@NotNull
 	private boolean				draftMode;
 
+	// Relationships --------------------------------------------------------------------
+	
 	@NotNull
 	@Valid
 	@ManyToOne

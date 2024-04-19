@@ -54,12 +54,14 @@ master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
 
 # master.menu.authenticated ####################################################
+
 master.menu.authenticated = Authenticated
 master.menu.authenticated.claim = Claims
 master.menu.authenticated.risk = Risks
 
 
 # master.menu.manager ####################################################
+
 master.menu.manager = Manager
 master.menu.manager.project = Projects
 master.menu.manager.dashboard = Dashboard
@@ -68,7 +70,12 @@ master.menu.manager.dashboard = Dashboard
 master.menu.sponsor = Sponsor
 master.menu.sponsor.sponsorship = Sponsorships
 
-# master.menu.manager ########################################################
+# master.menu.client ########################################################
 
 master.menu.client = Client
 master.menu.client.contract = Contrats
+
+# master.menu.developer ########################################################
+
+master.menu.developer = Developer
+master.menu.developer.trainingModule = Training modules

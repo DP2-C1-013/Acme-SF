@@ -74,6 +74,12 @@
 				action="/manager/manager-dashboard/show" />
 		</acme:menu-option>
 
+		<acme:menu-option code="master.menu.developer"
+			access="hasRole('Developer')">
+			<acme:menu-suboption code="master.menu.developer.trainingModule"
+				action="/developer/trainingmodule/list" />
+		</acme:menu-option>
+
 		<acme:menu-option code="master.menu.client" access="hasRole('Client')">
 			<acme:menu-suboption code="master.menu.client.contract"
 				action="/client/contract/list" />
