@@ -29,6 +29,8 @@
 				action="/authenticated/claim/list" />
 			<acme:menu-suboption code="master.menu.authenticated.risk"
 				action="/authenticated/risk/list" />
+			<acme:menu-suboption code="master.menu.authenticated.project"
+				action="/authenticated/project/list" />
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator"

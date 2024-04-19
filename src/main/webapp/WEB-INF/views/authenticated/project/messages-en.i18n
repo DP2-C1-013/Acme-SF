@@ -1,0 +1,7 @@
+authenticated.project.list.title = Projects
+
+authenticated.project.list.label.code = Code
+authenticated.project.list.label.title = Title 
+authenticated.project.list.label.cost = Cost
+authenticated.project.list.label.manager = Manager
+authenticated.project.list.label.draftmode = DraftMode
