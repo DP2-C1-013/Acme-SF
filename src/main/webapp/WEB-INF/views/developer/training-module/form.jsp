@@ -19,7 +19,7 @@
 	<acme:input-textbox code="developer.trainingModule.form.label.code" path="code"/>
 	<acme:input-moment code="developer.trainingModule.form.label.creationMoment" path="creationMoment"/>
 	<acme:input-textarea code="developer.trainingModule.form.label.details" path="details"/>
-	<acme:input-textbox code="developer.trainingModule.form.label.difficultyLevel" path="difficultyLevel" choices="${difficultyLevels}"/>
+	<acme:input-select code="developer.trainingModule.form.label.difficultyLevel" path="difficultyLevel" choices="${difficultyLevels}"/>
 	<acme:input-moment code="developer.trainingModule.form.label.updateMoment" path="updateMoment"/>
 	<acme:input-url code="developer.trainingModule.form.label.optionalLink" path="optionalLink"/>
 	<acme:input-integer code="developer.trainingModule.form.label.estimatedTotalTime" path="estimatedTotalTime"/>
