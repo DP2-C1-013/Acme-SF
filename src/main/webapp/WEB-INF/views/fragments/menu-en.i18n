@@ -61,6 +61,7 @@ master.menu.user-account.become-manager = Become a manager
 master.menu.authenticated = Authenticated
 master.menu.authenticated.claim = Claims
 master.menu.authenticated.risk = Risks
+master.menu.authenticated.project = Projects
 
 
 # master.menu.manager ####################################################

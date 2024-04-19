@@ -1,0 +1,18 @@
+authenticated.project.list.title = Proyectos
+
+authenticated.project.list.label.code = Código
+authenticated.project.list.label.title = Título 
+authenticated.project.list.label.cost = Coste
+authenticated.project.list.label.manager = Manager
+authenticated.project.list.label.draftmode = DraftMode
+
+authenticated.project.form.title = Proyecto
+
+authenticated.project.form.label.code = Código
+authenticated.project.form.label.title = Título
+authenticated.project.form.label.abstractText = Texto abstracto
+authenticated.project.form.label.hasFatalErrors = Tiene errores graves
+authenticated.project.form.label.cost = Coste
+authenticated.project.form.label.link = Link
+authenticated.project.form.label.manager = Manager
+authenticated.project.form.label.draftmode = Draft Mode
