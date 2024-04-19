@@ -109,6 +109,8 @@
 			<acme:menu-suboption code="master.menu.user-account.become-manager"
 				action="/authenticated/manager/create"
 				access="!hasRole('Manager')" />
+			<acme:menu-suboption code="master.menu.user-account.manager"
+				action="/authenticated/manager/update" access="hasRole('Manager')" />
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.sign-out"
