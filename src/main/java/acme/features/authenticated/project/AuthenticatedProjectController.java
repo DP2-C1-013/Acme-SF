@@ -16,7 +16,10 @@ public class AuthenticatedProjectController extends AbstractController<Authentic
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedProjectListService listService;
+	private AuthenticatedProjectListService	listService;
+
+	@Autowired
+	private AuthenticatedProjectShowService	showService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -24,5 +27,6 @@ public class AuthenticatedProjectController extends AbstractController<Authentic
 	@PostConstruct
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
+		super.addBasicCommand("show", this.showService);
 	}
 }
