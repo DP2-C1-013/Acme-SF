@@ -21,4 +21,13 @@ public interface SponsorInvoiceRepository extends AbstractRepository {
 
 	@Query("SELECT s FROM Sponsorship s")
 	Collection<Sponsorship> findAllSponsorships();
+
+	@Query("SELECT s FROM Sponsorship s WHERE s.id = :id")
+	Sponsorship findOneSponsorshipById(int id);
+
+	@Query("SELECT i FROM Invoice i WHERE i.code = :code")
+	Invoice findOneInvoiceByCode(String code);
+
+	@Query("SELECT COALESCE(SUM((i.quantity.amount + i.tax * i.quantity.amount)), 0.) FROM Invoice i WHERE i.sponsorship.id = :id and i.draftMode = false")
+	Double findSumTotalAmountBySponsorshipId(int id);
 }

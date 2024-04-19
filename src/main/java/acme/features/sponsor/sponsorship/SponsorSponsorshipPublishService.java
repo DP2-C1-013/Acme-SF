@@ -20,6 +20,7 @@ import acme.roles.Sponsor;
 
 @Service
 public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, Sponsorship> {
+
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -87,17 +88,17 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 			Double amount = object.getAmount().getAmount();
 			SponsorshipType type = object.getType();
 			super.state(amount > 0. && type.equals(SponsorshipType.Financial) || amount.equals(0.) && type.equals(SponsorshipType.In_kind), "amount", "sponsor.sponsorship.form.error.invalid-amount");
+
+			Double sumAmountInvoices;
+			Double amountSponsorship = this.getRequest().getData("amount", Money.class).getAmount();
+			sumAmountInvoices = this.repository.findSumAmountInvoicesBySponsorshipId(this.getRequest().getData("id", int.class));
+			super.state(sumAmountInvoices == amountSponsorship, "*", "sponsor.sponsorship.form.error.invoice-sum-not-valid");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("project")) {
 			Project existingProject = this.repository.findOneProjectByCode(object.getProject().getCode());
 			super.state(existingProject != null && existingProject.isDraftMode() && object.getProject().isDraftMode(), "project", "sponsor.sponsorship.form.error.invalid-project");
 		}
-
-		Double sumAmountInvoices;
-		Double amountSponsorship = this.getRequest().getData("amount", Money.class).getAmount();
-		sumAmountInvoices = this.repository.findSumAmountInvoicesBySponsorshipId(this.getRequest().getData("id", int.class));
-		super.state(sumAmountInvoices == amountSponsorship, "*", "sponsor.sponsorship.form.error.invoice-sum-not-valid");
 
 	}
 
