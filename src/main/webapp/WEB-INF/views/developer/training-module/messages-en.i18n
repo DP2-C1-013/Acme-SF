@@ -8,21 +8,21 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-developer.trainingModule.list.title = Your training modules
-developer.trainingModule.form.title = Training module details
+developer.training-module.list.title = Your training modules
+developer.training-module.form.title = Training module details
 
-developer.trainingModule.list.label.code = Code
-developer.trainingModule.list.label.creationMoment = Creation moment
-developer.trainingModule.list.label.difficultyLevel = Difficulty level
-developer.trainingModule.list.label.draftMode = Draft mode
-developer.trainingModule.list.label.project = Project
+developer.training-module.list.label.code = Code
+developer.training-module.list.label.creationMoment = Creation moment
+developer.training-module.list.label.difficultyLevel = Difficulty level
+developer.training-module.list.label.draftMode = Draft mode
+developer.training-module.list.label.project = Project
 
-developer.trainingModule.form.label.code = Code
-developer.trainingModule.form.label.creationMoment = Creation moment
-developer.trainingModule.form.label.details = Details
-developer.trainingModule.form.label.difficultyLevel = Difficulty level
-developer.trainingModule.form.label.updateMoment = Update moment
-developer.trainingModule.form.label.optionalLink = Optional link
-developer.trainingModule.form.label.estimatedTotalTime = Estimated total time
-developer.trainingModule.form.label.project = Project
-developer.trainingModule.form.label.draftMode = Draft mode
+developer.training-module.form.label.code = Code
+developer.training-module.form.label.creationMoment = Creation moment
+developer.training-module.form.label.details = Details
+developer.training-module.form.label.difficultyLevel = Difficulty level
+developer.training-module.form.label.updateMoment = Update moment
+developer.training-module.form.label.optionalLink = Optional link
+developer.training-module.form.label.estimatedTotalTime = Estimated total time
+developer.training-module.form.label.project = Project
+developer.training-module.form.label.draftMode = Draft mode

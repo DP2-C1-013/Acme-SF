@@ -8,21 +8,21 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-developer.trainingModule.list.title = Tus módulos de entrenamiento
-developer.trainingModule.form.title = Detalles del módulo de entrenamiento
+developer.training-module.list.title = Tus módulos de entrenamiento
+developer.training-module.form.title = Detalles del módulo de entrenamiento
 
-developer.trainingModule.list.label.code = Código
-developer.trainingModule.list.label.creationMoment = Momento de creación
-developer.trainingModule.list.label.difficultyLevel = Nivel de dificultad
-developer.trainingModule.list.label.draftMode = Modo borrador
-developer.trainingModule.list.label.project = Proyecto
+developer.training-module.list.label.code = Código
+developer.training-module.list.label.creationMoment = Momento de creación
+developer.training-module.list.label.difficultyLevel = Nivel de dificultad
+developer.training-module.list.label.draftMode = Modo borrador
+developer.training-module.list.label.project = Proyecto
 
-developer.trainingModule.form.label.code = Código
-developer.trainingModule.form.label.creationMoment = Momento de creación
-developer.trainingModule.form.label.details = Detalles
-developer.trainingModule.form.label.difficultyLevel = Nivel de dificultad
-developer.trainingModule.form.label.updateMoment = Momento de actualización
-developer.trainingModule.form.label.optionalLink = Enlace opcional
-developer.trainingModule.form.label.estimatedTotalTime = Tiempo total estimado
-developer.trainingModule.form.label.project = Proyecto
-developer.trainingModule.form.label.draftMode = Modo borrador
+developer.training-module.form.label.code = Código
+developer.training-module.form.label.creationMoment = Momento de creación
+developer.training-module.form.label.details = Detalles
+developer.training-module.form.label.difficultyLevel = Nivel de dificultad
+developer.training-module.form.label.updateMoment = Momento de actualización
+developer.training-module.form.label.optionalLink = Enlace opcional
+developer.training-module.form.label.estimatedTotalTime = Tiempo total estimado
+developer.training-module.form.label.project = Proyecto
+developer.training-module.form.label.draftMode = Modo borrador
