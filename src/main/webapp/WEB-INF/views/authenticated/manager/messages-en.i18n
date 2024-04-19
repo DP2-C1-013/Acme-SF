@@ -1,0 +1,6 @@
+authenticated.manager.form.label.degree = Degree
+authenticated.manager.form.label.overview = Overview
+authenticated.manager.form.label.certifications = Certifications
+authenticated.manager.form.label.link = Link
+
+authenticated.manager.form.button.create = Create

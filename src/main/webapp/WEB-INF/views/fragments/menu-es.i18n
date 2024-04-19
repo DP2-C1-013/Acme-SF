@@ -63,6 +63,7 @@ master.menu.authenticated.risk = Riesgos
 master.menu.manager = Manager
 master.menu.manager.project = Proyectos
 master.menu.manager.dashboard = Panel de información
+master.menu.user-account.become-manager = Hazte manager
 
 # master.menu.sponsor ####################################################
 master.menu.sponsor = Patrocinador
