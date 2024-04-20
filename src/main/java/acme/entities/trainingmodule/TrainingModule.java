@@ -36,7 +36,7 @@ public class TrainingModule extends AbstractEntity {
 
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "{trainingmodule.code.error}")
+	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "{training-module.code.error}")
 	private String				code;
 
 	@NotNull
@@ -60,7 +60,7 @@ public class TrainingModule extends AbstractEntity {
 	private String				optionalLink;
 
 	@NotNull
-	@Min(value = 1)
+	@Min(value = 1, message = "{training-module.estimatedTotalTime.error}")
 	private Integer				estimatedTotalTime;
 
 	@NotNull

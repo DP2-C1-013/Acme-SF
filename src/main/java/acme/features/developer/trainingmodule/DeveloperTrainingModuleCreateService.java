@@ -86,6 +86,9 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 			super.state(level.equals(DifficultyLevel.Basic) || level.equals(DifficultyLevel.Intermediate) || level.equals(DifficultyLevel.Advanced), "difficultyLevel", "developer.training-module.form.error.invalid-difficulty-level");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("estimatedTotalTime"))
+			super.state(object.getEstimatedTotalTime() > 1, "difficultyLevel", "developer.training-module.form.error.invalid-estimated-total-time");
+
 		if (!super.getBuffer().getErrors().hasErrors("project")) {
 			Project existingProject = this.repository.findOneProjectByCode(object.getProject().getCode());
 			super.state(existingProject != null && existingProject.isDraftMode() && object.getProject().isDraftMode(), "project", "sponsor.sponsorship.form.error.invalid-project");

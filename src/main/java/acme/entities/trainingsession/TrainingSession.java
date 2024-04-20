@@ -34,7 +34,7 @@ public class TrainingSession extends AbstractEntity {
 
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "TS-[A-Z]{1,3}-[0-9]{3}", message = "{trainingsession.code.error}")
+	@Pattern(regexp = "TS-[A-Z]{1,3}-[0-9]{3}", message = "{training-session.code.error}")
 	private String				code;
 
 	@NotNull
