@@ -1,5 +1,5 @@
 
-package acme.features.sponsor;
+package acme.features.client.contract;
 
 import java.util.Collection;
 
@@ -8,49 +8,46 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.sponsorship.Sponsorship;
-import acme.roles.Sponsor;
+import acme.entities.contract.Contract;
+import acme.roles.client.Client;
 
 @Service
-public class SponsorSponsorshipListService extends AbstractService<Sponsor, Sponsorship> {
-
+public class ClientContractListService extends AbstractService<Client, Contract> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private SponsorSponsorshipRepository repository;
-
-	// AbstractService<Authenticated, Claim> ---------------------------
+	private ClientContractRepository repository;
 
 
+	// AbstractService interface ----------------------------------------------
 	@Override
 	public void authorise() {
 		boolean status;
 
-		status = super.getRequest().getPrincipal().hasRole(Sponsor.class);
+		status = super.getRequest().getPrincipal().hasRole(Client.class);
 
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Collection<Sponsorship> objects;
+		Collection<Contract> objects;
 		int userAccountId;
-		int sponsorId;
+		int clientId;
 
 		userAccountId = super.getRequest().getPrincipal().getAccountId();
-		sponsorId = this.repository.findOneSponsorByUserAccountId(userAccountId).getId();
-		objects = this.repository.findCreatedSponsorshipsBySponsorId(sponsorId);
-
+		clientId = this.repository.findClientByUserAccountId(userAccountId).getId();
+		objects = this.repository.findContractsByClientId(clientId);
 		super.getBuffer().addData(objects);
 	}
 
 	@Override
-	public void unbind(final Sponsorship object) {
+	public void unbind(final Contract object) {
 		assert object != null;
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "moment", "type");
+		dataset = super.unbind(object, "code", "providerName", "customerName", "goal");
 
 		super.getResponse().addData(dataset);
 	}

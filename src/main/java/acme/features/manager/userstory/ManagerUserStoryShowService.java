@@ -6,7 +6,9 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.project.Project;
+import acme.entities.userstory.Priority;
 import acme.entities.userstory.UserStory;
 import acme.roles.Manager;
 
@@ -26,10 +28,12 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 		boolean status;
 		int userStoryId;
 		Project project;
+		Manager manager;
 
+		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
 		userStoryId = super.getRequest().getData("id", int.class);
 		project = this.repository.findOneProjectByUserStoryId(userStoryId);
-		status = project != null && (!project.isDraftMode() || super.getRequest().getPrincipal().hasRole(Manager.class));
+		status = project != null && (!project.isDraftMode() || super.getRequest().getPrincipal().hasRole(manager));
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -50,10 +54,15 @@ public class ManagerUserStoryShowService extends AbstractService<Manager, UserSt
 		assert object != null;
 
 		Dataset dataset;
+		SelectChoices choices;
+		int projectId;
 
-		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
-		dataset.put("projectId", object.getProject().getId());
-		dataset.put("draftMode", object.getProject().isDraftMode());
+		choices = SelectChoices.from(Priority.class, object.getPriority());
+		projectId = this.repository.findOneProjectByUserStoryId(object.getId()).getId();
+
+		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link", "draftMode");
+		dataset.put("projectId", projectId);
+		dataset.put("priorities", choices);
 
 		super.getResponse().addData(dataset);
 	}

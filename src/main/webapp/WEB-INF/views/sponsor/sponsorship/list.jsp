@@ -16,7 +16,11 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="sponsor.sponsorship.list.label.code" path="code" width="10%"/>
-	<acme:list-column code="sponsor.sponsorship.list.label.moment" path="moment" width="20%"/>
-	<acme:list-column code="sponsor.sponsorship.list.label.type" path="type" width="70%"/>
+	<acme:list-column code="sponsor.sponsorship.list.label.code" path="code" width="15%"/>
+	<acme:list-column code="sponsor.sponsorship.list.label.moment" path="moment" width="25%"/>
+	<acme:list-column code="sponsor.sponsorship.list.label.type" path="type" width="25%"/>
+	<acme:list-column code="sponsor.sponsorship.list.label.project" path="project" width="25%"/>
+	<acme:list-column code="sponsor.sponsorship.list.label.draftMode" path="draftMode" width="10%"/>
 </acme:list>
+
+<acme:button code="sponsor.sponsorship.list.button.create" action="/sponsor/sponsorship/create"/>

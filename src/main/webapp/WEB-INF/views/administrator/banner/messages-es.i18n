@@ -1,0 +1,23 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+administrator.banner.list.title = Todos los banners
+administrator.banner.form.title = Detalles del banner
+
+administrator.banner.list.label.moment = Momento de instanciación
+administrator.banner.list.label.startDisplay = Inicio visualización
+administrator.banner.list.label.endDisplay = Fin visualización
+
+administrator.banner.form.label.moment = Momento de instanciación
+administrator.banner.form.label.startDisplay = Inicio visualización
+administrator.banner.form.label.endDisplay = Fin visualización
+administrator.banner.form.label.picture = Imagen
+administrator.banner.form.label.slogan = Slogan
+administrator.banner.form.label.link = Enlace

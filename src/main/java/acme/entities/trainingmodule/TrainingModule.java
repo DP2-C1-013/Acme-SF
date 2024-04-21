@@ -9,16 +9,20 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
 import acme.entities.project.Project;
+import acme.roles.Developer;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,11 +36,11 @@ public class TrainingModule extends AbstractEntity {
 
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "Training module code not valid")
+	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "{training-module.code.error}")
 	private String				code;
 
 	@NotNull
-	@Past
+	@PastOrPresent
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				creationMoment;
 
@@ -47,21 +51,31 @@ public class TrainingModule extends AbstractEntity {
 	@NotNull
 	private DifficultyLevel		difficultyLevel;
 
-	@Past
+	@PastOrPresent
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				updateMoment;
 
 	@URL
+	@Length(max = 256)
 	private String				optionalLink;
 
 	@NotNull
+	@Min(value = 1, message = "{training-module.estimatedTotalTime.error}")
 	private Integer				estimatedTotalTime;
 
 	@NotNull
-	private Boolean				draftMode;
+	private boolean				draftMode;
+
+	// Relationships --------------------------------------------------------------------
 
 	@NotNull
 	@Valid
-	@ManyToOne()
+	@ManyToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Project				project;
+
+	@NotNull
+	@Valid
+	@ManyToOne
+	private Developer			developer;
 }

@@ -2,15 +2,20 @@ key,reference,idDate,impact,probability,description,optionalLink
 risk-01,R-001,2021/01/15 12:30,0.8,0.2,Data Security Breach,http://example.com/security-breach
 risk-02,R-002,2021/02/10 09:15,0.5,0.6,Project Deadline Delay,http://example.com/deadline-delay
 risk-03,R-003,2021/03/05 14:45,0.7,0.4,Supply Chain Disruption,http://example.com/supply-chain-disruption
-risk-04,R-004,2021/04/20 08:00,0.3,0.8,Technology Failure,http://example.com/tech-failure
-risk-05,R-005,2021/05/12 16:20,0.9,0.1,Market Competition Intensity,http://example.com/market-competition
-risk-06,R-006,2021/06/01 14:30,0.6,0.5,Employee Turnover,http://example.com/employee-turnover
-risk-07,R-007,2021/07/30 20:45,0.2,0.9,Regulatory Changes,http://example.com/regulatory-changes
-risk-08,R-008,2021/08/25 11:00,0.4,0.7,Financial Market Volatility,http://example.com/financial-volatility
-risk-09,R-009,2021/09/18 14:30,0.1,1.0,Natural Disaster,http://example.com/natural-disaster
-risk-10,R-010,2021/10/10 08:30,0.8,0.3,Product Recall,http://example.com/product-recall
-risk-11,R-011,2021/11/05 15:45,0.5,0.5,Cybersecurity Threat,http://example.com/cybersecurity-threat
-risk-12,R-012,2021/12/20 12:00,0.7,0.6,Intellectual Property Theft,http://example.com/ip-theft
-risk-13,R-013,2022/01/12 18:20,0.4,0.8,Political Instability,http://example.com/political-instability
-risk-14,R-014,2022/02/05 10:30,0.6,0.4,Market Trend Reversal,http://example.com/market-trend
-risk-15,R-015,2022/03/25 14:15,0.3,0.9,Global Economic Downturn,http://example.com/economic-downturn
+risk-04,R-004,0001/01/01 00:00,0.3,0.8,Technology Failure,http://example.com/tech-failure
+risk-05,R-005,0001/01/02 00:00,0.9,0.1,Market Competition Intensity,http://example.com/market-competition
+risk-06,R-006,1000/01/01 14:30,0.6,0.5,Employee Turnover,http://example.com/employee-turnover
+risk-07,R-007,2022/07/29 17:45,0.2,0.9,Regulatory Changes,http://example.com/regulatory-changes
+risk-08,R-008,2022/07/30 00:00,0.4,0.7,Financial Market Volatility,http://example.com/financial-volatility
+risk-09,R-009,2021/09/18 14:30,0.0,1.0,Natural Disaster,http://example.com/natural-disaster
+risk-10,R-010,2021/10/10 08:30,0.001,0.3,Product Recall,http://example.com/product-recall
+risk-11,R-011,2021/11/05 15:45,999999,0.5,Cybersecurity Threat,http://example.com/cybersecurity-threat
+risk-12,R-012,2021/12/20 12:00,1.7976931348623157e+304,0.6,Intellectual Property Theft,http://example.com/ip-theft
+risk-13,R-013,2022/01/12 18:20,1.7976931348623157e+308,0.8,Political Instability,http://example.com/political-instability
+risk-14,R-014,2022/02/05 10:30,9.6,0.0,Market Trend Reversal,http://example.com/market-trend
+risk-15,R-015,2022/03/25 14:15,0.3,0.000001,Global Economic Downturn,http://example.com/economic-downturn
+risk-16,R-016,2021/01/15 12:30,0.8,0.5,Data Security Breach,http://example.com/security-breach
+risk-17,R-017,2021/02/20 14:45,0.6,0.999999,Network Downtime,http://example.com/network-downtime
+risk-18,R-018,2021/03/10 10:00,0.7,1.0,Supply Chain Disruption,http://example.com/supply-chain-disruption
+risk-19,R-019,2021/04/05 09:15,0.9,0.1,금융 사기,http://example.com/financial-fraud
+risk-20,R-020,2021/05/18 16:20,0.5,0.5,الاحتيال المالي,http://example.com/employee-turnover

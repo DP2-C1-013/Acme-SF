@@ -29,6 +29,7 @@ master.menu.anonymous.favourite-link-Miguel = 77861656D: Galán Lerate, Miguel
 master.menu.administrator = Administrador
 master.menu.administrator.dashboard = Panel de indicadores
 master.menu.administrator.user-accounts = Cuentas de usuario
+master.menu.administrator.banners = Banners
 master.menu.administrator.populate-initial = Poblar BD (inicial)
 master.menu.administrator.populate-sample = Poblar BD (ejemplos)
 master.menu.administrator.shut-down = Parar el sistema
@@ -51,17 +52,32 @@ master.menu.user-account.provider = Datos de proveedor
 master.menu.user-account.become-provider = Hazte proveedor
 master.menu.user-account.consumer = Datos de consumidor
 master.menu.user-account.become-consumer = Hazte consumidor
+master.menu.user-account.manager = Datos de manager
+master.menu.user-account.become-manager = Hazte manager
 
 # master.menu.authenticated ####################################################
 master.menu.authenticated = Autenticado
 master.menu.authenticated.claim = Reclamaciones
 master.menu.authenticated.risk = Riesgos
+master.menu.authenticated.project = Proyectos
 
 # master.menu.manager ########################################################
 
 master.menu.manager = Manager
-master.menu.manager.projects = Proyectos
+master.menu.manager.project = Proyectos
+master.menu.manager.dashboard = Panel de información
 
 # master.menu.sponsor ####################################################
 master.menu.sponsor = Patrocinador
 master.menu.sponsor.sponsorship = Patrocinios
+
+# master.menu.manager ########################################################
+
+master.menu.client = Cliente
+master.menu.client.contract = Contratos
+
+# master.menu.developer ########################################################
+
+master.menu.developer = Desarrollador
+master.menu.developer.training-module = Módulos de formación
+master.menu.developer.dashboard = Panel del desarrollador

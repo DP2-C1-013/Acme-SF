@@ -1,20 +1,20 @@
-key,code,instantiationMoment,heading,description,department,email,link
-claim-01,C-0001,2020/11/16 22:30,Workplace harassment,Workplace harassment of a worker,Telecomunications,null,https://example.com/claim1
-claim-02,C-0002,2011/11/16 22:30,Workplace harassment,Workplace harassment of a worker,Telecomunications,null,https://example.com/claim1
-claim-03,C-0003,2020/10/16 22:30,Workplace harassment,Workplace harassment of a worker,Telecomunications,null,https://example.com/claim1
-claim-04,C-0004,2020/11/14 22:30,Workplace harassment,Workplace harassment of a worker,Telecomunications,null,https://example.com/claim1
-claim-05,C-0005,2020/11/16 16:00,Workplace harassment,Workplace harassment of a worker,Telecomunications,null,https://example.com/claim1
-claim-06,C-0010,2020/11/16 22:30,X,Workplace harassment of a worker,Telecomunications,null,https://example.com/claim1
-claim-07,C-0011,2020/11/16 22:30,XY,Workplace harassment of a worker,Telecomunications,null,https://example.com/claim1
-claim-08,C-0012,2020/11/16 22:30,Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempo,Workplace harassment of a worker,Telecomunications,null,https://example.com/claim1
-claim-09,C-0013,2020/11/16 22:30,Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod temp,Workplace harassment of a worker,Telecomunications,null,https://example.com/claim1
-claim-10,C-0020,2020/11/16 22:30,Workplace harassment,Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et,Telecomunications,null,https://example.com/claim1
-claim-11,C-0021,2020/11/16 22:30,Workplace harassment,Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore e,Telecomunications,null,https://example.com/claim1
-claim-12,C-0022,2020/11/16 22:30,Workplace harassment,X,Telecomunications,null,https://example.com/claim1
-claim-13,C-0023,2020/11/16 22:30,Workplace harassment,XY,Telecomunications,null,https://example.com/claim1
-claim-14,C-0030,2020/11/16 22:30,Workplace harassment,Workplace harassment of a worker,Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et,null,https://example.com/claim1
-claim-15,C-0031,2020/11/16 22:30,Workplace harassment,Workplace harassment of a worker,Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore e,null,https://example.com/claim1
-claim-16,C-0032,2020/11/16 22:30,Workplace harassment,Workplace harassment of a worker,X,null,https://example.com/claim1
-claim-17,C-0033,2020/11/16 22:30,Workplace harassment,Workplace harassment of a worker,XY,null,https://example.com/claim1
-claim-18,C-0040,2020/11/16 22:30,Workplace harassment,Workplace harassment of a worker,Telecomunications,averageuser@acme.com,https://example.com/claim1
-claim-19,C-0050,2020/11/16 22:30,Workplace harassment,Workplace harassment of a worker,Telecomunications,null,https://example.com/claim2
+key,code,instantiationMoment,heading,description,department,email,link,draftMode
+claim-01,C-0001,2020/11/16 22:30,Workplace harassment,Workplace harassment of a worker,Telecomunications,null,https://example.com/claim1,true
+claim-02,C-0002,2011/11/16 22:30,Workplace harassment,Workplace harassment of a worker,Telecomunications,null,https://example.com/claim1,true
+claim-03,C-0003,2020/10/16 22:30,Workplace harassment,Workplace harassment of a worker,Telecomunications,null,https://example.com/claim1,false
+claim-04,C-0004,2020/11/14 22:30,Workplace harassment,Workplace harassment of a worker,Telecomunications,null,https://example.com/claim1,true
+claim-05,C-0005,2020/11/16 16:00,Workplace harassment,Workplace harassment of a worker,Telecomunications,null,https://example.com/claim1,true
+claim-06,C-0010,2020/11/16 22:30,X,Workplace harassment of a worker,Telecomunications,null,https://example.com/claim1,false
+claim-07,C-0011,2020/11/16 22:30,XY,Workplace harassment of a worker,Telecomunications,null,https://example.com/claim1,true
+claim-08,C-0012,2020/11/16 22:30,Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempo,Workplace harassment of a worker,Telecomunications,null,https://example.com/claim1,true
+claim-09,C-0013,2020/11/16 22:30,Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod temp,Workplace harassment of a worker,Telecomunications,null,https://example.com/claim1,false
+claim-10,C-0020,2020/11/16 22:30,Workplace harassment,Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et,Telecomunications,null,https://example.com/claim1,true
+claim-11,C-0021,2020/11/16 22:30,Workplace harassment,Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore e,Telecomunications,null,https://example.com/claim1,true
+claim-12,C-0022,2020/11/16 22:30,Workplace harassment,X,Telecomunications,null,https://example.com/claim1,false
+claim-13,C-0023,2020/11/16 22:30,Workplace harassment,XY,Telecomunications,null,https://example.com/claim1,true
+claim-14,C-0030,2020/11/16 22:30,Workplace harassment,Workplace harassment of a worker,Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et,null,https://example.com/claim1,true
+claim-15,C-0031,2020/11/16 22:30,Workplace harassment,Workplace harassment of a worker,Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore e,null,https://example.com/claim1,false
+claim-16,C-0032,2020/11/16 22:30,Workplace harassment,Workplace harassment of a worker,X,null,https://example.com/claim1,true
+claim-17,C-0033,2020/11/16 22:30,Workplace harassment,Workplace harassment of a worker,XY,null,https://example.com/claim1,false
+claim-18,C-0040,2020/11/16 22:30,Workplace harassment,Workplace harassment of a worker,Telecomunications,averageuser@acme.com,https://example.com/claim1,true
+claim-19,C-0050,2020/11/16 22:30,Workplace harassment,Workplace harassment of a worker,Telecomunications,null,https://example.com/claim2,true

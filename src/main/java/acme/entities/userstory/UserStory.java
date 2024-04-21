@@ -12,7 +12,6 @@ import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
 import acme.client.data.datatypes.Money;
-import acme.entities.project.Project;
 import acme.roles.Manager;
 import lombok.Getter;
 import lombok.Setter;
@@ -43,18 +42,18 @@ public class UserStory extends AbstractEntity {
 	@Length(max = 100)
 	private String				acceptanceCriteria;
 
+	@NotNull
 	private Priority			priority;
 
 	@URL
+	@Length(max = 255)
 	private String				link;
 
-	@NotNull
-	@Valid
-	@ManyToOne(optional = false)
-	private Project				project;
+	private boolean				draftMode;
 
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
 	private Manager				manager;
+
 }

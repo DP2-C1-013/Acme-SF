@@ -1,0 +1,34 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+developer.training-module.list.title = Tus módulos de formación
+developer.training-module.form.title = Detalles del módulo de formación
+
+developer.training-module.list.label.code = Código
+developer.training-module.list.label.creationMoment = Momento de creación
+developer.training-module.list.label.difficultyLevel = Nivel de dificultad
+developer.training-module.list.label.draftMode = Modo borrador
+developer.training-module.list.label.project = Proyecto
+developer.training-module.list.button.create = Crear
+
+developer.training-module.form.label.code = Código
+developer.training-module.form.label.creationMoment = Momento de creación
+developer.training-module.form.label.details = Detalles
+developer.training-module.form.label.difficultyLevel = Nivel de dificultad
+developer.training-module.form.label.updateMoment = Momento de actualización
+developer.training-module.form.label.optionalLink = Enlace opcional
+developer.training-module.form.label.estimatedTotalTime = Tiempo total estimado
+developer.training-module.form.label.project = Proyecto
+developer.training-module.form.label.draftMode = Modo borrador
+
+developer.training-module.form.error.duplicated = Este código ya existe
+developer.training-module.form.error.invalid-update-moment = El momento de actualización debe estar al menos una semana después del momento de la creación.
+developer.training-module.form.error.invalid-difficulty-level = El nivel de dificultad introducido ha de ser Basic, Intermediate o Advanced.
+developer.training-module.form.error.invalid-estimated-total-time = Debe ser mayor o igual que uno

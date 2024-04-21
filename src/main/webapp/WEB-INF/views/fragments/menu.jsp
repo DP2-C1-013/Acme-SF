@@ -29,12 +29,16 @@
 				action="/authenticated/claim/list" />
 			<acme:menu-suboption code="master.menu.authenticated.risk"
 				action="/authenticated/risk/list" />
+			<acme:menu-suboption code="master.menu.authenticated.project"
+				action="/authenticated/project/list" />
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator"
 			access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.user-accounts"
 				action="/administrator/user-account/list" />
+			<acme:menu-suboption code="master.menu.administrator.banners"
+				action="/administrator/banner/list" />
 			<acme:menu-separator />
 			<acme:menu-suboption
 				code="master.menu.administrator.populate-initial"
@@ -45,7 +49,7 @@
 			<acme:menu-suboption code="master.menu.administrator.shut-down"
 				action="/administrator/system/shut-down" />
 		</acme:menu-option>
-		
+
 		<acme:menu-option code="master.menu.sponsor"
 			access="hasRole('Sponsor')">
 			<acme:menu-suboption code="master.menu.sponsor.sponsorship"
@@ -63,11 +67,26 @@
 			<acme:menu-suboption code="master.menu.consumer.favourite-link"
 				action="http://www.example.com/" />
 		</acme:menu-option>
-		
+
 		<acme:menu-option code="master.menu.manager"
 			access="hasRole('Manager')">
 			<acme:menu-suboption code="master.menu.manager.project"
 				action="/manager/project/list" />
+			<acme:menu-suboption code="master.menu.manager.dashboard"
+				action="/manager/manager-dashboard/show" />
+		</acme:menu-option>
+
+		<acme:menu-option code="master.menu.developer"
+			access="hasRole('Developer')">
+			<acme:menu-suboption code="master.menu.developer.training-module"
+				action="/developer/training-module/list" />
+			<acme:menu-suboption code="master.menu.developer.dashboard"
+				action="/developer/developer-dashboard/show" />
+		</acme:menu-option>
+
+		<acme:menu-option code="master.menu.client" access="hasRole('Client')">
+			<acme:menu-suboption code="master.menu.client.contract"
+				action="/client/contract/list" />
 		</acme:menu-option>
 	</acme:menu-left>
 
@@ -91,6 +110,11 @@
 				access="!hasRole('Consumer')" />
 			<acme:menu-suboption code="master.menu.user-account.consumer"
 				action="/authenticated/consumer/update" access="hasRole('Consumer')" />
+			<acme:menu-suboption code="master.menu.user-account.become-manager"
+				action="/authenticated/manager/create"
+				access="!hasRole('Manager')" />
+			<acme:menu-suboption code="master.menu.user-account.manager"
+				action="/authenticated/manager/update" access="hasRole('Manager')" />
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.sign-out"

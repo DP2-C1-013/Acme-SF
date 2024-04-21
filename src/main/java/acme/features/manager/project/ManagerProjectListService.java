@@ -24,8 +24,10 @@ public class ManagerProjectListService extends AbstractService<Manager, Project>
 	@Override
 	public void authorise() {
 		boolean status;
+		Manager manager;
 
-		status = super.getRequest().getPrincipal().hasRole(Manager.class);
+		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+		status = super.getRequest().getPrincipal().hasRole(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -33,11 +35,9 @@ public class ManagerProjectListService extends AbstractService<Manager, Project>
 	@Override
 	public void load() {
 		Collection<Project> objects;
-		int userAccountId;
 		int managerId;
 
-		userAccountId = super.getRequest().getPrincipal().getAccountId();
-		managerId = this.repository.findOneManagerByUserAccountId(userAccountId).getId();
+		managerId = super.getRequest().getPrincipal().getActiveRoleId();
 		objects = this.repository.findCreatedProjectsByManagerId(managerId);
 
 		super.getBuffer().addData(objects);
@@ -49,7 +49,7 @@ public class ManagerProjectListService extends AbstractService<Manager, Project>
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "title", "cost");
+		dataset = super.unbind(object, "code", "title", "cost", "draftMode");
 
 		super.getResponse().addData(dataset);
 	}

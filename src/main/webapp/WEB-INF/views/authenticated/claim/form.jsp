@@ -15,12 +15,31 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
-<acme:form readonly='true'>
-	<acme:input-textbox code="authenticated.claim.form.label.code" path="code"/>
-	<acme:input-moment code="authenticated.claim.form.label.moment" path="instantiationMoment"/>
-	<acme:input-textbox code="authenticated.claim.form.label.heading" path="heading"/>
-	<acme:input-textarea code="authenticated.claim.form.label.description" path="description"/>
-	<acme:input-textbox code="authenticated.claim.form.label.department" path="department"/>
-	<acme:input-textbox code="authenticated.claim.form.label.email" path="email"/>
-	<acme:input-url code="authenticated.claim.form.label.link" path="link"/>
+<acme:form readonly="false">
+	<acme:input-textbox code="authenticated.claim.form.label.code"
+		path="code" />
+	<acme:input-moment code="authenticated.claim.form.label.moment"
+		path="instantiationMoment" />
+	<acme:input-textbox code="authenticated.claim.form.label.heading"
+		path="heading" />
+	<acme:input-textarea code="authenticated.claim.form.label.description"
+		path="description" />
+	<acme:input-textbox code="authenticated.claim.form.label.department"
+		path="department" />
+	<acme:input-email code="authenticated.claim.form.label.email"
+		path="email" />
+	<acme:input-url code="authenticated.claim.form.label.link" path="link" />
+	<acme:input-checkbox code="authenticated.claim.form.label.draftmode"
+		path="draftMode" readonly="true" />
+	<jstl:choose>
+		<jstl:when test="${acme:anyOf(_command, 'show|publish') && draftMode == true}">
+			<acme:input-checkbox
+				code="authenticated.claim.form.label.confirmation"
+				path="confirmation" />
+			<acme:submit code="authenticated.claim.form.button.publish"
+				action="/authenticated/claim/publish" />
+		</jstl:when>
+	</jstl:choose>
 </acme:form>
+
+

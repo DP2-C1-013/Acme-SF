@@ -1,5 +1,5 @@
 
-package acme.features.sponsor;
+package acme.features.sponsor.sponsorship;
 
 import javax.annotation.PostConstruct;
 
@@ -16,10 +16,22 @@ public class SponsorSponsorshipController extends AbstractController<Sponsor, Sp
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private SponsorSponsorshipListService	listService;
+	private SponsorSponsorshipListService		listService;
 
 	@Autowired
-	private SponsorSponsorshipShowService	showService;
+	private SponsorSponsorshipShowService		showService;
+
+	@Autowired
+	private SponsorSponsorshipCreateService		createService;
+
+	@Autowired
+	private SponsorSponsorshipDeleteService		deleteService;
+
+	@Autowired
+	private SponsorSponsorshipUpdateService		updateService;
+
+	@Autowired
+	private SponsorSponsorshipPublishService	publishService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -28,5 +40,10 @@ public class SponsorSponsorshipController extends AbstractController<Sponsor, Sp
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
+		super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("delete", this.deleteService);
+		super.addBasicCommand("update", this.updateService);
+
+		super.addCustomCommand("publish", "update", this.publishService);
 	}
 }
