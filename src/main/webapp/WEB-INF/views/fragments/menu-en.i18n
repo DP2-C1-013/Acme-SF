@@ -82,4 +82,5 @@ master.menu.client.contract = Contrats
 # master.menu.developer ########################################################
 
 master.menu.developer = Developer
-master.menu.developer.trainingModule = Training modules
+master.menu.developer.training-module = Training modules
+master.menu.developer.dashboard = Developer dashboard

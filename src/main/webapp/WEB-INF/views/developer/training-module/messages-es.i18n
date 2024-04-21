@@ -8,8 +8,8 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-developer.training-module.list.title = Tus módulos de entrenamiento
-developer.training-module.form.title = Detalles del módulo de entrenamiento
+developer.training-module.list.title = Tus módulos de formación
+developer.training-module.form.title = Detalles del módulo de formación
 
 developer.training-module.list.label.code = Código
 developer.training-module.list.label.creationMoment = Momento de creación
