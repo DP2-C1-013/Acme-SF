@@ -74,6 +74,8 @@
 				action="/manager/project/list" />
 			<acme:menu-suboption code="master.menu.manager.dashboard"
 				action="/manager/manager-dashboard/show" />
+			<acme:menu-suboption code="master.menu.manager.user-stories"
+				action="/manager/user-story/list-mine" />
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.developer"

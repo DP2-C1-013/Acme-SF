@@ -26,7 +26,10 @@
 	
 	<jstl:choose>
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="manager.userstory.form.button.create" action="/manager/user-story/create?projectId=${projectId}"/>
+			<acme:submit code="manager.userstory.form.button.create" action="/manager/user-story/create"/>
+		</jstl:when>
+		<jstl:when test="${_command == 'create-in-project'}">
+			<acme:submit code="manager.userstory.form.button.create" action="/manager/user-story/create-in-project?projectId=${projectId}"/>
 		</jstl:when>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
 			<acme:submit code="manager.userstory.form.button.publish" action="/manager/user-story/publish"/>
