@@ -6,8 +6,6 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.entities.project.Project;
-import acme.entities.projectuserstory.ProjectUserStory;
 import acme.entities.userstory.UserStory;
 import acme.features.manager.projectuserstory.ManagerProjectUserStoryRepository;
 import acme.roles.Manager;
@@ -32,15 +30,13 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 	public void authorise() {
 		boolean status;
 		int userStoryId;
-		Project project;
 		Manager manager;
 		UserStory userStory;
 
 		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
 		userStoryId = super.getRequest().getData("id", int.class);
 		userStory = this.repository.findOneUserStoryById(userStoryId);
-		project = this.repository.findOneProjectByUserStoryId(userStoryId);
-		status = project != null && userStory.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
+		status = userStory != null && userStory.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -72,9 +68,6 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 	public void perform(final UserStory object) {
 		assert object != null;
 
-		ProjectUserStory projectUserStory = this.managerProjectUserStoryRepository.findOneProjectUserStoryByUserStoryId(object.getId());
-
-		this.managerProjectUserStoryRepository.delete(projectUserStory);
 		this.repository.delete(object);
 	}
 
@@ -83,15 +76,8 @@ public class ManagerUserStoryDeleteService extends AbstractService<Manager, User
 		assert object != null;
 
 		Dataset dataset;
-		Project project;
-		int projectId;
-
-		projectId = super.getRequest().getData(ManagerUserStoryDeleteService.PROJECT_ID, int.class);
-		project = this.repository.findOneProjectById(projectId);
 
 		dataset = super.unbind(object, "title", "description", "estimatedCost", "acceptanceCriteria", "priority", "link");
-		dataset.put(ManagerUserStoryDeleteService.PROJECT_ID, project.getId());
-		dataset.put("draftMode", project.isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}
