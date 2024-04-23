@@ -74,6 +74,7 @@ master.menu.manager.user-stories = User stories
 # master.menu.sponsor ####################################################
 master.menu.sponsor = Sponsor
 master.menu.sponsor.sponsorship = Sponsorships
+master.menu.sponsor.dashboard = Sponsor dashboard
 
 # master.menu.client ########################################################
 

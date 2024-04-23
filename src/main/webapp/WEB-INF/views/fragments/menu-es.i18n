@@ -71,6 +71,7 @@ master.menu.manager.user-stories = Historias de usuario
 # master.menu.sponsor ####################################################
 master.menu.sponsor = Patrocinador
 master.menu.sponsor.sponsorship = Patrocinios
+master.menu.sponsor.dashboard = Panel del patrocinador
 
 # master.menu.manager ########################################################
 
