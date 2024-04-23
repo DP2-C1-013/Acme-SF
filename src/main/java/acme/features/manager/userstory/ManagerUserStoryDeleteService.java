@@ -7,21 +7,15 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.userstory.UserStory;
-import acme.features.manager.projectuserstory.ManagerProjectUserStoryRepository;
 import acme.roles.Manager;
 
 @Service
 public class ManagerUserStoryDeleteService extends AbstractService<Manager, UserStory> {
 
-	private static final String					PROJECT_ID	= "projectId";
-
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerUserStoryRepository			repository;
-
-	@Autowired
-	private ManagerProjectUserStoryRepository	managerProjectUserStoryRepository;
+	private ManagerUserStoryRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 

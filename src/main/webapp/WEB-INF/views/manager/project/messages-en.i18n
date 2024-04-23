@@ -35,4 +35,5 @@ manager.project.form.button.delete = Delete
 
 
 manager.project.form.error.duplicated = This code is taken
+manager.project.form.error.negative-cost = Cost must be positive
 

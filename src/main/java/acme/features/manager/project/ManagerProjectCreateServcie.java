@@ -66,6 +66,10 @@ public class ManagerProjectCreateServcie extends AbstractService<Manager, Projec
 			existing = this.repository.findOneProjectByCode(object.getCode());
 			super.state(existing == null, "code", "manager.project.form.error.duplicated");
 		}
+
+		if (!super.getBuffer().getErrors().hasErrors("cost"))
+			super.state(object.getCost().getAmount() > 0, "cost", "manager.project.form.error.negative-cost");
+
 	}
 
 	@Override

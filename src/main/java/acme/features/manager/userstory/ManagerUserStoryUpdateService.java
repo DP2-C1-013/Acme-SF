@@ -14,12 +14,10 @@ import acme.roles.Manager;
 @Service
 public class ManagerUserStoryUpdateService extends AbstractService<Manager, UserStory> {
 
-	private static final String			PROJECT_ID	= "projectId";
-
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ManagerUserStoryRepository	repository;
+	private ManagerUserStoryRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
