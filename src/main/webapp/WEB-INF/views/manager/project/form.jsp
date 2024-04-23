@@ -33,7 +33,7 @@
 			<acme:button code="manager.project.form.button.userStories" action="/manager/user-story/list?projectId=${id}"/>
 			<acme:submit code="manager.project.form.button.update" action="/manager/project/update"/>
 			<acme:submit code="manager.project.form.button.delete" action="/manager/project/delete"/>				
-			<acme:submit test="${showPublish}" code="manager.project.form.button.publish" action="/manager/project/publish"/>
+			<acme:submit code="manager.project.form.button.publish" action="/manager/project/publish"/>
 		</jstl:when>	
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="manager.project.form.button.create" action="/manager/project/create"/>

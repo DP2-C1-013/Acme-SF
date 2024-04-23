@@ -69,6 +69,7 @@ master.menu.authenticated.project = Projects
 master.menu.manager = Manager
 master.menu.manager.project = Projects
 master.menu.manager.dashboard = Dashboard
+master.menu.manager.user-stories = User stories
 
 # master.menu.sponsor ####################################################
 master.menu.sponsor = Sponsor

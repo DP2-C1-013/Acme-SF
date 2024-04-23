@@ -29,18 +29,11 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 		int projectId;
 		Project project;
 		Manager manager;
-		Collection<UserStory> userStories;
 
-		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
 		projectId = super.getRequest().getData("id", int.class);
 		project = this.repository.findOneProjectById(projectId);
-		userStories = this.repository.findManyUserStoriesByProjectId(projectId);
-		boolean allUserStoriesPublished = userStories.stream().allMatch(us -> !us.isDraftMode());
-
-		if (!userStories.isEmpty() && allUserStoriesPublished && !project.isHasFatalErrors())
-			status = project.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
-		else
-			status = false;
+		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+		status = project != null && project.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -66,6 +59,23 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 	@Override
 	public void validate(final Project object) {
 		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Project existing;
+
+			existing = this.repository.findOneProjectByCode(object.getCode());
+			super.state(existing == null || existing.equals(object), "code", "manager.project.form.error.duplicated");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("cost"))
+			super.state(object.getCost().getAmount() > 0, "cost", "manager.project.form.error.negative-cost");
+
+		int projectId = super.getRequest().getData("id", int.class);
+		Collection<UserStory> userStories = this.repository.findManyUserStoriesByProjectId(projectId);
+		final boolean draftUserStory = userStories.stream().anyMatch(UserStory::isDraftMode);
+		final boolean noUserStories = userStories.isEmpty();
+		super.state(!noUserStories, "*", "manager.project.form.error.userStories-empty");
+		super.state(!draftUserStory, "*", "manager.project.form.error.userStories-draft");
 	}
 
 	@Override

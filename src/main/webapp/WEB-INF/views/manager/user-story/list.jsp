@@ -22,4 +22,9 @@
 	<acme:list-column code="manager.userstory.list.label.draftmode" path="draftMode" width="10%"/>
 </acme:list>
 
-<acme:button test="${showCreate}" code="manager.userstory.list.button.create" action="/manager/user-story/create?projectId=${projectId}"/>
+<jstl:if test="${_command == 'list'}">
+    <acme:button test="${showCreate}" code="manager.user-story.list.button.create-user-stories-by-project-form" action="/manager/user-story/create-in-project?projectId=${projectId}"/>
+</jstl:if>
+<jstl:if test="${_command == 'list-mine'}">
+    <acme:button test="${showCreate}" code="manager.user-story.list.button.create-form" action="/manager/user-story/create"/>
+</jstl:if>

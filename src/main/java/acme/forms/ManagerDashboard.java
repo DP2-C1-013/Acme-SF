@@ -1,9 +1,12 @@
 
 package acme.forms;
 
+import java.util.Map;
+
 import javax.validation.constraints.NotNull;
 
 import acme.client.data.AbstractForm;
+import acme.datatypes.Statistics;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,43 +15,25 @@ import lombok.Setter;
 public class ManagerDashboard extends AbstractForm {
 	// Serialization indentifier --------------------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	private static final long		serialVersionUID	= 1L;
 
 	// Query attributes -----------------------------------------------------------------
 
 	@NotNull
-	public Integer				numOfMustUserStories;
+	public Integer					numOfMustUserStories;
 
 	@NotNull
-	public Integer				numOfShouldUserStories;
+	public Integer					numOfShouldUserStories;
 
 	@NotNull
-	public Integer				numOfCouldUserStories;
+	public Integer					numOfCouldUserStories;
 
 	@NotNull
-	public Integer				numOfWontUserStories;
+	public Integer					numOfWontUserStories;
 
-	@NotNull
-	public Double				averageEstimatedCost;
+	//	Average, deviation, minimum, and maximum estimated cost of the user stories
+	private Map<String, Statistics>	userStoryEstimatedCostStatistics;
 
-	@NotNull
-	public Double				deviationEstimatedCost;
-
-	@NotNull
-	public Double				minEstimatedCost;
-
-	@NotNull
-	public Double				maxEstimatedCost;
-
-	@NotNull
-	public Double				averageCost;
-
-	@NotNull
-	public Double				deviationCost;
-
-	@NotNull
-	public Double				minCost;
-
-	@NotNull
-	public Double				maxCost;
+	//	Average, deviation, minimum, and maximum estimated cost of the project
+	private Map<String, Statistics>	projectCostStatistics;
 }
