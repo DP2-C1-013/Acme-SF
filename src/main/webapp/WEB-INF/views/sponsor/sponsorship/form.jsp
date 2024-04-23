@@ -27,6 +27,7 @@
 	<acme:input-checkbox code="sponsor.sponsorship.form.label.draftMode" path="draftMode" readonly="true"/>
 	<jstl:choose>
 		<jstl:when test="${_command == 'show' && draftMode == false}">
+			<acme:button code="sponsor.sponsorship.form.button.invoices" action="/sponsor/invoice/list?sponsorshipId=${id}"/>
 		</jstl:when>
 		<jstl:when test="${acme:anyOf(_command,'show|update|delete|publish') && draftMode == true}">
 			<acme:submit code="sponsor.sponsorship.form.button.delete" action="/sponsor/sponsorship/delete"/>

@@ -9,6 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -18,6 +19,7 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
@@ -39,7 +41,7 @@ public class Invoice extends AbstractEntity {
 
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "IN-[0-9]{4}-[0-9]{4}", message = "{validation.claim.code}")
+	@Pattern(regexp = "IN-[0-9]{4}-[0-9]{4}", message = "{invoice.code.error}")
 	private String				code;
 
 	@NotNull
@@ -52,15 +54,16 @@ public class Invoice extends AbstractEntity {
 	private Date				dueDate;
 
 	@NotNull
-	@Valid
 	private Money				quantity;
 
 	@NotNull
+	@Digits(integer = 1, fraction = 2)
 	@Min(0)
 	@Max(1)
 	private Double				tax;
 
 	@URL
+	@Length(max = 255)
 	private String				link;
 
 	private boolean				draftMode;
@@ -81,7 +84,7 @@ public class Invoice extends AbstractEntity {
 
 	@NotNull
 	@Valid
-	@ManyToOne()
+	@ManyToOne(optional = false)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Sponsorship sponsorship;
 

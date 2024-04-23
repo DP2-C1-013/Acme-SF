@@ -19,3 +19,11 @@ trainingsession.code.error = El código debe tener "TS-" seguido de 1, 2 o 3 let
 
 # project.code #################################################################
 project.code.error = El código debe tener 3 letras mayúsculas, seguidas de un guión y luego cuatro números.
+
+# claim.code ###################################################################
+claim.code.error = El código debe empezar por C seguido de un guión y cuatro números.
+
+# sponsorship.code.error ###################################################################
+sponsorship.code.error = El código debe empezar por una a tres letras en mayúsculas, seguidas de un guión y de uno a tres números.
+# invoice.code.error ###################################################################
+invoice.code.error = El código debe empezar por "IN-" seguido de 4 números, un guión y otros cuatro números.

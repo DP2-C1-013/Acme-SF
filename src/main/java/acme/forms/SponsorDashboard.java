@@ -1,10 +1,12 @@
 
 package acme.forms;
 
+import java.util.Map;
+
 import javax.validation.constraints.NotNull;
 
 import acme.client.data.AbstractForm;
-import acme.client.data.datatypes.Money;
+import acme.datatypes.Statistics;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,38 +16,20 @@ public class SponsorDashboard extends AbstractForm {
 
 	// Serialization indentifier --------------------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	private static final long		serialVersionUID	= 1L;
 
 	// Query attributes -----------------------------------------------------------------
 
 	@NotNull
-	public Integer				numInvoicesLessTax;
+	public Integer					numInvoicesLessTax;
 
 	@NotNull
-	public Integer				numLinkedSponsorship;
+	public Integer					numLinkedSponsorship;
 
-	@NotNull
-	public Money				averageAmountSponsorship;
+	//	Average, deviation, minimum, and maximum estimated cost of the sponsorships mapped by currency
+	private Map<String, Statistics>	sponsorshipCostStatistics;
 
-	@NotNull
-	public Money				deviationAmountSponsorship;
-
-	@NotNull
-	public Money				minAmountSponsorship;
-
-	@NotNull
-	public Money				maxAmountSponsorship;
-
-	@NotNull
-	public Money				averageQuantityInvoices;
-
-	@NotNull
-	public Money				deviationQuantityInvoices;
-
-	@NotNull
-	public Money				minQuantityInvoices;
-
-	@NotNull
-	public Money				maxQuantityInvoices;
+	//	Average, deviation, minimum, and maximum estimated cost of the invoices mapped by currency
+	private Map<String, Statistics>	invoiceCostStatistics;
 
 }
