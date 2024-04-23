@@ -18,6 +18,11 @@
 
 <acme:menu-bar code="master.menu.home">
 	<acme:menu-left>
+		<acme:menu-option code="master.menu.any">
+			<acme:menu-suboption code="master.menu.any.claim"
+				action="/any/claim/list" />>
+		</acme:menu-option>
+	
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link"
 				action="http://www.example.com/" />

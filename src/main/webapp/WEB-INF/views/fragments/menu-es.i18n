@@ -55,9 +55,13 @@ master.menu.user-account.become-consumer = Hazte consumidor
 master.menu.user-account.manager = Datos de manager
 master.menu.user-account.become-manager = Hazte manager
 
+# master.menu.any ##############################################################
+
+master.menu.any= Qualquiera
+master.menu.any.claim = Reclamaciones
+
 # master.menu.authenticated ####################################################
 master.menu.authenticated = Autenticado
-master.menu.authenticated.claim = Reclamaciones
 master.menu.authenticated.risk = Riesgos
 master.menu.authenticated.project = Proyectos
 
