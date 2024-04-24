@@ -1,3 +1,5 @@
 manager.projectuserstory.list.label.userstory = Historia de usuario
 manager.projectuserstory.list.label.project = Proyecto
 manager.project-user-story.list.title = Asignaciones
+manager.project-user-story.form.button.delete = Eliminar
+manager.project-user-story.form.title = Asignación

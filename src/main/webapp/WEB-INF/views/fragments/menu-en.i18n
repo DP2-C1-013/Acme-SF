@@ -74,7 +74,7 @@ master.menu.manager = Manager
 master.menu.manager.project = Projects
 master.menu.manager.dashboard = Dashboard
 master.menu.manager.user-stories = User stories
-master.menu.manager.list-assigments = Assigments
+master.menu.manager.list-assignments = Assignments
 
 # master.menu.sponsor ####################################################
 master.menu.sponsor = Sponsor
