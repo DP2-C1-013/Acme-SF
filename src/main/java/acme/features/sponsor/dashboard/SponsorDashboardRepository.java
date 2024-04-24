@@ -7,13 +7,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
-import acme.entities.systemcurrency.SystemCurrency;
+import acme.entities.systemconfiguration.SystemConfiguration;
 
 @Repository
 public interface SponsorDashboardRepository extends AbstractRepository {
 
-	@Query("SELECT sc FROM SystemCurrency sc")
-	List<SystemCurrency> findSystemCurrencies();
+	@Query("SELECT sc FROM SystemConfiguration sc")
+	List<SystemConfiguration> findSystemCurrencies();
 
 	@Query("SELECT COUNT(i) FROM Invoice i WHERE i.tax <= 0.21 and i.sponsorship.sponsor.id = :sponsorId")
 	Integer numOfInvoicesLessThan21Tax(int sponsorId);
