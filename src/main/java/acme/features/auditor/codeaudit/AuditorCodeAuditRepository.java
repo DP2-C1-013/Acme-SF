@@ -7,19 +7,32 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
+import acme.entities.codeaudit.CodeAudit;
 import acme.entities.project.Project;
-import acme.roles.Manager;
+import acme.roles.Auditor;
 
 @Repository
 public interface AuditorCodeAuditRepository extends AbstractRepository {
 
-	@Query("SELECT a FROM Auditor a WHERE a.userAccount.id = :id")
-	Manager findOneManagerByUserAccountId(int id);
+	@Query("SELECT DISTINCT c FROM CodeAudit c where c.auditor.id = :auditorId")
+	Collection<CodeAudit> findCodeAuditByAuditor(int auditorId);
 
 	@Query("SELECT c FROM CodeAudit c WHERE c.id = :id")
-	Project findOneProjectById(int id);
+	CodeAudit findOneCodeAuditById(int id);
 
-	@Query("SELECT DISTINCT p FROM UserStory us LEFT JOIN us.project p WHERE us.manager.id = :managerId")
-	Collection<Project> findCreatedProjectsByManagerId(int managerId);
+	@Query("SELECT DISTINCT p FROM Project p")
+	Collection<Project> findAllProjects();
+
+	@Query("SELECT c FROM Auditor c WHERE c.id = :id")
+	Auditor findOneAuditorByAuditorId(int id);
+
+	@Query("SELECT p FROM Project p WHERE p.code = :code")
+	Project findOneProjectByCode(String code);
+
+	@Query("SELECT c FROM CodeAudit c WHERE c.code = :code")
+	CodeAudit findOneCodeAuditByCode(String code);
+
+	@Query("SELECT DISTINCT p FROM Project p WHERE p.draftMode = true")
+	Collection<Project> findAllProjectsDraftModeTrue();
 
 }
