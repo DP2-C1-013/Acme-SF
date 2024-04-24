@@ -77,6 +77,10 @@ master.menu.sponsor = Patrocinador
 master.menu.sponsor.sponsorship = Patrocinios
 master.menu.sponsor.dashboard = Panel del patrocinador
 
+# master.menu.auditor ####################################################
+master.menu.auditor = Auditor
+master.menu.auditor.code-audit = Audiciones de código
+
 # master.menu.manager ########################################################
 
 master.menu.client = Cliente

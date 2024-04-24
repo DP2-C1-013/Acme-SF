@@ -79,6 +79,10 @@ master.menu.sponsor = Sponsor
 master.menu.sponsor.sponsorship = Sponsorships
 master.menu.sponsor.dashboard = Sponsor dashboard
 
+# master.menu.auditor ####################################################
+master.menu.auditor = Auditor
+master.menu.auditor.code-audit = Code audits
+
 # master.menu.client ########################################################
 
 master.menu.client = Client

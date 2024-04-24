@@ -30,8 +30,6 @@
 
 		<acme:menu-option code="master.menu.authenticated"
 			access="isAuthenticated()">
-			<acme:menu-suboption code="master.menu.authenticated.claim"
-				action="/authenticated/claim/list" />
 			<acme:menu-suboption code="master.menu.authenticated.risk"
 				action="/authenticated/risk/list" />
 			<acme:menu-suboption code="master.menu.authenticated.project"
@@ -61,6 +59,12 @@
 				action="/sponsor/sponsorship/list-mine" />
 			<acme:menu-suboption code="master.menu.sponsor.dashboard"
 				action="/sponsor/sponsor-dashboard/show" />
+		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.auditor"
+			access="hasRole('Auditor')">
+			<acme:menu-suboption code="master.menu.auditor.code-audit"
+				action="/auditor/code-audit/list" />
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.provider"
