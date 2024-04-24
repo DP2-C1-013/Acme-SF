@@ -33,6 +33,7 @@ master.menu.administrator.banners = Banners
 master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shut-down = Shut down
+master.menu.administrator.show.system-configuration = System configuration
 
 # master.menu.provider ########################################################
 
@@ -78,6 +79,10 @@ master.menu.manager.user-stories = User stories
 master.menu.sponsor = Sponsor
 master.menu.sponsor.sponsorship = Sponsorships
 master.menu.sponsor.dashboard = Sponsor dashboard
+
+# master.menu.auditor ####################################################
+master.menu.auditor = Auditor
+master.menu.auditor.code-audit = Code audits
 
 # master.menu.client ########################################################
 

@@ -60,6 +60,4 @@ public class Claim extends AbstractEntity {
 	@Length(max = 255)
 	private String				link;
 
-	private boolean				draftMode;
-
 }

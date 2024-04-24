@@ -16,15 +16,11 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="any.claim.list.label.code"
-		path="code" width="15%" />
-	<acme:list-column code="any.claim.list.label.moment"
-		path="instantiationMoment" width="25%" />
-	<acme:list-column code="any.claim.list.label.heading"
-		path="heading" width="25%" />
-
+	<acme:list-column code="auditor.code-audit.list.label.code" path="code" width="15%"/>
+	<acme:list-column code="auditor.code-audit.list.label.executionDate" path="executionDate" width="25%"/>
+	<acme:list-column code="auditor.code-audit.list.label.type" path="type" width="25%"/>
+	<acme:list-column code="auditor.code-audit.list.label.project" path="project" width="25%"/>
+	<acme:list-column code="auditor.code-audit.list.label.draftMode" path="draftMode" width="10%"/>
 </acme:list>
 
-<jstl:if test="${_command == 'list'}">
-	<acme:button code="any.claim.list.button.create" action="/any/claim/create"/>
-</jstl:if>
+<acme:button code="auditor.code-audit.list.button.create" action="/auditor/code-audit/create"/>

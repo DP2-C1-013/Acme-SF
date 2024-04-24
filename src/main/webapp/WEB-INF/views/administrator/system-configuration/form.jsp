@@ -10,21 +10,14 @@
 - they accept any liabilities with respect to them.
 --%>
 
-<%@page%>
+<%@page language="java"%>
 
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
-<acme:list>
-	<acme:list-column code="any.claim.list.label.code"
-		path="code" width="15%" />
-	<acme:list-column code="any.claim.list.label.moment"
-		path="instantiationMoment" width="25%" />
-	<acme:list-column code="any.claim.list.label.heading"
-		path="heading" width="25%" />
-
-</acme:list>
-
-<jstl:if test="${_command == 'list'}">
-	<acme:button code="any.claim.list.button.create" action="/any/claim/create"/>
-</jstl:if>
+<acme:form>
+	<acme:input-textbox code="administrator.system-configuration.form.label.systemCurrency" path="currency"/>
+	<acme:input-textbox code="administrator.system-configuration.form.label.acceptedCurrencies" path="acceptedCurrencies"/>
+	
+	<acme:submit code="administrator.system-configuration.form.button.update" action="/administrator/system-configuration/update"/>
+</acme:form>

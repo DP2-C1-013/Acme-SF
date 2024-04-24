@@ -1,5 +1,5 @@
 
-package acme.features.any.claim;
+package acme.features.auditor.codeaudit;
 
 import javax.annotation.PostConstruct;
 
@@ -7,22 +7,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.client.data.accounts.Any;
-import acme.entities.claim.Claim;
+import acme.entities.codeaudit.CodeAudit;
+import acme.roles.Auditor;
 
 @Controller
-public class AnyClaimController extends AbstractController<Any, Claim> {
+public class AuditorCodeAuditController extends AbstractController<Auditor, CodeAudit> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AnyClaimListService		listService;
+	private AuditorCodeAuditListService		listService;
 
 	@Autowired
-	private AnyClaimShowService		showService;
+	private AuditorCodeAuditShowService		showService;
 
 	@Autowired
-	private AnyClaimCreateService	createService;
+	private AuditorCodeAuditCreateService	createService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -32,7 +32,5 @@ public class AnyClaimController extends AbstractController<Any, Claim> {
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
-
 	}
-
 }

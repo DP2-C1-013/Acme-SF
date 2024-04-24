@@ -22,6 +22,7 @@ import org.hibernate.validator.constraints.URL;
 import acme.client.data.AbstractEntity;
 import acme.entities.auditrecord.AuditMark;
 import acme.entities.project.Project;
+import acme.roles.Auditor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -68,5 +69,10 @@ public class CodeAudit extends AbstractEntity {
 	@ManyToOne()
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Project				project;
+
+	@NotNull
+	@Valid
+	@ManyToOne()
+	private Auditor				auditor;
 
 }

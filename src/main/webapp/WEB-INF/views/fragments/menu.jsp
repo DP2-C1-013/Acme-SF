@@ -22,7 +22,7 @@
 			<acme:menu-suboption code="master.menu.any.claim"
 				action="/any/claim/list" />>
 		</acme:menu-option>
-	
+
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link"
 				action="http://www.example.com/" />
@@ -30,8 +30,6 @@
 
 		<acme:menu-option code="master.menu.authenticated"
 			access="isAuthenticated()">
-			<acme:menu-suboption code="master.menu.authenticated.claim"
-				action="/authenticated/claim/list" />
 			<acme:menu-suboption code="master.menu.authenticated.risk"
 				action="/authenticated/risk/list" />
 			<acme:menu-suboption code="master.menu.authenticated.project"
@@ -40,6 +38,9 @@
 
 		<acme:menu-option code="master.menu.administrator"
 			access="hasRole('Administrator')">
+			<acme:menu-suboption
+				code="master.menu.administrator.show.system-configuration"
+				action="/administrator/system-configuration/show" />
 			<acme:menu-suboption code="master.menu.administrator.user-accounts"
 				action="/administrator/user-account/list" />
 			<acme:menu-suboption code="master.menu.administrator.banners"
@@ -61,6 +62,12 @@
 				action="/sponsor/sponsorship/list-mine" />
 			<acme:menu-suboption code="master.menu.sponsor.dashboard"
 				action="/sponsor/sponsor-dashboard/show" />
+		</acme:menu-option>
+
+		<acme:menu-option code="master.menu.auditor"
+			access="hasRole('Auditor')">
+			<acme:menu-suboption code="master.menu.auditor.code-audit"
+				action="/auditor/code-audit/list" />
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.provider"
