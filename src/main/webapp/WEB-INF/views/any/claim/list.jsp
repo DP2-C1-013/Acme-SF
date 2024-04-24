@@ -16,13 +16,13 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="authenticated.claim.list.label.code"
+	<acme:list-column code="any.claim.list.label.code"
 		path="code" width="15%" />
-	<acme:list-column code="authenticated.claim.list.label.moment"
+	<acme:list-column code="any.claim.list.label.moment"
 		path="instantiationMoment" width="25%" />
-	<acme:list-column code="authenticated.claim.list.label.heading"
+	<acme:list-column code="any.claim.list.label.heading"
 		path="heading" width="25%" />
-	<acme:list-column code="authenticated.claim.list.label.draftmode"
+	<acme:list-column code="any.claim.list.label.draftmode"
 		path="draftMode" width="10%" />
 
 </acme:list>

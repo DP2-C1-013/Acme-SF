@@ -12,3 +12,7 @@ manager.dashboard.form.label.average-cost: Costo promedio de proyectos
 manager.dashboard.form.label.deviation-cost: Desviación del costo de proyectos
 manager.dashboard.form.label.min-cost: Costo mínimo de proyectos
 manager.dashboard.form.label.max-cost: Costo máximo de proyectos
+manager.dashboard.form.label.statistics-currency = Divisa
+manager.dashboard.form.title.statistics = Estadísticas
+manager.dashboard.form.label.statistics-object-user-story = Historias de usuario
+manager.dashboard.form.label.statistics-object-project = Proyectos

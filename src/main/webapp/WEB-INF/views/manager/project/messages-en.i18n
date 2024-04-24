@@ -35,4 +35,7 @@ manager.project.form.button.delete = Delete
 
 
 manager.project.form.error.duplicated = This code is taken
+manager.project.form.error.negative-cost = Cost must be positive
+manager.project.form.error.userStories-empty = This project has no user stories
+manager.project.form.error.userStories-draft = User stories are in draft mode
 

@@ -1,0 +1,31 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2024 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+any.claim.list.title = Todas las reclamaciones
+any.claim.form.title = Detalles de la reclamación
+
+any.claim.list.label.code = Código
+any.claim.list.label.moment = Fecha
+any.claim.list.label.heading = Encabezado
+any.claim.list.label.draftmode = DraftMode
+
+any.claim.form.label.code = Código
+any.claim.form.label.moment = Fecha
+any.claim.form.label.heading = Encabezado
+any.claim.form.label.description = Descripción
+any.claim.form.label.department = Departamento
+any.claim.form.label.email = Email
+any.claim.form.label.link = Link
+any.claim.form.label.draftmode = DraftMode
+
+any.claim.form.button.publish = Publicar
+any.claim.form.label.confirmation = Confirme antes de publicar
+
+error.confirmation.required = Confirmación obligatoria

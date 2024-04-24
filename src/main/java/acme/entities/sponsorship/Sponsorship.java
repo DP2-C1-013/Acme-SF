@@ -17,6 +17,7 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.client.data.AbstractEntity;
@@ -38,7 +39,7 @@ public class Sponsorship extends AbstractEntity {
 	//Atributes ------------------------------------------------------------------------
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "{validation.sponsorship.code}")
+	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{3}", message = "{sponsorship.code.error}")
 	private String				code;
 
 	@NotNull
@@ -51,16 +52,17 @@ public class Sponsorship extends AbstractEntity {
 	private Date				duration;
 
 	@NotNull
-	@Valid
 	private Money				amount;
 
 	@NotNull
 	private SponsorshipType		type;
 
 	@Email
+	@Length(max = 255)
 	private String				email;
 
 	@URL
+	@Length(max = 255)
 	private String				link;
 
 	@NotNull
@@ -70,7 +72,7 @@ public class Sponsorship extends AbstractEntity {
 
 	@NotNull
 	@Valid
-	@ManyToOne()
+	@ManyToOne(optional = false)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Project				project;
 

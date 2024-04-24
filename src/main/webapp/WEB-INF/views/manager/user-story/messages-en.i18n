@@ -31,6 +31,10 @@ manager.userstory.form.button.publish = Publish
 manager.userstory.form.button.update = Update
 manager.userstory.form.button.delete = Delete
 
+manager.user-story.list.button.create-form = Create
+
+manager.user-story.list.button.create-user-stories-by-project-form = Create
+
 manager.userstory.form.error.not-positive-estimatedcost = The estimated cost must be positive
 
 

@@ -20,3 +20,12 @@ training-session.code.error = The code must have "TS-" followed by 1, 2 or 3 cap
 
 # project.code #################################################################
 project.code.error = The code must have 3 capital letters, a dash, then four numbers.
+
+# claim.code.error ###################################################################
+claim.code.error = The code must start with "C" followed by a dash and 4 numbers.
+
+# sponsorship.code.error ###################################################################
+sponsorship.code.error = The code must start one to three letters in capitals, followed by a dash and one to three numbers.
+
+# invoice.code.error ###################################################################
+invoice.code.error = The code must start by "IN-" followed by 4 numbers, a dash and finally another four numbers.

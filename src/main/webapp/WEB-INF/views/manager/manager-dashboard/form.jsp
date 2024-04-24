@@ -16,107 +16,94 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <h2>
-	<acme:message code="manager.dashboard.form.title.general-indicators"/>
+	<acme:message code="manager.dashboard.form.title.general-indicators" />
 </h2>
 
 <table class="table table-sm">
 	<tr>
-		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.number-must-user-stories"/>
-		</th>
-		<td>
-			<acme:print value="${numOfMustUserStories}"/>
-		</td>
+		<th scope="row"><acme:message
+				code="manager.dashboard.form.label.number-must-user-stories" /></th>
+		<td><acme:print value="${numOfMustUserStories}" /></td>
 	</tr>
 	<tr>
-		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.number-should-user-stories"/>
-		</th>
-		<td>
-			<acme:print value="${numOfShouldUserStories}"/>
-		</td>
+		<th scope="row"><acme:message
+				code="manager.dashboard.form.label.number-should-user-stories" /></th>
+		<td><acme:print value="${numOfShouldUserStories}" /></td>
 	</tr>
 	<tr>
-		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.number-could-user-stories"/>
-		</th>
-		<td>
-			<acme:print value="${numOfCouldUserStories}"/>
-		</td>
+		<th scope="row"><acme:message
+				code="manager.dashboard.form.label.number-could-user-stories" /></th>
+		<td><acme:print value="${numOfCouldUserStories}" /></td>
 	</tr>
 	<tr>
-		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.number-wont-user-stories"/>
-		</th>
-		<td>
-			<acme:print value="${numOfWontUserStories}"/>
-		</td>
-	</tr>	
-	<tr>
-		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.average-estimated-cost"/>
-		</th>
-		<td>
-			<acme:print value="${averageEstimatedCost}"/>
-		</td>
-	</tr>	
-	<tr>
-		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.deviation-estimated-cost"/>
-		</th>
-		<td>
-			<acme:print value="${deviationEstimatedCost}"/>
-		</td>
-	</tr>	
-	<tr>
-		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.min-estimated-cost"/>
-		</th>
-		<td>
-			<acme:print value="${minEstimatedCost}"/>
-		</td>
-	</tr>	
-	<tr>
-		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.max-estimated-cost"/>
-		</th>
-		<td>
-			<acme:print value="${maxEstimatedCost}"/>
-		</td>
-	</tr>	
-	<tr>
-		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.average-cost"/>
-		</th>
-		<td>
-			<acme:print value="${averageCost}"/>
-		</td>
-	</tr>	
-	<tr>
-		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.deviation-cost"/>
-		</th>
-		<td>
-			<acme:print value="${deviationCost}"/>
-		</td>
+		<th scope="row"><acme:message
+				code="manager.dashboard.form.label.number-wont-user-stories" /></th>
+		<td><acme:print value="${numOfWontUserStories}" /></td>
 	</tr>
-	<tr>
-		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.min-cost"/>
-		</th>
-		<td>
-			<acme:print value="${minCost}"/>
-		</td>
-	</tr>
-	<tr>
-		<th scope="row">
-			<acme:message code="manager.dashboard.form.label.max-cost"/>
-		</th>
-		<td>
-			<acme:print value="${maxCost}"/>
-		</td>
-	</tr>		
 </table>
 
-<acme:return/>
+<h2>
+	<acme:message code="manager.dashboard.form.title.statistics" />
+</h2>
+
+<h3>
+	<acme:message
+		code="manager.dashboard.form.label.statistics-object-user-story" />
+</h3>
+
+<table class="table table-sm">
+	<tr>
+		<th><acme:message
+				code="manager.dashboard.form.label.statistics-currency" /></th>
+		<th><acme:message
+				code="manager.dashboard.form.label.average-estimated-cost" /></th>
+		<th><acme:message
+				code="manager.dashboard.form.label.deviation-estimated-cost" /></th>
+		<th><acme:message
+				code="manager.dashboard.form.label.max-estimated-cost" /></th>
+		<th><acme:message
+				code="manager.dashboard.form.label.min-estimated-cost" /></th>
+	</tr>
+	<jstl:forEach var="entry" items="${userStoryEstimatedCostStatistics}">
+		<tr>
+			<td><acme:print value="${entry.key}" /></td>
+			<td><acme:print value="${entry.value.getAverage()}" /></td>
+			<td><acme:print value="${entry.value.getDeviation()}" /></td>
+			<td><acme:print value="${entry.value.getMaximum()}" /></td>
+			<td><acme:print value="${entry.value.getMinimum()}" /></td>
+		</tr>
+	</jstl:forEach>
+</table>
+
+<h3>
+	<acme:message
+		code="manager.dashboard.form.label.statistics-object-project" />
+</h3>
+
+<table class="table table-sm">
+	<tr>
+		<th><acme:message
+				code="manager.dashboard.form.label.statistics-currency" /></th>
+		<th><acme:message
+				code="manager.dashboard.form.label.average-cost" /></th>
+		<th><acme:message
+				code="manager.dashboard.form.label.deviation-cost" /></th>
+		<th><acme:message code="manager.dashboard.form.label.max-cost" />
+		</th>
+		<th><acme:message code="manager.dashboard.form.label.min-cost" />
+		</th>
+	</tr>
+
+	<jstl:forEach var="entry" items="${projectCostStatistics}">
+		<tr>
+			<td><acme:print value="${entry.key}" /></td>
+			<td><acme:print value="${entry.value.getAverage()}" /></td>
+			<td><acme:print value="${entry.value.getDeviation()}" /></td>
+			<td><acme:print value="${entry.value.getMaximum()}" /></td>
+			<td><acme:print value="${entry.value.getMinimum()}" /></td>
+		</tr>
+	</jstl:forEach>
+</table>
+
+<acme:return />
 
