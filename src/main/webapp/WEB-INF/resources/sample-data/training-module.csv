@@ -5,7 +5,7 @@ training-module-03,PQR-003,2020/03/05 14:45,Advanced Database Management,Advance
 training-module-04,LMN-004,0001/01/01 00:00,Machine Learning Fundamentals,Advanced,,http://example.com/ml-fundamentals,240,false,project-04,developer-01
 training-module-05,EFG-005,0001/01/02 00:00,Mobile App Development Basics,Basic,2020/05/18 13:10,,150,true,project-05,developer-01
 training-module-06,JKL-006,1000/01/01 14:30,वेब सुरक्षा की आधारभूत,Basic,2021/06/05 09:30,http://example.com/security-basics,120,true,project-06,developer-01
-training-module-07,OPQ-007,2022/07/28 17:45,पायथन का परिचय,Advanced,2022/07/29 17:30,http://example.com/python-intro,90,true,project-07,developer-01
+training-module-07,OPQ-007,2022/07/28 17:45,पायथन का परिचय,Advanced,2022/07/29 17:50,http://example.com/python-intro,90,true,project-07,developer-01
 training-module-08,RST-008,2022/07/29 00:00,モバイルアプリデザイン原則,Intermediate,2022/07/30 00:00,http://example.com/app-design,150,false,project-08,developer-01
 training-module-09,UVW-009,2021/09/18 14:30,先進的な機械学習,Basic,2021/09/25 09:15,http://example.com/advanced-ml,1,true,project-09,developer-01
 training-module-10,XYZ-010,2021/10/10 08:30,Cloud Computing Fundamentals,Basic,2021/10/15 12:45,http://example.com/cloud-fundamentals,2,false,project-10,developer-02

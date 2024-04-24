@@ -29,6 +29,7 @@ developer.training-module.form.label.project = Proyecto
 developer.training-module.form.label.draftMode = Modo borrador
 developer.training-module.form.button.update = Actualizar
 developer.training-module.form.button.delete = Borrar
+developer.training-module.form.button.publicar = Publicar
 
 developer.training-module.form.error.duplicated = Este código ya existe
 developer.training-module.form.error.invalid-update-moment = El momento de actualización debe estar al menos una semana después del momento de la creación.

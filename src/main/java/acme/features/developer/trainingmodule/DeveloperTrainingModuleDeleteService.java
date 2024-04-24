@@ -83,7 +83,7 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 	public void perform(final TrainingModule object) {
 		assert object != null;
 
-		Collection<TrainingSession> trainingSessions = this.repository.findManyTrainingSessionsByTMId(object.getId());
+		Collection<TrainingSession> trainingSessions = this.repository.findTrainingSessionsByTMId(object.getId());
 
 		this.repository.deleteAll(trainingSessions);
 		this.repository.delete(object);
