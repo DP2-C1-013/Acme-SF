@@ -1,0 +1,5 @@
+manager.projectuserstory.list.label.userstory = User story
+manager.projectuserstory.list.label.project = Project
+manager.project-user-story.list.title = Assignments
+manager.project-user-story.form.button.delete = Delete
+manager.project-user-story.form.title = Assignment 
