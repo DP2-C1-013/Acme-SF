@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
-import acme.entities.systemcurrency.SystemCurrency;
+import acme.entities.systemconfiguration.SystemConfiguration;
 
 @Repository
 public interface ManagerDashboardRepository extends AbstractRepository {
@@ -48,7 +48,7 @@ public interface ManagerDashboardRepository extends AbstractRepository {
 	@Query("SELECT MAX(p.cost.amount) FROM Project p WHERE p.manager.id = :id AND p.cost.currency = :currency")
 	Double maxCost(int id, String currency);
 
-	@Query("SELECT sc FROM SystemCurrency sc")
-	List<SystemCurrency> findSystemCurrencies();
+	@Query("SELECT sc FROM SystemConfiguration sc")
+	List<SystemConfiguration> findSystemCurrencies();
 
 }

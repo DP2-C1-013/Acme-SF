@@ -1,12 +1,16 @@
 
 package acme.features.developer.trainingmodule;
 
+import java.util.Collection;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.entities.project.Project;
 import acme.entities.trainingmodule.DifficultyLevel;
 import acme.entities.trainingmodule.TrainingModule;
 import acme.roles.Developer;
@@ -62,7 +66,13 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 		Dataset dataset;
 
 		choices = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
-		projects = SelectChoices.from(this.repository.findAllProjects(), "code", object.getProject());
+		if (object.getProject().isDraftMode())
+			projects = SelectChoices.from(this.repository.findAllProjectsDraftModeTrue(), "code", object.getProject());
+		else {
+			Collection<Project> project = List.of(object.getProject());
+			projects = SelectChoices.from(project, "code", object.getProject());
+
+		}
 
 		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "estimatedTotalTime", "draftMode");
 		dataset.put("difficultyLevels", choices);

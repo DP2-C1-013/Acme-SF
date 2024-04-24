@@ -18,8 +18,7 @@ import acme.entities.trainingmodule.TrainingModule;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingModuleCreateService extends AbstractService<Developer, TrainingModule> {
-
+public class DeveloperTrainingModuleUpdateService extends AbstractService<Developer, TrainingModule> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -32,7 +31,18 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	public void authorise() {
 		boolean status;
 
-		status = super.getRequest().getPrincipal().hasRole(Developer.class);
+		var request = super.getRequest();
+
+		int developerId;
+		int trainingModuleId;
+
+		trainingModuleId = request.getData("id", int.class);
+
+		developerId = request.getPrincipal().getActiveRoleId();
+
+		TrainingModule object = this.repository.findTrainingModuleById(trainingModuleId);
+
+		status = object != null && request.getPrincipal().hasRole(Developer.class) && object.getDeveloper().getId() == developerId && object.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -40,13 +50,11 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	@Override
 	public void load() {
 		TrainingModule object;
-		Developer developer;
+		int id;
 
-		developer = this.repository.findDeveloperById(this.getRequest().getPrincipal().getActiveRoleId());
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findTrainingModuleById(id);
 
-		object = new TrainingModule();
-		object.setDraftMode(true);
-		object.setDeveloper(developer);
 		super.getBuffer().addData(object);
 	}
 
@@ -68,12 +76,6 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
-
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			TrainingModule existing;
-			existing = this.repository.findTrainingModuleByCode(object.getCode());
-			super.state(existing == null, "code", "developer.training-module.form.error.duplicated");
-		}
 
 		if (!super.getBuffer().getErrors().hasErrors("updateMoment") && object.getUpdateMoment() != null) {
 			Date minimunDuration;
@@ -117,14 +119,14 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "estimatedTotalTime", "draftMode");
 		dataset.put("difficultyLevels", difficultyLevels);
 		dataset.put("projects", projects);
-		dataset.put("project", projects.getSelected().getKey());
+		dataset.put("project", projects.getSelected());
 
 		super.getResponse().addData(dataset);
 	}
 
 	@Override
 	public void onSuccess() {
-		if (super.getRequest().getMethod().equals("POST"))
+		if (super.getRequest().getMethod().equals("PUT"))
 			PrincipalHelper.handleUpdate();
 	}
 }
