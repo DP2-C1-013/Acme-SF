@@ -16,11 +16,16 @@ auditor.code-audit.list.label.project = Proyecto
 auditor.code-audit.list.label.draftMode = Modo borrador
 
 auditor.code-audit.form.title = Audición de código
-auditor.codeaudit.form.label.code = Código
-auditor.codeaudit.form.label.executionDate = Fecha de ejecución
-auditor.codeaudit.form.label.type = Tipo
-auditor.codeaudit.form.label.correctiveActions = Acciones correctivas
-auditor.codeaudit.form.label.mark = Nota
-auditor.codeaudit.form.label.link = Link
-auditor.codeaudit.form.label.project = Proyecto
-auditor.codeaudit.form.label.draftMode = Modo borrador   
+auditor.code-audit.form.label.code = Código
+auditor.code-audit.form.label.executionDate = Fecha de ejecución
+auditor.code-audit.form.label.type = Tipo
+auditor.code-audit.form.label.correctiveActions = Acciones correctivas
+auditor.code-audit.form.label.mark = Nota
+auditor.code-audit.form.label.link = Enlace
+auditor.code-audit.form.label.project = Proyecto
+auditor.code-audit.form.label.draftMode = Modo borrador
+
+auditor.code-audit.form.button.auditRecord = Audiciones de código
+
+auditor.code-audit.list.button.create = Crear
+auditor.code-audit.form.button.create = Crear

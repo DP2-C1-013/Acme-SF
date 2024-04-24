@@ -16,11 +16,16 @@ auditor.code-audit.list.label.project = Project
 auditor.code-audit.list.label.draftMode = draftMode   
 
 auditor.code-audit.form.title = Code audit
-auditor.codeaudit.form.label.code = Code
-auditor.codeaudit.form.label.executionDate = Execution date
-auditor.codeaudit.form.label.type = Type
-auditor.codeaudit.form.label.correctiveActions = Corrective actions
-auditor.codeaudit.form.label.mark = Mark
-auditor.codeaudit.form.label.link = Link
-auditor.codeaudit.form.label.project = Project
-auditor.codeaudit.form.label.draftMode = Draft mode
+auditor.code-audit.form.label.code = Code
+auditor.code-audit.form.label.executionDate = Execution date
+auditor.code-audit.form.label.type = Type
+auditor.code-audit.form.label.correctiveActions = Corrective actions
+auditor.code-audit.form.label.mark = Mark
+auditor.code-audit.form.label.link = Link
+auditor.code-audit.form.label.project = Project
+auditor.code-audit.form.label.draftMode = Draft mode
+
+auditor.code-audit.form.button.auditRecord = Audit records
+
+auditor.code-audit.list.button.create = Create
+auditor.code-audit.form.button.create = Create
