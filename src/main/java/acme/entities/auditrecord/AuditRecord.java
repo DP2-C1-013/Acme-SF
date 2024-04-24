@@ -11,6 +11,7 @@ import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.annotations.OnDelete;
@@ -39,10 +40,12 @@ public class AuditRecord extends AbstractEntity {
 	private String				code;
 
 	@NotNull
+	@PastOrPresent
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				startDate;
 
 	@NotNull
+	@PastOrPresent
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				endDate;
 

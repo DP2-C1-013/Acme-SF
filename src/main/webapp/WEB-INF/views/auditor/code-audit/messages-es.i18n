@@ -29,3 +29,7 @@ auditor.code-audit.form.button.auditRecord = Audiciones de código
 
 auditor.code-audit.list.button.create = Crear
 auditor.code-audit.form.button.create = Crear
+auditor.code-audit.form.button.delete = Borrar
+auditor.code-audit.form.button.update = Actualizar
+auditor.code-audit.form.button.publish = Publicar
+auditor.code-audit.form.button.audit-records = Registros de audiciones
