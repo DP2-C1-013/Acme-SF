@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import acme.client.repositories.AbstractRepository;
 import acme.entities.project.Project;
 import acme.entities.trainingmodule.TrainingModule;
+import acme.entities.trainingsession.TrainingSession;
 import acme.roles.Developer;
 
 @Repository
@@ -34,4 +35,7 @@ public interface DeveloperTrainingModuleRepository extends AbstractRepository {
 
 	@Query("SELECT DISTINCT p FROM Project p WHERE p.draftMode = true")
 	Collection<Project> findAllProjectsDraftModeTrue();
+
+	@Query("SELECT DISTINCT ts FROM TrainingSession ts WHERE ts.trainingModule.id = :id")
+	Collection<TrainingSession> findManyTrainingSessionsByTMId(int id);
 }
