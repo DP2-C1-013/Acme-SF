@@ -9,6 +9,7 @@ import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.auditrecord.AuditMark;
+import acme.entities.auditrecord.AuditRecord;
 import acme.entities.codeaudit.CodeAudit;
 import acme.entities.codeaudit.CodeAuditType;
 import acme.entities.project.Project;
@@ -94,16 +95,20 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 	@Override
 	public void unbind(final CodeAudit object) {
 		assert object != null;
+		AuditRecord auditRecord = new AuditRecord();
 
 		SelectChoices types;
+		SelectChoices marks;
 		SelectChoices projects;
 		Dataset dataset;
 
 		types = SelectChoices.from(CodeAuditType.class, object.getType());
+		marks = SelectChoices.from(AuditMark.class, auditRecord.getMark());
 		projects = SelectChoices.from(this.repository.findAllProjectsDraftModeTrue(), "code", object.getProject());
 
 		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveActions", "mark", "link", "draftMode");
 		dataset.put("types", types);
+		dataset.put("marks", marks);
 		dataset.put("projects", projects);
 		dataset.put("project", projects.getSelected().getKey());
 
