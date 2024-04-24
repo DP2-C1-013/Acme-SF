@@ -1,23 +1,21 @@
 
-package acme.features.authenticated.claim;
-
-import java.util.Collection;
+package acme.features.any.claim;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.accounts.Authenticated;
+import acme.client.data.accounts.Any;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.claim.Claim;
 
 @Service
-public class AuthenticatedClaimListService extends AbstractService<Authenticated, Claim> {
+public class AnyClaimShowService extends AbstractService<Any, Claim> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuthenticatedClaimRepository repository;
+	private AnyClaimRepository repository;
 
 	// AbstractService<Authenticated, Claim> ---------------------------
 
@@ -29,9 +27,13 @@ public class AuthenticatedClaimListService extends AbstractService<Authenticated
 
 	@Override
 	public void load() {
-		Collection<Claim> objects;
-		objects = this.repository.findAllClaims();
-		super.getBuffer().addData(objects);
+		Claim object;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneClaimById(id);
+
+		super.getBuffer().addData(object);
 	}
 
 	@Override
@@ -40,8 +42,8 @@ public class AuthenticatedClaimListService extends AbstractService<Authenticated
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "instantiationMoment", "heading", "draftMode");
-
+		dataset = super.unbind(object, "code", "instantiationMoment", "heading", "description", "department", "email", "link", "draftMode");
+		dataset.put("confirmation", false);
 		super.getResponse().addData(dataset);
 	}
 

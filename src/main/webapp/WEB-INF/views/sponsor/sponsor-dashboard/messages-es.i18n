@@ -1,0 +1,14 @@
+sponsor.sponsor-dashboard.form.title = Panel de información
+sponsor.dashboard.form.title.general-indicators = Indicaciones generales
+sponsor.dashboard.form.title.statistics = Estadísticas
+sponsor.dashboard.form.label.statistics-sponsorships = Patrocinio
+sponsor.dashboard.form.label.statistics-invoice = Facturas
+
+sponsor.dashboard.form.label.number-invoices-less-than-21-tax = Número de facturas con impuestos menores o iguales a 21.00%
+sponsor.dashboard.form.label.number-linked-sponsorships = Número de patrocinios con link
+
+sponsor.dashboard.form.label.statistics-currency = Divisa
+sponsor.dashboard.form.label.average-amount = Cantidad media
+sponsor.dashboard.form.label.deviation-amount = Desviación de la cantidad
+sponsor.dashboard.form.label.min-amount = Cantidad mínima
+sponsor.dashboard.form.label.max-amount = Cantidad máxima
