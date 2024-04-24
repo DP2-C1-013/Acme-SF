@@ -119,7 +119,7 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "estimatedTotalTime", "draftMode");
 		dataset.put("difficultyLevels", difficultyLevels);
 		dataset.put("projects", projects);
-		dataset.put("project", projects.getSelected().getKey());
+		dataset.put("project", projects.getSelected());
 
 		super.getResponse().addData(dataset);
 	}
