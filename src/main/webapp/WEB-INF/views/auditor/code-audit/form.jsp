@@ -26,6 +26,7 @@
 	<acme:input-checkbox code="auditor.codeaudit.form.label.draftMode" path="draftMode" readonly="true"/>
 	<jstl:choose>
 		<jstl:when test="${_command == 'show' && draftMode == false}">
+			<acme:button code="auditor.codeaudit.form.button.auditRecord" action="/auditor/audit-record/list?code-auditId=${id}"/>
 		</jstl:when>
 		<jstl:when test="${acme:anyOf(_command,'show|update|delete|publish') && draftMode == true}">
 			<acme:submit code="auditor.codeaudit.form.button.delete" action="/auditor/code-audit/delete"/>
