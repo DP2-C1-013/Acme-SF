@@ -22,7 +22,9 @@
 		path="instantiationMoment" width="25%" />
 	<acme:list-column code="any.claim.list.label.heading"
 		path="heading" width="25%" />
-	<acme:list-column code="any.claim.list.label.draftmode"
-		path="draftMode" width="10%" />
 
 </acme:list>
+
+<jstl:if test="${_command == 'list'}">
+	<acme:button code="any.claim.list.button.create" action="/any/claim/create"/>
+</jstl:if>
