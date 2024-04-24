@@ -29,3 +29,6 @@ any.claim.form.button.publish = Publish
 any.claim.form.label.confirmation = Confirm before publish
 
 error.confirmation.required = Confirmation required
+any.claim.form.error.duplicated-code = This code is taken
+any.claim.list.button.create = Create
+any.claim.form.button.create = Create
