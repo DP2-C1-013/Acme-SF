@@ -22,15 +22,7 @@ public class AnyClaimPublishService extends AbstractService<Any, Claim> {
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int claimId;
-		Claim claim;
-
-		claimId = super.getRequest().getData("id", int.class);
-		claim = this.repository.findOneClaimById(claimId);
-		status = claim != null && claim.isDraftMode();
-
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
@@ -66,7 +58,6 @@ public class AnyClaimPublishService extends AbstractService<Any, Claim> {
 	public void perform(final Claim object) {
 		assert object != null;
 
-		object.setDraftMode(false);
 		this.repository.save(object);
 	}
 
@@ -76,8 +67,7 @@ public class AnyClaimPublishService extends AbstractService<Any, Claim> {
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "instantiationMoment", "heading", "description", "department", "email", "link", "draftMode");
-		dataset.put("draftMode", object.isDraftMode());
+		dataset = super.unbind(object, "code", "instantiationMoment", "heading", "description", "department", "email", "link");
 		dataset.put("confirmation", false);
 
 		super.getResponse().addData(dataset);

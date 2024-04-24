@@ -18,8 +18,6 @@
 <acme:form readonly="false">
 	<acme:input-textbox code="any.claim.form.label.code"
 		path="code" />
-	<acme:input-moment code="any.claim.form.label.moment"
-		path="instantiationMoment" />
 	<acme:input-textbox code="any.claim.form.label.heading"
 		path="heading" />
 	<acme:input-textarea code="any.claim.form.label.description"
@@ -29,15 +27,13 @@
 	<acme:input-email code="any.claim.form.label.email"
 		path="email" />
 	<acme:input-url code="any.claim.form.label.link" path="link" />
-	<acme:input-checkbox code="any.claim.form.label.draftmode"
-		path="draftMode" readonly="true" />
+	
 	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|publish') && draftMode == true}">
+		<jstl:when test="${_command == 'create'}">
 			<acme:input-checkbox
 				code="any.claim.form.label.confirmation"
 				path="confirmation" />
-			<acme:submit code="any.claim.form.button.publish"
-				action="/any/claim/publish" />
+			<acme:submit code="any.claim.form.button.publish" action="/any/claim/create"/>
 		</jstl:when>
 	</jstl:choose>
 </acme:form>
