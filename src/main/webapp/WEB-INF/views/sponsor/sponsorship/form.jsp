@@ -24,7 +24,6 @@
 	<acme:input-email code="sponsor.sponsorship.form.label.email" path="email"/>
 	<acme:input-url code="sponsor.sponsorship.form.label.link" path="link"/>
 	<acme:input-select code="sponsor.sponsorship.form.label.project" path="project" choices="${projects}"/>
-	<acme:input-checkbox code="sponsor.sponsorship.form.label.draftMode" path="draftMode" readonly="true"/>
 	<jstl:choose>
 		<jstl:when test="${_command == 'show' && draftMode == false}">
 			<acme:button code="sponsor.sponsorship.form.button.invoices" action="/sponsor/invoice/list?sponsorshipId=${id}"/>

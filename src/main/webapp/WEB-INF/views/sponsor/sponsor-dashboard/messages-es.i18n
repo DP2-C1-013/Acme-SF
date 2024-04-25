@@ -1,7 +1,7 @@
 sponsor.sponsor-dashboard.form.title = Panel de información
 sponsor.dashboard.form.title.general-indicators = Indicaciones generales
 sponsor.dashboard.form.title.statistics = Estadísticas
-sponsor.dashboard.form.label.statistics-sponsorships = Patrocinio
+sponsor.dashboard.form.label.statistics-sponsorship = Patrocinio
 sponsor.dashboard.form.label.statistics-invoice = Facturas
 
 sponsor.dashboard.form.label.number-invoices-less-than-21-tax = Número de facturas con impuestos menores o iguales a 21.00%
