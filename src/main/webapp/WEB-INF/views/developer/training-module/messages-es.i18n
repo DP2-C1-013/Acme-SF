@@ -37,3 +37,4 @@ developer.training-module.form.error.invalid-difficulty-level = El nivel de difi
 developer.training-module.form.error.invalid-estimated-total-time = Debe ser mayor o igual que uno
 developer.training-module.form.error.invalid-project = Proyecto nulo o en modo borrador
 developer.training-module.delete.is-draftMode = No se puede borrar un módulo de formación publicado
+developer.training-module.form.error.training-session-not-published = Debes publicar las sesiones de formación de este módulo de formación antes de publicarlo
