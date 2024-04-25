@@ -62,6 +62,7 @@ master.menu.user-account.become-sponsor = Hazte patrocinador
 
 master.menu.any= Qualquiera
 master.menu.any.claim = Reclamaciones
+master.menu.any.sponsorship = Patrocinios
 
 # master.menu.authenticated ####################################################
 master.menu.authenticated = Autenticado

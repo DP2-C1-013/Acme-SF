@@ -20,7 +20,9 @@
 	<acme:menu-left>
 		<acme:menu-option code="master.menu.any">
 			<acme:menu-suboption code="master.menu.any.claim"
-				action="/any/claim/list" />>
+				action="/any/claim/list" />
+			<acme:menu-suboption code="master.menu.any.sponsorship"
+				action="/any/sponsorship/list-published" />
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
