@@ -62,7 +62,7 @@ public class ManagerProjectUserStoryShowService extends AbstractService<Manager,
 		userStories = this.repository.findManyUserStoriesByManagerId(managerId);
 		choicesUserStories = SelectChoices.from(userStories, "title", object.getUserStory());
 
-		projects = this.repository.findCreatedProjectsByManagerId(managerId);
+		projects = this.repository.findManyProjectsByManagerId(managerId);
 		choicesProjects = SelectChoices.from(projects, "code", object.getProject());
 
 		dataset = super.unbind(object, "userStory", "project");
