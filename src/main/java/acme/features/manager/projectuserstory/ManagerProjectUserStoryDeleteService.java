@@ -15,21 +15,26 @@ import acme.entities.userstory.UserStory;
 import acme.roles.Manager;
 
 @Service
-public class ManagerProjectUserStoryShowService extends AbstractService<Manager, ProjectUserStory> {
+public class ManagerProjectUserStoryDeleteService extends AbstractService<Manager, ProjectUserStory> {
+
+	// Internal state ---------------------------------------------------------
 
 	@Autowired
 	private ManagerProjectUserStoryRepository repository;
 
+	// AbstractService<Manager, ProjectUserStory> ---------------------------
+
 
 	@Override
 	public void authorise() {
-		int id = super.getRequest().getData("id", int.class);
 		boolean status;
-		Manager manager;
+		int projectUserStoryId;
 		ProjectUserStory projectUserStory;
+		Manager manager;
 
-		projectUserStory = this.repository.findOneProjectUserStoryById(id);
-		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+		projectUserStoryId = super.getRequest().getData("id", int.class);
+		projectUserStory = this.repository.findOneProjectUserStoryById(projectUserStoryId);
+		manager = projectUserStory == null ? null : projectUserStory.getProject().getManager();
 		status = projectUserStory != null && super.getRequest().getPrincipal().hasRole(manager);
 
 		super.getResponse().setAuthorised(status);
@@ -44,6 +49,25 @@ public class ManagerProjectUserStoryShowService extends AbstractService<Manager,
 		object = this.repository.findOneProjectUserStoryById(id);
 
 		super.getBuffer().addData(object);
+	}
+
+	@Override
+	public void bind(final ProjectUserStory object) {
+		assert object != null;
+
+		super.bind(object, "userStory", "project");
+	}
+
+	@Override
+	public void validate(final ProjectUserStory object) {
+		assert object != null;
+	}
+
+	@Override
+	public void perform(final ProjectUserStory object) {
+		assert object != null;
+
+		this.repository.delete(object);
 	}
 
 	@Override
@@ -62,7 +86,7 @@ public class ManagerProjectUserStoryShowService extends AbstractService<Manager,
 		userStories = this.repository.findManyUserStoriesByManagerId(managerId);
 		choicesUserStories = SelectChoices.from(userStories, "title", object.getUserStory());
 
-		projects = this.repository.findManyProjectsByManagerId(managerId);
+		projects = this.repository.findCreatedProjectsByManagerId(managerId);
 		choicesProjects = SelectChoices.from(projects, "code", object.getProject());
 
 		dataset = super.unbind(object, "userStory", "project");

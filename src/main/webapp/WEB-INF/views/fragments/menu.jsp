@@ -20,7 +20,9 @@
 	<acme:menu-left>
 		<acme:menu-option code="master.menu.any">
 			<acme:menu-suboption code="master.menu.any.claim"
-				action="/any/claim/list" />>
+				action="/any/claim/list" />
+			<acme:menu-suboption code="master.menu.any.sponsorship"
+				action="/any/sponsorship/list-published" />
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
@@ -133,6 +135,10 @@
 				action="/authenticated/manager/create" access="!hasRole('Manager')" />
 			<acme:menu-suboption code="master.menu.user-account.manager"
 				action="/authenticated/manager/update" access="hasRole('Manager')" />
+			<acme:menu-suboption code="master.menu.user-account.become-sponsor"
+				action="/authenticated/sponsor/create" access="!hasRole('Sponsor')" />
+			<acme:menu-suboption code="master.menu.user-account.sponsor"
+				action="/authenticated/sponsor/update" access="hasRole('Sponsor')" />
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.sign-out"

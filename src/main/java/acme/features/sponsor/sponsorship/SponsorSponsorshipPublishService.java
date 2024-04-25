@@ -2,7 +2,9 @@
 package acme.features.sponsor.sponsorship;
 
 import java.time.temporal.ChronoUnit;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -79,10 +81,21 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 	public void validate(final Sponsorship object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("duration")) {
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Sponsorship existing;
+			existing = this.repository.findOneSponsorshipByCode(object.getCode());
+			super.state(existing == null || existing.getId() == object.getId(), "duration", "sponsor.sponsorship.form.error.duplicated-code");
+		}
+
+		if (!(super.getBuffer().getErrors().hasErrors("duration") || super.getBuffer().getErrors().hasErrors("moment"))) {
 			Date minimunDuration;
 			minimunDuration = MomentHelper.deltaFromMoment(object.getMoment(), 30, ChronoUnit.DAYS);
 			super.state(MomentHelper.isAfterOrEqual(object.getDuration(), minimunDuration), "duration", "sponsor.sponsorship.form.error.invalid-duration");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("project")) {
+			Project existingProject = this.repository.findOneProjectByCode(object.getProject().getCode());
+			super.state(existingProject != null && !existingProject.isDraftMode(), "project", "sponsor.sponsorship.form.error.invalid-project");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("amount")) {
@@ -93,12 +106,14 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 			Double sumAmountInvoices;
 			Double amountSponsorship = this.getRequest().getData("amount", Money.class).getAmount();
 			sumAmountInvoices = this.repository.findSumAmountInvoicesBySponsorshipId(this.getRequest().getData("id", int.class));
-			super.state(sumAmountInvoices == amountSponsorship, "*", "sponsor.sponsorship.form.error.invoice-sum-not-valid");
-		}
+			super.state(sumAmountInvoices.equals(amountSponsorship), "*", "sponsor.sponsorship.form.error.invoice-sum-not-valid");
+			super.state(sumAmountInvoices != -1, "*", "sponsor.sponsorship.form.error.no-invoices-published-for-this-sponsorship");
 
-		if (!super.getBuffer().getErrors().hasErrors("project")) {
-			Project existingProject = this.repository.findOneProjectByCode(object.getProject().getCode());
-			super.state(existingProject != null && existingProject.isDraftMode() && object.getProject().isDraftMode(), "project", "sponsor.sponsorship.form.error.invalid-project");
+			List<String> currencies = Arrays.asList(this.repository.findSystemCurrencies().get(0).getAcceptedCurrencies().split(","));
+			super.state(currencies.stream().anyMatch(c -> c.equals(object.getAmount().getCurrency())), "amount", "sponsor.sponsorship.form.error.invalid-currency");
+
+			List<String> invoiceCurrencies = (List<String>) this.repository.findManyCurrenciesInInvoiceBySponsorshipId(object.getId());
+			super.state(invoiceCurrencies.stream().allMatch(invoiceCurrency -> invoiceCurrency.equals(object.getAmount().getCurrency())), "amount", "sponsor.sponsorship.form.error.currency-does-not-match-with-invoices");
 		}
 
 	}
@@ -121,7 +136,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		Dataset dataset;
 
 		types = SelectChoices.from(SponsorshipType.class, object.getType());
-		projects = SelectChoices.from(this.repository.findAllProjectsDraftModeTrue(), "code", object.getProject());
+		projects = SelectChoices.from(this.repository.findAllProjectsDraftModeFalse(), "code", object.getProject());
 
 		dataset = super.unbind(object, "code", "moment", "duration", "amount", "type", "email", "link", "draftMode");
 		dataset.put("types", types);

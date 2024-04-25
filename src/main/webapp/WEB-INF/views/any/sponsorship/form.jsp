@@ -16,11 +16,12 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form readonly="true">
-	<acme:input-textbox code="authenticated.project.form.label.code" path="code"/>
-	<acme:input-textbox code="authenticated.project.form.label.title" path="title"/>
-	<acme:input-textarea code="authenticated.project.form.label.abstractText" path="abstractText"/>
-	<acme:input-money code="authenticated.project.form.label.cost" path="cost"/>
-	<acme:input-url code="authenticated.project.form.label.link" path="link"/>
-	<acme:input-textbox code="authenticated.project.form.label.manager" path="manager"/>
-	<acme:input-checkbox code="authenticated.project.form.label.hasFatalErrors" path="hasFatalErrors"/>
+	<acme:input-textbox code="any.sponsorship.form.label.code" path="code" placeholder="XXX-000"/>
+	<acme:input-moment code="any.sponsorship.form.label.moment" path="moment"/>
+	<acme:input-moment code="any.sponsorship.form.label.duration" path="duration"/>
+	<acme:input-money code="any.sponsorship.form.label.amount" path="amount"/>
+	<acme:input-textbox code="any.sponsorship.form.label.type" path="type"/>
+	<acme:input-email code="any.sponsorship.form.label.email" path="email"/>
+	<acme:input-url code="any.sponsorship.form.label.link" path="link"/>
+	<acme:input-textbox code="any.sponsorship.form.label.project" path="project"/>
 </acme:form>

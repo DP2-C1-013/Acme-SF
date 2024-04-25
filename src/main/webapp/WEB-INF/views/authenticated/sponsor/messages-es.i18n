@@ -1,0 +1,7 @@
+authenticated.manager.form.title = Datos de manager
+
+authenticated.manager.form.label.degree = Beneficios
+authenticated.manager.form.label.link = Link
+
+authenticated.manager.form.button.create = Crear
+authenticated.manager.form.button.update = Actualizar

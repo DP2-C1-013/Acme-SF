@@ -22,7 +22,6 @@
 	<acme:input-textarea code="manager.userstory.form.label.acceptancecriteria" path="acceptanceCriteria"/>
 	<acme:input-select code="manager.userstory.form.label.priority" path="priority" choices="${priorities}"/>
 	<acme:input-url code="manager.userstory.form.label.link" path="link"/>
-	<acme:input-checkbox code="manager.userstory.form.label.draftmode" path="draftMode" readonly="true"/>
 	
 	<jstl:choose>
 		<jstl:when test="${_command == 'create'}">

@@ -1,7 +1,7 @@
 <%--
 - form.jsp
 -
-- Copyright (C) 2012-2023 Rafael Corchuelo.
+- Copyright (C) 2012-2024 Rafael Corchuelo.
 -
 - In keeping with the traditional purpose of furthering education and research, it is
 - the policy of the copyright owner to permit non-commercial use and redistribution of
@@ -10,15 +10,16 @@
 - they accept any liabilities with respect to them.
 --%>
 
-<%@page language="java"%>
+<%@page%>
 
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
-<acme:list>
-	<acme:list-column code="manager.projectuserstory.list.label.project" path="project"/>
-	<acme:list-column code="manager.projectuserstory.list.label.userstory" path="userStory"/>
-</acme:list>
-
-<acme:button code="manager.project-user-story.list.button.create"
-	action="/manager/project-user-story/create" />
+<acme:form>
+	<acme:input-textbox code="authenticated.sponsor.form.label.degree" path="benefits"/>
+	<acme:input-url code="authenticated.sponsor.form.label.link" path="link"/>
+	
+	<acme:submit test="${_command == 'create'}" code="authenticated.sponsor.form.button.create" action="/authenticated/sponsor/create"/>
+	<acme:submit test="${_command == 'update'}" code="authenticated.sponsor.form.button.update" action="/authenticated/sponsor/update"/>
+	
+</acme:form>

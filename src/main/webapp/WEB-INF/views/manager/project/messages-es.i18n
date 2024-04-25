@@ -33,4 +33,4 @@ manager.project.form.button.delete = Eliminar
 manager.project.form.button.userStories = Historias de usuario
 manager.project.form.error.duplicated = Existe un proyecto con este código
 manager.project.form.error.negative-cost = El coste tiene que ser positivo
-
+manager.project.form.error.has-fatal-errors = El proyecto tiene errores graves

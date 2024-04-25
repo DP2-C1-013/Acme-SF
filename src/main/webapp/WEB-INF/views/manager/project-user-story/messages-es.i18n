@@ -3,3 +3,12 @@ manager.projectuserstory.list.label.project = Proyecto
 manager.project-user-story.list.title = Asignaciones
 manager.project-user-story.form.button.delete = Eliminar
 manager.project-user-story.form.title = Asignación
+
+manager.assignation.form.error.existing-project-assignation = Ya existe una asignación entre este proyecto y esta historia de usuario
+manager.assignation.form.error.published-project = No puedes asignar una historia de usuario sin publicar a un proyecto publicado
+
+manager.project-user-stories.form.label.projects = Proyectos
+manager.project-user-stories.form.label.userstories = Historias de usuario
+
+manager.project-user-story.list.button.create = Crear
+manager.project-user-stories.form.button.create = Crear
