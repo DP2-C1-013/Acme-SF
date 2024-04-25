@@ -24,6 +24,9 @@ public interface DeveloperTrainingModuleRepository extends AbstractRepository {
 	@Query("SELECT DISTINCT p FROM Project p")
 	Collection<Project> findAllProjects();
 
+	@Query("select p from Project p where p.id = :projectId")
+	Project findProjectById(int projectId);
+
 	@Query("SELECT d FROM Developer d where d.id = :developerId")
 	Developer findDeveloperById(int developerId);
 
@@ -36,6 +39,10 @@ public interface DeveloperTrainingModuleRepository extends AbstractRepository {
 	@Query("SELECT DISTINCT p FROM Project p WHERE p.draftMode = true")
 	Collection<Project> findAllProjectsDraftModeTrue();
 
-	@Query("SELECT DISTINCT ts FROM TrainingSession ts WHERE ts.trainingModule.id = :id")
-	Collection<TrainingSession> findManyTrainingSessionsByTMId(int id);
+	@Query("SELECT ts FROM TrainingSession ts WHERE ts.trainingModule.id = :id")
+	Collection<TrainingSession> findTrainingSessionsByTMId(int id);
+
+	@Query("select count(ts) from TrainingSession ts where ts.trainingModule.id = :id and ts.draftMode = false")
+	Integer findNumTSPublishedForTMById(int id);
+
 }
