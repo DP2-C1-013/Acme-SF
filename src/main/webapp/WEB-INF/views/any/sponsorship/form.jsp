@@ -20,8 +20,8 @@
 	<acme:input-moment code="any.sponsorship.form.label.moment" path="moment"/>
 	<acme:input-moment code="any.sponsorship.form.label.duration" path="duration"/>
 	<acme:input-money code="any.sponsorship.form.label.amount" path="amount"/>
-	<acme:input-select code="any.sponsorship.form.label.type" path="type" choices="${types}"/>
+	<acme:input-textbox code="any.sponsorship.form.label.type" path="type"/>
 	<acme:input-email code="any.sponsorship.form.label.email" path="email"/>
 	<acme:input-url code="any.sponsorship.form.label.link" path="link"/>
-	<acme:input-select code="any.sponsorship.form.label.project" path="project" choices="${projects}"/>
+	<acme:input-textbox code="any.sponsorship.form.label.project" path="project"/>
 </acme:form>
