@@ -71,11 +71,6 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 	@Override
 	public void validate(final Sponsorship object) {
 		assert object != null;
-
-		boolean status;
-		status = object.isDraftMode();
-
-		super.state(status, "*", "sponsor.sponsorship.delete.is-draftMode");
 	}
 
 	@Override
@@ -97,7 +92,7 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 		Dataset dataset;
 
 		types = SelectChoices.from(SponsorshipType.class, object.getType());
-		projects = SelectChoices.from(this.repository.findAllProjectsDraftModeTrue(), "code", object.getProject());
+		projects = SelectChoices.from(this.repository.findAllProjectsDraftModeFalse(), "code", object.getProject());
 
 		dataset = super.unbind(object, "code", "moment", "duration", "amount", "type", "email", "link", "draftMode");
 		dataset.put("types", types);

@@ -53,7 +53,7 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 	public void bind(final Project object) {
 		assert object != null;
 
-		super.bind(object, "code", "title", "abstractText", "hasFatalErrors", "cost", "link", "draftMode");
+		super.bind(object, "code", "title", "abstractText", "hasFatalErrors", "cost", "link");
 	}
 
 	@Override
@@ -69,6 +69,9 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 
 		if (!super.getBuffer().getErrors().hasErrors("cost"))
 			super.state(object.getCost().getAmount() > 0, "cost", "manager.project.form.error.negative-cost");
+
+		if (!super.getBuffer().getErrors().hasErrors("hasFatalErrors"))
+			super.state(object.isHasFatalErrors() == false, "hasFatalErrors", "manager.project.form.error.has-fatal-errors");
 
 		int projectId = super.getRequest().getData("id", int.class);
 		Collection<UserStory> userStories = this.repository.findManyUserStoriesByProjectId(projectId);

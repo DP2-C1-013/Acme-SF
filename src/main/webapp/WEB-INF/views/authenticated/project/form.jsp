@@ -23,5 +23,4 @@
 	<acme:input-url code="authenticated.project.form.label.link" path="link"/>
 	<acme:input-textbox code="authenticated.project.form.label.manager" path="manager"/>
 	<acme:input-checkbox code="authenticated.project.form.label.hasFatalErrors" path="hasFatalErrors"/>
-	<acme:input-checkbox code="authenticated.project.form.label.draftmode" path="draftMode" />
 </acme:form>

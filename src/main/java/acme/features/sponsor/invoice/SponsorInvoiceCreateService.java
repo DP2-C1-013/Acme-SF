@@ -2,7 +2,9 @@
 package acme.features.sponsor.invoice;
 
 import java.time.temporal.ChronoUnit;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -63,13 +65,15 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 	public void validate(final Invoice object) {
 		assert object != null;
 
+		Sponsorship existingSponsorship = this.repository.findOneSponsorshipById(this.getRequest().getData("sponsorshipId", int.class));
+
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Invoice existing;
 			existing = this.repository.findOneInvoiceByCode(object.getCode());
-			super.state(existing == null, "code", "sponsor.invoice.form.error.duplicated");
+			super.state(existing == null, "code", "sponsor.invoice.form.error.duplicated-code");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("dueDate")) {
+		if (!(super.getBuffer().getErrors().hasErrors("dueDate") || super.getBuffer().getErrors().hasErrors("registrationTime"))) {
 			Date minimunDuration;
 			minimunDuration = MomentHelper.deltaFromMoment(object.getRegistrationTime(), 30, ChronoUnit.DAYS);
 			super.state(MomentHelper.isAfterOrEqual(object.getDueDate(), minimunDuration), "dueDate", "sponsor.invoice.form.error.invalid-due-date");
@@ -84,12 +88,16 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 			double totalCost = this.repository.findSumTotalAmountBySponsorshipId(sponsorshipId);
 			double AmountToAdd = object.totalAmount().getAmount();
 			super.state(totalCost + AmountToAdd <= object.getSponsorship().getAmount().getAmount(), "quantity", "sponsor.invoice.form.error.quantity-too-high");
+
+			List<String> currencies = Arrays.asList(this.repository.findSystemCurrencies().get(0).getAcceptedCurrencies().split(","));
+			super.state(currencies.stream().anyMatch(c -> c.equals(object.getQuantity().getCurrency())), "quantity", "sponsor.invoice.form.error.invalid-currency");
+
+			String sponsorshipCurrency = existingSponsorship.getAmount().getCurrency();
+			super.state(sponsorshipCurrency.equals(object.getQuantity().getCurrency()), "quantity", "sponsor.invoice.form.error.currency-does-not-match");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("sponsorship")) {
-			Sponsorship existingSponsorship = this.repository.findOneSponsorshipById(this.getRequest().getData("sponsorshipId", int.class));
-			super.state(existingSponsorship != null && existingSponsorship.isDraftMode() && existingSponsorship.getProject().isDraftMode(), "sponsorship", "sponsor.sponsorship.form.error.sponsorship-draft-mode-is-set-to-false");
-		}
+		if (!super.getBuffer().getErrors().hasErrors("sponsorship"))
+			super.state(existingSponsorship != null && existingSponsorship.isDraftMode() && !existingSponsorship.getProject().isDraftMode(), "sponsorship", "sponsor.sponsorship.form.error.sponsorship-draft-mode-is-set-to-false");
 	}
 
 	@Override

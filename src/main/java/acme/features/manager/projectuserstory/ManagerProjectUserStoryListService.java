@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.entities.project.Project;
 import acme.entities.projectuserstory.ProjectUserStory;
+import acme.entities.userstory.UserStory;
 import acme.roles.Manager;
 
 @Service
@@ -46,7 +48,20 @@ public class ManagerProjectUserStoryListService extends AbstractService<Manager,
 	public void unbind(final ProjectUserStory object) {
 		assert object != null;
 
-		Dataset dataset = super.unbind(object, "project", "userStory");
+		assert object != null;
+
+		Project project;
+		UserStory userStory;
+		int projectUserStoryId;
+		Dataset dataset;
+
+		projectUserStoryId = object.getId();
+		project = this.repository.findOneProjectByProjectUserStoryId(projectUserStoryId);
+		userStory = this.repository.findOneUserStoryByProjectUserStoryId(projectUserStoryId);
+
+		dataset = super.unbind(object, "userStory", "project");
+		dataset.put("project", project.getCode());
+		dataset.put("userStory", userStory.getTitle());
 
 		super.getResponse().addData(dataset);
 	}

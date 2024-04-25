@@ -2,6 +2,7 @@
 package acme.features.sponsor.invoice;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import acme.client.repositories.AbstractRepository;
 import acme.entities.invoice.Invoice;
 import acme.entities.sponsorship.Sponsorship;
+import acme.entities.systemconfiguration.SystemConfiguration;
 
 @Repository
 public interface SponsorInvoiceRepository extends AbstractRepository {
@@ -30,4 +32,7 @@ public interface SponsorInvoiceRepository extends AbstractRepository {
 
 	@Query("SELECT COALESCE(SUM((i.quantity.amount + i.tax * i.quantity.amount)), 0.) FROM Invoice i WHERE i.sponsorship.id = :id and i.draftMode = false")
 	Double findSumTotalAmountBySponsorshipId(int id);
+
+	@Query("SELECT sc FROM SystemConfiguration sc")
+	List<SystemConfiguration> findSystemCurrencies();
 }

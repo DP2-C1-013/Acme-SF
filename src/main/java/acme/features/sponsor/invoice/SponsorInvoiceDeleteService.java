@@ -1,18 +1,12 @@
 
 package acme.features.sponsor.invoice;
 
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractService;
 import acme.entities.invoice.Invoice;
-import acme.entities.sponsorship.Sponsorship;
-import acme.entities.sponsorship.SponsorshipType;
 import acme.roles.Sponsor;
 
 @Service
@@ -68,28 +62,6 @@ public class SponsorInvoiceDeleteService extends AbstractService<Sponsor, Invoic
 	@Override
 	public void validate(final Invoice object) {
 		assert object != null;
-
-		if (!super.getBuffer().getErrors().hasErrors("dueDate")) {
-			Date minimunDuration;
-			minimunDuration = MomentHelper.deltaFromMoment(object.getRegistrationTime(), 30, ChronoUnit.DAYS);
-			super.state(MomentHelper.isAfterOrEqual(object.getDueDate(), minimunDuration), "dueDate", "sponsor.invoice.form.error.invalid-due-date");
-		}
-
-		if (!super.getBuffer().getErrors().hasErrors("quantity")) {
-			Double amount = object.getQuantity().getAmount();
-			SponsorshipType type = object.getSponsorship().getType();
-			super.state(amount > 0. && type.equals(SponsorshipType.Financial) || amount.equals(0.) && type.equals(SponsorshipType.In_kind), "quantity", "sponsor.invoice.form.error.invalid-quantity");
-
-			int sponsorshipId = object.getSponsorship().getId();
-			double totalCost = this.repository.findSumTotalAmountBySponsorshipId(sponsorshipId);
-			double AmountToAdd = object.totalAmount().getAmount();
-			super.state(totalCost + AmountToAdd <= object.getSponsorship().getAmount().getAmount(), "quantity", "sponsor.invoice.form.error.quantity-too-high");
-		}
-
-		if (!super.getBuffer().getErrors().hasErrors("sponsorship")) {
-			Sponsorship existingSponsorship = object.getSponsorship();
-			super.state(existingSponsorship != null && existingSponsorship.isDraftMode() && existingSponsorship.getProject().isDraftMode(), "sponsorship", "sponsor.sponsorship.form.error.sponsorship-draft-mode-is-set-to-false");
-		}
 	}
 
 	@Override
