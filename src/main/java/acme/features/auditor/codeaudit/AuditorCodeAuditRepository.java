@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import acme.client.repositories.AbstractRepository;
 import acme.entities.auditrecord.AuditMark;
 import acme.entities.codeaudit.CodeAudit;
+import acme.entities.invoice.Invoice;
 import acme.entities.project.Project;
 import acme.roles.Auditor;
 
@@ -34,10 +35,13 @@ public interface AuditorCodeAuditRepository extends AbstractRepository {
 	@Query("SELECT c FROM CodeAudit c WHERE c.code = :code")
 	CodeAudit findOneCodeAuditByCode(String code);
 
-	@Query("SELECT DISTINCT p FROM Project p WHERE p.draftMode = true")
-	Collection<Project> findAllProjectsDraftModeTrue();
+	@Query("SELECT DISTINCT p FROM Project p WHERE p.draftMode = false")
+	Collection<Project> findAllProjectsDraftModeFalse();
 
-	@Query("SELECT ar.mark FROM AuditRecord ar WHERE ar.codeAudit = :codeAuditId GROUP BY ar.mark ORDER BY COUNT(ar.mark) DESC")
+	@Query("SELECT ar.mark FROM AuditRecord ar WHERE ar.codeAudit.id = :codeAuditId GROUP BY ar.mark ORDER BY COUNT(ar.mark) DESC")
 	List<AuditMark> findMarkModeByCodeAudit(int codeAuditId);
+
+	@Query("SELECT DISTINCT ar FROM AuditRecord ar WHERE ar.codeAudit.id = :id")
+	Collection<Invoice> findManyAuditRecordsByCodeAuditId(int id);
 
 }

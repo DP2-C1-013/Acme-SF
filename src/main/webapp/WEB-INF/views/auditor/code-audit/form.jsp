@@ -20,7 +20,7 @@
 	<acme:input-moment code="auditor.code-audit.form.label.executionDate" path="executionDate"/>	
 	<acme:input-select code="auditor.code-audit.form.label.type" path="type" choices="${types}"/>
 	<acme:input-textbox code="auditor.code-audit.form.label.correctiveActions" path="correctiveActions"/>
-	<acme:input-select code="auditor.code-audit.form.label.mark" path="mark" choices = "${marks}" readonly = "true"/>
+	<acme:input-textbox code="auditor.code-audit.form.label.mark" path="mark" readonly = "true"/>
 	<acme:input-url code="auditor.code-audit.form.label.link" path="link"/>
 	<acme:input-select code="auditor.code-audit.form.label.project" path="project" choices="${projects}"/>
 	<jstl:choose>

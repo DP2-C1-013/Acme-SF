@@ -66,7 +66,7 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 		if (project != null)
 			project = this.repository.findOneProjectByCode(project.getCode());
 
-		super.bind(object, "code", "moment", "duration", "amount", "type", "email", "link");
+		super.bind(object, "code", "executionDate", "type", "correctiveActions", "mark", "link");
 		object.setProject(project);
 		object.setDraftMode(true);
 	}
@@ -87,7 +87,7 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 
 		if (!super.getBuffer().getErrors().hasErrors("project")) {
 			Project existingProject = this.repository.findOneProjectByCode(object.getProject().getCode());
-			super.state(existingProject != null && existingProject.isDraftMode() && object.getProject().isDraftMode(), "project", "sponsor.codeAudit.form.error.invalid-project");
+			super.state(existingProject != null && !existingProject.isDraftMode() && !object.getProject().isDraftMode(), "project", "sponsor.codeAudit.form.error.invalid-project");
 		}
 
 	}
@@ -108,9 +108,9 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 		Dataset dataset;
 
 		types = SelectChoices.from(CodeAuditType.class, object.getType());
-		projects = SelectChoices.from(this.repository.findAllProjectsDraftModeTrue(), "code", object.getProject());
+		projects = SelectChoices.from(this.repository.findAllProjectsDraftModeFalse(), "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "moment", "duration", "amount", "type", "email", "link", "draftMode");
+		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveActions", "mark", "link", "draftMode");
 		dataset.put("types", types);
 		dataset.put("projects", projects);
 		dataset.put("project", projects.getSelected());

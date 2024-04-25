@@ -1,6 +1,8 @@
 
 package acme.features.auditor.codeaudit;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -76,18 +78,21 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("mark")) {
-			//List<AuditMark> marks = this.repository.findMarkModeByCodeAudit(object.getId());
-			//AuditMark mode = marks.get(0);
+			List<AuditMark> marks = this.repository.findMarkModeByCodeAudit(object.getId());
+			super.state(marks.size() > 0, "mark", "auditor.code-audit.form.error.code-audit-has-no-audit-records");
+			if (marks.size() > 0) {
+				AuditMark mode = marks.get(0);
+				AuditMark mark = mode;
+				super.state(mark.equals(AuditMark.A_PLUS) || mark.equals(AuditMark.A) || mark.equals(AuditMark.B) || mark.equals(AuditMark.C), "mark", "auditor.code-audit.form.error.invalid-mark");
+			}
 
-			//AuditMark mark = mode;
+			//AuditMark mark = object.getMark();
 			//super.state(mark.equals(AuditMark.A_PLUS) || mark.equals(AuditMark.A) || mark.equals(AuditMark.B) || mark.equals(AuditMark.C), "mark", "auditor.code-audit.form.error.invalid-mark");
-			AuditMark mark = object.getMark();
-			super.state(mark == null || mark.equals(AuditMark.A_PLUS) || mark.equals(AuditMark.A) || mark.equals(AuditMark.B) || mark.equals(AuditMark.C), "mark", "auditor.code-audit.form.error.invalid-mark");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("project")) {
 			Project existingProject = this.repository.findOneProjectByCode(object.getProject().getCode());
-			super.state(existingProject != null && existingProject.isDraftMode() && object.getProject().isDraftMode(), "project", "sponsor.sponsorship.form.error.invalid-project");
+			super.state(existingProject != null && !existingProject.isDraftMode() && !object.getProject().isDraftMode(), "project", "auditor.code-audit.form.error.invalid-project");
 		}
 
 	}
@@ -97,6 +102,9 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		assert object != null;
 
 		object.setDraftMode(false);
+		List<AuditMark> marks = this.repository.findMarkModeByCodeAudit(object.getId());
+		AuditMark mode = marks.get(0);
+		object.setMark(mode);
 
 		this.repository.save(object);
 	}
@@ -110,7 +118,7 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		Dataset dataset;
 
 		types = SelectChoices.from(CodeAuditType.class, object.getType());
-		projects = SelectChoices.from(this.repository.findAllProjectsDraftModeTrue(), "code", object.getProject());
+		projects = SelectChoices.from(this.repository.findAllProjectsDraftModeFalse(), "code", object.getProject());
 
 		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveActions", "mark", "link", "draftMode");
 		dataset.put("types", types);
