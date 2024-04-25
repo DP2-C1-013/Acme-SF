@@ -30,11 +30,20 @@ public interface ManagerProjectUserStoryRepository extends AbstractRepository {
 	@Query("SELECT pus FROM ProjectUserStory pus WHERE pus.userStory.id = :id")
 	ProjectUserStory findOneProjectUserStoryByUserStoryId(int id);
 
+	@Query("SELECT pus FROM ProjectUserStory pus WHERE pus.project.id = :projectId AND pus.userStory.id = :userStoryId")
+	ProjectUserStory findOneProjectUserStoryByProjectIdAndUserStoryId(int projectId, int userStoryId);
+
+	@Query("SELECT p FROM Project p WHERE p.manager.id = :id AND p.draftMode = true")
+	Collection<Project> findCreatedProjectsByManagerId(int id);
+
 	@Query("SELECT us FROM UserStory us WHERE us.manager.userAccount.id = :id")
 	Collection<UserStory> findManyUserStoriesByManagerId(int id);
 
 	@Query("SELECT pus FROM ProjectUserStory pus WHERE pus.id = :id")
 	Collection<ProjectUserStory> findProjectUserStoriesById(int id);
+
+	@Query("SELECT pus FROM ProjectUserStory pus WHERE pus.project.id = :id")
+	Collection<ProjectUserStory> findProjectUserStoriesByProjectId(int id);
 
 	@Query("SELECT pus FROM UserStory us LEFT JOIN ProjectUserStory pus ON pus.userStory.id = us.id WHERE us.manager.id = :id")
 	Collection<ProjectUserStory> findProjectUserStoriesByManagerId(int id);
