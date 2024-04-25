@@ -1,0 +1,14 @@
+manager.projectuserstory.list.label.userstory = User story
+manager.projectuserstory.list.label.project = Project
+manager.project-user-story.list.title = Assignments
+manager.project-user-story.form.button.delete = Delete
+manager.project-user-story.form.title = Assignment 
+
+manager.project-user-stories.form.label.projects = Projects
+manager.project-user-stories.form.label.userstories = User stories
+
+manager.project-user-story.list.button.create = Create
+manager.project-user-stories.form.button.create = Create
+
+manager.projectuserstory.form.error.existing-project-assignation = There is already an assignation between this project and this user story
+manager.projectuserstory.form.error.published-project = You can not assign an un-published user story to a published project

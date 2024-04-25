@@ -72,6 +72,7 @@ master.menu.manager = Manager
 master.menu.manager.project = Proyectos
 master.menu.manager.dashboard = Panel de información
 master.menu.manager.user-stories = Historias de usuario
+master.menu.manager.list-assignments = Asignaciones
 
 # master.menu.sponsor ####################################################
 master.menu.sponsor = Patrocinador

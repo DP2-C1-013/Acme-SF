@@ -27,8 +27,13 @@ developer.training-module.form.label.optionalLink = Enlace opcional
 developer.training-module.form.label.estimatedTotalTime = Tiempo total estimado
 developer.training-module.form.label.project = Proyecto
 developer.training-module.form.label.draftMode = Modo borrador
+developer.training-module.form.button.update = Actualizar
+developer.training-module.form.button.delete = Borrar
+developer.training-module.form.button.publicar = Publicar
 
 developer.training-module.form.error.duplicated = Este código ya existe
 developer.training-module.form.error.invalid-update-moment = El momento de actualización debe estar al menos una semana después del momento de la creación.
 developer.training-module.form.error.invalid-difficulty-level = El nivel de dificultad introducido ha de ser Basic, Intermediate o Advanced.
 developer.training-module.form.error.invalid-estimated-total-time = Debe ser mayor o igual que uno
+developer.training-module.form.error.invalid-project = Proyecto nulo o en modo borrador
+developer.training-module.delete.is-draftMode = No se puede borrar un módulo de formación publicado

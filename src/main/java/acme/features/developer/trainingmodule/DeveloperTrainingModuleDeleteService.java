@@ -2,7 +2,6 @@
 package acme.features.developer.trainingmodule;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,17 +12,18 @@ import acme.client.views.SelectChoices;
 import acme.entities.project.Project;
 import acme.entities.trainingmodule.DifficultyLevel;
 import acme.entities.trainingmodule.TrainingModule;
+import acme.entities.trainingsession.TrainingSession;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingModuleShowService extends AbstractService<Developer, TrainingModule> {
+public class DeveloperTrainingModuleDeleteService extends AbstractService<Developer, TrainingModule> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
 	private DeveloperTrainingModuleRepository repository;
 
-	// AbstractService<Developer, TrainingModule> ---------------------------
+	// AbstractService interface ----------------------------------------------
 
 
 	@Override
@@ -41,7 +41,7 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 
 		TrainingModule object = this.repository.findTrainingModuleById(trainingModuleId);
 
-		status = object != null && request.getPrincipal().hasRole(Developer.class) && object.getDeveloper().getId() == developerId;
+		status = object != null && request.getPrincipal().hasRole(Developer.class) && object.getDeveloper().getId() == developerId && object.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -58,25 +58,52 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 	}
 
 	@Override
+	public void bind(final TrainingModule object) {
+		assert object != null;
+
+		Project project;
+		project = this.getRequest().getData("project", Project.class);
+
+		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "estimatedTotalTime");
+		object.setProject(project);
+
+	}
+
+	@Override
+	public void validate(final TrainingModule object) {
+		assert object != null;
+
+		boolean status;
+		status = object.isDraftMode();
+
+		super.state(status, "*", "developer.training-module.delete.is-draftMode");
+	}
+
+	@Override
+	public void perform(final TrainingModule object) {
+		assert object != null;
+
+		Collection<TrainingSession> trainingSessions = this.repository.findTrainingSessionsByTMId(object.getId());
+
+		this.repository.deleteAll(trainingSessions);
+		this.repository.delete(object);
+	}
+
+	@Override
 	public void unbind(final TrainingModule object) {
 		assert object != null;
 
-		SelectChoices choices;
+		SelectChoices difficultyLevels;
 		SelectChoices projects;
 		Dataset dataset;
 
-		choices = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
-		if (object.getProject().isDraftMode())
-			projects = SelectChoices.from(this.repository.findAllProjectsDraftModeTrue(), "code", object.getProject());
-		else {
-			Collection<Project> project = List.of(object.getProject());
-			projects = SelectChoices.from(project, "code", object.getProject());
-
-		}
+		difficultyLevels = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
+		projects = SelectChoices.from(this.repository.findAllProjectsDraftModeTrue(), "code", object.getProject());
 
 		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "estimatedTotalTime", "draftMode");
-		dataset.put("difficultyLevels", choices);
+		dataset.put("difficultyLevels", difficultyLevels);
 		dataset.put("projects", projects);
+		dataset.put("project", projects.getSelected().getKey());
 
 		super.getResponse().addData(dataset);
 	}

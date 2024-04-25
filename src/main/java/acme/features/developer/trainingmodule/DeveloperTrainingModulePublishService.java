@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
-import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.project.Project;
@@ -18,7 +17,7 @@ import acme.entities.trainingmodule.TrainingModule;
 import acme.roles.Developer;
 
 @Service
-public class DeveloperTrainingModuleCreateService extends AbstractService<Developer, TrainingModule> {
+public class DeveloperTrainingModulePublishService extends AbstractService<Developer, TrainingModule> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -31,8 +30,14 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	@Override
 	public void authorise() {
 		boolean status;
+		int trainingModuleId;
+		TrainingModule trainingModule;
+		Developer developer;
 
-		status = super.getRequest().getPrincipal().hasRole(Developer.class);
+		trainingModuleId = super.getRequest().getData("id", int.class);
+		trainingModule = this.repository.findTrainingModuleById(trainingModuleId);
+		developer = trainingModule == null ? null : trainingModule.getDeveloper();
+		status = trainingModule != null && trainingModule.isDraftMode() && super.getRequest().getPrincipal().hasRole(developer);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -40,13 +45,11 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	@Override
 	public void load() {
 		TrainingModule object;
-		Developer developer;
+		int id;
 
-		developer = this.repository.findDeveloperById(this.getRequest().getPrincipal().getActiveRoleId());
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findTrainingModuleById(id);
 
-		object = new TrainingModule();
-		object.setDraftMode(true);
-		object.setDeveloper(developer);
 		super.getBuffer().addData(object);
 	}
 
@@ -54,26 +57,20 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	public void bind(final TrainingModule object) {
 		assert object != null;
 
+		int projectId;
 		Project project;
 
-		project = this.getRequest().getData("project", Project.class);
-		if (project != null)
-			project = this.repository.findOneProjectByCode(project.getCode());
+		projectId = super.getRequest().getData("project", int.class);
+		project = this.repository.findProjectById(projectId);
 
 		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "estimatedTotalTime");
 		object.setProject(project);
-		object.setDraftMode(true);
+		//		object.setDraftMode(true);
 	}
 
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
-
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			TrainingModule existing;
-			existing = this.repository.findTrainingModuleByCode(object.getCode());
-			super.state(existing == null, "code", "developer.training-module.form.error.duplicated");
-		}
 
 		if (!super.getBuffer().getErrors().hasErrors("updateMoment") && object.getUpdateMoment() != null) {
 			Date minimunDuration;
@@ -93,13 +90,13 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 			Project existingProject = this.repository.findOneProjectByCode(object.getProject().getCode());
 			super.state(existingProject != null && existingProject.isDraftMode() && object.getProject().isDraftMode(), "project", "developer.training-module.form.error.invalid-project");
 		}
-
 	}
 
 	@Override
 	public void perform(final TrainingModule object) {
 		assert object != null;
 
+		object.setDraftMode(false);
 		this.repository.save(object);
 	}
 
@@ -117,14 +114,8 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "estimatedTotalTime", "draftMode");
 		dataset.put("difficultyLevels", difficultyLevels);
 		dataset.put("projects", projects);
-		dataset.put("project", projects.getSelected().getKey());
+		dataset.put("project", projects.getSelected());
 
 		super.getResponse().addData(dataset);
-	}
-
-	@Override
-	public void onSuccess() {
-		if (super.getRequest().getMethod().equals("POST"))
-			PrincipalHelper.handleUpdate();
 	}
 }

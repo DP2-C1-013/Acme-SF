@@ -62,6 +62,9 @@ public class TrainingSession extends AbstractEntity {
 	@Length(max = 256)
 	private String				optionalLink;
 
+	@NotNull
+	private boolean				draftMode;
+
 	@ManyToOne(optional = false)
 	@Valid
 	@NotNull
