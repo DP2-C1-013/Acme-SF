@@ -1,7 +1,7 @@
 sponsor.sponsor-dashboard.form.title = Sponsor dashboard
 sponsor.dashboard.form.title.general-indicators = General indicators
 sponsor.dashboard.form.title.statistics = Statistics
-sponsor.dashboard.form.label.statistics-sponsorships = Sponsorship
+sponsor.dashboard.form.label.statistics-sponsorship = Sponsorship
 sponsor.dashboard.form.label.statistics-invoice = Invoice
 
 sponsor.dashboard.form.label.number-invoices-less-than-21-tax = Number of invoices with tax less than or equal 21.00%
