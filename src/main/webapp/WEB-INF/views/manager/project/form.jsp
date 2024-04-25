@@ -22,7 +22,6 @@
 	<acme:input-money code="manager.project.form.label.cost" path="cost"/>
 	<acme:input-url code="manager.project.form.label.link" path="link"/>
 	<acme:input-checkbox code="manager.project.form.label.hasFatalErrors" path="hasFatalErrors" readonly="${readonly }"/>
-	<acme:input-checkbox code="manager.project.form.label.draftmode" path="draftMode" readonly="true"/>
 	
 	
 	<jstl:choose>	 
