@@ -17,8 +17,10 @@
 
 <acme:form>				
 	<jstl:choose>
-		<jstl:when test="${_command == 'show'}">
-			<acme:submit code="manager.project-user-story.form.button.delete" action="/manager/project-user-story/delete?id=${id}"/>
+		<jstl:when test="${acme:anyOf(_command, 'show|delete')}">
+			<acme:input-select code="manager.project-user-stories.form.label.projects" path="project" choices="${projects }" readonly="true"/>
+			<acme:input-select code="manager.project-user-stories.form.label.userstories" path="userStory" choices="${userStories }" readonly="true"/>
+			<acme:submit code="manager.project-user-story.form.button.delete" action="/manager/project-user-story/delete"/>
 		</jstl:when>				
 		<jstl:when test="${_command == 'create'}">
 			<acme:input-select code="manager.project-user-stories.form.label.projects" path="project" choices="${projects}"/>	

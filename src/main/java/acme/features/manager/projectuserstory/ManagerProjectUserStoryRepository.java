@@ -21,6 +21,12 @@ public interface ManagerProjectUserStoryRepository extends AbstractRepository {
 	@Query("SELECT p FROM Project p WHERE p.id = :id")
 	Project findOneProjectById(int id);
 
+	@Query("SELECT pus.project FROM ProjectUserStory pus WHERE pus.id = :id")
+	Project findOneProjectByProjectUserStoryId(int id);
+
+	@Query("SELECT pus.userStory FROM ProjectUserStory pus WHERE pus.id = :id")
+	UserStory findOneUserStoryByProjectUserStoryId(int id);
+
 	@Query("SELECT us FROM UserStory us WHERE us.id = :id")
 	UserStory findOneUserStoryById(int id);
 
@@ -36,7 +42,7 @@ public interface ManagerProjectUserStoryRepository extends AbstractRepository {
 	@Query("SELECT p FROM Project p WHERE p.manager.id = :id AND p.draftMode = true")
 	Collection<Project> findCreatedProjectsByManagerId(int id);
 
-	@Query("SELECT us FROM UserStory us WHERE us.manager.userAccount.id = :id")
+	@Query("SELECT us FROM UserStory us WHERE us.manager.id = :id")
 	Collection<UserStory> findManyUserStoriesByManagerId(int id);
 
 	@Query("SELECT pus FROM ProjectUserStory pus WHERE pus.id = :id")
@@ -45,7 +51,7 @@ public interface ManagerProjectUserStoryRepository extends AbstractRepository {
 	@Query("SELECT pus FROM ProjectUserStory pus WHERE pus.project.id = :id")
 	Collection<ProjectUserStory> findProjectUserStoriesByProjectId(int id);
 
-	@Query("SELECT pus FROM UserStory us LEFT JOIN ProjectUserStory pus ON pus.userStory.id = us.id WHERE us.manager.id = :id")
+	@Query("SELECT pus FROM ProjectUserStory pus WHERE pus.project.manager.id = :id AND pus.userStory.manager.id = :id")
 	Collection<ProjectUserStory> findProjectUserStoriesByManagerId(int id);
 
 }
