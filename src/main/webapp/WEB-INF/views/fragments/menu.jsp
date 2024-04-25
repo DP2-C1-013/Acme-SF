@@ -90,6 +90,9 @@
 				action="/manager/manager-dashboard/show" />
 			<acme:menu-suboption code="master.menu.manager.user-stories"
 				action="/manager/user-story/list-mine" />
+			<acme:menu-suboption code="master.menu.manager.list-assignments"
+				action="/manager/project-user-story/list" />
+
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.developer"
