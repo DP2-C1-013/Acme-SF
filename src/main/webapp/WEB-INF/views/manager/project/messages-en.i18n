@@ -40,3 +40,5 @@ manager.project.form.error.userStories-empty = This project has no user stories
 manager.project.form.error.userStories-draft = User stories are in draft mode
 manager.project.form.error.has-fatal-errors = Project has fatal errors
 
+manager.project.form.error.invalid-currency = Invalid currency (EUR, GBP, USD)
+

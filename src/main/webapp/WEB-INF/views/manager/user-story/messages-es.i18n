@@ -39,3 +39,4 @@ manager.user-story.list.button.create-user-stories-by-project-form = Crear
 
 manager.userstory.form.error.not-positive-estimatedcost = El coste estimado tiene que ser positivo
 
+manager.userstory.form.error.invalid-currency = Divisa inválida (EUR, GBP, USD)
