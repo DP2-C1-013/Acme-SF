@@ -36,4 +36,4 @@ manager.project.form.error.negative-cost = El coste tiene que ser positivo
 manager.project.form.error.has-fatal-errors = El proyecto tiene errores graves
 
 manager.project.form.error.invalid-currency = Divisa inválida (EUR, GBP, USD)
-
+manager.project.form.error.existing-fatal-errors = El proyecto tiene errores graves
