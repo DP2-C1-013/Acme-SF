@@ -16,14 +16,14 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-textbox code="developer.training-session.list.label.code" path="code"/>
-	<acme:input-moment code="developer.training-session.list.label.startDate" path="startDate"/>
-	<acme:input-moment code="developer.training-session.list.label.endDate" path="endDate"/>
-	<acme:input-textbox code="developer.training-session.list.label.location" path="location"/>
-	<acme:input-textbox code="developer.training-session.list.label.instructor" path="instructor"/>
-	<acme:input-email code="developer.training-session.list.label.contactEmail" path="contactEmail"/>
-	<acme:input-url code="developer.training-session.list.label.optionalLink" path="optionalLink"/>
-	<acme:input-checkbox code="developer.training-session.list.label.draftMode" path="draftMode"/>
+	<acme:input-textbox code="developer.training-session.form.label.code" path="code"/>
+	<acme:input-moment code="developer.training-session.form.label.startDate" path="startDate"/>
+	<acme:input-moment code="developer.training-session.form.label.endDate" path="endDate"/>
+	<acme:input-textbox code="developer.training-session.form.label.location" path="location"/>
+	<acme:input-textbox code="developer.training-session.form.label.instructor" path="instructor"/>
+	<acme:input-email code="developer.training-session.form.label.contactEmail" path="contactEmail"/>
+	<acme:input-url code="developer.training-session.form.label.optionalLink" path="optionalLink"/>
+	<acme:input-checkbox code="developer.training-session.form.label.draftMode" path="draftMode"/>
 	
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && draftMode == true && trainingModuleDraftMode}">
