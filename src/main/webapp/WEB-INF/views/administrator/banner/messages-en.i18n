@@ -15,9 +15,15 @@ administrator.banner.list.label.moment = Instantiation moment
 administrator.banner.list.label.startDisplay = Display start
 administrator.banner.list.label.endDisplay = Display end
 
+administrator.banner.list.button.create = Create
+
 administrator.banner.form.label.moment = Instantiation moment
 administrator.banner.form.label.startDisplay = Display start
 administrator.banner.form.label.endDisplay = Display end
 administrator.banner.form.label.picture = Picture
 administrator.banner.form.label.slogan = Slogan
 administrator.banner.form.label.link = Link
+
+administrator.banner.list.button.update = Update
+administrator.banner.list.button.delete = Delete
+administrator.banner.list.button.create = Create
