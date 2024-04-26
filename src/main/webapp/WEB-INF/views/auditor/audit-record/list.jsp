@@ -17,8 +17,8 @@ D<%--
 
 <acme:list>
 	<acme:list-column code="auditor.audit-record.list.label.code" path="code" width="15%"/>
-	<acme:list-column code="auditor.audit-record.list.label.mark" path="registrationTime" width="25%"/>
+	<acme:list-column code="auditor.audit-record.list.label.mark" path="mark" width="25%"/>
 	<acme:list-column code="auditor.audit-record.list.label.draftMode" path="draftMode" width="10%"/>
 </acme:list>
 
-<acme:button code="auditor.audit-record.list.button.create" action="/auditor/audit-record/create?code-auditId=${code-auditId}"/>
+<acme:button code="auditor.audit-record.list.button.create" action="/auditor/audit-record/create?code-auditId=${codeAuditId}"/>
