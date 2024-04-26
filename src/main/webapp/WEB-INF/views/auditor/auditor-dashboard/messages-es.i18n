@@ -1,0 +1,12 @@
+auditor.auditor-dashboard.form.title = Panel de auditor
+auditor.dashboard.form.title.general-indicators = Indicadores generales
+auditor.dashboard.form.label.num-static-code-audits = Número de audiciones estáticas
+auditor.dashboard.form.label.num-dynamic-code-audits = Número de audiciones dinámicas 
+auditor.dashboard.form.label.average-number-audit-records-per-code-audit = Número promedio de registros por audición 
+auditor.dashboard.form.label.standar-deviation-of-number-audit-records-per-code-audit = Desviación típica del número de registros de las audiciones
+auditor.dashboard.form.label.minimum-number-of-audit-records = Número mínimo de registros de audición
+auditor.dashboard.form.label.maximum-number-of-audit-records = Número máximo de registros de audición
+auditor.dashboard.form.label.average-period-of-audit-records = Duración promedio de los periodos de los registros de audición
+auditor.dashboard.form.label.standar-deviation-of-period-of-audit-records = Desviación típica de la duración de los periodos de los registros
+auditor.dashboard.form.label.minimum-period = Duración mínima de los registros
+auditor.dashboard.form.label.maximum-period = Duración máxima de los registros 

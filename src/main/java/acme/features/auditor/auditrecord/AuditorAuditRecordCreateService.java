@@ -46,7 +46,6 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 
 		codeAuditId = this.getRequest().getData("code-auditId", int.class);
 		codeAudit = this.repository.findOneCodeAuditById(codeAuditId);
-		System.out.println("code-auditIdLine49" + codeAuditId);
 
 		object = new AuditRecord();
 		object.setDraftMode(true);
