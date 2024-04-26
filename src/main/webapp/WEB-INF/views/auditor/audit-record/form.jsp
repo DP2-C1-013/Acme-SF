@@ -21,9 +21,6 @@
 	<acme:input-moment code="auditor.audit-record.form.label.endDate" path="endDate"/>
 	<acme:input-select code="auditor.audit-record.form.label.mark" path="mark" choices="${marks}"/>
 	<acme:input-url code="auditor.audit-record.form.label.link" path="link"/>
-	<jstl:if test="${acme:anyOf(_command,'show|update|delete|publish')}">
-		<acme:input-money code="auditor.audit-record.form.label.totalAmount" path="totalAmount" readonly="true"/>
-	</jstl:if>
 	<acme:input-textbox code="auditor.audit-record.form.label.code-audit" path="code-audit" readonly="true"/>
 	
 	<jstl:choose>
