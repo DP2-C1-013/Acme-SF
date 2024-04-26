@@ -77,7 +77,7 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Invoice existing;
 			existing = this.repository.findOneInvoiceByCode(object.getCode());
-			super.state(existing == null || existing.getId() == object.getId(), "duration", "sponsor.invoice.form.error.duplicated-code");
+			super.state(existing == null || existing.getId() == object.getId(), "code", "sponsor.invoice.form.error.duplicated-code");
 		}
 
 		if (!(super.getBuffer().getErrors().hasErrors("dueDate") || super.getBuffer().getErrors().hasErrors("registrationTime"))) {
@@ -104,7 +104,7 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("sponsorship"))
-			super.state(existingSponsorship != null && existingSponsorship.isDraftMode() && !existingSponsorship.getProject().isDraftMode(), "sponsorship", "sponsor.sponsorship.form.error.sponsorship-draft-mode-is-set-to-false");
+			super.state(existingSponsorship != null && existingSponsorship.isDraftMode() && !existingSponsorship.getProject().isDraftMode(), "sponsorship", "sponsor.invoice.form.error.sponsorship-draft-mode-is-set-to-false");
 
 	}
 

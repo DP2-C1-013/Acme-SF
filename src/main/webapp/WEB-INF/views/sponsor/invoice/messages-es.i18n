@@ -26,8 +26,15 @@ sponsor.invoice.form.label.tax = Impuestos
 sponsor.invoice.form.label.totalAmount = Coste Total
 sponsor.invoice.form.label.link = Link
 sponsor.invoice.form.label.sponsorship = Patrocinio
-sponsor.invoice.form.label.draftMode = DraftMode
 sponsor.invoice.form.button.create = Crear
 sponsor.invoice.form.button.delete = Eliminar
 sponsor.invoice.form.button.update = Modificar
 sponsor.invoice.form.button.publish = Publicar
+
+sponsor.invoice.form.error.duplicated-code = Código en uso
+sponsor.invoice.form.error.invalid-due-date = La fecha de vencimiento debe ser al menos un mes despues de la fecha de registro
+sponsor.invoice.form.error.invalid-quantity = La cantidad debe ser positiva. Sólo puede ser 0 si el tipo del patrocicio es In_kind
+sponsor.invoice.form.error.quantity-too-high = Esta cantidad sumada con las de las otras facturas publicadas para este patrocinio supera la cantidad especificado en este último
+sponsor.invoice.form.error.invalid-currency = Divisa no aceptada por el sistema.
+sponsor.invoice.form.error.currency-does-not-match = La divisa de la factura no coincide con la del patrocinio al que esta asociada
+sponsor.invoice.form.error.sponsorship-draft-mode-is-set-to-false = El patrocinio asociado a esta factura no está en modo borrador

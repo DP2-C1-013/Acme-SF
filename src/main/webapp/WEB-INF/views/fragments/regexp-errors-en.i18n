@@ -24,7 +24,7 @@ project.code.error = The code must have 3 capital letters, a dash, then four num
 # claim.code.error ###################################################################
 claim.code.error = The code must start with "C" followed by a dash and 4 numbers.
 
-# sponsorship.code.error ###################################################################
+# sponsorship ###################################################################
 sponsorship.code.error = The code must start one to three letters in capitals, followed by a dash and one to three numbers.
 
 # invoice.code.error ###################################################################
