@@ -1,6 +1,9 @@
 
 package acme.features.manager.userstory;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -63,8 +66,11 @@ public class ManagerUserStoryCreateService extends AbstractService<Manager, User
 	public void validate(final UserStory object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("estimatedCost"))
+		if (!super.getBuffer().getErrors().hasErrors("estimatedCost")) {
 			super.state(object.getEstimatedCost().getAmount() > 0., "estimatedCost", "manager.userstory.form.error.not-positive-estimatedcost");
+			List<String> currencies = Arrays.asList(this.repository.findSystemCurrencies().get(0).getAcceptedCurrencies().split(","));
+			super.state(currencies.stream().anyMatch(c -> c.equals(object.getEstimatedCost().getCurrency())), "estimatedCost", "manager.userstory.form.error.invalid-currency");
+		}
 	}
 
 	@Override
