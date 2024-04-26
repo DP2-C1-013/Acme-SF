@@ -3,6 +3,7 @@ package acme.features.developer.trainingmodule;
 
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ import acme.client.views.SelectChoices;
 import acme.entities.project.Project;
 import acme.entities.trainingmodule.DifficultyLevel;
 import acme.entities.trainingmodule.TrainingModule;
+import acme.entities.trainingsession.TrainingSession;
 import acme.roles.Developer;
 
 @Service
@@ -89,6 +91,11 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 		if (!super.getBuffer().getErrors().hasErrors("project")) {
 			Project existingProject = this.repository.findOneProjectByCode(object.getProject().getCode());
 			super.state(existingProject != null && existingProject.isDraftMode() && object.getProject().isDraftMode(), "project", "developer.training-module.form.error.invalid-project");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("draftMode")) {
+			List<TrainingSession> ts = this.repository.findTrainingSessionsByTMId(object.getId()).stream().toList();
+			super.state(ts.stream().allMatch(e -> e.isDraftMode() == false), "draftMode", "developer.training-module.form.error.training-session-not-published");
 		}
 	}
 

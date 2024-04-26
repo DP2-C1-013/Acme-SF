@@ -9,19 +9,37 @@
 # they accept any liabilities with respect to them.
 
 client.contract.list.title = Contratos
+client.contract.form.title = Detalles del contrato
+
 client.contract.list.label.code = Código
+client.contract.list.label.instantiationMoment = Fecha de creación
 client.contract.list.label.providerName = Proveedor
 client.contract.list.label.customerName = Cliente
 client.contract.list.label.goal = Objetivo
+client.contract.list.label.budget = Presupuesto
+client.contract.list.label.project = Proyecto
+client.contract.list.label.draftMode = Editable
+
+client.contract.form.label.code = Código
+client.contract.form.label.instantiationMoment = Fecha de creación
+client.contract.form.label.providerName = Proveedor
+client.contract.form.label.customerName = Cliente
+client.contract.form.label.goal = Objetivo
+client.contract.form.label.budget = Presupuesto
+client.contract.form.label.project = Proyecto
+
+client.contract.form.provider.placeholder = Proveedor
+client.contract.form.customer.placeholder = Cliente
+client.contract.form.goals.placeholder = Define los objetivos
+client.contract.form.code.placeholder = [A-Z]{1,3}-[0-9]{3}
 
 
-client.contract.form.label.code = Code
-client.contract.form.label.title = Title
-client.contract.form.label.abstractText = Abstract text
-client.contract.form.label.hasFatalErrors = Has fatal errors
-client.contract.form.label.cost = Cost
-client.contract.form.label.link = Link
 
+client.contract.list.button.create = Crear
+client.contract.form.button.create = Crear
+client.contract.form.button.update = Editar 
+client.contract.form.button.delete = Borrar
+client.contract.form.button.publish = Publicar
+client.contract.form.button.progressLogs = Registros de progreso
 
-client.contract.form.button.userStories = User Stories
 

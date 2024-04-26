@@ -21,3 +21,6 @@
 	<acme:list-column code="client.contract.list.label.customerName" path="customerName" width="20%"/>
 	<acme:list-column code="client.contract.list.label.goal" path="goal" width="20%"/>
 </acme:list>
+
+
+<acme:button code="client.contract.list.button.create" action="/client/contract/create"/>
