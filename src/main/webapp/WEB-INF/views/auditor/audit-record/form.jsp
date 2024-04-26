@@ -17,14 +17,13 @@
 
 <acme:form readonly="false">
 	<acme:input-textbox code="auditor.audit-record.form.label.code" path="code" placeholder="AU-XXXX-XXX"/>
-	<acme:input-moment code="auditor.audit-record.form.label.startDate" path="registrationTime"/>
-	<acme:input-moment code="auditor.audit-record.form.label.endDate" path="dueDate"/>
-	<acme:input-money code="auditor.audit-record.form.label.mark" path="quantity"/>
-	<acme:input-double code="auditor.audit-record.form.label.link" path="tax" placeholder="0.21"/>
+	<acme:input-moment code="auditor.audit-record.form.label.startDate" path="startDate"/>
+	<acme:input-moment code="auditor.audit-record.form.label.endDate" path="endDate"/>
+	<acme:input-select code="auditor.audit-record.form.label.mark" path="mark" choices="${marks}"/>
+	<acme:input-url code="auditor.audit-record.form.label.link" path="link"/>
 	<jstl:if test="${acme:anyOf(_command,'show|update|delete|publish')}">
 		<acme:input-money code="auditor.audit-record.form.label.totalAmount" path="totalAmount" readonly="true"/>
 	</jstl:if>
-	<acme:input-url code="auditor.audit-record.form.label.link" path="link"/>
 	<acme:input-textbox code="auditor.audit-record.form.label.code-audit" path="code-audit" readonly="true"/>
 	
 	<jstl:choose>
@@ -33,8 +32,8 @@
 			<acme:submit code="auditor.audit-record.form.button.update" action="/auditor/audit-record/update"/>
 			<acme:submit code="auditor.audit-record.form.button.publish" action="/auditor/audit-record/publish"/>		
 		</jstl:when>
-		<jstl:when test="${_command == 'create' && codeAuditDraftMode}">
-			<acme:submit code="auditor.audit-record.form.button.create" action="/auditor/audit-record/create?code-auditId=${code-auditId}"/>
+		<jstl:when test="${_command == 'create'}">
+			<acme:submit code="auditor.audit-record.form.button.create" action="/auditor/audit-record/create?code-auditId=${codeAuditId}"/>
 		</jstl:when>
 	</jstl:choose>
 	
