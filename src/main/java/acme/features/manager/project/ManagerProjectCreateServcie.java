@@ -41,12 +41,7 @@ public class ManagerProjectCreateServcie extends AbstractService<Manager, Projec
 
 		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
 		object = new Project();
-		object.setCode("");
-		object.setTitle("");
-		object.setAbstractText("");
-		object.setHasFatalErrors(false);
 		object.setDraftMode(true);
-		object.setLink("");
 		object.setManager(manager);
 
 		super.getBuffer().addData(object);
@@ -56,7 +51,7 @@ public class ManagerProjectCreateServcie extends AbstractService<Manager, Projec
 	public void bind(final Project object) {
 		assert object != null;
 
-		super.bind(object, "code", "title", "abstractText", "hasFatalErrors", "cost", "link", "draftMode");
+		super.bind(object, "code", "title", "abstractText", "hasFatalErrors", "cost", "link");
 	}
 
 	@Override
@@ -69,6 +64,9 @@ public class ManagerProjectCreateServcie extends AbstractService<Manager, Projec
 			existing = this.repository.findOneProjectByCode(object.getCode());
 			super.state(existing == null, "code", "manager.project.form.error.duplicated");
 		}
+
+		if (!super.getBuffer().getErrors().hasErrors("hasFatalErrors"))
+			super.state(object.isHasFatalErrors() == false, "hasFatalErrors", "manager.project.form.error.existing-fatal-errors");
 
 		if (!super.getBuffer().getErrors().hasErrors("cost")) {
 			super.state(object.getCost().getAmount() > 0, "cost", "manager.project.form.error.negative-cost");

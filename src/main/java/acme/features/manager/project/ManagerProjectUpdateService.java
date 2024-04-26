@@ -67,6 +67,9 @@ public class ManagerProjectUpdateService extends AbstractService<Manager, Projec
 			super.state(existing == null || existing.equals(object), "code", "manager.project.form.error.duplicated");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("hasFatalErrors"))
+			super.state(object.isHasFatalErrors() == false, "hasFatalErrors", "manager.project.form.error.existing-fatal-errors");
+
 		if (!super.getBuffer().getErrors().hasErrors("cost")) {
 			super.state(object.getCost().getAmount() > 0, "cost", "manager.project.form.error.negative-cost");
 			List<String> currencies = Arrays.asList(this.repository.findSystemCurrencies().get(0).getAcceptedCurrencies().split(","));
