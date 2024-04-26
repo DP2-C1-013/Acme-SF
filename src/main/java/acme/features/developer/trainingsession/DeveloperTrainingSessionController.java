@@ -16,10 +16,16 @@ public class DeveloperTrainingSessionController extends AbstractController<Devel
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private DeveloperTrainingSessionListService	listService;
+	private DeveloperTrainingSessionListService		listService;
 
 	@Autowired
-	private DeveloperTrainingSessionShowService	showService;
+	private DeveloperTrainingSessionShowService		showService;
+
+	@Autowired
+	private DeveloperTrainingSessionCreateService	createService;
+
+	@Autowired
+	private DeveloperTrainingSessionPublishService	publishService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -28,6 +34,9 @@ public class DeveloperTrainingSessionController extends AbstractController<Devel
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
+		super.addBasicCommand("create", this.createService);
+
+		super.addCustomCommand("publish", "update", this.publishService);
 	}
 
 }

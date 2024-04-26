@@ -36,7 +36,7 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 
 		Collection<TrainingSession> trainingSessions = this.repository.findTrainingSessionsByTMId(trainingModuleId);
 
-		boolean validTrainingModule = trainingSessions.stream().allMatch(invoice -> invoice.getTrainingModule().getDeveloper().getId() == developerId);
+		boolean validTrainingModule = trainingSessions.stream().allMatch(tm -> tm.getTrainingModule().getDeveloper().getId() == developerId);
 
 		status = trainingModule != null && super.getRequest().getPrincipal().hasRole(Developer.class) && developerId == trainingModule.getDeveloper().getId() && validTrainingModule;
 
@@ -75,7 +75,7 @@ public class DeveloperTrainingSessionListService extends AbstractService<Develop
 
 		trainingModuleId = super.getRequest().getData("trainingModuleId", int.class);
 		trainingModule = this.repository.findTrainingModuleById(trainingModuleId);
-		showCreate = trainingModule.isDraftMode() && super.getRequest().getPrincipal().hasRole(trainingModule.getDeveloper());
+		showCreate = trainingModule.getProject().isDraftMode() && trainingModule.isDraftMode() && super.getRequest().getPrincipal().hasRole(Developer.class);
 
 		super.getResponse().addGlobal("trainingModuleId", trainingModuleId);
 		super.getResponse().addGlobal("showCreate", showCreate);

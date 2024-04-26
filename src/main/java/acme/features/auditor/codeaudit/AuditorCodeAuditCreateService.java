@@ -73,14 +73,9 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 			super.state(existing == null, "code", "auditor.code-audit.form.error.duplicated");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("mark")) {
-			AuditMark mark = object.getMark();
-			super.state(mark.equals(AuditMark.A_PLUS) || mark.equals(AuditMark.A) || mark.equals(AuditMark.B) || mark.equals(AuditMark.C), "mark", "auditor.code-audit.form.error.invalid-mark");
-		}
-
 		if (!super.getBuffer().getErrors().hasErrors("project")) {
 			Project existingProject = this.repository.findOneProjectByCode(object.getProject().getCode());
-			super.state(existingProject != null && existingProject.isDraftMode() && object.getProject().isDraftMode(), "project", "auditor.code-audit.form.error.invalid-project");
+			super.state(existingProject != null && !existingProject.isDraftMode() && !object.getProject().isDraftMode(), "project", "auditor.code-audit.form.error.invalid-project");
 		}
 
 	}
@@ -104,7 +99,7 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 
 		types = SelectChoices.from(CodeAuditType.class, object.getType());
 		marks = SelectChoices.from(AuditMark.class, auditRecord.getMark());
-		projects = SelectChoices.from(this.repository.findAllProjectsDraftModeTrue(), "code", object.getProject());
+		projects = SelectChoices.from(this.repository.findAllProjectsDraftModeFalse(), "code", object.getProject());
 
 		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveActions", "mark", "link", "draftMode");
 		dataset.put("types", types);

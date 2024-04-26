@@ -61,6 +61,11 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 	@Override
 	public void validate(final ProjectUserStory object) {
 		assert object != null;
+
+		Project project = object.getProject();
+
+		if (!super.getBuffer().getErrors().hasErrors("project"))
+			super.state(project.isDraftMode(), "project", "manager.projectuserstory.form.error.delete-published-project");
 	}
 
 	@Override
@@ -86,7 +91,7 @@ public class ManagerProjectUserStoryDeleteService extends AbstractService<Manage
 		userStories = this.repository.findManyUserStoriesByManagerId(managerId);
 		choicesUserStories = SelectChoices.from(userStories, "title", object.getUserStory());
 
-		projects = this.repository.findCreatedProjectsByManagerId(managerId);
+		projects = this.repository.findManyProjectsByManagerId(managerId);
 		choicesProjects = SelectChoices.from(projects, "code", object.getProject());
 
 		dataset = super.unbind(object, "userStory", "project");

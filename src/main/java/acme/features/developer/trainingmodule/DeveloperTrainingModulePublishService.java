@@ -32,14 +32,19 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 	@Override
 	public void authorise() {
 		boolean status;
-		int trainingModuleId;
-		TrainingModule trainingModule;
-		Developer developer;
 
-		trainingModuleId = super.getRequest().getData("id", int.class);
-		trainingModule = this.repository.findTrainingModuleById(trainingModuleId);
-		developer = trainingModule == null ? null : trainingModule.getDeveloper();
-		status = trainingModule != null && trainingModule.isDraftMode() && super.getRequest().getPrincipal().hasRole(developer);
+		var request = super.getRequest();
+
+		int developerId;
+		int trainingModuleId;
+
+		trainingModuleId = request.getData("id", int.class);
+
+		developerId = request.getPrincipal().getActiveRoleId();
+
+		TrainingModule object = this.repository.findTrainingModuleById(trainingModuleId);
+
+		status = object != null && request.getPrincipal().hasRole(Developer.class) && object.getDeveloper().getId() == developerId;
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -67,7 +72,6 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 
 		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "estimatedTotalTime");
 		object.setProject(project);
-		//		object.setDraftMode(true);
 	}
 
 	@Override

@@ -16,10 +16,22 @@ public class ClientContractController extends AbstractController<Client, Contrac
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private ClientContractListService	listService;
+	private ClientContractListService		listService;
 
 	@Autowired
-	private ClientContractShowService	showService;
+	private ClientContractShowService		showService;
+
+	@Autowired
+	private ClientContractCreateService		createService;
+
+	@Autowired
+	private ClientContractDeleteService		deleteService;
+
+	@Autowired
+	private ClientContractPublishService	publishService;
+
+	@Autowired
+	private ClientContractUpdateService		updateService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -28,6 +40,11 @@ public class ClientContractController extends AbstractController<Client, Contrac
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
+		super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("delete", this.deleteService);
+		super.addBasicCommand("update", this.updateService);
+
+		super.addCustomCommand("publish", "update", this.publishService);
 
 	}
 }

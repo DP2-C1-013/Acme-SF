@@ -51,7 +51,7 @@ public class CodeAudit extends AbstractEntity {
 	@NotNull
 	private CodeAuditType		type;
 
-	@NotNull
+	@NotBlank
 	@Length(max = 100)
 	private String				correctiveActions;
 

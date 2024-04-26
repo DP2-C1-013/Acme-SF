@@ -27,3 +27,11 @@ developer.training-session.form.label.instructor = Instructor
 developer.training-session.form.label.contactEmail = Contact email
 developer.training-session.form.label.optionalLink = Optional link
 developer.training-session.form.label.draftMode = Draft mode
+developer.training-session.form.button.update = Update
+developer.training-session.form.button.delete = Delete
+developer.training-session.form.button.publish = Publish
+
+developer.training-session.form.error.duplicated-code = Duplicated code
+developer.training-session.form.error.invalid-start-date = Start date must be at least a week after its training module creation moment
+developer.training-session.form.error.invalid-end-date = The session must be at least a week long
+developer.training-module.form.error.training-module-was-published = Training module already published

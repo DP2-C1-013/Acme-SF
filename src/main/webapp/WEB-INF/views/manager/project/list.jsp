@@ -26,5 +26,4 @@
 		width="10%" />
 </acme:list>
 
-<acme:button code="manager.project.list.button.create"
-	action="/manager/project/create" />
+<acme:button code="manager.project.list.button.create" action="/manager/project/create"/>
