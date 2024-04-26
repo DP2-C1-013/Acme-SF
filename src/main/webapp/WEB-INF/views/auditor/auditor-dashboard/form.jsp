@@ -16,13 +16,13 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <h2>
-	<acme:message code="developer.dashboard.form.title.general-indicators"/>
+	<acme:message code="auditor.dashboard.form.title.general-indicators"/>
 </h2>
 
 <table class="table table-sm">
 	<tr>
 		<th scope="row">
-			<acme:message code="developer.dashboard.form.label.number-tm-with-update-moment"/>
+			<acme:message code="auditor.dashboard.form.label.num-static-code-audits"/>
 		</th>
 		<td>
 			<acme:print value="${numStaticCodeAudits}"/>
@@ -30,7 +30,7 @@
 	</tr>
 	<tr>
 		<th scope="row">
-			<acme:message code="developer.dashboard.form.label.number-ts-with-link"/>
+			<acme:message code="auditor.dashboard.form.label.num-dynamic-code-audits"/>
 		</th>
 		<td>
 			<acme:print value="${numDynamicCodeAudits}"/>
@@ -38,7 +38,7 @@
 	</tr>
 	<tr>
 		<th scope="row">
-			<acme:message code="developer.dashboard.form.label.average-tm-estimated-time"/>
+			<acme:message code="auditor.dashboard.form.label.average-number-audit-records-per-code-audit"/>
 		</th>
 		<td>
 			<acme:print value="${averageNumRecordsPerAudit}"/>
@@ -46,7 +46,7 @@
 	</tr>
 	<tr>
 		<th scope="row">
-			<acme:message code="developer.dashboard.form.label.deviation-tm-estimated-time"/>
+			<acme:message code="auditor.dashboard.form.label.standar-deviation-of-number-audit-records-per-code-audit"/>
 		</th>
 		<td>
 			<acme:print value="${deviationNumRecordsPerAudit}"/>
@@ -54,7 +54,7 @@
 	</tr>	
 	<tr>
 		<th scope="row">
-			<acme:message code="developer.dashboard.form.label.minimum-estimated-time"/>
+			<acme:message code="auditor.dashboard.form.label.minimum-number-of-audit-records"/>
 		</th>
 		<td>
 			<acme:print value="${minNumRecords}"/>
@@ -62,7 +62,7 @@
 	</tr>	
 	<tr>
 		<th scope="row">
-			<acme:message code="developer.dashboard.form.label.maximum-estimated-time"/>
+			<acme:message code="auditor.dashboard.form.label.maximum-number-of-audit-records"/>
 		</th>
 		<td>
 			<acme:print value="${maxNumRecords}"/>
@@ -70,7 +70,7 @@
 	</tr>
 	<tr>
 		<th scope="row">
-			<acme:message code="developer.dashboard.form.label.maximum-estimated-time"/>
+			<acme:message code="auditor.dashboard.form.label.average-period-of-audit-records"/>
 		</th>
 		<td>
 			<acme:print value="${averageRecordPeriod}"/>
@@ -78,7 +78,7 @@
 	</tr>
 	<tr>
 		<th scope="row">
-			<acme:message code="developer.dashboard.form.label.maximum-estimated-time"/>
+			<acme:message code="auditor.dashboard.form.label.standar-deviation-of-period-of-audit-records"/>
 		</th>
 		<td>
 			<acme:print value="${deviationRecordPeriod}"/>
@@ -86,7 +86,7 @@
 	</tr>
 	<tr>
 		<th scope="row">
-			<acme:message code="developer.dashboard.form.label.maximum-estimated-time"/>
+			<acme:message code="auditor.dashboard.form.label.minimum-period"/>
 		</th>
 		<td>
 			<acme:print value="${minRecordPeriod}"/>
@@ -94,7 +94,7 @@
 	</tr>
 	<tr>
 		<th scope="row">
-			<acme:message code="developer.dashboard.form.label.maximum-estimated-time"/>
+			<acme:message code="auditor.dashboard.form.label.maximum-period"/>
 		</th>
 		<td>
 			<acme:print value="${maxRecordPeriod}"/>
