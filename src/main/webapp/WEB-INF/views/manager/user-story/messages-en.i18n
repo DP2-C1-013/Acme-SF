@@ -37,4 +37,6 @@ manager.user-story.list.button.create-user-stories-by-project-form = Create
 
 manager.userstory.form.error.not-positive-estimatedcost = The estimated cost must be positive
 
+manager.userstory.form.error.invalid-currency = Invalid currency (EUR, GBP, USD)
+
 

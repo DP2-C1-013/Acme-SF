@@ -15,7 +15,7 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
-<acme:form>
+<acme:form readonly="false">
 	<acme:input-textbox code="developer.training-session.form.label.code" path="code"/>
 	<acme:input-moment code="developer.training-session.form.label.startDate" path="startDate"/>
 	<acme:input-moment code="developer.training-session.form.label.endDate" path="endDate"/>
