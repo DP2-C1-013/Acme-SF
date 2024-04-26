@@ -1,4 +1,5 @@
-D<%--
+D
+<%--
 - form.jsp
 -
 - Copyright (C) 2012-2024 Rafael Corchuelo.
@@ -16,11 +17,19 @@ D<%--
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="sponsor.invoice.list.label.code" path="code" width="15%"/>
-	<acme:list-column code="sponsor.invoice.list.label.registrationTime" path="registrationTime" width="25%"/>
-	<acme:list-column code="sponsor.invoice.list.label.quantity" path="totalAmount" width="25%"/>
-	<acme:list-column code="sponsor.invoice.list.label.sponsorship" path="sponsorship" width="25%"/>
-	<acme:list-column code="sponsor.invoice.list.label.draftMode" path="draftMode" width="10%"/>
+	<acme:list-column code="sponsor.invoice.list.label.code" path="code"
+		width="15%" />
+	<acme:list-column code="sponsor.invoice.list.label.registrationTime"
+		path="registrationTime" width="25%" />
+	<acme:list-column code="sponsor.invoice.list.label.quantity"
+		path="totalAmount" width="25%" />
+	<acme:list-column code="sponsor.invoice.list.label.sponsorship"
+		path="sponsorship" width="25%" />
+	<acme:list-column code="sponsor.invoice.list.label.draftMode"
+		path="draftMode" width="10%" />
 </acme:list>
 
-<acme:button code="sponsor.invoice.list.button.create" action="/sponsor/invoice/create?sponsorshipId=${sponsorshipId}"/>
+<jstl:if test="${showCreate}">
+	<acme:button code="sponsor.invoice.list.button.create"
+		action="/sponsor/invoice/create?sponsorshipId=${sponsorshipId}" />
+</jstl:if>

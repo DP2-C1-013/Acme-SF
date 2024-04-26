@@ -97,7 +97,7 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("sponsorship"))
-			super.state(existingSponsorship != null && existingSponsorship.isDraftMode() && !existingSponsorship.getProject().isDraftMode(), "sponsorship", "sponsor.sponsorship.form.error.sponsorship-draft-mode-is-set-to-false");
+			super.state(existingSponsorship != null && existingSponsorship.isDraftMode() && !existingSponsorship.getProject().isDraftMode(), "sponsorship", "sponsor.invoice.form.error.sponsorship-draft-mode-is-set-to-false");
 	}
 
 	@Override
