@@ -27,3 +27,8 @@ developer.training-session.form.label.instructor = Instructor
 developer.training-session.form.label.contactEmail = Email de contacto
 developer.training-session.form.label.optionalLink = Enlace opcional
 developer.training-session.form.label.draftMode = Modo borrador
+
+developer.training-session.form.error.duplicated-code = Código duplicado
+developer.training-session.form.error.invalid-start-date = La fecha de inicio debe ser al menos una semana posterior al momento de creación de su módulo de formación
+developer.training-session.form.error.invalid-end-date = La sesión debe durar al menos una semana
+developer.training-module.form.error.training-module-was-published = Módulo de formación ya publicado

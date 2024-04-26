@@ -26,13 +26,13 @@
 	<acme:input-checkbox code="developer.training-session.form.label.draftMode" path="draftMode"/>
 	
 	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && draftMode == true && trainingModuleDraftMode}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && trainingModuleDraftMode && projectDraftMode}">
 			<acme:submit code="developer.training-session.form.button.update" action="/developer/training-session/update"/>
 			<acme:submit code="developer.training-session.form.button.delete" action="/developer/training-session/delete"/>
 			<acme:submit code="developer.training-session.form.button.publish" action="/developer/training-session/publish"/>
 
 		</jstl:when>
-		<jstl:when test="${_command == 'create' && trainingModuleDraftMode}">
+		<jstl:when test="${_command == 'create' && trainingModuleDraftMode && projectDraftMode}">
 			<acme:submit code="developer.training-session.form.button.create" action="/developer/training-session/create?trainingModuleId=${trainingModuleId}"/>
 		</jstl:when>		
 	</jstl:choose>		
