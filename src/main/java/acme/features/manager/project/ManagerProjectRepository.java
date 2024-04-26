@@ -2,12 +2,14 @@
 package acme.features.manager.project;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 import acme.entities.project.Project;
+import acme.entities.systemconfiguration.SystemConfiguration;
 import acme.entities.userstory.UserStory;
 import acme.roles.Manager;
 
@@ -28,5 +30,8 @@ public interface ManagerProjectRepository extends AbstractRepository {
 
 	@Query("SELECT pus.userStory from ProjectUserStory pus WHERE pus.project.id = :id")
 	Collection<UserStory> findManyUserStoriesByProjectId(int id);
+
+	@Query("SELECT sc FROM SystemConfiguration sc")
+	List<SystemConfiguration> findSystemCurrencies();
 
 }

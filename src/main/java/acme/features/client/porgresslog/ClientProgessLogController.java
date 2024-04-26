@@ -1,5 +1,5 @@
 
-package acme.features.auditor.codeaudit;
+package acme.features.client.porgresslog;
 
 import javax.annotation.PostConstruct;
 
@@ -7,42 +7,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import acme.client.controllers.AbstractController;
-import acme.entities.codeaudit.CodeAudit;
-import acme.roles.Auditor;
+import acme.entities.progresslog.ProgressLog;
+import acme.roles.client.Client;
 
 @Controller
-public class AuditorCodeAuditController extends AbstractController<Auditor, CodeAudit> {
+public class ClientProgessLogController extends AbstractController<Client, ProgressLog> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AuditorCodeAuditListMineService	listMineService;
-
+	private ClientProgressLogListService	listService;
 	@Autowired
-	private AuditorCodeAuditShowService		showService;
-
+	ClientProgressLogShowService			showService;
 	@Autowired
-	private AuditorCodeAuditCreateService	createService;
-
+	ClientProgressLogCreateService			createService;
 	@Autowired
-	private AuditorCodeAuditPublishService	publishService;
-
+	ClientProgressLogUpdateService			updateService;
 	@Autowired
-	private AuditorCodeAuditUpdateService	updateService;
-
+	ClientProgressLogPublishService			publishService;
 	@Autowired
-	private AuditorCodeAuditDeleteService	deleteService;
+	ClientProgressLogDeleteService			deleteService;
+
+
 	// Constructors -----------------------------------------------------------
-
-
 	@PostConstruct
 	protected void initialise() {
+
+		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
 		super.addBasicCommand("update", this.updateService);
 		super.addBasicCommand("delete", this.deleteService);
 
 		super.addCustomCommand("publish", "update", this.publishService);
-		super.addCustomCommand("list-mine", "list", this.listMineService);
 	}
+
 }

@@ -1,7 +1,9 @@
 
 package acme.features.manager.project;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -67,8 +69,11 @@ public class ManagerProjectPublishService extends AbstractService<Manager, Proje
 			super.state(existing == null || existing.equals(object), "code", "manager.project.form.error.duplicated");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("cost"))
+		if (!super.getBuffer().getErrors().hasErrors("cost")) {
 			super.state(object.getCost().getAmount() > 0, "cost", "manager.project.form.error.negative-cost");
+			List<String> currencies = Arrays.asList(this.repository.findSystemCurrencies().get(0).getAcceptedCurrencies().split(","));
+			super.state(currencies.stream().anyMatch(c -> c.equals(object.getCost().getCurrency())), "cost", "manager.project.form.error.invalid-currency");
+		}
 
 		if (!super.getBuffer().getErrors().hasErrors("hasFatalErrors"))
 			super.state(object.isHasFatalErrors() == false, "hasFatalErrors", "manager.project.form.error.has-fatal-errors");
