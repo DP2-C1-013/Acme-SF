@@ -9,14 +9,13 @@ import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
 import acme.entities.auditrecord.AuditMark;
-import acme.entities.auditrecord.AuditRecord;
 import acme.entities.codeaudit.CodeAudit;
 import acme.entities.codeaudit.CodeAuditType;
 import acme.entities.project.Project;
 import acme.roles.Auditor;
 
 @Service
-public class AuditorCodeAuditCreateService extends AbstractService<Auditor, CodeAudit> {
+public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, CodeAudit> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -30,7 +29,18 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 	public void authorise() {
 		boolean status;
 
-		status = super.getRequest().getPrincipal().hasRole(Auditor.class);
+		var request = super.getRequest();
+
+		int auditorId;
+		int codeAuditId;
+
+		codeAuditId = request.getData("id", int.class);
+
+		auditorId = request.getPrincipal().getActiveRoleId();
+
+		CodeAudit object = this.repository.findOneCodeAuditById(codeAuditId);
+
+		status = object != null && request.getPrincipal().hasRole(Auditor.class) && object.getAuditor().getId() == auditorId && object.getDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -38,13 +48,11 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 	@Override
 	public void load() {
 		CodeAudit object;
-		Auditor auditor;
+		int id;
 
-		auditor = this.repository.findOneAuditorByAuditorId(this.getRequest().getPrincipal().getActiveRoleId());
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneCodeAuditById(id);
 
-		object = new CodeAudit();
-		object.setDraftMode(true);
-		object.setAuditor(auditor);
 		super.getBuffer().addData(object);
 	}
 
@@ -67,15 +75,19 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 	public void validate(final CodeAudit object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			CodeAudit existing;
-			existing = this.repository.findOneCodeAuditByCode(object.getCode());
-			super.state(existing == null, "code", "auditor.code-audit.form.error.duplicated");
+		if (!super.getBuffer().getErrors().hasErrors("mark")) {
+			//List<AuditMark> marks = this.repository.findMarkModeByCodeAudit(object.getId());
+			//AuditMark mode = marks.get(0);
+
+			//AuditMark mark = mode;
+			//super.state(mark.equals(AuditMark.A_PLUS) || mark.equals(AuditMark.A) || mark.equals(AuditMark.B) || mark.equals(AuditMark.C), "mark", "auditor.code-audit.form.error.invalid-mark");
+			AuditMark mark = object.getMark();
+			super.state(mark == null || mark.equals(AuditMark.A_PLUS) || mark.equals(AuditMark.A) || mark.equals(AuditMark.B) || mark.equals(AuditMark.C), "mark", "auditor.code-audit.form.error.invalid-mark");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("project")) {
 			Project existingProject = this.repository.findOneProjectByCode(object.getProject().getCode());
-			super.state(existingProject != null && !existingProject.isDraftMode() && !object.getProject().isDraftMode(), "project", "auditor.code-audit.form.error.invalid-project");
+			super.state(existingProject != null && !existingProject.isDraftMode() && !object.getProject().isDraftMode(), "project", "sponsor.codeAudit.form.error.invalid-project");
 		}
 
 	}
@@ -90,30 +102,25 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 	@Override
 	public void unbind(final CodeAudit object) {
 		assert object != null;
-		AuditRecord auditRecord = new AuditRecord();
 
 		SelectChoices types;
-		SelectChoices marks;
 		SelectChoices projects;
 		Dataset dataset;
 
 		types = SelectChoices.from(CodeAuditType.class, object.getType());
-		marks = SelectChoices.from(AuditMark.class, auditRecord.getMark());
 		projects = SelectChoices.from(this.repository.findAllProjectsDraftModeFalse(), "code", object.getProject());
 
 		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveActions", "mark", "link", "draftMode");
 		dataset.put("types", types);
-		dataset.put("marks", marks);
 		dataset.put("projects", projects);
-		dataset.put("project", projects.getSelected().getKey());
+		dataset.put("project", projects.getSelected());
 
 		super.getResponse().addData(dataset);
 	}
 
 	@Override
 	public void onSuccess() {
-		if (super.getRequest().getMethod().equals("POST"))
+		if (super.getRequest().getMethod().equals("PUT"))
 			PrincipalHelper.handleUpdate();
 	}
-
 }
