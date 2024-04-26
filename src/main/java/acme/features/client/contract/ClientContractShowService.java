@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
 import acme.entities.contract.Contract;
 import acme.roles.client.Client;
 
@@ -42,8 +43,11 @@ public class ClientContractShowService extends AbstractService<Client, Contract>
 		assert object != null;
 
 		Dataset dataset;
+		SelectChoices projects;
 
-		dataset = super.unbind(object, "code", "providerName", "customerName", "goal", "budget", "draftMode");
+		projects = SelectChoices.from(this.repository.findAllProjects(), "code", object.getProject());
+		dataset = super.unbind(object, "code", "instantiationMoment", "providerName", "customerName", "goal", "budget", "draftMode");
+		dataset.put("projects", projects);
 
 		super.getResponse().addData(dataset);
 	}
