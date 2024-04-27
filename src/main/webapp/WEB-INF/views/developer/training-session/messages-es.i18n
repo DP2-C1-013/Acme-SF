@@ -35,3 +35,5 @@ developer.training-session.form.error.duplicated-code = Código duplicado
 developer.training-session.form.error.invalid-start-date = La fecha de inicio debe ser al menos una semana posterior al momento de creación de su módulo de formación
 developer.training-session.form.error.invalid-end-date = La sesión debe durar al menos una semana
 developer.training-module.form.error.training-module-was-published = Módulo de formación ya publicado
+developer.training-session.form.error.training-session-was-published = Sesión de formación ya publicada
+developer.training-session.form.error.project-was-published = El proyecto al que pertenece el módulo de esta sesión de formación ya ha sido publicado
