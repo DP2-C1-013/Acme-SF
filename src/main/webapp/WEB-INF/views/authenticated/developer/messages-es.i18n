@@ -1,0 +1,10 @@
+authenticated.developer.form.title = Datos de desarrollador
+
+authenticated.developer.form.label.degree = Título académico
+authenticated.developer.form.label.specialisation = Especialización
+authenticated.developer.form.label.skills = Habilidades
+authenticated.developer.form.label.email = Email
+authenticated.developer.form.label.optionalLink = Enlace opcional
+
+authenticated.developer.form.button.create = Crear
+authenticated.developer.form.button.update = Actualizar
