@@ -27,6 +27,8 @@ developer.training-session.form.label.instructor = Instructor
 developer.training-session.form.label.contactEmail = Email de contacto
 developer.training-session.form.label.optionalLink = Enlace opcional
 developer.training-session.form.label.draftMode = Modo borrador
+
+developer.training-session.form.button.create = Crear
 developer.training-session.form.button.update = Actualizar
 developer.training-session.form.button.delete = Borrar
 developer.training-session.form.button.publish = Publicar

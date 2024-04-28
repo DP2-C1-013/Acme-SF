@@ -32,7 +32,18 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	public void authorise() {
 		boolean status;
 
-		status = super.getRequest().getPrincipal().hasRole(Developer.class);
+		var request = super.getRequest();
+
+		int developerId;
+		int trainingModuleId;
+
+		trainingModuleId = request.getData("id", int.class);
+
+		developerId = request.getPrincipal().getActiveRoleId();
+
+		TrainingModule object = this.repository.findTrainingModuleById(trainingModuleId);
+
+		status = object != null && request.getPrincipal().hasRole(Developer.class) && object.getDeveloper().getId() == developerId && object.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
