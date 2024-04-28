@@ -67,9 +67,11 @@ master.menu.any.claim = Reclamaciones
 master.menu.any.sponsorship = Patrocinios
 
 # master.menu.authenticated ####################################################
+
 master.menu.authenticated = Autenticado
 master.menu.authenticated.risk = Riesgos
 master.menu.authenticated.project = Proyectos
+master.menu.authenticated.training-module = Módulos de formación
 
 # master.menu.manager ########################################################
 
