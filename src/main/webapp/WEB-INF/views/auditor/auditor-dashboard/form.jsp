@@ -74,6 +74,7 @@
 		</th>
 		<td>
 			<acme:print value="${averageRecordPeriod}"/>
+			<acme:message code="hours"/>
 		</td>
 	</tr>
 	<tr>
@@ -82,6 +83,7 @@
 		</th>
 		<td>
 			<acme:print value="${deviationRecordPeriod}"/>
+			<acme:message code="hours"/>
 		</td>
 	</tr>
 	<tr>
@@ -90,6 +92,7 @@
 		</th>
 		<td>
 			<acme:print value="${minRecordPeriod}"/>
+			<acme:message code="hours"/>
 		</td>
 	</tr>
 	<tr>
@@ -98,6 +101,7 @@
 		</th>
 		<td>
 			<acme:print value="${maxRecordPeriod}"/>
+			<acme:message code="hours"/>
 		</td>
 	</tr>
 </table>
