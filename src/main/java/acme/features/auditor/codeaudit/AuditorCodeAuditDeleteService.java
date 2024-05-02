@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.entities.auditrecord.AuditRecord;
 import acme.entities.codeaudit.CodeAudit;
 import acme.entities.codeaudit.CodeAuditType;
-import acme.entities.invoice.Invoice;
 import acme.entities.project.Project;
 import acme.roles.Auditor;
 
@@ -82,9 +82,9 @@ public class AuditorCodeAuditDeleteService extends AbstractService<Auditor, Code
 	public void perform(final CodeAudit object) {
 		assert object != null;
 
-		Collection<Invoice> invoices = this.repository.findManyAuditRecordsByCodeAuditId(object.getId());
+		Collection<AuditRecord> auditRecords = this.repository.findManyAuditRecordsByCodeAuditId(object.getId());
 
-		this.repository.deleteAll(invoices);
+		this.repository.deleteAll(auditRecords);
 		this.repository.delete(object);
 	}
 

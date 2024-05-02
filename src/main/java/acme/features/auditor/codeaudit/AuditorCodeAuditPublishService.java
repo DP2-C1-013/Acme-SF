@@ -76,6 +76,9 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 	@Override
 	public void validate(final CodeAudit object) {
 		assert object != null;
+		//
+		//		List<AuditRecord> auditRecordsDraftMode = this.repository.findAuditRecordsDraftModeByCodeAuditId(object.getId());
+		//		super.state(auditRecordsDraftMode.size() == 0, "audit-record", "auditor.code-audit.form.error.code-audit-has-no-published-audit-records");
 
 		if (!super.getBuffer().getErrors().hasErrors("mark")) {
 			List<AuditMark> marks = this.repository.findMarkModeByCodeAudit(object.getId());
@@ -85,9 +88,6 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 				AuditMark mark = mode;
 				super.state(mark.equals(AuditMark.A_PLUS) || mark.equals(AuditMark.A) || mark.equals(AuditMark.B) || mark.equals(AuditMark.C), "mark", "auditor.code-audit.form.error.invalid-mark");
 			}
-
-			//AuditMark mark = object.getMark();
-			//super.state(mark.equals(AuditMark.A_PLUS) || mark.equals(AuditMark.A) || mark.equals(AuditMark.B) || mark.equals(AuditMark.C), "mark", "auditor.code-audit.form.error.invalid-mark");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("project")) {
