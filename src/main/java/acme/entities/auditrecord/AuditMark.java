@@ -17,7 +17,7 @@ public enum AuditMark {
 		for (AuditMark mark : AuditMark.values())
 			if (mark.displayValue.equals(value))
 				return mark;
-		throw new IllegalArgumentException("Invalid AuditMark value: " + value);
+		return null;
 	}
 
 	@Override
