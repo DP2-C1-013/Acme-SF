@@ -43,7 +43,7 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 
 		AuditRecord object = this.repository.findOneAuditRecordById(auditRecordId);
 
-		status = object != null && request.getPrincipal().hasRole(Auditor.class) && object.getCodeAudit().getAuditor().getId() == auditorId && object.isDraftMode();
+		status = object != null && request.getPrincipal().hasRole(Auditor.class) && object.getCodeAudit().getAuditor().getId() == auditorId && object.getDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -64,7 +64,10 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 	public void bind(final AuditRecord object) {
 		assert object != null;
 
-		super.bind(object, "code", "startDate", "endDate", "mark", "link");
+		String markString = this.getRequest().getData("mark", String.class);
+		AuditMark mark = AuditMark.parseAuditMark(markString);
+		super.bind(object, "code", "startDate", "endDate", "link");
+		object.setMark(mark);
 	}
 
 	@Override

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
+import acme.entities.auditrecord.AuditMark;
 import acme.entities.auditrecord.AuditRecord;
 import acme.roles.Auditor;
 
@@ -35,7 +37,7 @@ public class AuditorAuditRecordDeleteService extends AbstractService<Auditor, Au
 
 		AuditRecord object = this.repository.findOneAuditRecordById(auditRecordId);
 
-		status = object != null && request.getPrincipal().hasRole(Auditor.class) && object.getCodeAudit().getAuditor().getId() == auditorId && object.isDraftMode();
+		status = object != null && request.getPrincipal().hasRole(Auditor.class) && object.getCodeAudit().getAuditor().getId() == auditorId && object.getDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -49,14 +51,18 @@ public class AuditorAuditRecordDeleteService extends AbstractService<Auditor, Au
 		object = this.repository.findOneAuditRecordById(id);
 
 		super.getBuffer().addData(object);
+		object.setDraftMode(true);
 	}
 
 	@Override
 	public void bind(final AuditRecord object) {
 		assert object != null;
 
+		String markString = this.getRequest().getData("mark", String.class);
+		AuditMark mark = AuditMark.parseAuditMark(markString);
 		super.bind(object, "code", "startDate", "endDate", "mark", "link", "draftMode");
-
+		object.setMark(mark);
+		object.setDraftMode(true);
 	}
 
 	@Override
@@ -67,7 +73,6 @@ public class AuditorAuditRecordDeleteService extends AbstractService<Auditor, Au
 	@Override
 	public void perform(final AuditRecord object) {
 		assert object != null;
-
 		this.repository.delete(object);
 	}
 
@@ -76,11 +81,17 @@ public class AuditorAuditRecordDeleteService extends AbstractService<Auditor, Au
 		assert object != null;
 
 		Dataset dataset;
+		AuditRecord ar = new AuditRecord();
+
+		SelectChoices marks;
+		marks = SelectChoices.from(AuditMark.class, ar.getMark());
 
 		dataset = super.unbind(object, "code", "startDate", "endDate", "mark", "link", "draftMode");
-		dataset.put("auditorship", object.getCodeAudit().getCode());
-		dataset.put("auditorshipDraftMode", object.getCodeAudit().getDraftMode());
-		dataset.put("auditorshipId", object.getCodeAudit().getId());
+		dataset.put("marks", marks);
+		dataset.put("CodeAudit", object.getCodeAudit().getCode());
+		dataset.put("CodeAuditDraftMode", object.getCodeAudit().getDraftMode());
+		dataset.put("CodeAuditId", object.getCodeAudit().getId());
+		System.out.println(object);
 
 		super.getResponse().addData(dataset);
 	}

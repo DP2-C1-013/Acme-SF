@@ -59,18 +59,15 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 	public void bind(final AuditRecord object) {
 		assert object != null;
 
-		super.bind(object, "code", "startDate", "endDate", "mark", "link");
+		String markString = this.getRequest().getData("mark", String.class);
+		AuditMark mark = AuditMark.parseAuditMark(markString);
+		super.bind(object, "code", "startDate", "endDate", "link");
+		object.setMark(mark);
 	}
 
 	@Override
 	public void validate(final AuditRecord object) {
 		assert object != null;
-		System.out.println("");
-		System.out.println(object.getCode());
-		System.out.println(object.getStartDate());
-		System.out.println(object.getEndDate());
-		System.out.println(object.getMark());
-
 		CodeAudit existingCodeAudit = this.repository.findOneCodeAuditById(this.getRequest().getData("code-auditId", int.class));
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
