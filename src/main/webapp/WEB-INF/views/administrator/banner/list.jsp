@@ -20,3 +20,7 @@
 	<acme:list-column code="administrator.banner.list.label.startDisplay" path="startDisplay" width="10%"/>
 	<acme:list-column code="administrator.banner.list.label.endDisplay" path="endDisplay" width="10%"/>
 </acme:list>
+
+<jstl:if test="${_command == 'list'}">
+	<acme:button code="administrator.banner.list.button.create" action="/administrator/banner/create"/>
+</jstl:if>

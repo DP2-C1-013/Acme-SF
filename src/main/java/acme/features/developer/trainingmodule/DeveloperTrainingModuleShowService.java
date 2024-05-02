@@ -71,12 +71,13 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 		else {
 			Collection<Project> project = List.of(object.getProject());
 			projects = SelectChoices.from(project, "code", object.getProject());
-
 		}
 
 		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "estimatedTotalTime", "draftMode");
 		dataset.put("difficultyLevels", choices);
 		dataset.put("projects", projects);
+		dataset.put("projectDraftMode", object.getProject().isDraftMode());
+		dataset.put("draftMode", object.isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}

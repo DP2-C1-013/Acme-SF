@@ -15,9 +15,15 @@ administrator.banner.list.label.moment = Momento de instanciación
 administrator.banner.list.label.startDisplay = Inicio visualización
 administrator.banner.list.label.endDisplay = Fin visualización
 
+administrator.banner.list.button.create = Crear
+
 administrator.banner.form.label.moment = Momento de instanciación
 administrator.banner.form.label.startDisplay = Inicio visualización
 administrator.banner.form.label.endDisplay = Fin visualización
 administrator.banner.form.label.picture = Imagen
 administrator.banner.form.label.slogan = Slogan
 administrator.banner.form.label.link = Enlace
+
+administrator.banner.list.button.update = Modificar
+administrator.banner.list.button.delete = Eliminar
+administrator.banner.list.button.create = Crear
