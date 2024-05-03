@@ -1,0 +1,20 @@
+authenticated.training-module.list.title = Módulos de formación
+
+authenticated.training-module.list.label.code = Código
+authenticated.training-module.list.label.creationMoment = Momento de creacion 
+authenticated.training-module.list.label.updateMoment = Momento de actualización
+authenticated.training-module.list.label.difficultyLevel = Nivel de dificultad
+authenticated.training-module.list.label.draftmode = Modo borrador
+
+authenticated.training-module.form.title = Detalles del módulo de formación
+
+authenticated.training-module.form.label.code = Código
+authenticated.training-module.form.label.creationMoment = Momento de creacion
+authenticated.training-module.form.label.details = Detalles
+authenticated.training-module.form.label.difficultyLevel = Nivel de dificultad
+authenticated.training-module.form.label.updateMoment = Momento de actualización
+authenticated.training-module.form.label.optionalLink = Enlace opcional
+authenticated.training-module.form.label.estimatedTotalTime = Tiempo total estimado
+authenticated.training-module.form.label.draftmode = Modo borrador
+authenticated.training-module.form.label.project = Proyecto
+authenticated.training-module.form.label.developer = Desarrollador
