@@ -41,7 +41,7 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 		Integer numDynamicCodeAudits = this.repository.numDynamicCodeAudits(auditorId);
 
 		Double averageNumRecordsPerAudit = this.repository.averageAuditingRecords(auditorId);
-		//Double deviationNumRecordsPerAudit = this.repository.deviationAuditingRecords(auditorId);
+		Double deviationNumRecordsPerAudit = this.repository.deviationAuditingRecords(auditorId);
 		Integer minNumRecords = this.repository.minAuditingRecords(auditorId);
 		Integer maxNumRecords = this.repository.maxAuditingRecords(auditorId);
 
@@ -50,11 +50,18 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 		Double minRecordPeriod = this.repository.minRecordPeriod(auditorId);
 		Double maxRecordPeriod = this.repository.maxRecordPeriod(auditorId);
 
+		System.out.println("auditorID: " + auditorId);
+		System.out.println(numStaticCodeAudits);
+		System.out.println(numDynamicCodeAudits);
+		System.out.println(this.repository.findAllCodeAudits(auditorId).size());
+		System.out.println("average: " + averageNumRecordsPerAudit);
+		System.out.println("deviation: " + deviationNumRecordsPerAudit);
+
 		dashboard.setNumStaticCodeAudits(numStaticCodeAudits);
 		dashboard.setNumDynamicCodeAudits(numDynamicCodeAudits);
 
 		dashboard.setAverageNumRecordsPerAudit(averageNumRecordsPerAudit);
-		//dashboard.setDeviationNumRecordsPerAudit(deviationNumRecordsPerAudit);
+		dashboard.setDeviationNumRecordsPerAudit(deviationNumRecordsPerAudit);
 		dashboard.setMinNumRecords(minNumRecords);
 		dashboard.setMaxNumRecords(maxNumRecords);
 
@@ -72,7 +79,7 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 
 		dataset = super.unbind(object, //
 			"numStaticCodeAudits", "numDynamicCodeAudits", // 
-			"averageNumRecordsPerAudit", "minNumRecords", "maxNumRecords", //
+			"averageNumRecordsPerAudit", "deviationNumRecordsPerAudit", "minNumRecords", "maxNumRecords", //
 			"averageRecordPeriod", "deviationRecordPeriod", "minRecordPeriod", "maxRecordPeriod");
 
 		super.getResponse().addData(dataset);

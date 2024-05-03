@@ -15,14 +15,17 @@ auditor.audit-record.list.label.draftMode = Modo borrador
 
 auditor.audit-record.form.title = Registro de audición
 auditor.audit-record.form.label.code = Código
-auditor.audit-record.form.label.startDate = Fecha inicio
-auditor.audit-record.form.label.endDate = Fecha fin
+auditor.audit-record.form.label.startDate = Fecha de inicio
+auditor.audit-record.form.label.endDate = Fecha de fin
 auditor.audit-record.form.label.mark = Nota
 auditor.audit-record.form.label.link = Enlace
 auditor.audit-record.form.label.code-audit = Audición de código
-auditor.audit-record.form.button.create = Crear
+auditor.audit-record.list.button.create = Crear
 
 auditor.audit-record.form.button.create = Crear
 auditor.audit-record.form.button.delete = Borrar
 auditor.audit-record.form.button.update = Actualizar
 auditor.audit-record.form.button.publish = Publicar
+
+auditor.code-audit.form.error.invalid-mark = Nota inválida
+auditor.auditRecord.form.error.invalid-dates = Fechas inválidas

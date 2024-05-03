@@ -24,7 +24,7 @@ public class AuditorDashboard extends AbstractForm {
 	public Integer				numDynamicCodeAudits;
 
 	private Double				averageNumRecordsPerAudit;
-	//private Double				deviationNumRecordsPerAudit;
+	private Double				deviationNumRecordsPerAudit;
 	private Integer				minNumRecords;
 	private Integer				maxNumRecords;
 

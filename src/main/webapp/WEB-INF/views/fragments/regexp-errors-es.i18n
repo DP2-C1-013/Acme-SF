@@ -28,3 +28,7 @@ sponsorship.code.error = El código debe empezar por una a tres letras en mayús
 
 # invoice.code.error ###################################################################
 invoice.code.error = El código debe empezar por "IN-" seguido de 4 números, un guión y otros cuatro números.
+
+auditor ###################################################################
+validation.auditRecord.code = El código debe empezar por "AU-" seguido de 4 enteros, un guión y otros cuatro enteros.
+validation.codeAudit.code = El código debe seguir el patrón de una, dos o tres letras mayúsculas, un guión, y tres enteros.

@@ -43,7 +43,7 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 
 		AuditRecord object = this.repository.findOneAuditRecordById(auditRecordId);
 
-		status = object != null && request.getPrincipal().hasRole(Auditor.class) && object.getCodeAudit().getAuditor().getId() == auditorId && object.isDraftMode();
+		status = object != null && request.getPrincipal().hasRole(Auditor.class) && object.getCodeAudit().getAuditor().getId() == auditorId && object.getDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -63,7 +63,10 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 	public void bind(final AuditRecord object) {
 		assert object != null;
 
-		super.bind(object, "code", "startDate", "endDate", "mark", "link", "draftMode");
+		String markString = this.getRequest().getData("mark", String.class);
+		AuditMark mark = AuditMark.parseAuditMark(markString);
+		super.bind(object, "code", "startDate", "endDate", "link");
+		object.setMark(mark);
 	}
 
 	@Override
@@ -83,6 +86,11 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 			Date minimunDuration;
 			minimunDuration = MomentHelper.deltaFromMoment(object.getStartDate(), 1, ChronoUnit.HOURS);
 			super.state(MomentHelper.isAfterOrEqual(object.getEndDate(), minimunDuration), "endDate", "auditor.auditRecord.form.error.invalid-dates");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("mark")) {
+			AuditMark mark = object.getMark();
+			super.state(mark.equals(AuditMark.A_PLUS) || mark.equals(AuditMark.A) || mark.equals(AuditMark.B) || mark.equals(AuditMark.C), "mark", "auditor.code-audit.form.error.invalid-mark");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("codeAudit"))

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
+import acme.client.views.SelectChoices;
+import acme.entities.auditrecord.AuditMark;
 import acme.entities.auditrecord.AuditRecord;
 import acme.roles.Auditor;
 
@@ -55,9 +57,13 @@ public class AuditorAuditRecordShowService extends AbstractService<Auditor, Audi
 	public void unbind(final AuditRecord object) {
 		assert object != null;
 
+		SelectChoices marks;
 		Dataset dataset;
 
+		marks = SelectChoices.from(AuditMark.class, object.getMark());
+
 		dataset = super.unbind(object, "code", "startDate", "endDate", "mark", "link", "draftMode");
+		dataset.put("marks", marks);
 		dataset.put("codeAudit", object.getCodeAudit().getCode());
 		dataset.put("codeAuditDraftMode", object.getCodeAudit().getDraftMode());
 

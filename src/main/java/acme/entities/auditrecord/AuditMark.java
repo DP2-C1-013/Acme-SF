@@ -13,6 +13,13 @@ public enum AuditMark {
 		this.displayValue = displayValue;
 	}
 
+	public static AuditMark parseAuditMark(final String value) {
+		for (AuditMark mark : AuditMark.values())
+			if (mark.displayValue.equals(value))
+				return mark;
+		return null;
+	}
+
 	@Override
 	public String toString() {
 		return this.displayValue;
