@@ -6,9 +6,6 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.client.views.SelectChoices;
-import acme.entities.auditrecord.AuditMark;
-import acme.entities.auditrecord.AuditRecord;
 import acme.entities.invoice.Invoice;
 import acme.roles.Sponsor;
 
@@ -58,15 +55,9 @@ public class SponsorInvoiceShowService extends AbstractService<Sponsor, Invoice>
 	public void unbind(final Invoice object) {
 		assert object != null;
 
-		AuditRecord ar = new AuditRecord();
-
-		SelectChoices marks;
 		Dataset dataset;
 
-		marks = SelectChoices.from(AuditMark.class, ar.getMark());
-
-		dataset = super.unbind(object, "code", "startDate", "endDate", "mark", "link", "draftMode");
-		dataset.put("marks", marks);
+		dataset = super.unbind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link", "draftMode");
 		dataset.put("sponsorship", object.getSponsorship().getCode());
 		dataset.put("totalAmount", object.totalAmount());
 		dataset.put("sponsorshipDraftMode", object.getSponsorship().isDraftMode());
