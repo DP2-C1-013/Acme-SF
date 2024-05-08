@@ -159,6 +159,8 @@
         
         
         
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                
         
         
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
@@ -213,6 +215,8 @@
         
         
         
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/webapp"/>
+                                                                                                                                                                                                                                                                                                                                                
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/webapp"/>
                                                                                                                                                                                                                                                                                                                                         
@@ -256,12 +260,14 @@
         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+
                                                 
         
         
         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/acme-framework-24.4.0"/>
                                                                                                                                                                                                                                                                                                                                                                                                                                                 
         
@@ -317,6 +323,7 @@
         
         
         <property name="java-output-path" value="/Hello-World-22.0/target/classes"/>
+
                 
         <property name="context-root" value="Acme-SF-D03"/>
                                                                                                                                                                                                                                                                                                                                                                                                                                                     
@@ -374,6 +381,7 @@
     
     
     </wb-module>
+
                                                                                                                                                                                                                         
 
 

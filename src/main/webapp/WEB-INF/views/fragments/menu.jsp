@@ -23,6 +23,8 @@
 				action="/any/claim/list" />
 			<acme:menu-suboption code="master.menu.any.sponsorship"
 				action="/any/sponsorship/list-published" />
+			<acme:menu-suboption code="master.menu.any.code-audit"
+				action="/any/code-audit/list-published" />
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
