@@ -1,0 +1,20 @@
+authenticated.training-module.list.title = Training modules
+
+authenticated.training-module.list.label.code = Code
+authenticated.training-module.list.label.creationMoment = Creation moment 
+authenticated.training-module.list.label.updateMoment = Update moment
+authenticated.training-module.list.label.difficultyLevel = Difficulty level
+authenticated.training-module.list.label.draftmode = DraftMode
+
+authenticated.training-module.form.title = Training module details
+
+authenticated.training-module.form.label.code = Code
+authenticated.training-module.form.label.creationMoment = Creation moment
+authenticated.training-module.form.label.details = Details
+authenticated.training-module.form.label.difficultyLevel = Difficulty level
+authenticated.training-module.form.label.updateMoment = Update moment
+authenticated.training-module.form.label.optionalLink = Optional link
+authenticated.training-module.form.label.estimatedTotalTime = Estimated total time
+authenticated.training-module.form.label.draftmode = Draft Mode
+authenticated.training-module.form.label.project = Project
+authenticated.training-module.form.label.developer = Developer

@@ -74,6 +74,7 @@ master.menu.any.code-audit = Code audits
 master.menu.authenticated = Authenticated
 master.menu.authenticated.risk = Risks
 master.menu.authenticated.project = Projects
+master.menu.authenticated.training-module = Training modules
 
 
 # master.menu.manager ####################################################

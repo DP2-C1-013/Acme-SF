@@ -38,6 +38,8 @@
 				action="/authenticated/risk/list" />
 			<acme:menu-suboption code="master.menu.authenticated.project"
 				action="/authenticated/project/list" />
+			<acme:menu-suboption code="master.menu.authenticated.training-module"
+				action="/authenticated/training-module/list" />
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator"
