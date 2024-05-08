@@ -50,13 +50,6 @@ public class AuditorDashboardShowService extends AbstractService<Auditor, Audito
 		Double minRecordPeriod = this.repository.minRecordPeriod(auditorId);
 		Double maxRecordPeriod = this.repository.maxRecordPeriod(auditorId);
 
-		System.out.println("auditorID: " + auditorId);
-		System.out.println(numStaticCodeAudits);
-		System.out.println(numDynamicCodeAudits);
-		System.out.println(this.repository.findAllCodeAudits(auditorId).size());
-		System.out.println("average: " + averageNumRecordsPerAudit);
-		System.out.println("deviation: " + deviationNumRecordsPerAudit);
-
 		dashboard.setNumStaticCodeAudits(numStaticCodeAudits);
 		dashboard.setNumDynamicCodeAudits(numDynamicCodeAudits);
 
