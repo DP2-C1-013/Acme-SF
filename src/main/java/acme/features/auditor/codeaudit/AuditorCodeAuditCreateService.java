@@ -1,6 +1,8 @@
 
 package acme.features.auditor.codeaudit;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -76,6 +78,11 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 		if (!super.getBuffer().getErrors().hasErrors("project")) {
 			Project existingProject = this.repository.findOneProjectByCode(object.getProject().getCode());
 			super.state(existingProject != null && !existingProject.isDraftMode() && !object.getProject().isDraftMode(), "project", "auditor.code-audit.form.error.invalid-project");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("executionDate")) {
+			Date minDate = new Date(99, 12, 31, 23, 59);
+			super.state(object.getExecutionDate().after(minDate), "executionDate", "auditor.code-audit.form.error.invalid-date");
 		}
 
 	}
