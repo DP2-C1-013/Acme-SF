@@ -35,3 +35,4 @@ auditor.code-audit.form.button.publish = Publicar
 auditor.code-audit.form.button.audit-record = Registros de audiciones
 
 auditor.code-audit.form.error.code-audit-has-no-audit-records = La audición de código no tiene registros
+auditor.code-audit.form.error.invalid-date = fecha inválida

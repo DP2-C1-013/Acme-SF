@@ -1,6 +1,8 @@
 
 package acme.features.auditor.codeaudit;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,7 +10,6 @@ import acme.client.data.models.Dataset;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
-import acme.entities.auditrecord.AuditMark;
 import acme.entities.codeaudit.CodeAudit;
 import acme.entities.codeaudit.CodeAuditType;
 import acme.entities.project.Project;
@@ -75,19 +76,13 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 	public void validate(final CodeAudit object) {
 		assert object != null;
 
-		if (!super.getBuffer().getErrors().hasErrors("mark")) {
-			//List<AuditMark> marks = this.repository.findMarkModeByCodeAudit(object.getId());
-			//AuditMark mode = marks.get(0);
-
-			//AuditMark mark = mode;
-			//super.state(mark.equals(AuditMark.A_PLUS) || mark.equals(AuditMark.A) || mark.equals(AuditMark.B) || mark.equals(AuditMark.C), "mark", "auditor.code-audit.form.error.invalid-mark");
-			AuditMark mark = object.getMark();
-			super.state(mark == null || mark.equals(AuditMark.A_PLUS) || mark.equals(AuditMark.A) || mark.equals(AuditMark.B) || mark.equals(AuditMark.C), "mark", "auditor.code-audit.form.error.invalid-mark");
-		}
-
 		if (!super.getBuffer().getErrors().hasErrors("project")) {
 			Project existingProject = this.repository.findOneProjectByCode(object.getProject().getCode());
 			super.state(existingProject != null && !existingProject.isDraftMode() && !object.getProject().isDraftMode(), "project", "sponsor.codeAudit.form.error.invalid-project");
+		}
+		if (!super.getBuffer().getErrors().hasErrors("executionDate")) {
+			Date minDate = new Date(99, 12, 31, 23, 59);
+			super.state(object.getExecutionDate().after(minDate), "executionDate", "auditor.code-audit.form.error.invalid-date");
 		}
 
 	}
