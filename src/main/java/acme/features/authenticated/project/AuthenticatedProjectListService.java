@@ -40,7 +40,7 @@ public class AuthenticatedProjectListService extends AbstractService<Authenticat
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "title", "cost", "manager", "draftMode");
+		dataset = super.unbind(object, "code", "title", "cost");
 
 		super.getResponse().addData(dataset);
 	}
