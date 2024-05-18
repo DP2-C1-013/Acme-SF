@@ -77,7 +77,7 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 		}
 
 		if (!(super.getBuffer().getErrors().hasErrors("startDate") || super.getBuffer().getErrors().hasErrors("endDate"))) {
-			Date minDate = new Date(99, 12, 31, 23, 59);
+			Date minDate = new Date(99, 11, 31, 23, 59);
 			Date minimunDuration;
 			if (object.getStartDate().after(minDate)) {
 				System.out.println("Start date is after");

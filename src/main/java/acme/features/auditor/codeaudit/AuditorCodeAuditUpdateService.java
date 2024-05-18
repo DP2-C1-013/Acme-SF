@@ -81,7 +81,7 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 			super.state(existingProject != null && !existingProject.isDraftMode() && !object.getProject().isDraftMode(), "project", "sponsor.codeAudit.form.error.invalid-project");
 		}
 		if (!super.getBuffer().getErrors().hasErrors("executionDate")) {
-			Date minDate = new Date(99, 12, 31, 23, 59);
+			Date minDate = new Date(99, 11, 31, 23, 59);
 			super.state(object.getExecutionDate().after(minDate), "executionDate", "auditor.code-audit.form.error.invalid-date");
 		}
 
