@@ -17,13 +17,22 @@ public class AuthenticatedProjectShowService extends AbstractService<Authenticat
 	@Autowired
 	private AuthenticatedProjectRepository repository;
 
-	// AbstractService<Authenticated, Claim> ---------------------------
+	// AbstractService<Authenticated, Project> ---------------------------
 
 
 	@Override
 	public void authorise() {
 
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int id;
+		Project project;
+
+		id = super.getRequest().getData("id", int.class);
+		project = this.repository.findOneProjectById(id);
+
+		status = project != null && !project.isDraftMode();
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -43,7 +52,7 @@ public class AuthenticatedProjectShowService extends AbstractService<Authenticat
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "title", "abstractText", "hasFatalErrors", "cost", "link", "manager", "draftMode");
+		dataset = super.unbind(object, "code", "title", "abstractText", "cost", "link");
 
 		super.getResponse().addData(dataset);
 	}
