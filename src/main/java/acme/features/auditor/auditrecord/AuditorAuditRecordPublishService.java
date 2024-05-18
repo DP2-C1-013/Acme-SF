@@ -78,11 +78,11 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			AuditRecord existing;
 			existing = this.repository.findOneAuditRecordByCode(object.getCode());
-			super.state(existing == null || existing.getId() == object.getId(), "duration", "auditor.auditRecord.form.error.duplicated-code");
+			super.state(existing == null || existing.getId() == object.getId(), "code", "auditor.auditRecord.form.error.duplicated-code");
 		}
 
 		if (!(super.getBuffer().getErrors().hasErrors("startDate") || super.getBuffer().getErrors().hasErrors("endDate"))) {
-			Date minDate = new Date(99, 12, 31, 23, 59);
+			Date minDate = new Date(99, 11, 31, 23, 59);
 			Date minimunDuration;
 			minimunDuration = MomentHelper.deltaFromMoment(object.getStartDate(), 1, ChronoUnit.HOURS);
 			super.state(MomentHelper.isAfterOrEqual(object.getEndDate(), minimunDuration) && object.getStartDate().after(minDate), "endDate", "auditor.auditRecord.form.error.invalid-dates");

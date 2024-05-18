@@ -29,3 +29,4 @@ auditor.audit-record.form.button.publish = Publicar
 
 auditor.code-audit.form.error.invalid-mark = Nota inválida
 auditor.auditRecord.form.error.invalid-dates = Fechas inválidas
+auditor.auditRecord.form.error.duplicated-code = El código introducido ya existe
