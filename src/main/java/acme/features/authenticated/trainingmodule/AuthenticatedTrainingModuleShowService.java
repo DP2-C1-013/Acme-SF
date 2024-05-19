@@ -46,7 +46,7 @@ public class AuthenticatedTrainingModuleShowService extends AbstractService<Auth
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "estimatedTotalTime", "draftMode", "project", "developer");
+		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "draftMode", "project", "developer");
 
 		super.getResponse().addData(dataset);
 	}

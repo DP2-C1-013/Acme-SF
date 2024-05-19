@@ -30,8 +30,8 @@ public class DeveloperDashboard extends AbstractForm {
 	public Double				deviationTimeTrainingModules;
 
 	@NotNull
-	public Double				minimumTimeTrainingModules;
+	public Integer				minimumTimeTrainingModules;
 
 	@NotNull
-	public Double				maximumTimeTrainingModules;
+	public Integer				maximumTimeTrainingModules;
 }

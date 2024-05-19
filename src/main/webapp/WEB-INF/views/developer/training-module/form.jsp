@@ -22,7 +22,11 @@
 	<acme:input-select code="developer.training-module.form.label.difficultyLevel" path="difficultyLevel" choices="${difficultyLevels}" />
 	<acme:input-moment code="developer.training-module.form.label.updateMoment" path="updateMoment" />
 	<acme:input-url code="developer.training-module.form.label.optionalLink" path="optionalLink" />
-	<acme:input-integer code="developer.training-module.form.label.estimatedTotalTime" path="estimatedTotalTime" />
+	<jstl:choose>
+		<jstl:when test="${_command == 'show'}">
+			<acme:input-integer code="developer.training-module.form.label.estimatedTotalTime" path="estimatedTotalTime" />
+		</jstl:when>
+	</jstl:choose>
 	<acme:input-select code="developer.training-module.form.label.project" path="project" choices="${projects}" />
 	<acme:input-checkbox code="developer.training-module.form.label.draftMode" path="draftMode" readonly="true" />
 	<acme:button code="developer.training-module.form.button.training-sessions" action="/developer/training-session/list?trainingModuleId=${id}"/>

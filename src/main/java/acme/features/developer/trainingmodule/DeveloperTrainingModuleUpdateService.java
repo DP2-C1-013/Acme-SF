@@ -68,7 +68,7 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 		if (project != null)
 			project = this.repository.findOneProjectByCode(project.getCode());
 
-		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "estimatedTotalTime");
+		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink");
 		object.setProject(project);
 		object.setDraftMode(true);
 	}
@@ -87,9 +87,6 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 			DifficultyLevel level = object.getDifficultyLevel();
 			super.state(level.equals(DifficultyLevel.Basic) || level.equals(DifficultyLevel.Intermediate) || level.equals(DifficultyLevel.Advanced), "difficultyLevel", "developer.training-module.form.error.invalid-difficulty-level");
 		}
-
-		if (!super.getBuffer().getErrors().hasErrors("estimatedTotalTime"))
-			super.state(object.getEstimatedTotalTime() > 1, "estimatedTotalTime", "developer.training-module.form.error.invalid-estimated-total-time");
 
 		if (!super.getBuffer().getErrors().hasErrors("project")) {
 			Project existingProject = this.repository.findOneProjectByCode(object.getProject().getCode());
@@ -116,7 +113,7 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 		difficultyLevels = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
 		projects = SelectChoices.from(this.repository.findAllProjectsDraftModeTrue(), "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "estimatedTotalTime", "draftMode");
+		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "draftMode");
 		dataset.put("difficultyLevels", difficultyLevels);
 		dataset.put("projects", projects);
 		dataset.put("project", projects.getSelected());
