@@ -17,7 +17,9 @@
 
 <acme:form readonly="false">
 	<acme:input-textbox code="sponsor.invoice.form.label.code" path="code" placeholder="IN-XXXX-XXXX"/>
-	<acme:input-moment code="sponsor.invoice.form.label.registrationTime" path="registrationTime"/>
+	<jstl:if test="${acme:anyOf(_command,'show|update|delete|publish')}">	
+		<acme:input-moment code="sponsor.invoice.form.label.registrationTime" path="registrationTime" readonly="true"/>
+	</jstl:if>
 	<acme:input-moment code="sponsor.invoice.form.label.dueDate" path="dueDate"/>
 	<acme:input-money code="sponsor.invoice.form.label.quantity" path="quantity"/>
 	<acme:input-double code="sponsor.invoice.form.label.tax" path="tax" placeholder="0.21"/>
