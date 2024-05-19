@@ -44,3 +44,4 @@ sponsor.sponsorship.form.error.no-invoices-published-for-this-sponsorship = Al m
 sponsor.sponsorship.form.error.moment-out-of-range = El valor de la fecha de inicio está fuera del rango [01/01/2000 00:00, 31/12/2200 23:59]
 sponsor.sponsorship.form.error.duration-out-of-range = El valor de la fecha de fin está fuera del rango [01/01/2000 00:00, 31/12/2200 23:59]
 sponsor.sponsorship.form.error.new-amount-small-than-sum-of-invoice-quantity = La nueva cantidad no puede ser menor que la sumas de la cantidad total de las facturas asociadas a este patrocinio
+sponsor.sponsorship.form.error.published-invoices-cannot-delete = Hay al menos un factura publicada para este patrocinio, por lo que no se puede borrar

@@ -44,3 +44,4 @@ sponsor.sponsorship.form.error.no-invoices-published-for-this-sponsorship = At l
 sponsor.sponsorship.form.error.moment-out-of-range = Start date value out of range [2000/01/01 00:00, 2200/12/31 23:59]
 sponsor.sponsorship.form.error.duration-out-of-range = End date value out of range [2000/01/01 00:00, 2200/12/31 23:59]
 sponsor.sponsorship.form.error.new-amount-small-than-sum-of-invoice-quantity = New amount can not be less than the sum of the total amount of the published invoices for this sponsorship
+sponsor.sponsorship.form.error.published-invoices-cannot-delete = There is at least one published invoice so this sponsorship cannot be deleted
