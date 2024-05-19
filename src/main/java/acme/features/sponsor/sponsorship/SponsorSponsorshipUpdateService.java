@@ -107,6 +107,8 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 
 			List<String> invoiceCurrencies = (List<String>) this.repository.findManyCurrenciesInInvoiceBySponsorshipId(object.getId());
 			super.state(invoiceCurrencies.stream().allMatch(invoiceCurrency -> invoiceCurrency.equals(object.getAmount().getCurrency())), "amount", "sponsor.sponsorship.form.error.currency-does-not-match-with-invoices");
+			Double sumAmountInvoices = this.repository.findSumAmountInvoicesBySponsorshipId(this.getRequest().getData("id", int.class));
+			super.state(sumAmountInvoices <= amount, "amount", "sponsor.sponsorship.form.error.new-amount-small-than-sum-of-invoice-quantity");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("project")) {
