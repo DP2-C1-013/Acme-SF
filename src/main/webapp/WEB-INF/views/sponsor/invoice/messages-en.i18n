@@ -33,8 +33,9 @@ sponsor.invoice.form.button.publish = Publish
 
 sponsor.invoice.form.error.duplicated-code = Code already in use
 sponsor.invoice.form.error.invalid-due-date = Due date must be at least one month after registration date
-sponsor.invoice.form.error.invalid-quantity = Quantity must be positive. It can only be 0 if sponsorship type is In_kind
+sponsor.invoice.form.error.invalid-quantity = Quantity must be positive and less or equals than 1,000,000.00. It can only be 0 if sponsorship type is In_kind
 sponsor.invoice.form.error.quantity-too-high = This quantity plus those of the other published invoices of this sponsorship exceed the amount specified in the sponsorship
 sponsor.invoice.form.error.invalid-currency = Currency not accepted by the system
 sponsor.invoice.form.error.currency-does-not-match = Invoice currency does not match with its sponsorship currency
 sponsor.invoice.form.error.sponsorship-draft-mode-is-set-to-false = The sponsorship associated with this invoice is not in draft mode
+sponsor.invoice.form.error.dueDate-out-of-range = Due date value out of range [2000/01/01 00:00, 2200/12/31 23:59]

@@ -64,7 +64,7 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 	public void bind(final Invoice object) {
 		assert object != null;
 
-		super.bind(object, "code", "registrationTime", "dueDate", "quantity", "tax", "link");
+		super.bind(object, "code", "dueDate", "quantity", "tax", "link");
 	}
 
 	@Override
@@ -83,12 +83,16 @@ public class SponsorInvoicePublishService extends AbstractService<Sponsor, Invoi
 			Date minimunDuration;
 			minimunDuration = MomentHelper.deltaFromMoment(object.getRegistrationTime(), 30, ChronoUnit.DAYS);
 			super.state(MomentHelper.isAfterOrEqual(object.getDueDate(), minimunDuration), "dueDate", "sponsor.invoice.form.error.invalid-due-date");
+
+			Date minDate = MomentHelper.parse("2000/01/01 00:00", "yyyy/MM/dd HH:mm");
+			Date maxDate = MomentHelper.parse("2200/12/31 23:59", "yyyy/MM/dd HH:mm");
+			super.state(MomentHelper.isAfterOrEqual(object.getDueDate(), minDate) && MomentHelper.isBeforeOrEqual(object.getDueDate(), maxDate), "dueDate", "sponsor.invoice.form.error.dueDate-out-of-range");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("quantity")) {
 			Double amount = object.getQuantity().getAmount();
 			SponsorshipType type = object.getSponsorship().getType();
-			super.state(amount > 0. && type.equals(SponsorshipType.Financial) || amount.equals(0.) && type.equals(SponsorshipType.In_kind), "quantity", "sponsor.invoice.form.error.invalid-quantity");
+			super.state((amount > 0. && type.equals(SponsorshipType.Financial) || amount.equals(0.) && type.equals(SponsorshipType.In_kind)) && amount <= 1000000.00, "quantity", "sponsor.invoice.form.error.invalid-quantity");
 
 			int sponsorshipId = object.getSponsorship().getId();
 			double totalCost = this.repository.findSumTotalAmountBySponsorshipId(sponsorshipId);

@@ -91,6 +91,11 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 			Date minimunDuration;
 			minimunDuration = MomentHelper.deltaFromMoment(object.getMoment(), 30, ChronoUnit.DAYS);
 			super.state(MomentHelper.isAfterOrEqual(object.getDuration(), minimunDuration), "duration", "sponsor.sponsorship.form.error.invalid-duration");
+
+			Date minDate = MomentHelper.parse("2000/01/01 00:00", "yyyy/MM/dd HH:mm");
+			Date maxDate = MomentHelper.parse("2200/12/31 23:59", "yyyy/MM/dd HH:mm");
+			super.state(MomentHelper.isAfterOrEqual(object.getMoment(), minDate) && MomentHelper.isBeforeOrEqual(object.getMoment(), maxDate), "moment", "sponsor.sponsorship.form.error.moment-out-of-range");
+			super.state(MomentHelper.isAfterOrEqual(object.getDuration(), minDate) && MomentHelper.isBeforeOrEqual(object.getDuration(), maxDate), "duration", "sponsor.sponsorship.form.error.duration-out-of-range");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("project")) {
@@ -101,7 +106,7 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		if (!super.getBuffer().getErrors().hasErrors("amount")) {
 			Double amount = object.getAmount().getAmount();
 			SponsorshipType type = object.getType();
-			super.state(amount > 0. && type.equals(SponsorshipType.Financial) || amount.equals(0.) && type.equals(SponsorshipType.In_kind), "amount", "sponsor.sponsorship.form.error.invalid-amount");
+			super.state((amount > 0. && type.equals(SponsorshipType.Financial) || amount.equals(0.) && type.equals(SponsorshipType.In_kind)) && amount <= 1000000.00, "amount", "sponsor.sponsorship.form.error.invalid-amount");
 
 			Double sumAmountInvoices;
 			Double amountSponsorship = this.getRequest().getData("amount", Money.class).getAmount();
