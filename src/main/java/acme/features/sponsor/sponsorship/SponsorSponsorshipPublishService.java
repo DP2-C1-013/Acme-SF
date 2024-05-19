@@ -9,7 +9,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.datatypes.Money;
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
 import acme.client.helpers.PrincipalHelper;
@@ -104,15 +103,16 @@ public class SponsorSponsorshipPublishService extends AbstractService<Sponsor, S
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("amount")) {
-			Double amount = object.getAmount().getAmount();
+			Double amountSponsorship = object.getAmount().getAmount();
 			SponsorshipType type = object.getType();
-			super.state((amount > 0. && type.equals(SponsorshipType.Financial) || amount.equals(0.) && type.equals(SponsorshipType.In_kind)) && amount <= 1000000.00, "amount", "sponsor.sponsorship.form.error.invalid-amount");
+			super.state((amountSponsorship > 0. && type.equals(SponsorshipType.Financial) || amountSponsorship.equals(0.) && type.equals(SponsorshipType.In_kind)) && amountSponsorship <= 1000000.00, "amount",
+				"sponsor.sponsorship.form.error.invalid-amount");
 
 			Double sumAmountInvoices;
-			Double amountSponsorship = this.getRequest().getData("amount", Money.class).getAmount();
 			sumAmountInvoices = this.repository.findSumAmountInvoicesBySponsorshipId(this.getRequest().getData("id", int.class));
 			super.state(sumAmountInvoices.equals(amountSponsorship), "*", "sponsor.sponsorship.form.error.invoice-sum-not-valid");
 			super.state(sumAmountInvoices != -1, "*", "sponsor.sponsorship.form.error.no-invoices-published-for-this-sponsorship");
+			super.state(sumAmountInvoices <= amountSponsorship, "amount", "sponsor.sponsorship.form.error.new-amount-small-than-sum-of-invoice-quantity");
 
 			List<String> currencies = Arrays.asList(this.repository.findSystemCurrencies().get(0).getAcceptedCurrencies().split(","));
 			super.state(currencies.stream().anyMatch(c -> c.equals(object.getAmount().getCurrency())), "amount", "sponsor.sponsorship.form.error.invalid-currency");
