@@ -76,7 +76,7 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 
 		choices = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
 		if (object.getProject().isDraftMode())
-			projects = SelectChoices.from(this.repository.findAllProjectsDraftModeTrue(), "code", object.getProject());
+			projects = SelectChoices.from(this.repository.findAllProjectsDraftModeFalse(), "code", object.getProject());
 		else {
 			Collection<Project> project = List.of(object.getProject());
 			projects = SelectChoices.from(project, "code", object.getProject());

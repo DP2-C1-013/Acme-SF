@@ -26,6 +26,7 @@ developer.training-session.form.label.location = Location
 developer.training-session.form.label.instructor = Instructor
 developer.training-session.form.label.contactEmail = Contact email
 developer.training-session.form.label.optionalLink = Optional link
+developer.training-session.form.label.trainingModuleCode = Training module
 developer.training-session.form.label.draftMode = Draft mode
 
 developer.training-session.form.button.create = Create

@@ -34,6 +34,7 @@ developer.training-module.form.button.create = Crear
 developer.training-module.form.button.training-sessions = Sesiones de formación
 
 developer.training-module.form.error.duplicated = Este código ya existe
+developer.training-module.form.error.invalid-creation-moment = El módulo de formación debe crearse al menos una semana antes de cada sesión de formación.
 developer.training-module.form.error.invalid-update-moment = El momento de actualización debe estar al menos una semana después del momento de la creación.
 developer.training-module.form.error.invalid-difficulty-level = El nivel de dificultad introducido ha de ser Basic, Intermediate o Advanced.
 developer.training-module.form.error.invalid-estimated-total-time = Debe ser mayor o igual que uno

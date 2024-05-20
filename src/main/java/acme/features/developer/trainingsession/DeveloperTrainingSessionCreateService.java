@@ -58,6 +58,7 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 
 		object = new TrainingSession();
 		object.setTrainingModule(trainingModule);
+		object.setDraftMode(true);
 
 		super.getBuffer().addData(object);
 	}
@@ -98,14 +99,13 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("trainingModule"))
-			super.state(existingTM != null && existingTM.isDraftMode() && existingTM.getProject().isDraftMode(), "trainingModule", "developer.training-module.form.error.training-module-was-published");
+			super.state(existingTM != null && existingTM.isDraftMode() && !existingTM.getProject().isDraftMode(), "trainingModule", "developer.training-module.form.error.training-module-was-published");
 
 	}
 
 	@Override
 	public void perform(final TrainingSession object) {
 		assert object != null;
-
 		this.repository.save(object);
 	}
 
@@ -117,8 +117,8 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 
 		dataset = super.unbind(object, "code", "startDate", "endDate", "location", "instructor", "contactEmail", "optionalLink", "draftMode");
 		dataset.put("trainingModuleId", super.getRequest().getData("trainingModuleId", int.class));
-		dataset.put("trainingModuleDraftMode", object.getTrainingModule().isDraftMode());
-		dataset.put("projectDraftMode", object.getTrainingModule().getProject().isDraftMode());
+		dataset.put("trainingModuleNotPublished", object.getTrainingModule().isDraftMode());
+		dataset.put("projectPublished", !object.getTrainingModule().getProject().isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}
