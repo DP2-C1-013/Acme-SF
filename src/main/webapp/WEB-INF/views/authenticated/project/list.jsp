@@ -17,13 +17,9 @@
 
 <acme:list>
 	<acme:list-column code="authenticated.project.list.label.code" path="code"
-		width="10%" />
+		width="30%" />
 	<acme:list-column code="authenticated.project.list.label.title" path="title"
-		width="20%" />
+		width="30%" />
 	<acme:list-column code="authenticated.project.list.label.cost" path="cost"
-		width="70%" />
-	<acme:list-column code="authenticated.project.list.label.manager" path="manager"
-		width="70%" />
-	<acme:list-column code="authenticated.project.list.label.draftmode" path="draftMode"
-		width="10%" />
+		width="40%" />
 </acme:list>

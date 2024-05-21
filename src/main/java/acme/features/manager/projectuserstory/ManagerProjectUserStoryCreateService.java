@@ -54,22 +54,15 @@ public class ManagerProjectUserStoryCreateService extends AbstractService<Manage
 		project = object.getProject();
 		userStory = object.getUserStory();
 
-		if (!super.getBuffer().getErrors().hasErrors("project")) {
+		super.state(project != null, "*", "manager.projectuserstory.form.error.notnull.project");
+		super.state(userStory != null, "*", "manager.projectuserstory.form.error.notnull.userstory");
+
+		if (!super.getBuffer().getErrors().hasErrors("project") && !super.getBuffer().getErrors().hasErrors("userStory")) {
 			ProjectUserStory existing;
 
 			existing = this.repository.findOneProjectUserStoryByProjectIdAndUserStoryId(project.getId(), userStory.getId());
-			super.state(existing == null, "project", "manager.projectuserstory.form.error.existing-project-assignation");
-
+			super.state(existing == null, "*", "manager.projectuserstory.form.error.existing-project-assignation");
 			super.state(project.isDraftMode() || !userStory.isDraftMode(), "project", "manager.projectuserstory.form.error.published-project");
-		}
-
-		if (!super.getBuffer().getErrors().hasErrors("userStory")) {
-			ProjectUserStory existing;
-
-			existing = this.repository.findOneProjectUserStoryByProjectIdAndUserStoryId(project.getId(), userStory.getId());
-			super.state(existing == null, "userStory", "manager.projectuserstory.form.error.existing-project-assignation");
-
-			super.state(project.isDraftMode() || !userStory.isDraftMode(), "userStory", "manager.projectuserstory.form.error.published-project");
 		}
 
 	}

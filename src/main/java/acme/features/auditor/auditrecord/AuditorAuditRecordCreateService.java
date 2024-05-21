@@ -77,10 +77,18 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 		}
 
 		if (!(super.getBuffer().getErrors().hasErrors("startDate") || super.getBuffer().getErrors().hasErrors("endDate"))) {
-
+			Date minDate = new Date(99, 11, 31, 23, 59);
 			Date minimunDuration;
+			if (object.getStartDate().after(minDate)) {
+				System.out.println("Start date is after");
+				System.out.println(minDate);
+			} else {
+				System.out.println("Start date is not after");
+				System.out.println(minDate);
+				System.out.println(object.getStartDate());
+			}
 			minimunDuration = MomentHelper.deltaFromMoment(object.getStartDate(), 1, ChronoUnit.HOURS);
-			super.state(MomentHelper.isAfterOrEqual(object.getEndDate(), minimunDuration), "endDate", "auditor.auditRecord.form.error.invalid-dates");
+			super.state(MomentHelper.isAfterOrEqual(object.getEndDate(), minimunDuration) && object.getStartDate().after(minDate), "endDate", "auditor.auditRecord.form.error.invalid-dates");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("codeAudit"))

@@ -67,6 +67,7 @@ master.menu.user-account.become-auditor = Become an Auditor
 master.menu.any= Any
 master.menu.any.claim = Claims
 master.menu.any.sponsorship = Sponsorships
+master.menu.any.code-audit = Code audits
 
 # master.menu.authenticated ####################################################
 

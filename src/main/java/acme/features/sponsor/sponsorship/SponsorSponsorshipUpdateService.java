@@ -90,18 +90,25 @@ public class SponsorSponsorshipUpdateService extends AbstractService<Sponsor, Sp
 			Date minimunDuration;
 			minimunDuration = MomentHelper.deltaFromMoment(object.getMoment(), 30, ChronoUnit.DAYS);
 			super.state(MomentHelper.isAfterOrEqual(object.getDuration(), minimunDuration), "duration", "sponsor.sponsorship.form.error.invalid-duration");
+
+			Date minDate = MomentHelper.parse("2000/01/01 00:00", "yyyy/MM/dd HH:mm");
+			Date maxDate = MomentHelper.parse("2200/12/31 23:59", "yyyy/MM/dd HH:mm");
+			super.state(MomentHelper.isAfterOrEqual(object.getMoment(), minDate) && MomentHelper.isBeforeOrEqual(object.getMoment(), maxDate), "moment", "sponsor.sponsorship.form.error.moment-out-of-range");
+			super.state(MomentHelper.isAfterOrEqual(object.getDuration(), minDate) && MomentHelper.isBeforeOrEqual(object.getDuration(), maxDate), "duration", "sponsor.sponsorship.form.error.duration-out-of-range");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("amount")) {
 			Double amount = object.getAmount().getAmount();
 			SponsorshipType type = object.getType();
-			super.state(amount > 0. && type.equals(SponsorshipType.Financial) || amount.equals(0.) && type.equals(SponsorshipType.In_kind), "amount", "sponsor.sponsorship.form.error.invalid-amount");
+			super.state((amount > 0. && type.equals(SponsorshipType.Financial) || amount.equals(0.) && type.equals(SponsorshipType.In_kind)) && amount <= 1000000.00, "amount", "sponsor.sponsorship.form.error.invalid-amount");
 
 			List<String> currencies = Arrays.asList(this.repository.findSystemCurrencies().get(0).getAcceptedCurrencies().split(","));
 			super.state(currencies.stream().anyMatch(c -> c.equals(object.getAmount().getCurrency())), "amount", "sponsor.sponsorship.form.error.invalid-currency");
 
 			List<String> invoiceCurrencies = (List<String>) this.repository.findManyCurrenciesInInvoiceBySponsorshipId(object.getId());
 			super.state(invoiceCurrencies.stream().allMatch(invoiceCurrency -> invoiceCurrency.equals(object.getAmount().getCurrency())), "amount", "sponsor.sponsorship.form.error.currency-does-not-match-with-invoices");
+			Double sumAmountInvoices = this.repository.findSumAmountInvoicesBySponsorshipId(this.getRequest().getData("id", int.class));
+			super.state(sumAmountInvoices <= amount, "amount", "sponsor.sponsorship.form.error.new-amount-small-than-sum-of-invoice-quantity");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("project")) {

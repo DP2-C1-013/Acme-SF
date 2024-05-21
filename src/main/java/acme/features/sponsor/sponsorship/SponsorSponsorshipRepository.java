@@ -41,6 +41,9 @@ public interface SponsorSponsorshipRepository extends AbstractRepository {
 	@Query("SELECT DISTINCT i FROM Invoice i WHERE i.sponsorship.id = :id")
 	Collection<Invoice> findManyInvoicesBySponsorshipId(int id);
 
+	@Query("SELECT COUNT(i) FROM Invoice i WHERE i.sponsorship.id = :id and i.draftMode = false")
+	Integer findNumberPublishedInvoicesBySponsorshipId(int id);
+
 	@Query("SELECT DISTINCT i.quantity.currency FROM Invoice i WHERE i.sponsorship.id = :id")
 	Collection<String> findManyCurrenciesInInvoiceBySponsorshipId(int id);
 

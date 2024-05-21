@@ -21,6 +21,4 @@
 	<acme:input-textarea code="authenticated.project.form.label.abstractText" path="abstractText"/>
 	<acme:input-money code="authenticated.project.form.label.cost" path="cost"/>
 	<acme:input-url code="authenticated.project.form.label.link" path="link"/>
-	<acme:input-textbox code="authenticated.project.form.label.manager" path="manager"/>
-	<acme:input-checkbox code="authenticated.project.form.label.hasFatalErrors" path="hasFatalErrors"/>
 </acme:form>

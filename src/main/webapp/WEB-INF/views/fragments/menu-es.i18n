@@ -67,6 +67,7 @@ master.menu.user-account.become-auditor = Hazte auditor
 master.menu.any= Qualquiera
 master.menu.any.claim = Reclamaciones
 master.menu.any.sponsorship = Patrocinios
+master.menu.any.code-audit = Audiciones de código
 
 # master.menu.authenticated ####################################################
 
