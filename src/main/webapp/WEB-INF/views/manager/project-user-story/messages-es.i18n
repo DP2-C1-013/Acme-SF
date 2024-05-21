@@ -13,3 +13,6 @@ manager.project-user-stories.form.label.userstories = Historias de usuario
 manager.project-user-story.list.button.create = Crear
 manager.project-user-stories.form.button.create = Crear
 manager.projectuserstory.form.error.delete-published-project = No puedes modificar un proyecto publicado.
+
+manager.projectuserstory.form.error.notnull.project = Seleccione un proyecto
+manager.projectuserstory.form.error.notnull.userstory = Seleccione una historia de usuario
