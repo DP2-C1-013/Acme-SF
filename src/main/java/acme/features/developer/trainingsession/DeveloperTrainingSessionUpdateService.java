@@ -88,8 +88,6 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 
 		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
 			super.state(object.isDraftMode(), "draftMode", "developer.training-session.form.error.training-session-was-published");
-
-		//		super.state(object.getTrainingModule().getProject().isDraftMode(), "draftMode", "developer.training-session.form.error.project-was-published");
 	}
 
 	@Override
