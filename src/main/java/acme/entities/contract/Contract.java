@@ -11,7 +11,7 @@ import javax.persistence.TemporalType;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.annotations.OnDelete;
@@ -37,11 +37,11 @@ public class Contract extends AbstractEntity {
 	//Atributes ------------------------------------------------------------------------
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{4}")
+	@Pattern(regexp = "[A-Z]{1,3}-[0-9]{4}", message = "{contract.code.error}")
 	private String				code;
 
 	@NotNull
-	@Past
+	@PastOrPresent
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				instantiationMoment;
 
@@ -61,19 +61,18 @@ public class Contract extends AbstractEntity {
 	@Valid
 	private Money				budget;
 
-	@NotNull
 	private Boolean				draftMode;
 
 	// Relationships --------------------------------------------------------------------
 
 	@NotNull
 	@Valid
-	@ManyToOne()
+	@ManyToOne(optional = false)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Project				project;
 
 	@NotNull
 	@Valid
-	@ManyToOne()
+	@ManyToOne(optional = false)
 	private Client				client;
 }
