@@ -33,3 +33,12 @@ invoice.code.error = The code must start by "IN-" followed by 4 numbers, a dash 
 auditor ###################################################################
 validation.auditRecord.code = The code must start with "AU-" followed by 4 integers, a dash and another 4 integers.
 validation.codeAudit.code = The code must follow the pattern of one, two or three capital letters, a dash, and three integers.
+
+# client.code #################################################################
+client.code.error = The code must start with "CLI-", then four numbers.
+
+# contract.code #################################################################
+contract.code.error = The code must have 3 capital letters, a dash, then four numbers.
+
+# progresslog.code #################################################################
+prgresslog.code.error = The code must have 2 capital letters, a dash, then three numbers.

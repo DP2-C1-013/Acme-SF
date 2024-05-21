@@ -9,15 +9,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 
 import acme.client.data.AbstractEntity;
 import acme.entities.contract.Contract;
@@ -36,11 +36,11 @@ public class ProgressLog extends AbstractEntity {
 	//Atributes ------------------------------------------------------------------------
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "[A-Z]{1,2}-[0-9]{3}")
+	@Pattern(regexp = "[A-Z]{1,2}-[0-9]{3}", message = "{progresslog.code.error}")
 	private String				recordId;
 
 	@NotNull
-	@Min(0)
+	@Range(min = 0, max = 100)
 	private Double				completeness;
 
 	@NotBlank
@@ -48,7 +48,7 @@ public class ProgressLog extends AbstractEntity {
 	private String				comment;
 
 	@NotNull
-	@Past
+	@PastOrPresent
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				registrationMoment;
 
@@ -62,7 +62,7 @@ public class ProgressLog extends AbstractEntity {
 
 	@NotNull
 	@Valid
-	@ManyToOne()
+	@ManyToOne(optional = false)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Contract			contract;
 

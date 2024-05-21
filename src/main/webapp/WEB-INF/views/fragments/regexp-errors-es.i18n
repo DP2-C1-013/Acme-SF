@@ -32,3 +32,13 @@ invoice.code.error = El código debe empezar por "IN-" seguido de 4 números, un
 auditor ###################################################################
 validation.auditRecord.code = El código debe empezar por "AU-" seguido de 4 enteros, un guión y otros cuatro enteros.
 validation.codeAudit.code = El código debe seguir el patrón de una, dos o tres letras mayúsculas, un guión, y tres enteros.
+
+# client.code #################################################################
+client.code.error = El código debe comenzar por "CLI-" y luego cuatro números.
+
+# contract.code #################################################################
+project.code.error = El código debe tener 3 letras mayúsculas, seguidas de un guión y luego cuatro números.
+
+# progresslog.code #################################################################
+project.code.error = El código debe tener 3 letras mayúsculas, seguidas de un guión y luego tres números.
+
