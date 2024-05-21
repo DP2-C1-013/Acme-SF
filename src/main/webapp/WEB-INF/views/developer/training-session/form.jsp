@@ -31,13 +31,13 @@
 	</jstl:choose>
 	
 	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && trainingModuleNotPublished && projectPublished && draftMode}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && trainingModuleNotPublished && draftMode}">
 			<acme:submit code="developer.training-session.form.button.update" action="/developer/training-session/update"/>
 			<acme:submit code="developer.training-session.form.button.delete" action="/developer/training-session/delete"/>
 			<acme:submit code="developer.training-session.form.button.publish" action="/developer/training-session/publish"/>
 
 		</jstl:when>
-		<jstl:when test="${_command == 'create' && trainingModuleNotPublished && projectPublished}">
+		<jstl:when test="${_command == 'create' && trainingModuleNotPublished}">
 			<acme:submit code="developer.training-session.form.button.create" action="/developer/training-session/create?trainingModuleId=${trainingModuleId}"/>
 		</jstl:when>		
 	</jstl:choose>		

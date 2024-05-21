@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 import acme.entities.trainingmodule.TrainingModule;
+import acme.entities.trainingsession.TrainingSession;
 
 @Repository
 public interface AuthenticatedTrainingModuleRepository extends AbstractRepository {
@@ -17,4 +18,7 @@ public interface AuthenticatedTrainingModuleRepository extends AbstractRepositor
 
 	@Query("SELECT tm FROM TrainingModule tm WHERE tm.draftMode = false")
 	Collection<TrainingModule> findAllPublishedTrainingModule();
+
+	@Query("SELECT ts FROM TrainingSession ts WHERE ts.trainingModule.id = :id")
+	Collection<TrainingSession> findTrainingSessionsByTMId(int id);
 }

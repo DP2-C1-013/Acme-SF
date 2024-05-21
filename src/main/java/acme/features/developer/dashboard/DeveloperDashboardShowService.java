@@ -26,10 +26,12 @@ public class DeveloperDashboardShowService extends AbstractService<Developer, De
 
 	public Integer getEstimatedTotalTime(final TrainingModule tm) {
 		int estimatedTotalTime = 0;
-		List<TrainingSession> ts = this.repository.findPublishedTrainingSessionsByTMId(tm.getId()).stream().toList();
+		if (!tm.isDraftMode()) {
+			List<TrainingSession> ts = this.repository.findPublishedTrainingSessionsByTMId(tm.getId()).stream().toList();
 
-		for (TrainingSession t : ts)
-			estimatedTotalTime += (t.getEndDate().getTime() - t.getStartDate().getTime()) / 3600000;
+			for (TrainingSession t : ts)
+				estimatedTotalTime += (t.getEndDate().getTime() - t.getStartDate().getTime()) / 3600000;
+		}
 		return estimatedTotalTime;
 	}
 
@@ -39,19 +41,19 @@ public class DeveloperDashboardShowService extends AbstractService<Developer, De
 	}
 
 	public Double findDeviationTrainingModulesByDeveloper(final int developerId) {
-		List<Integer> estimatedTotalTimes = this.repository.findPublishedTrainingModulesByDeveloper(developerId).stream().mapToInt(t -> this.getEstimatedTotalTime(t)).boxed().toList();
+		List<Integer> estimatedTotalTimes = this.repository.findPublishedTrainingModulesByDeveloper(developerId).stream().mapToInt(this::getEstimatedTotalTime).boxed().toList();
 		double media = estimatedTotalTimes.stream().mapToInt(Integer::intValue).average().orElse(0.0);
 		double sumaDeCuadrados = estimatedTotalTimes.stream().mapToDouble(num -> Math.pow(num - media, 2)).sum();
 		return Math.sqrt(sumaDeCuadrados / estimatedTotalTimes.size());
 	}
 
 	public Integer findMinimumTimeTrainingModules(final int developerId) {
-		List<Integer> estimatedTotalTimes = this.repository.findPublishedTrainingModulesByDeveloper(developerId).stream().mapToInt(t -> this.getEstimatedTotalTime(t)).boxed().toList();
+		List<Integer> estimatedTotalTimes = this.repository.findPublishedTrainingModulesByDeveloper(developerId).stream().mapToInt(this::getEstimatedTotalTime).boxed().toList();
 		return estimatedTotalTimes.stream().mapToInt(Integer::intValue).min().orElse(0);
 	}
 
 	public Integer findMaximumTimeTrainingModules(final int developerId) {
-		List<Integer> estimatedTotalTimes = this.repository.findPublishedTrainingModulesByDeveloper(developerId).stream().mapToInt(t -> this.getEstimatedTotalTime(t)).boxed().toList();
+		List<Integer> estimatedTotalTimes = this.repository.findPublishedTrainingModulesByDeveloper(developerId).stream().mapToInt(this::getEstimatedTotalTime).boxed().toList();
 		return estimatedTotalTimes.stream().mapToInt(Integer::intValue).max().orElse(0);
 	}
 

@@ -37,6 +37,6 @@ developer.training-session.form.button.publish = Publish
 developer.training-session.form.error.duplicated-code = Duplicated code
 developer.training-session.form.error.invalid-start-date = Start date must be at least a week after its training module creation moment
 developer.training-session.form.error.invalid-end-date = The session must be at least a week long
-developer.training-module.form.error.training-module-was-published = Training module already published
+developer.training-session.form.error.training-module-was-published = Training module already published
 developer.training-session.form.error.training-session-was-published = Training session already published
 developer.training-session.form.error.project-was-published = The project to which the module of this training session belongs has already been published

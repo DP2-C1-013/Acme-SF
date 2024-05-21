@@ -115,6 +115,8 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 		dataset.put("difficultyLevels", difficultyLevels);
 		dataset.put("projects", projects);
 		dataset.put("project", projects.getSelected().getKey());
+		dataset.put("projectDraftMode", object.getProject().isDraftMode());
+		dataset.put("draftMode", object.isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}

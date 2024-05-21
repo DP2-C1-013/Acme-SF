@@ -1,6 +1,8 @@
 
 package acme.features.authenticated.trainingmodule;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,6 +10,7 @@ import acme.client.data.accounts.Authenticated;
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.entities.trainingmodule.TrainingModule;
+import acme.entities.trainingsession.TrainingSession;
 
 @Service
 public class AuthenticatedTrainingModuleShowService extends AbstractService<Authenticated, TrainingModule> {
@@ -19,6 +22,15 @@ public class AuthenticatedTrainingModuleShowService extends AbstractService<Auth
 
 	// AbstractService<Authenticated, TrainingModule> ---------------------------
 
+
+	public Integer getEstimatedTotalTime(final TrainingModule tm) {
+		int estimatedTotalTime = 0;
+		List<TrainingSession> ts = this.repository.findTrainingSessionsByTMId(tm.getId()).stream().toList();
+
+		for (TrainingSession t : ts)
+			estimatedTotalTime += (t.getEndDate().getTime() - t.getStartDate().getTime()) / 3600000;
+		return estimatedTotalTime;
+	}
 
 	@Override
 	public void authorise() {
@@ -47,6 +59,9 @@ public class AuthenticatedTrainingModuleShowService extends AbstractService<Auth
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "draftMode", "project", "developer");
+		dataset.put("developer", object.getDeveloper().getUserAccount().getUsername());
+		dataset.put("estimatedTotalTime", this.getEstimatedTotalTime(object));
+		dataset.put("project", object.getProject().getCode());
 
 		super.getResponse().addData(dataset);
 	}
