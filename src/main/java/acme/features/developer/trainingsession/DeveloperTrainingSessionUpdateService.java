@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.helpers.MomentHelper;
+import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractService;
 import acme.entities.trainingmodule.TrainingModule;
 import acme.entities.trainingsession.TrainingSession;
@@ -67,27 +68,31 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 	public void validate(final TrainingSession object) {
 		assert object != null;
 
-		TrainingModule existingTM;
+		int id = super.getRequest().getData("id", int.class);
+		TrainingModule trainingModule = this.repository.findTMByTSId(id);
 
-		existingTM = this.repository.findTrainingModuleById(object.getTrainingModule().getId());
+		//		if (object.getStartDate() != null && object.getEndDate() != null && !super.getBuffer().getErrors().hasErrors("endDate") && !super.getBuffer().getErrors().hasErrors("startDate")) {
+		//			Date minimunDuration;
+		//			Date minimunDuration2;
+		//			minimunDuration = MomentHelper.deltaFromMoment(trainingModule.getCreationMoment(), 7, ChronoUnit.DAYS);
+		//			minimunDuration2 = MomentHelper.deltaFromMoment(object.getStartDate(), 7, ChronoUnit.DAYS);
+		//			super.state(MomentHelper.isAfterOrEqual(object.getStartDate(), minimunDuration), "startDate", "developer.training-session.form.error.invalid-start-date");
+		//			super.state(MomentHelper.isAfterOrEqual(object.getEndDate(), minimunDuration2), "endDate", "developer.training-session.form.error.invalid-end-date");
+		//		}
 
-		if (!super.getBuffer().getErrors().hasErrors("startDate")) {
-			Date minimunDuration;
-			minimunDuration = MomentHelper.deltaFromMoment(existingTM.getCreationMoment(), 7, ChronoUnit.DAYS);
-			super.state(MomentHelper.isAfterOrEqual(object.getStartDate(), minimunDuration), "startDate", "developer.training-session.form.error.invalid-start-date");
-		}
+		if (object.getStartDate() != null && object.getEndDate() != null && !super.getBuffer().getErrors().hasErrors("startDate"))
+			super.state(MomentHelper.isAfter(object.getStartDate(), trainingModule.getCreationMoment()), "startDate", "developer.training-session.form.error.invalid-start-date");
 
-		if (!super.getBuffer().getErrors().hasErrors("endDate")) {
-			Date minimunDuration;
-			minimunDuration = MomentHelper.deltaFromMoment(object.getStartDate(), 7, ChronoUnit.DAYS);
-			super.state(MomentHelper.isAfterOrEqual(object.getEndDate(), minimunDuration), "endDate", "developer.training-session.form.error.invalid-end-date");
+		if (object.getStartDate() != null && object.getEndDate() != null && !super.getBuffer().getErrors().hasErrors("endDate")) {
+			Date minimum = MomentHelper.deltaFromMoment(object.getStartDate(), 7, ChronoUnit.DAYS);
+			super.state(MomentHelper.isAfter(object.getEndDate(), minimum), "endDate", "developer.training-session.form.error.invalid-end-date");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("trainingModule"))
-			super.state(existingTM != null && existingTM.isDraftMode() && !existingTM.getProject().isDraftMode(), "trainingModule", "developer.training-session.form.error.training-module-was-published");
+			super.state(trainingModule != null && trainingModule.isDraftMode() && !trainingModule.getProject().isDraftMode(), "trainingModule", "developer.training-session.form.error.training-module-was-published");
 
-		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
-			super.state(object.isDraftMode(), "draftMode", "developer.training-session.form.error.training-session-was-published");
+		//		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
+		//			super.state(object.isDraftMode(), "draftMode", "developer.training-session.form.error.training-session-was-published");
 	}
 
 	@Override
@@ -103,10 +108,18 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "startDate", "endDate", "location", "instructor", "contactEmail", "optionalLink", "draftMode");
+		dataset = super.unbind(object, "code", "startDate", "endDate", "location", "instructor", "contactEmail", "optionalLink");
+		dataset.put("draftMode", object.isDraftMode());
+		dataset.put("trainingModuleCode", object.getTrainingModule().getCode());
 		dataset.put("trainingModuleId", super.getRequest().getData("trainingModuleId", int.class));
 		dataset.put("trainingModuleNotPublished", object.getTrainingModule().isDraftMode());
 
 		super.getResponse().addData(dataset);
+	}
+
+	@Override
+	public void onSuccess() {
+		if (super.getRequest().getMethod().equals("PUT"))
+			PrincipalHelper.handleUpdate();
 	}
 }

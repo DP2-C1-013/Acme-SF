@@ -16,13 +16,22 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form readonly="false">
-	<acme:input-textbox code="developer.training-session.form.label.code" path="code" placeholder="TS-XXX-123"/>
+	<jstl:choose>
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish')}">
+			<acme:input-textbox code="developer.training-session.form.label.code" path="code" placeholder="TS-XXX-123" readonly="true"/>
+		</jstl:when>
+		<jstl:when test="${_command == 'create'}">
+			<acme:input-textbox code="developer.training-session.form.label.code" path="code" placeholder="TS-XXX-123"/>
+		</jstl:when>
+	</jstl:choose>
+	
 	<acme:input-moment code="developer.training-session.form.label.startDate" path="startDate"/>
 	<acme:input-moment code="developer.training-session.form.label.endDate" path="endDate"/>
 	<acme:input-textbox code="developer.training-session.form.label.location" path="location"/>
 	<acme:input-textbox code="developer.training-session.form.label.instructor" path="instructor"/>
 	<acme:input-email code="developer.training-session.form.label.contactEmail" path="contactEmail"/>
 	<acme:input-url code="developer.training-session.form.label.optionalLink" path="optionalLink"/>
+	
 	<jstl:choose>
 		<jstl:when test="${_command == 'show'}">
 			<acme:input-textbox code="developer.training-session.form.label.trainingModuleCode" path="trainingModuleCode" readonly="true"/>
@@ -31,13 +40,13 @@
 	</jstl:choose>
 	
 	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && trainingModuleNotPublished && draftMode}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && trainingModuleNotPublished == true && draftMode == true}">
 			<acme:submit code="developer.training-session.form.button.update" action="/developer/training-session/update"/>
 			<acme:submit code="developer.training-session.form.button.delete" action="/developer/training-session/delete"/>
 			<acme:submit code="developer.training-session.form.button.publish" action="/developer/training-session/publish"/>
 
 		</jstl:when>
-		<jstl:when test="${_command == 'create' && trainingModuleNotPublished}">
+		<jstl:when test="${_command == 'create' && trainingModuleNotPublished == true}">
 			<acme:submit code="developer.training-session.form.button.create" action="/developer/training-session/create?trainingModuleId=${trainingModuleId}"/>
 		</jstl:when>		
 	</jstl:choose>		
