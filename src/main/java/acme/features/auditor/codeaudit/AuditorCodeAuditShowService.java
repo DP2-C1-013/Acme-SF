@@ -1,12 +1,15 @@
 
 package acme.features.auditor.codeaudit;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.entities.auditrecord.AuditMark;
 import acme.entities.codeaudit.CodeAudit;
 import acme.entities.codeaudit.CodeAuditType;
 import acme.roles.Auditor;
@@ -49,6 +52,12 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findOneCodeAuditById(id);
+		List<AuditMark> marks = this.repository.findMarkModeByCodeAudit(object.getId());
+		if (marks.size() > 0) {
+			AuditMark mode = marks.get(0);
+			object.setMark(mode);
+			this.repository.save(object);
+		}
 
 		super.getBuffer().addData(object);
 	}
