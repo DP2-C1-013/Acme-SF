@@ -60,7 +60,7 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 		if (project != null)
 			project = this.repository.findOneProjectByCode(project.getCode());
 
-		super.bind(object, "code", "executionDate", "type", "correctiveActions", "mark", "link");
+		super.bind(object, "code", "executionDate", "type", "correctiveActions", "link");
 		object.setProject(project);
 		object.setDraftMode(true);
 	}
