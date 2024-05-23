@@ -76,19 +76,22 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 			super.state(existing == null, "code", "auditor.auditRecord.form.error.duplicated-code");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("startDate")) {
+			Date minDate = existingCodeAudit.getExecutionDate();
+			Date maxDate = new Date(122, 6, 29, 23, 01); //29/07/2022 23:01
+			super.state(MomentHelper.isAfterOrEqual(object.getStartDate(), minDate) && MomentHelper.isBefore(object.getStartDate(), maxDate), "startDate", "auditor.auditRecord.form.error.startDate-out-of-range");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("endDate")) {
+			Date minDate = MomentHelper.deltaFromMoment(existingCodeAudit.getExecutionDate(), 1, ChronoUnit.HOURS);
+			Date maxDate = new Date(122, 6, 30, 00, 01); //30/07/2022 00:01
+			super.state(MomentHelper.isAfterOrEqual(object.getEndDate(), minDate) && MomentHelper.isBefore(object.getEndDate(), maxDate), "endDate", "auditor.auditRecord.form.error.endDate-out-of-range");
+		}
+
 		if (!(super.getBuffer().getErrors().hasErrors("startDate") || super.getBuffer().getErrors().hasErrors("endDate"))) {
-			Date minDate = new Date(99, 11, 31, 23, 59);
 			Date minimunDuration;
-			if (object.getStartDate().after(minDate)) {
-				System.out.println("Start date is after");
-				System.out.println(minDate);
-			} else {
-				System.out.println("Start date is not after");
-				System.out.println(minDate);
-				System.out.println(object.getStartDate());
-			}
 			minimunDuration = MomentHelper.deltaFromMoment(object.getStartDate(), 1, ChronoUnit.HOURS);
-			super.state(MomentHelper.isAfterOrEqual(object.getEndDate(), minimunDuration) && object.getStartDate().after(minDate), "endDate", "auditor.auditRecord.form.error.invalid-dates");
+			super.state(MomentHelper.isAfterOrEqual(object.getEndDate(), minimunDuration), "endDate", "auditor.auditRecord.form.error.invalid-dates");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("codeAudit"))
@@ -105,12 +108,10 @@ public class AuditorAuditRecordCreateService extends AbstractService<Auditor, Au
 	public void unbind(final AuditRecord object) {
 		assert object != null;
 
-		AuditRecord ar = new AuditRecord();
-
 		SelectChoices marks;
 		Dataset dataset;
 
-		marks = SelectChoices.from(AuditMark.class, ar.getMark());
+		marks = SelectChoices.from(AuditMark.class, object.getMark());
 
 		dataset = super.unbind(object, "code", "startDate", "endDate", "mark", "link", "draftMode");
 		dataset.put("marks", marks);

@@ -82,16 +82,22 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 			super.state(existing == null || existing.getId() == object.getId(), "code", "auditor.auditRecord.form.error.duplicated-code");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("startDate")) {
+			Date minDate = existingCodeAudit.getExecutionDate();
+			Date maxDate = new Date(122, 6, 29, 23, 01); //29/07/2022 23:01
+			super.state(MomentHelper.isAfterOrEqual(object.getStartDate(), minDate) && MomentHelper.isBefore(object.getStartDate(), maxDate), "startDate", "auditor.auditRecord.form.error.startDate-out-of-range");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("endDate")) {
+			Date minDate = MomentHelper.deltaFromMoment(existingCodeAudit.getExecutionDate(), 1, ChronoUnit.HOURS);
+			Date maxDate = new Date(122, 6, 30, 00, 01); //30/07/2022 00:01
+			super.state(MomentHelper.isAfterOrEqual(object.getEndDate(), minDate) && MomentHelper.isBefore(object.getEndDate(), maxDate), "endDate", "auditor.auditRecord.form.error.endDate-out-of-range");
+		}
+
 		if (!(super.getBuffer().getErrors().hasErrors("startDate") || super.getBuffer().getErrors().hasErrors("endDate"))) {
-			Date minDate = new Date(99, 11, 31, 23, 59);
 			Date minimunDuration;
 			minimunDuration = MomentHelper.deltaFromMoment(object.getStartDate(), 1, ChronoUnit.HOURS);
-			System.out.println(object.getStartDate());
-			System.out.println(object.getEndDate());
-			System.out.println(minDate);
-			System.out.println(minimunDuration);
-			System.out.println(MomentHelper.isAfterOrEqual(object.getEndDate(), minimunDuration));
-			super.state(MomentHelper.isAfterOrEqual(object.getEndDate(), minimunDuration) && object.getStartDate().after(minDate), "endDate", "auditor.auditRecord.form.error.invalid-dates");
+			super.state(MomentHelper.isAfterOrEqual(object.getEndDate(), minimunDuration), "endDate", "auditor.auditRecord.form.error.invalid-dates");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("codeAudit"))
@@ -111,11 +117,10 @@ public class AuditorAuditRecordUpdateService extends AbstractService<Auditor, Au
 		assert object != null;
 
 		Dataset dataset;
-		AuditRecord ar = new AuditRecord();
 
 		SelectChoices marks;
 
-		marks = SelectChoices.from(AuditMark.class, ar.getMark());
+		marks = SelectChoices.from(AuditMark.class, object.getMark());
 
 		dataset = super.unbind(object, "code", "startDate", "endDate", "mark", "link", "draftMode");
 		dataset.put("marks", marks);

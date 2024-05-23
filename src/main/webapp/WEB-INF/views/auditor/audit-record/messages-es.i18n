@@ -30,3 +30,5 @@ auditor.audit-record.form.button.publish = Publicar
 auditor.code-audit.form.error.invalid-mark = Nota inválida
 auditor.auditRecord.form.error.invalid-dates = Fechas inválidas
 auditor.auditRecord.form.error.duplicated-code = El código introducido ya existe
+auditor.auditRecord.form.error.startDate-out-of-range = La fecha de inicio debe ser posterior o igual a la fecha de ejecución de su code audit and anterior o igual al 29/07/2022 23:00
+auditor.auditRecord.form.error.endDate-out-of-range = Fecha de fin debe ser posterior a la fecha de ejecución de su code audit más una hora
