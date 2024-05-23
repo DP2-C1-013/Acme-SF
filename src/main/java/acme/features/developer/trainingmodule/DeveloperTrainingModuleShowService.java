@@ -85,9 +85,9 @@ public class DeveloperTrainingModuleShowService extends AbstractService<Develope
 		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "draftMode");
 		dataset.put("difficultyLevels", choices);
 		dataset.put("estimatedTotalTime", this.getEstimatedTotalTime(object));
+		dataset.put("project", projects.getSelected().getKey());
 		dataset.put("projects", projects);
 		dataset.put("projectDraftMode", object.getProject().isDraftMode());
-		dataset.put("draftMode", object.isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}

@@ -134,12 +134,11 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 		difficultyLevels = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
 		projects = SelectChoices.from(this.repository.findAllProjectsDraftModeFalse(), "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink");
+		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "draftMode");
 		dataset.put("difficultyLevels", difficultyLevels);
 		dataset.put("projects", projects);
 		dataset.put("project", projects.getSelected());
 		dataset.put("projectDraftMode", object.getProject().isDraftMode());
-		dataset.put("draftMode", object.isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}

@@ -28,9 +28,9 @@ public class DeveloperDashboardShowService extends AbstractService<Developer, De
 		int estimatedTotalTime = 0;
 		if (!tm.isDraftMode()) {
 			List<TrainingSession> ts = this.repository.findPublishedTrainingSessionsByTMId(tm.getId()).stream().toList();
-
-			for (TrainingSession t : ts)
-				estimatedTotalTime += (t.getEndDate().getTime() - t.getStartDate().getTime()) / 3600000;
+			if (ts.stream().allMatch(t -> !t.isDraftMode()))
+				for (TrainingSession t : ts)
+					estimatedTotalTime += (t.getEndDate().getTime() - t.getStartDate().getTime()) / 3600000;
 		}
 		return estimatedTotalTime;
 	}

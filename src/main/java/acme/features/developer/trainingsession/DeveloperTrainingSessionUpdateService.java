@@ -71,28 +71,28 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 		int id = super.getRequest().getData("id", int.class);
 		TrainingModule trainingModule = this.repository.findTMByTSId(id);
 
-		//		if (object.getStartDate() != null && object.getEndDate() != null && !super.getBuffer().getErrors().hasErrors("endDate") && !super.getBuffer().getErrors().hasErrors("startDate")) {
-		//			Date minimunDuration;
-		//			Date minimunDuration2;
-		//			minimunDuration = MomentHelper.deltaFromMoment(trainingModule.getCreationMoment(), 7, ChronoUnit.DAYS);
-		//			minimunDuration2 = MomentHelper.deltaFromMoment(object.getStartDate(), 7, ChronoUnit.DAYS);
-		//			super.state(MomentHelper.isAfterOrEqual(object.getStartDate(), minimunDuration), "startDate", "developer.training-session.form.error.invalid-start-date");
-		//			super.state(MomentHelper.isAfterOrEqual(object.getEndDate(), minimunDuration2), "endDate", "developer.training-session.form.error.invalid-end-date");
-		//		}
-
-		if (object.getStartDate() != null && object.getEndDate() != null && !super.getBuffer().getErrors().hasErrors("startDate"))
-			super.state(MomentHelper.isAfter(object.getStartDate(), trainingModule.getCreationMoment()), "startDate", "developer.training-session.form.error.invalid-start-date");
-
-		if (object.getStartDate() != null && object.getEndDate() != null && !super.getBuffer().getErrors().hasErrors("endDate")) {
-			Date minimum = MomentHelper.deltaFromMoment(object.getStartDate(), 7, ChronoUnit.DAYS);
-			super.state(MomentHelper.isAfter(object.getEndDate(), minimum), "endDate", "developer.training-session.form.error.invalid-end-date");
+		if (object.getStartDate() != null && object.getEndDate() != null && !super.getBuffer().getErrors().hasErrors("endDate") && !super.getBuffer().getErrors().hasErrors("startDate")) {
+			Date minimunDuration;
+			Date minimunDuration2;
+			minimunDuration = MomentHelper.deltaFromMoment(trainingModule.getCreationMoment(), 7, ChronoUnit.DAYS);
+			minimunDuration2 = MomentHelper.deltaFromMoment(object.getStartDate(), 7, ChronoUnit.DAYS);
+			super.state(MomentHelper.isAfterOrEqual(object.getStartDate(), minimunDuration), "startDate", "developer.training-session.form.error.invalid-start-date");
+			super.state(MomentHelper.isAfterOrEqual(object.getEndDate(), minimunDuration2), "endDate", "developer.training-session.form.error.invalid-end-date");
 		}
+
+		//		if (object.getStartDate() != null && object.getEndDate() != null && !super.getBuffer().getErrors().hasErrors("startDate"))
+		//			super.state(MomentHelper.isAfter(object.getStartDate(), trainingModule.getCreationMoment()), "startDate", "developer.training-session.form.error.invalid-start-date");
+		//
+		//		if (object.getStartDate() != null && object.getEndDate() != null && !super.getBuffer().getErrors().hasErrors("endDate")) {
+		//			Date minimum = MomentHelper.deltaFromMoment(object.getStartDate(), 7, ChronoUnit.DAYS);
+		//			super.state(MomentHelper.isAfter(object.getEndDate(), minimum), "endDate", "developer.training-session.form.error.invalid-end-date");
+		//		}
 
 		if (!super.getBuffer().getErrors().hasErrors("trainingModule"))
 			super.state(trainingModule != null && trainingModule.isDraftMode() && !trainingModule.getProject().isDraftMode(), "trainingModule", "developer.training-session.form.error.training-module-was-published");
 
-		//		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
-		//			super.state(object.isDraftMode(), "draftMode", "developer.training-session.form.error.training-session-was-published");
+		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
+			super.state(object.isDraftMode(), "draftMode", "developer.training-session.form.error.training-session-was-published");
 	}
 
 	@Override
@@ -108,10 +108,9 @@ public class DeveloperTrainingSessionUpdateService extends AbstractService<Devel
 
 		Dataset dataset;
 
-		dataset = super.unbind(object, "code", "startDate", "endDate", "location", "instructor", "contactEmail", "optionalLink");
-		dataset.put("draftMode", object.isDraftMode());
+		dataset = super.unbind(object, "code", "startDate", "endDate", "location", "instructor", "contactEmail", "optionalLink", "draftMode");
 		dataset.put("trainingModuleCode", object.getTrainingModule().getCode());
-		dataset.put("trainingModuleId", super.getRequest().getData("trainingModuleId", int.class));
+		dataset.put("trainingModuleId", object.getTrainingModule().getId());
 		dataset.put("trainingModuleNotPublished", object.getTrainingModule().isDraftMode());
 
 		super.getResponse().addData(dataset);
