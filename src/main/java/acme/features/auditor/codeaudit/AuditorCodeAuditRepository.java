@@ -38,7 +38,7 @@ public interface AuditorCodeAuditRepository extends AbstractRepository {
 	@Query("SELECT DISTINCT p FROM Project p WHERE p.draftMode = false")
 	Collection<Project> findAllProjectsDraftModeFalse();
 
-	@Query("SELECT ar.mark FROM AuditRecord ar WHERE ar.codeAudit.id = :codeAuditId and ar.draftMode = 0 GROUP BY ar.mark ORDER BY COUNT(ar.mark) DESC")
+	@Query("SELECT ar.mark FROM AuditRecord ar WHERE ar.codeAudit.id = :codeAuditId and ar.draftMode = 0 GROUP BY ar.mark ORDER BY COUNT(ar.mark) ASC")
 	List<AuditMark> findMarkModeByCodeAudit(int codeAuditId);
 
 	@Query("SELECT DISTINCT ar FROM AuditRecord ar WHERE ar.codeAudit.id = :id")

@@ -32,18 +32,7 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 	public void authorise() {
 		boolean status;
 
-		var request = super.getRequest();
-
-		int developerId;
-		int trainingModuleId;
-
-		trainingModuleId = request.getData("id", int.class);
-
-		developerId = request.getPrincipal().getActiveRoleId();
-
-		TrainingModule object = this.repository.findTrainingModuleById(trainingModuleId);
-
-		status = object != null && request.getPrincipal().hasRole(Developer.class) && object.getDeveloper().getId() == developerId && object.isDraftMode();
+		status = super.getRequest().getPrincipal().hasRole(Developer.class);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -71,7 +60,7 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 		if (project != null)
 			project = this.repository.findOneProjectByCode(project.getCode());
 
-		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "estimatedTotalTime");
+		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink");
 		object.setProject(project);
 		object.setDraftMode(true);
 	}
@@ -97,12 +86,9 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 			super.state(level.equals(DifficultyLevel.Basic) || level.equals(DifficultyLevel.Intermediate) || level.equals(DifficultyLevel.Advanced), "difficultyLevel", "developer.training-module.form.error.invalid-difficulty-level");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("estimatedTotalTime"))
-			super.state(object.getEstimatedTotalTime() > 1, "estimatedTotalTime", "developer.training-module.form.error.invalid-estimated-total-time");
-
 		if (!super.getBuffer().getErrors().hasErrors("project")) {
 			Project existingProject = this.repository.findOneProjectByCode(object.getProject().getCode());
-			super.state(existingProject != null && existingProject.isDraftMode() && object.getProject().isDraftMode(), "project", "developer.training-module.form.error.invalid-project");
+			super.state(existingProject != null && !existingProject.isDraftMode() && !object.getProject().isDraftMode(), "project", "developer.training-module.form.error.invalid-project");
 		}
 
 	}
@@ -123,12 +109,13 @@ public class DeveloperTrainingModuleCreateService extends AbstractService<Develo
 		Dataset dataset;
 
 		difficultyLevels = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
-		projects = SelectChoices.from(this.repository.findAllProjectsDraftModeTrue(), "code", object.getProject());
+		projects = SelectChoices.from(this.repository.findAllProjectsDraftModeFalse(), "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "estimatedTotalTime", "draftMode");
+		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "draftMode");
 		dataset.put("difficultyLevels", difficultyLevels);
 		dataset.put("projects", projects);
 		dataset.put("project", projects.getSelected().getKey());
+		//		dataset.put("projectDraftMode", object.getProject().isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}

@@ -98,12 +98,13 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 		Dataset dataset;
 
 		difficultyLevels = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
-		projects = SelectChoices.from(this.repository.findAllProjectsDraftModeTrue(), "code", object.getProject());
+		projects = SelectChoices.from(this.repository.findAllProjectsDraftModeFalse(), "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "estimatedTotalTime", "draftMode");
+		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "draftMode");
 		dataset.put("difficultyLevels", difficultyLevels);
 		dataset.put("projects", projects);
 		dataset.put("project", projects.getSelected().getKey());
+		dataset.put("projectDraftMode", object.getProject().isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}

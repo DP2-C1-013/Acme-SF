@@ -7,3 +7,5 @@ authenticated.auditor.form.label.link = Link
 
 authenticated.auditor.form.button.create = Create
 authenticated.auditor.form.button.update = Update
+
+authenticated.auditor.form.error.duplicated-code = Duplicated code

@@ -3,6 +3,7 @@ package acme.features.developer.trainingmodule;
 
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import acme.client.views.SelectChoices;
 import acme.entities.project.Project;
 import acme.entities.trainingmodule.DifficultyLevel;
 import acme.entities.trainingmodule.TrainingModule;
+import acme.entities.trainingsession.TrainingSession;
 import acme.roles.Developer;
 
 @Service
@@ -26,6 +28,21 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 
 	// AbstractService interface ----------------------------------------------
 
+
+	public boolean validCreationMoment(final TrainingModule tm) {
+		List<TrainingSession> sessions = this.repository.findTrainingSessionsByTMId(tm.getId()).stream().toList();
+		boolean res = true;
+
+		for (TrainingSession session : sessions) {
+			Date minimunDuration;
+			minimunDuration = MomentHelper.deltaFromMoment(tm.getCreationMoment(), 7, ChronoUnit.DAYS);
+			res = MomentHelper.isAfterOrEqual(session.getStartDate(), minimunDuration);
+			if (!res)
+				break;
+		}
+
+		return res;
+	}
 
 	@Override
 	public void authorise() {
@@ -68,14 +85,16 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 		if (project != null)
 			project = this.repository.findOneProjectByCode(project.getCode());
 
-		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "estimatedTotalTime");
+		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink");
 		object.setProject(project);
-		object.setDraftMode(true);
 	}
 
 	@Override
 	public void validate(final TrainingModule object) {
 		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("creationMoment"))
+			super.state(this.validCreationMoment(object), "creationMoment", "developer.training-module.form.error.invalid-creation-moment");
 
 		if (!super.getBuffer().getErrors().hasErrors("updateMoment") && object.getUpdateMoment() != null) {
 			Date minimunDuration;
@@ -88,14 +107,13 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 			super.state(level.equals(DifficultyLevel.Basic) || level.equals(DifficultyLevel.Intermediate) || level.equals(DifficultyLevel.Advanced), "difficultyLevel", "developer.training-module.form.error.invalid-difficulty-level");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("estimatedTotalTime"))
-			super.state(object.getEstimatedTotalTime() > 1, "estimatedTotalTime", "developer.training-module.form.error.invalid-estimated-total-time");
-
 		if (!super.getBuffer().getErrors().hasErrors("project")) {
 			Project existingProject = this.repository.findOneProjectByCode(object.getProject().getCode());
-			super.state(existingProject != null && existingProject.isDraftMode() && object.getProject().isDraftMode(), "project", "developer.training-module.form.error.invalid-project");
+			super.state(existingProject != null && !existingProject.isDraftMode(), "project", "developer.training-module.form.error.invalid-project");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
+			super.state(object.isDraftMode(), "draftMode", "developer.training-module.form.error.training-module-was-published");
 	}
 
 	@Override
@@ -114,12 +132,13 @@ public class DeveloperTrainingModuleUpdateService extends AbstractService<Develo
 		Dataset dataset;
 
 		difficultyLevels = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
-		projects = SelectChoices.from(this.repository.findAllProjectsDraftModeTrue(), "code", object.getProject());
+		projects = SelectChoices.from(this.repository.findAllProjectsDraftModeFalse(), "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "estimatedTotalTime", "draftMode");
+		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "draftMode");
 		dataset.put("difficultyLevels", difficultyLevels);
 		dataset.put("projects", projects);
 		dataset.put("project", projects.getSelected());
+		dataset.put("projectDraftMode", object.getProject().isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}
