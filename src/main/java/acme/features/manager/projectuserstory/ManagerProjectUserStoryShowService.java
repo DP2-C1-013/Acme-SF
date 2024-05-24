@@ -29,7 +29,7 @@ public class ManagerProjectUserStoryShowService extends AbstractService<Manager,
 		ProjectUserStory projectUserStory;
 
 		projectUserStory = this.repository.findOneProjectUserStoryById(id);
-		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+		manager = projectUserStory == null ? null : projectUserStory.getProject().getManager();
 		status = projectUserStory != null && super.getRequest().getPrincipal().hasRole(manager);
 
 		super.getResponse().setAuthorised(status);
