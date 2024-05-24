@@ -80,7 +80,7 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 
 		if (!super.getBuffer().getErrors().hasErrors("updateMoment") && object.getUpdateMoment() != null) {
 			Date minimunDuration;
-			minimunDuration = MomentHelper.deltaFromMoment(object.getCreationMoment(), 1, ChronoUnit.DAYS);
+			minimunDuration = MomentHelper.deltaFromMoment(object.getCreationMoment(), 24, ChronoUnit.HOURS);
 			super.state(MomentHelper.isAfterOrEqual(object.getUpdateMoment(), minimunDuration), "updateMoment", "developer.training-module.form.error.invalid-update-moment");
 		}
 
