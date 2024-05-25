@@ -49,6 +49,8 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 		object = new Sponsorship();
 		object.setDraftMode(true);
 		object.setSponsor(sponsor);
+		object.setMoment(MomentHelper.getCurrentMoment());
+
 		super.getBuffer().addData(object);
 	}
 
@@ -62,7 +64,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 		if (project != null)
 			project = this.repository.findOneProjectByCode(project.getCode());
 
-		super.bind(object, "code", "moment", "duration", "amount", "type", "email", "link");
+		super.bind(object, "code", "start", "end", "amount", "type", "email", "link");
 		object.setProject(project);
 		object.setDraftMode(true);
 	}
@@ -71,24 +73,31 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 	public void validate(final Sponsorship object) {
 		assert object != null;
 
+		Date minDate = MomentHelper.parse("2000/01/01 00:00", "yyyy/MM/dd HH:mm");
+		Date maxDate = MomentHelper.parse("2200/12/31 23:59", "yyyy/MM/dd HH:mm");
+
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Sponsorship existing;
 			existing = this.repository.findOneSponsorshipByCode(object.getCode());
 			super.state(existing == null, "code", "sponsor.sponsorship.form.error.duplicated-code");
 		}
 
-		if (!(super.getBuffer().getErrors().hasErrors("duration") || super.getBuffer().getErrors().hasErrors("moment"))) {
-			Date minimunDuration;
-			minimunDuration = MomentHelper.deltaFromMoment(object.getMoment(), 30, ChronoUnit.DAYS);
-			super.state(MomentHelper.isAfterOrEqual(object.getDuration(), minimunDuration), "duration", "sponsor.sponsorship.form.error.invalid-duration");
-
-			Date minDate = MomentHelper.parse("2000/01/01 00:00", "yyyy/MM/dd HH:mm");
-			Date maxDate = MomentHelper.parse("2200/12/31 23:59", "yyyy/MM/dd HH:mm");
+		if (!(super.getBuffer().getErrors().hasErrors("start") || super.getBuffer().getErrors().hasErrors("moment"))) {
 			super.state(MomentHelper.isAfterOrEqual(object.getMoment(), minDate) && MomentHelper.isBeforeOrEqual(object.getMoment(), maxDate), "moment", "sponsor.sponsorship.form.error.moment-out-of-range");
-			super.state(MomentHelper.isAfterOrEqual(object.getDuration(), minDate) && MomentHelper.isBeforeOrEqual(object.getDuration(), maxDate), "duration", "sponsor.sponsorship.form.error.duration-out-of-range");
+			super.state(MomentHelper.isAfterOrEqual(object.getStart(), minDate) && MomentHelper.isBeforeOrEqual(object.getStart(), maxDate), "start", "sponsor.sponsorship.form.error.start-out-of-range");
+
+			super.state(MomentHelper.isAfterOrEqual(object.getStart(), object.getMoment()), "start", "sponsor.sponsorship.form.error.invalid-start");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("amount")) {
+		if (!(super.getBuffer().getErrors().hasErrors("end") || super.getBuffer().getErrors().hasErrors("start"))) {
+			Date minimunDuration;
+			minimunDuration = MomentHelper.deltaFromMoment(object.getStart(), 30, ChronoUnit.DAYS);
+			super.state(MomentHelper.isAfterOrEqual(object.getEnd(), minimunDuration), "end", "sponsor.sponsorship.form.error.invalid-end");
+
+			super.state(MomentHelper.isAfterOrEqual(object.getEnd(), minDate) && MomentHelper.isBeforeOrEqual(object.getEnd(), maxDate), "end", "sponsor.sponsorship.form.error.end-out-of-range");
+		}
+
+		if (!(super.getBuffer().getErrors().hasErrors("amount") || super.getBuffer().getErrors().hasErrors("type"))) {
 			Double amount = object.getAmount().getAmount();
 			SponsorshipType type = object.getType();
 			super.state((amount > 0. && type.equals(SponsorshipType.Financial) || amount.equals(0.) && type.equals(SponsorshipType.In_kind)) && amount <= 1000000.00, "amount", "sponsor.sponsorship.form.error.invalid-amount");
@@ -122,7 +131,7 @@ public class SponsorSponsorshipCreateService extends AbstractService<Sponsor, Sp
 		types = SelectChoices.from(SponsorshipType.class, object.getType());
 		projects = SelectChoices.from(this.repository.findAllProjectsDraftModeFalse(), "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "moment", "duration", "amount", "type", "email", "link", "draftMode");
+		dataset = super.unbind(object, "code", "moment", "start", "end", "amount", "type", "email", "link", "draftMode");
 		dataset.put("types", types);
 		dataset.put("projects", projects);
 		dataset.put("project", projects.getSelected().getKey());

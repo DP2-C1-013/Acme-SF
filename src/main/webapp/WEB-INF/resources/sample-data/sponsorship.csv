@@ -1,27 +1,41 @@
-key,code,moment,duration,amount,type,email,link,draft-mode,key:project,key:sponsor
-sponsorship-01,ABC-123,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
-sponsorship-02,AB-123,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
-sponsorship-03,A-123,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
-sponsorship-04,XYZ-100,2000/01/01 00:00,2020/12/25 18:30,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
-sponsorship-05,XYZ-101,2000/01/01 00:01,2020/12/25 18:30,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
-sponsorship-06,XYZ-102,2010/01/01 00:00,2020/12/25 18:30,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
-sponsorship-07,XYZ-103,2022/06/29 12:00,2022/07/29 12:00,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
-sponsorship-08,XYZ-104,2020/11/16 22:30,2200/12/31 23:59,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
-sponsorship-09,XYZ-105,2020/11/16 22:30,2200/12/31 23:58,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
-sponsorship-10,XYZ-106,2020/11/16 22:30,2100/12/31 23:59,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
-sponsorship-11,XYZ-107,2020/11/16 22:30,2020/12/16 22:30,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
-sponsorship-12,XYZ-108,2020/11/16 22:30,2020/12/25 18:30,USD 0.01,Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
-sponsorship-13,XYZ-109,2020/11/16 22:30,2020/12/25 18:30,"USD 1,000,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
-sponsorship-14,XYZ-110,2020/11/16 22:30,2020/12/25 18:30,"USD 999,999.99",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
-sponsorship-15,XYZ-111,2020/11/16 22:30,2020/12/25 18:30,USD 0.00,In_kind,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
-sponsorship-16,XYZ-112,2020/11/16 22:30,2020/12/25 18:30,"EUR 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
-sponsorship-17,XYZ-113,2020/11/16 22:30,2020/12/25 18:30,"GBP 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
-sponsorship-18,XYZ-114,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,dionne@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
-sponsorship-19,XYZ-115,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship19,true,project-01,sponsor-01
-sponsorship-20,XYZ-116,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,alaric@amce.com,null,true,project-01,sponsor-01
-sponsorship-21,XYZ-117,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,false,project-01,sponsor-01
-sponsorship-22,XYZ-118,2020/11/16 22:30,2020/12/25 18:30,EUR 0.00,In_kind,alaric@amce.com,https://example.com/sponsorship1,false,project-01,sponsor-01
-sponsorship-23,XYZ-119,2020/11/16 22:30,2020/12/25 18:30,"GBP 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,false,project-01,sponsor-01
-sponsorship-24,XYZ-120,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-02,sponsor-01
-sponsorship-25,XYZ-121,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,dionne@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-02
-sponsorship-26,XYZ-122,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,null,https://example.com/sponsorship1,true,project-01,sponsor-02
+key,code,moment,start,end,amount,type,email,link,draft-mode,key:project,key:sponsor
+sponsorship-01,ABC-123,2020/11/15 22:30,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
+sponsorship-02,AB-123,2020/11/15 22:30,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
+sponsorship-03,A-123,2020/11/15 22:30,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
+sponsorship-04,XYZ-100,2000/01/01 00:00,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
+sponsorship-05,XYZ-101,2000/01/01 00:01,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
+sponsorship-06,XYZ-102,2022/07/30 00:00,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
+sponsorship-07,XYZ-103,2022/07/29 23:59,2020/11/16 22:30,2022/07/29 12:00,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
+sponsorship-08,XYZ-104,2020/11/15 22:30,2020/11/15 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
+sponsorship-09,XYZ-105,2020/11/15 22:30,2020/11/15 22:31,2020/12/25 18:30,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
+sponsorship-10,XYZ-106,2020/11/15 22:30,2200/12/01 23:59,2200/12/31 23:59,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
+sponsorship-11,XYZ-107,2020/11/15 22:30,2200/12/01 23:58,2200/12/31 23:59,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
+sponsorship-12,XYZ-108,2020/11/15 22:30,2020/11/16 22:30,2020/12/16 22:30,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
+sponsorship-13,XYZ-109,2020/11/15 22:30,2020/11/16 22:30,2020/12/16 22:31,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
+sponsorship-14,XYZ-110,2020/11/15 22:30,2020/11/16 22:30,2200/12/31 23:59,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
+sponsorship-15,XYZ-111,2020/11/15 22:30,2020/11/16 22:30,2200/12/31 23:58,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
+sponsorship-16,XYZ-112,2020/11/15 22:30,2020/11/16 22:30,2020/12/25 18:30,USD 0.01,Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
+sponsorship-17,XYZ-113,2020/11/15 22:30,2020/11/16 22:30,2020/12/25 18:30,"USD 1,000,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
+sponsorship-18,XYZ-114,2020/11/15 22:30,2020/11/16 22:30,2020/12/25 18:30,"USD 999,999.99",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
+sponsorship-19,XYZ-115,2020/11/15 22:30,2020/11/16 22:30,2020/12/25 18:30,USD 0.00,In_kind,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
+sponsorship-20,XYZ-116,2020/11/15 22:30,2020/11/16 22:30,2020/12/25 18:30,"EUR 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
+sponsorship-21,XYZ-117,2020/11/15 22:30,2020/11/16 22:30,2020/12/25 18:30,"GBP 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
+sponsorship-22,XYZ-118,2020/11/15 22:30,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,dionne@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-01
+sponsorship-23,XYZ-119,2020/11/15 22:30,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,a@b.es,https://example.com/sponsorship1,true,project-01,sponsor-01
+sponsorship-24,XYZ-120,2020/11/15 22:30,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,a@b.esx,https://example.com/sponsorship1,true,project-01,sponsor-01
+sponsorship-25,XYZ-121,2020/11/15 22:30,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,loremipsum@dolor.sit.ameta.consectetur.adipiscing.elita.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.orgkk,https://example.com/sponsorship1,true,project-01,sponsor-01
+sponsorship-26,XYZ-122,2020/11/15 22:30,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,loremipsum@dolor.sit.ameta.consectetur.adipiscing.elita.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.orgk,https://example.com/sponsorship1,true,project-01,sponsor-01
+sponsorship-27,XYZ-123,2020/11/15 22:30,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,null,https://example.com/sponsorship1,true,project-01,sponsor-01
+sponsorship-28,XYZ-124,2020/11/15 22:30,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,alaric@amce.com,ftp://a,true,project-01,sponsor-01
+sponsorship-29,XYZ-125,2020/11/15 22:30,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,alaric@amce.com,ftp://a.b,true,project-01,sponsor-01
+sponsorship-30,XYZ-126,2020/11/15 22:30,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,alaric@amce.com,http://www.loremipsum.org/dolor/sit/amett/consectetur/adipiscing/elit/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/XXX,true,project-01,sponsor-01
+sponsorship-31,XYZ-127,2020/11/15 22:30,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,alaric@amce.com,http://www.loremipsum.org/dolor/sit/amett/consectetur/adipiscing/elit/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/XX,true,project-01,sponsor-01
+sponsorship-32,XYZ-128,2020/11/15 22:30,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,alaric@amce.com,null,true,project-01,sponsor-01
+sponsorship-33,XYZ-129,2020/11/15 22:30,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,false,project-01,sponsor-01
+sponsorship-34,XYZ-130,2020/11/15 22:30,2020/11/16 22:30,2020/12/25 18:30,EUR 0.00,In_kind,alaric@amce.com,https://example.com/sponsorship1,false,project-01,sponsor-01
+sponsorship-35,XYZ-131,2020/11/15 22:30,2020/11/16 22:30,2020/12/25 18:30,"GBP 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,false,project-01,sponsor-01
+sponsorship-36,XYZ-132,2020/11/15 22:30,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,alaric@amce.com,https://example.com/sponsorship1,true,project-02,sponsor-01
+sponsorship-37,XYZ-133,2020/11/15 22:30,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,dionne@amce.com,https://example.com/sponsorship1,true,project-01,sponsor-02
+sponsorship-38,XYZ-134,2020/11/15 22:30,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,null,https://example.com/sponsorship1,true,project-01,sponsor-02
+sponsorship-39,XYZ-135,2020/11/15 22:30,2020/11/16 22:30,2020/12/25 18:30,"USD 0.00",In_kind,null,https://example.com/sponsorship1,true,project-01,sponsor-02
+sponsorship-40,XYZ-136,2020/11/15 22:30,2020/11/16 22:30,2020/12/25 18:30,"USD 10,000.00",Financial,null,https://example.com/sponsorship1,false,project-01,sponsor-02
