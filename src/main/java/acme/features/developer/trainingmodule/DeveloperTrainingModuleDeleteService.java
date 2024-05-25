@@ -73,10 +73,12 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 	public void validate(final TrainingModule object) {
 		assert object != null;
 
-		boolean status;
-		status = object.isDraftMode();
+		int trainingModuleId = super.getRequest().getData("id", int.class);
 
-		super.state(status, "*", "developer.training-module.delete.is-draftMode");
+		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
+			super.state(object.isDraftMode(), "draftMode", "developer.training-session.delete.training-module-was-published");
+
+		super.state(this.repository.findTrainingSessionsByTMId(trainingModuleId).stream().allMatch(ts -> ts.isDraftMode()), "*", "developer.training-module.delete.training-session-in-draft-mode");
 	}
 
 	@Override

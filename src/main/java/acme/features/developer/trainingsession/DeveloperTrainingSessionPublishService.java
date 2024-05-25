@@ -67,21 +67,20 @@ public class DeveloperTrainingSessionPublishService extends AbstractService<Deve
 	public void validate(final TrainingSession object) {
 		assert object != null;
 
-		TrainingModule existingTM;
+		int id = super.getRequest().getData("id", int.class);
+		TrainingModule trainingModule = this.repository.findTMByTSId(id);
 
-		existingTM = this.repository.findTrainingModuleById(object.getTrainingModule().getId());
-
-		if (!(super.getBuffer().getErrors().hasErrors("endDate") || super.getBuffer().getErrors().hasErrors("startDate"))) {
+		if (object.getStartDate() != null && object.getEndDate() != null && !super.getBuffer().getErrors().hasErrors("endDate") && !super.getBuffer().getErrors().hasErrors("startDate")) {
 			Date minimunDuration;
 			Date minimunDuration2;
-			minimunDuration = MomentHelper.deltaFromMoment(existingTM.getCreationMoment(), 7, ChronoUnit.DAYS);
+			minimunDuration = MomentHelper.deltaFromMoment(trainingModule.getCreationMoment(), 7, ChronoUnit.DAYS);
 			minimunDuration2 = MomentHelper.deltaFromMoment(object.getStartDate(), 7, ChronoUnit.DAYS);
 			super.state(MomentHelper.isAfterOrEqual(object.getStartDate(), minimunDuration), "startDate", "developer.training-session.form.error.invalid-start-date");
 			super.state(MomentHelper.isAfterOrEqual(object.getEndDate(), minimunDuration2), "endDate", "developer.training-session.form.error.invalid-end-date");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("trainingModule"))
-			super.state(existingTM != null && existingTM.isDraftMode() && !existingTM.getProject().isDraftMode(), "trainingModule", "developer.training-module.form.error.training-module-was-published");
+			super.state(trainingModule != null && trainingModule.isDraftMode() && !trainingModule.getProject().isDraftMode(), "trainingModule", "developer.training-module.form.error.training-module-was-published");
 
 	}
 
