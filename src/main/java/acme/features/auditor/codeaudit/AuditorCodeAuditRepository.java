@@ -2,6 +2,7 @@
 package acme.features.auditor.codeaudit;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -46,5 +47,8 @@ public interface AuditorCodeAuditRepository extends AbstractRepository {
 
 	@Query("SELECT DISTINCT ar FROM AuditRecord ar WHERE ar.codeAudit.id = :id and ar.draftMode = 1")
 	List<AuditRecord> findAuditRecordsDraftModeByCodeAuditId(int id);
+
+	@Query("SELECT MIN(ar.startDate) FROM AuditRecord ar WHERE ar.codeAudit.id = :codeAuditId")
+	Date findEarliestStartDateByCodeAuditId(int codeAuditId);
 
 }
