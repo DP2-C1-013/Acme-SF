@@ -12,11 +12,10 @@
 risk.reference.error = The reference must have "R-", followed by three numbers.
 
 # training-module.code #################################################################
-training-module.code.error = The code must have from 1 to 3 capital letters, followed by a dash, then three numbers.
-training-module.estimatedTotalTime.error = Must be greater than 1
+training-module.code.error = The code must have from 1 to 3 capital letters, followed by a dash, then three numbers
 
 # training-session.code #################################################################
-training-session.code.error = The code must have "TS-" followed by 1, 2 or 3 capital letters, a dash, then three numbers.
+training-session.code.error = The code must have "TS-" followed by 1, 2 or 3 capital letters, a dash, then three numbers
 
 # project.code #################################################################
 project.code.error = The code must have 3 capital letters, a dash, then four numbers.
@@ -33,3 +32,12 @@ invoice.code.error = The code must start by "IN-" followed by 4 numbers, a dash 
 auditor ###################################################################
 validation.auditRecord.code = The code must start with "AU-" followed by 4 integers, a dash and another 4 integers.
 validation.codeAudit.code = The code must follow the pattern of one, two or three capital letters, a dash, and three integers.
+
+# client.code #################################################################
+client.code.error = The code must start with "CLI-", then four numbers.
+
+# contract.code #################################################################
+contract.code.error = The code must have 3 capital letters, a dash, then four numbers.
+
+# progresslog.code #################################################################
+prgresslog.code.error = The code must have 2 capital letters, a dash, then three numbers.

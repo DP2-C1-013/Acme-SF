@@ -23,7 +23,6 @@
 	<acme:input-moment code="authenticated.training-module.form.label.updateMoment" path="updateMoment"/>
 	<acme:input-url code="authenticated.training-module.form.label.optionalLink" path="optionalLink"/>
 	<acme:input-textbox code="authenticated.training-module.form.label.estimatedTotalTime" path="estimatedTotalTime"/>
-	<acme:input-checkbox code="authenticated.training-module.form.label.draftmode" path="draftmode"/>
-	<acme:input-textbox code="authenticated.training-module.form.label.project" path="project.code"/>
+	<acme:input-textbox code="authenticated.training-module.form.label.project" path="project"/>
 	<acme:input-textbox code="authenticated.training-module.form.label.developer" path="developer"/>
 </acme:form>

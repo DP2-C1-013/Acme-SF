@@ -67,7 +67,7 @@ public class DeveloperTrainingSessionDeleteService extends AbstractService<Devel
 		existingTM = this.repository.findTrainingModuleById(object.getTrainingModule().getId());
 
 		if (!super.getBuffer().getErrors().hasErrors("trainingModule"))
-			super.state(existingTM != null && existingTM.isDraftMode() && existingTM.getProject().isDraftMode(), "trainingModule", "developer.training-module.form.error.training-module-was-published");
+			super.state(existingTM != null && existingTM.isDraftMode() && !existingTM.getProject().isDraftMode(), "trainingModule", "developer.training-module.form.error.training-module-was-published");
 
 		if (!super.getBuffer().getErrors().hasErrors("draftMode"))
 			super.state(object.isDraftMode(), "draftMode", "developer.training-session.form.error.training-session-was-published");
@@ -89,9 +89,9 @@ public class DeveloperTrainingSessionDeleteService extends AbstractService<Devel
 		Dataset dataset;
 
 		dataset = super.unbind(object, "code", "startDate", "endDate", "location", "instructor", "contactEmail", "optionalLink", "draftMode");
-		dataset.put("trainingModuleId", super.getRequest().getData("trainingModuleId", int.class));
-		dataset.put("trainingModuleDraftMode", object.getTrainingModule().isDraftMode());
-		dataset.put("projectDraftMode", object.getTrainingModule().getProject().isDraftMode());
+		dataset.put("trainingModuleCode", object.getTrainingModule().getCode());
+		dataset.put("trainingModuleId", object.getTrainingModule().getId());
+		dataset.put("trainingModuleNotPublished", object.getTrainingModule().isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}

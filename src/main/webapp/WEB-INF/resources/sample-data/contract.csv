@@ -9,3 +9,23 @@ contract-07,CON-0007,2022/07/23 22:30,Proveedor G,Cliente G,Objetivo del proyect
 contract-08,CON-0008,2022/07/22 22:30,Proveedor H,Cliente H,Objetivo del proyecto 8,"USD 80.00",false,project-08,client-02
 contract-09,CON-0009,2022/07/21 22:30,Proveedor I,Cliente I,Objetivo del proyecto 9,"USD 90.00",false,project-09,client-01
 contract-10,CON-0010,2022/07/20 22:30,Proveedor J,Cliente J,Objetivo del proyecto 10,"USD 100.00",false,project-10,client-02
+contract-11,CON-0011,2022/07/30 00:00,a,Cliente A,Objetivo del proyecto con bastantes mas letras que los demas objetivos porque el cliente es exigente,"USD 100.00",false,project-01,client-01
+contract-12,CON-0012,2022/07/30 00:00,ProveedorQueTieneMuchasLetrasYCaracteresEnSuNombre B,Cliente B,Objetivo del proyecto con bastantes mas letras que los demas objetivos por el cliente exigente,"USD 200.00",false,project-02,client-02
+contract-13,CON-0013,2020/02/27 22:30,Pr,Cliente C,O,"USD 300.00",false,project-03,client-01
+contract-14,CON-0014,2010/07/26 22:30,供供应应商供应商,Cliente D,Objetivo del proyecto 4,"USD 400.00",false,project-04,client-02
+contract-15,CON-0015,2022/04/12 22:30,&%$#@!^+{}[|]_/;:><?..-=!&%$#@!^+{}[|]_/;:><?..-=!&%$#@!^+~{}[|]_/;:><?..-=,Cliente E,Objetivo del proyecto 5,"USD 500.00",false,project-05,client-01
+contract-16,CON-0016,2012/07/24 22:30,&%$#@!^+{}[|]_/;:><?..-=!&%$#@!^+{}[|]_/;:><?..-=!&%$#@!^+~{}[|]_/;:><?..-,Cliente F,Objetivo del proyecto 6,"USD 600.00",false,project-06,client-02
+contract-17,CON-0017,2021/07/23 22:30,ProveedorConUnaCantidadMediaDeCaracteres,Cliente G,Objetivo del proyecto 7,"USD 70.00",false,project-07,client-01
+contract-18,CON-0018,2002/12/22 22:30,ProveedorSuperProYMaquinon,Cliente H,Objetivo del proyecto 8,"USD 80.00",false,project-08,client-02
+contract-19,CON-0019,2003/01/25 22:30,Proveedor 1,ClienteMaquinaConCantidadMediaDeLetras,Objetivo del proyecto 9,"USD 90.00",false,project-09,client-01
+contract-20,CON-0020,2021/04/23 22:30,Proveedor 2,&%$#@!^+{}[|]_/;:><?..-=!&%$#@!^+{}[|]_/;:><?..-=!&%$#@!^+~{}[|]_/;:><?,Objetivo del proyecto 10,"USD 100.00",false,project-10,client-02
+contract-21,CON-0021,2022/07/29 22:30,Proveedor 3,&%$#@!^+{}[|]_/;:><?..-=!&%$#@!^+{}[|]_/;:><?..-=!&%$#@!^+~{}[|]_/;:><?..-=,Objetivo del proyecto 1,"USD 100.00",false,project-01,client-01
+contract-22,CON-0022,2022/07/28 22:30,Proveedor 4,&%$#@!^+{}[|]_/;:><?..-=!&%$#@!^+{}[|]_/;:><?..-=!&%$#@!^+~{}[|]_/;:><?..-,Objetivo del proyecto 2,"USD 200.00",false,project-02,client-02
+contract-23,CON-0023,2022/07/27 22:30,Proveedor 5,供供供应应商供应商供应,Objetivo del proyecto 3,"USD 300.00",false,project-03,client-01
+contract-24,CON-0024,2022/07/26 22:30,Proveedor 6,供供供应应商供应商供应,Objetivo del proyecto 4,"USD 400.00",false,project-04,client-02
+contract-25,CON-0025,2022/07/25 22:30,Proveedor 7,l,Objetivo del proyecto 5,"USD 500.00",false,project-05,client-01
+contract-26,CON-0026,2022/07/24 22:30,Proveedor 8,aa,Objetivo del proyecto 6,"USD 600.00",false,project-06,client-02
+contract-27,CON-0027,2022/07/23 22:30,Proveedor 9,.,Objetivo del proyecto 7,"USD 70.00",false,project-07,client-01
+contract-28,CON-0028,2022/07/22 22:30,Proveedor 10,}{}}'/sadas,Objetivo del proyecto 8,"USD 80.00",false,project-08,client-02
+contract-29,CON-0029,2022/07/21 22:30,Proveedor 11,Cliente I,Objetivo del proyecto 9,"USD 90.00",false,project-09,client-01
+contract-30,CON-0030,2022/07/20 22:30,Proveedor 12,Cliente J,Objetivo del proyecto 10,"USD 100.00",false,project-10,client-02

@@ -42,7 +42,7 @@ public class ManagerUserStoryCreateInProjectService extends AbstractService<Mana
 
 		projectId = super.getRequest().getData(ManagerUserStoryCreateInProjectService.PROJECT_ID, int.class);
 		project = this.repository.findOneProjectById(projectId);
-		manager = this.repository.findOneManagerById(super.getRequest().getPrincipal().getActiveRoleId());
+		manager = project == null ? null : project.getManager();
 		status = project != null && project.isDraftMode() && super.getRequest().getPrincipal().hasRole(manager);
 
 		super.getResponse().setAuthorised(status);

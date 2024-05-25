@@ -21,9 +21,7 @@
 	<acme:list-column code="authenticated.training-module.list.label.creationMoment" path="creationMoment"
 		width="20%" />
 	<acme:list-column code="authenticated.training-module.list.label.updateMoment" path="updateMoment"
-		width="70%" />
+		width="300%" />
 	<acme:list-column code="authenticated.training-module.list.label.difficultyLevel" path="difficultyLevel"
-		width="70%" />
-	<acme:list-column code="authenticated.training-module.list.label.draftmode" path="draftMode"
-		width="10%" />
+		width="400%" />
 </acme:list>

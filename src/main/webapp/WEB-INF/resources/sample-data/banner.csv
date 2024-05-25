@@ -1,11 +1,27 @@
 key,instantiationMoment,startDisplay,endDisplay,picture,slogan,link
-banner-1,2011/05/15 10:30,2011/05/16 08:00,2021/05/23 18:00,https://example.com/picture1.jpg,Discover Exciting Deals!,https://example.com/deals
-banner-2,2021/06/01 14:45,2021/06/02 12:00,2021/06/09 20:30,https://example.com/picture2.jpg,发现精彩优惠！,https://example.com/fashion
-banner-3,2021/07/10 09:15,2021/07/11 07:30,2021/07/18 16:45,https://example.com/picture3.jpg,استكشف مغامراتك!,https://example.com/outdoors
-banner-4,2021/08/05 18:30,2021/08/06 14:00,2021/08/13 23:45,https://example.com/picture4.jpg,Indulge in Luxury!,https://example.com/lifestyle
-banner-5,2021/09/20 12:00,2021/09/21 09:30,2021/09/28 18:15,https://example.com/picture5.jpg,stay in shape!,https://example.com/fitness
-banner-6,2021/10/15 08:45,2021/10/16 06:00,2021/10/23 15:30,https://example.com/picture6.jpg,升级您的技术！,https://example.com/technology
-banner-7,2021/11/02 16:15,2021/11/03 13:45,2021/11/10 22:00,https://example.com/picture7.jpg,tasty food!,https://example.com/food
-banner-8,2021/12/08 11:30,2021/12/09 09:00,2021/12/16 18:45,https://example.com/picture8.jpg,استكشاف الفن والثقافة!,https://example.com/art
-banner-9,2021/12/25 20:00,2021/12/26 17:30,2022/01/02 02:45,https://example.com/picture9.jpg,travel packs!,https://example.com/holidays
-banner-10,2022/01/10 14:45,2022/01/11 12:00,2022/01/18 20:30,https://example.com/picture10.jpg,سنة جديدة، بدايات جديدة!,https://example.com/newyear
+banner-01,2020/06/24 00:00,2020/06/25 00:00,2020/07/25 00:00,https://i.imgur.com/8nLFCVP.png,Sad Pepe,https://tenor.com/es/search/sad-pepe-gifs
+banner-02,2001/06/24 00:00,2020/06/25 00:00,2020/07/25 00:00,https://i.imgur.com/8nLFCVP.png,Sad Pepe,https://tenor.com/es/search/sad-pepe-gifs
+banner-03,2001/06/24 01:00,2020/06/25 00:00,2020/07/25 00:00,https://i.imgur.com/8nLFCVP.png,Sad Pepe,https://tenor.com/es/search/sad-pepe-gifs
+banner-04,2022/07/23 23:59,2020/06/25 00:00,2020/07/25 00:00,https://i.imgur.com/8nLFCVP.png,Sad Pepe,https://tenor.com/es/search/sad-pepe-gifs
+banner-05,2022/07/23 23:58,2020/06/25 00:00,2020/07/25 00:00,https://i.imgur.com/8nLFCVP.png,Sad Pepe,https://tenor.com/es/search/sad-pepe-gifs
+banner-06,2012/06/24 00:00,2020/06/25 00:00,2020/07/25 00:00,https://i.imgur.com/8nLFCVP.png,Sad Pepe,https://tenor.com/es/search/sad-pepe-gifs
+banner-07,2020/06/24 00:00,2022/07/29 23:59,2022/08/29 23:59,https://i.imgur.com/8nLFCVP.png,Sad Pepe,https://example.com
+banner-08,2020/06/24 00:00,2022/07/29 23:58,2022/08/29 23:59,https://i.imgur.com/8nLFCVP.png,Sad Pepe,https://example.com
+banner-09,2020/06/24 00:00,2020/07/30 00:00,2020/09/25 00:00,https://i.imgur.com/8nLFCVP.png,Sad Pepe,https://example.com
+banner-10,2020/06/24 00:00,2020/07/30 00:01,2020/09/25 00:00,https://i.imgur.com/8nLFCVP.png,Sad Pepe,https://example.com
+banner-11,2020/06/24 00:00,2030/07/30 00:00,2030/09/25 00:00,https://i.imgur.com/8nLFCVP.png,Sad Pepe,https://example.com
+banner-12,2020/06/24 00:00,2020/06/25 00:00,2020/07/25 00:00,https://aksljdlaksjdlkajflaksjdlkajsfklsjalskgja___kfjlaskjglas_flksaklasf.com,Nada estoy probando nada mas,https://example.com
+banner-13,2020/06/24 00:00,2020/06/25 00:00,2020/07/25 00:00,https://かわいい犬.com,Sad Pepe?,https://example.com
+banner-14,2020/06/24 00:00,2020/06/25 00:00,2020/07/25 00:00,https://cute_dog.com.com,Sad Pepe?,https://example.com
+banner-15,2020/06/24 00:00,2020/06/25 00:00,2020/07/25 00:00,https://cute_dog.com,Sad Pepe Que Esta llorando porque esta muy triste el pobre y no sabe naaaaa,https://example.com
+banner-16,2020/06/24 00:00,2020/06/25 00:00,2020/07/25 00:00,https://cute_dog.com,Sad Pepe Que Esta llorando porque esta muy triste el pobre y no sabe naaaa,https://example.com
+banner-17,2020/06/24 00:00,2020/06/25 00:00,2020/07/25 00:00,https://cute_dog.com,A,https://example.com
+banner-18,2020/06/24 00:00,2020/06/25 00:00,2020/07/25 00:00,https://cute_dog.com,AA,https://example.com
+banner-19,2020/06/24 00:00,2020/06/25 00:00,2020/07/25 00:00,https://cute_dog.com,かメントスにノーる人うと言えはいないでしょ,https://elTextoAnteriorEstaEnChino.com
+banner-20,2020/06/24 00:00,2020/06/25 00:00,2020/07/25 00:00,https://i.imgur.com/8nLFCVP.png,Sad Pepe,https://tenor.com/es/search/sad-pepe-gifs
+banner-21,2020/06/24 00:00,2020/06/25 00:00,2020/07/25 00:00,https://i.imgur.com/8nLFCVP.png,Sad Pepe,https://esteLinkEsDemasiadoExtensoPorqueTieneMuchisimosCaracteres.com
+banner-22,2020/06/24 00:00,2020/06/25 00:00,2020/07/25 00:00,https://i.imgur.com/8nLFCVP.png,Sad Pepe,https://リンク面白.com
+banner-23,2020/06/24 00:00,2020/06/25 00:00,2020/07/25 00:00,https://i.imgur.com/8nLFCVP.png,Sad Pepe,https://k.com
+banner-24,2000/01/01 00:00,2022/06/30 00:00,2022/08/01 00:00,https://i.imgur.com/bKQlVSm.jpeg,Profesor porfa no me suspendas,https://www.ionos.com/
+banner-25,2000/01/01 00:01,2022/06/30 00:00,2022/08/01 00:00,https://i.imgur.com/WPnLzek.jpeg,Profesor porfa no me suspendas,https://www.office.com/
+banner-26,2020/07/30 00:00,2022/06/30 00:00,2022/08/01 00:00,https://i.imgur.com/e3Ja6Jn.jpeg,Profesor porfa no me suspendas,https://tinder.com/

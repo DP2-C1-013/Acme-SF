@@ -70,7 +70,7 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findProjectById(projectId);
 
-		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "estimatedTotalTime");
+		super.bind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink");
 		object.setProject(project);
 	}
 
@@ -80,7 +80,7 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 
 		if (!super.getBuffer().getErrors().hasErrors("updateMoment") && object.getUpdateMoment() != null) {
 			Date minimunDuration;
-			minimunDuration = MomentHelper.deltaFromMoment(object.getCreationMoment(), 1, ChronoUnit.DAYS);
+			minimunDuration = MomentHelper.deltaFromMoment(object.getCreationMoment(), 24, ChronoUnit.HOURS);
 			super.state(MomentHelper.isAfterOrEqual(object.getUpdateMoment(), minimunDuration), "updateMoment", "developer.training-module.form.error.invalid-update-moment");
 		}
 
@@ -89,12 +89,9 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 			super.state(level.equals(DifficultyLevel.Basic) || level.equals(DifficultyLevel.Intermediate) || level.equals(DifficultyLevel.Advanced), "difficultyLevel", "developer.training-module.form.error.invalid-difficulty-level");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("estimatedTotalTime"))
-			super.state(object.getEstimatedTotalTime() > 1, "estimatedTotalTime", "developer.training-module.form.error.invalid-estimated-total-time");
-
 		if (!super.getBuffer().getErrors().hasErrors("project")) {
 			Project existingProject = this.repository.findOneProjectByCode(object.getProject().getCode());
-			super.state(existingProject != null && existingProject.isDraftMode() && object.getProject().isDraftMode(), "project", "developer.training-module.form.error.invalid-project");
+			super.state(existingProject != null && !existingProject.isDraftMode() && !object.getProject().isDraftMode(), "project", "developer.training-module.form.error.invalid-project");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("draftMode")) {
@@ -120,12 +117,13 @@ public class DeveloperTrainingModulePublishService extends AbstractService<Devel
 		Dataset dataset;
 
 		difficultyLevels = SelectChoices.from(DifficultyLevel.class, object.getDifficultyLevel());
-		projects = SelectChoices.from(this.repository.findAllProjectsDraftModeTrue(), "code", object.getProject());
+		projects = SelectChoices.from(this.repository.findAllProjectsDraftModeFalse(), "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "estimatedTotalTime", "draftMode");
+		dataset = super.unbind(object, "code", "creationMoment", "details", "difficultyLevel", "updateMoment", "optionalLink", "draftMode");
 		dataset.put("difficultyLevels", difficultyLevels);
 		dataset.put("projects", projects);
 		dataset.put("project", projects.getSelected());
+		dataset.put("projectDraftMode", object.getProject().isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}

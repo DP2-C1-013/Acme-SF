@@ -13,3 +13,6 @@ manager.project-user-stories.form.button.create = Create
 manager.projectuserstory.form.error.existing-project-assignation = There is already an assignation between this project and this user story
 manager.projectuserstory.form.error.published-project = You can not assign an un-published user story to a published project
 manager.projectuserstory.form.error.delete-published-project = You can not modify a published project
+
+manager.projectuserstory.form.error.notnull.project = Select a project
+manager.projectuserstory.form.error.notnull.userstory = Select an user story
