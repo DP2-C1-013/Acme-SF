@@ -3,42 +3,47 @@ package acme.components;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.client.helpers.MomentHelper;
+import acme.client.helpers.RandomHelper;
 import acme.client.repositories.AbstractRepository;
 import acme.entities.banner.Banner;
 
 @Repository
 public interface BannerRepository extends AbstractRepository {
 
-	public static Random RANDOM = new Random();
+	@Query("select count(b) from Banner b WHERE b.startDisplay < :currentDate AND b.endDisplay > :currentDate")
+	int countCurrentBanners(Date currentDate);
 
-
-	@Query("select count(b) from Banner b WHERE b.startDisplay < :date AND b.endDisplay > :date")
-	int countBanners(Date date);
-
-	@Query("select b from Banner b WHERE b.startDisplay< :date AND b.endDisplay> :date")
-	List<Banner> findManyBanners(Date date);
+	@Query("select b from Banner b WHERE b.startDisplay < :currentDate AND b.endDisplay > :currentDate")
+	List<Banner> findManyCurrentBanners(PageRequest pageRequest, Date currentDate);
 
 	default Banner findRandomBanner() {
 		Banner result;
 		int count;
-		List<Banner> list;
-		int randomNumber = 0;
+		int index;
+		PageRequest page;
 
-		count = this.countBanners(MomentHelper.getCurrentMoment());
+		Date currentDate;
+		List<Banner> list;
+
+		currentDate = MomentHelper.getCurrentMoment();
+		count = this.countCurrentBanners(currentDate);
 		if (count == 0)
 			result = null;
 		else {
-			list = this.findManyBanners(MomentHelper.getCurrentMoment());
-			if (!list.isEmpty())
-				randomNumber = BannerRepository.RANDOM.nextInt(list.size());
+			index = RandomHelper.nextInt(0, count);
 
-			result = list.isEmpty() ? null : list.get(randomNumber);
+			page = PageRequest.of(index, 1, Sort.by(Direction.ASC, "id"));
+			list = this.findManyCurrentBanners(page, currentDate);
+
+			result = list.isEmpty() ? null : list.get(0);
 		}
 
 		return result;
