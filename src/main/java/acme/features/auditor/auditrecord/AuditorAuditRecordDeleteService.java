@@ -57,12 +57,10 @@ public class AuditorAuditRecordDeleteService extends AbstractService<Auditor, Au
 	@Override
 	public void bind(final AuditRecord object) {
 		assert object != null;
-
 		String markString = this.getRequest().getData("mark", String.class);
 		AuditMark mark = AuditMark.parseAuditMark(markString);
-		super.bind(object, "code", "startDate", "endDate", "mark", "link", "draftMode");
+		super.bind(object, "code", "startDate", "endDate", "link");
 		object.setMark(mark);
-		object.setDraftMode(true);
 	}
 
 	@Override
@@ -91,8 +89,6 @@ public class AuditorAuditRecordDeleteService extends AbstractService<Auditor, Au
 		dataset.put("CodeAudit", object.getCodeAudit().getCode());
 		dataset.put("CodeAuditDraftMode", object.getCodeAudit().getDraftMode());
 		dataset.put("CodeAuditId", object.getCodeAudit().getId());
-		System.out.println(object);
-
 		super.getResponse().addData(dataset);
 	}
 }

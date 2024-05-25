@@ -19,7 +19,7 @@ public class BannerAdvisor {
 		Banner result;
 		try {
 			result = this.repository.findRandomBanner();
-		} catch (final Exception ex) {
+		} catch (final Throwable oops) {
 			result = null;
 		}
 
