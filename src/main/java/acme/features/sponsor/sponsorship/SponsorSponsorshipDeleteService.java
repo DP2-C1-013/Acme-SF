@@ -63,7 +63,7 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 		Project project;
 		project = this.getRequest().getData("project", Project.class);
 
-		super.bind(object, "code", "moment", "duration", "amount", "type", "email", "link");
+		super.bind(object, "code", "moment", "start", "end", "amount", "type", "email", "link");
 		object.setProject(project);
 
 	}
@@ -98,7 +98,7 @@ public class SponsorSponsorshipDeleteService extends AbstractService<Sponsor, Sp
 		types = SelectChoices.from(SponsorshipType.class, object.getType());
 		projects = SelectChoices.from(this.repository.findAllProjectsDraftModeFalse(), "code", object.getProject());
 
-		dataset = super.unbind(object, "code", "moment", "duration", "amount", "type", "email", "link", "draftMode");
+		dataset = super.unbind(object, "code", "moment", "start", "end", "amount", "type", "email", "link", "draftMode");
 		dataset.put("types", types);
 		dataset.put("projects", projects);
 		dataset.put("project", projects.getSelected().getKey());
