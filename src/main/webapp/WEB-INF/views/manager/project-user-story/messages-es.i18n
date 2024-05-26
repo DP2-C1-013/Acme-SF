@@ -16,3 +16,5 @@ manager.projectuserstory.form.error.delete-published-project = No puedes modific
 
 manager.projectuserstory.form.error.notnull.project = Seleccione un proyecto
 manager.projectuserstory.form.error.notnull.userstory = Seleccione una historia de usuario
+
+manager.link.form.error.wrong-manager = Manager incorrecto
