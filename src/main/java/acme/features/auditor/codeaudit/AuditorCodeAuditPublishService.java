@@ -120,9 +120,6 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		assert object != null;
 
 		object.setDraftMode(false);
-		List<AuditMark> marks = this.repository.findMarkModeByCodeAudit(object.getId());
-		AuditMark mode = marks.get(0);
-		object.setMark(mode);
 		this.repository.save(object);
 	}
 
