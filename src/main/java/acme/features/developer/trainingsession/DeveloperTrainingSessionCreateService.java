@@ -95,9 +95,6 @@ public class DeveloperTrainingSessionCreateService extends AbstractService<Devel
 			super.state(MomentHelper.isAfterOrEqual(object.getEndDate(), minimunDuration2), "endDate", "developer.training-session.form.error.invalid-end-date");
 		}
 
-		//		if (!super.getBuffer().getErrors().hasErrors("trainingModule"))
-		//			super.state(existingTM != null && existingTM.isDraftMode() && !existingTM.getProject().isDraftMode(), "trainingModule", "developer.training-session.form.error.training-module-was-published");
-
 	}
 
 	@Override
