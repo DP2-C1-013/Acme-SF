@@ -72,6 +72,9 @@ public class AuditorCodeAuditDeleteService extends AbstractService<Auditor, Code
 	public void validate(final CodeAudit object) {
 		assert object != null;
 
+		int id = super.getRequest().getData("id", int.class);
+		int numPublishedAuditRecord = this.repository.findNumberPublishedAuditRecordsByCodeAuditId(id);
+		super.state(numPublishedAuditRecord == 0, "*", "auditor.code-audit.form.error.published-audit-records-cannot-delete");
 		boolean status;
 		status = object.getDraftMode();
 
