@@ -106,7 +106,6 @@ public class DeveloperTrainingModuleDeleteService extends AbstractService<Develo
 		dataset.put("difficultyLevels", difficultyLevels);
 		dataset.put("projects", projects);
 		dataset.put("project", projects.getSelected().getKey());
-		dataset.put("projectDraftMode", object.getProject().isDraftMode());
 
 		super.getResponse().addData(dataset);
 	}
