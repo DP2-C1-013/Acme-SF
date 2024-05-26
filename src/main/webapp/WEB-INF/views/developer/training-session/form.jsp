@@ -31,16 +31,11 @@
 	<acme:input-textbox code="developer.training-session.form.label.instructor" path="instructor"/>
 	<acme:input-email code="developer.training-session.form.label.contactEmail" path="contactEmail"/>
 	<acme:input-url code="developer.training-session.form.label.optionalLink" path="optionalLink"/>
+	<acme:input-checkbox code="developer.training-session.form.label.draftMode" path="draftMode" readonly="true"/>
+	<acme:input-textbox code="developer.training-session.form.label.trainingModuleCode" path="trainingModuleCode" readonly="true"/>
 	
 	<jstl:choose>
-		<jstl:when test="${_command == 'show'}">
-			<acme:input-textbox code="developer.training-session.form.label.trainingModuleCode" path="trainingModuleCode" readonly="true"/>
-			<acme:input-checkbox code="developer.training-session.form.label.draftMode" path="draftMode" readonly="true"/>
-		</jstl:when>
-	</jstl:choose>
-	
-	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && trainingModuleNotPublished == true && draftMode == true}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && trainingModuleNotPublished == true && draftMode == true}">
 			<acme:submit code="developer.training-session.form.button.update" action="/developer/training-session/update"/>
 			<acme:submit code="developer.training-session.form.button.delete" action="/developer/training-session/delete"/>
 			<acme:submit code="developer.training-session.form.button.publish" action="/developer/training-session/publish"/>
