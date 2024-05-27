@@ -37,3 +37,5 @@ manager.project.form.error.has-fatal-errors = El proyecto tiene errores graves
 
 manager.project.form.error.invalid-currency = Divisa inválida (EUR, GBP, USD)
 manager.project.form.error.existing-fatal-errors = El proyecto tiene errores graves
+ manager.project.form.error.userStories-draft = Las historias de usuario no están publicadas
+ manager.project.form.error.userStories-empty = Proyecto sin historias de usuario
