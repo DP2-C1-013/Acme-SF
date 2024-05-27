@@ -37,3 +37,5 @@ auditor.code-audit.form.button.audit-record = Audit records
 auditor.code-audit.form.error.code-audit-has-no-audit-records = Code audit has no audit records
 auditor.code-audit.form.error.invalid-date = Invalid date
 auditor.code-audit.form.error.duplicated = This code already exists
+auditor.code-audit.form.error.invalid-project = Invalid project
+auditor.code-audit.form.error.published-audit-records-cannot-delete = This code audit has at least one audit record published, so it can not be deleted

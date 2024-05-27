@@ -1,15 +1,18 @@
 
 package acme.features.auditor.codeaudit;
 
+import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.client.data.models.Dataset;
+import acme.client.helpers.MomentHelper;
 import acme.client.helpers.PrincipalHelper;
 import acme.client.services.AbstractService;
 import acme.client.views.SelectChoices;
+import acme.entities.auditrecord.AuditRecord;
 import acme.entities.codeaudit.CodeAudit;
 import acme.entities.codeaudit.CodeAuditType;
 import acme.entities.project.Project;
@@ -76,13 +79,26 @@ public class AuditorCodeAuditUpdateService extends AbstractService<Auditor, Code
 	public void validate(final CodeAudit object) {
 		assert object != null;
 
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			CodeAudit existing;
+			existing = this.repository.findOneCodeAuditByCode(object.getCode());
+			super.state(existing == null || existing.getId() == object.getId(), "code", "auditor.code-audit.form.error.duplicated");
+		}
+
 		if (!super.getBuffer().getErrors().hasErrors("project")) {
 			Project existingProject = this.repository.findOneProjectByCode(object.getProject().getCode());
-			super.state(existingProject != null && !existingProject.isDraftMode() && !object.getProject().isDraftMode(), "project", "sponsor.codeAudit.form.error.invalid-project");
+			super.state(existingProject != null && !existingProject.isDraftMode() && !object.getProject().isDraftMode(), "project", "auditor.code-audit.form.error.invalid-project");
 		}
+
 		if (!super.getBuffer().getErrors().hasErrors("executionDate")) {
+
+			Collection<AuditRecord> records = this.repository.findManyAuditRecordsByCodeAuditId(object.getId());
 			Date minDate = new Date(99, 11, 31, 23, 59);
-			super.state(object.getExecutionDate().after(minDate), "executionDate", "auditor.code-audit.form.error.invalid-date");
+			if (records.size() > 0) {
+				Date min = this.repository.findEarliestStartDateByCodeAuditId(object.getId());
+				super.state(MomentHelper.isBeforeOrEqual(object.getExecutionDate(), min) && object.getExecutionDate().after(minDate), "executionDate", "auditor.code-audit.form.error.invalid-date");
+			} else
+				super.state(object.getExecutionDate().after(minDate), "executionDate", "auditor.code-audit.form.error.invalid-date");
 		}
 
 	}

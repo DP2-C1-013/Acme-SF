@@ -90,7 +90,7 @@ public class SponsorInvoiceUpdateService extends AbstractService<Sponsor, Invoic
 			super.state(MomentHelper.isAfterOrEqual(object.getDueDate(), minDate) && MomentHelper.isBeforeOrEqual(object.getDueDate(), maxDate), "dueDate", "sponsor.invoice.form.error.dueDate-out-of-range");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("quantity")) {
+		if (!(super.getBuffer().getErrors().hasErrors("quantity") || super.getBuffer().getErrors().hasErrors("tax"))) {
 			Double amount = object.getQuantity().getAmount();
 			SponsorshipType type = object.getSponsorship().getType();
 			super.state((amount > 0. && type.equals(SponsorshipType.Financial) || amount.equals(0.) && type.equals(SponsorshipType.In_kind)) && amount <= 1000000.00, "quantity", "sponsor.invoice.form.error.invalid-quantity");

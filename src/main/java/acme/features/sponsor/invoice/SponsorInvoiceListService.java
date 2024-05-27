@@ -32,9 +32,9 @@ public class SponsorInvoiceListService extends AbstractService<Sponsor, Invoice>
 		sponsorshipId = this.getRequest().getData("sponsorshipId", int.class);
 		sponsorId = this.getRequest().getPrincipal().getActiveRoleId();
 
-		Collection<Invoice> invoices = this.repository.findManyInvoicesBySponsorshipId(sponsorshipId);
+		Sponsorship sponsorship = this.repository.findOneSponsorshipById(sponsorshipId);
 
-		boolean validSponsorshipId = invoices.stream().allMatch(invoice -> invoice.getSponsorship().getSponsor().getId() == sponsorId);
+		boolean validSponsorshipId = sponsorship.getSponsor().getId() == sponsorId;
 
 		status = super.getRequest().getPrincipal().hasRole(Sponsor.class) && validSponsorshipId;
 

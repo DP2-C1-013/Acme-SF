@@ -17,7 +17,7 @@
 
 <acme:list>
 	<acme:list-column code="sponsor.sponsorship.list.label.code" path="code" width="15%"/>
-	<acme:list-column code="sponsor.sponsorship.list.label.moment" path="moment" width="25%"/>
+	<acme:list-column code="sponsor.sponsorship.list.label.start" path="start" width="25%"/>
 	<acme:list-column code="sponsor.sponsorship.list.label.type" path="type" width="25%"/>
 	<acme:list-column code="sponsor.sponsorship.list.label.project" path="project" width="25%"/>
 	<acme:list-column code="sponsor.sponsorship.list.label.draftMode" path="draftMode" width="10%"/>
