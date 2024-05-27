@@ -41,7 +41,7 @@ public class Banner extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				endDisplay;
 
-	@NotNull
+	@NotBlank
 	@URL
 	private String				picture;
 
