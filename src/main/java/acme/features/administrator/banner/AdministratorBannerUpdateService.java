@@ -36,39 +36,35 @@ public class AdministratorBannerUpdateService extends AbstractService<Administra
 		final int id = super.getRequest().getData("id", int.class);
 		final Banner banner = this.repository.findOneBannerById(id);
 
-		final Date instantiation = MomentHelper.getCurrentMoment();
-		banner.setInstantiationMoment(instantiation);
-
 		super.getBuffer().addData(banner);
 	}
 	@Override
 	public void bind(final Banner object) {
 		assert object != null;
 
-		super.bind(object, "instantiationMoment", "startDisplay", "endDisplay", "picture", "slogan", "link");
+		super.bind(object, "startDisplay", "endDisplay", "picture", "slogan", "link");
 	}
 
 	@Override
 	public void validate(final Banner object) {
 		assert object != null;
 
-		final String PERIOD_START = "startDisplay";
-		final String PERIOD_END = "endDisplay";
+		Date minDate = MomentHelper.parse("2000/01/01 00:00", "yyyy/MM/dd HH:mm");
+		Date maxDate = MomentHelper.parse("2200/12/31 23:59", "yyyy/MM/dd HH:mm");
 
-		if (!super.getBuffer().getErrors().hasErrors(PERIOD_START) && !super.getBuffer().getErrors().hasErrors(PERIOD_END)) {
-			final boolean startBeforeEnd = MomentHelper.isAfter(object.getEndDisplay(), object.getStartDisplay());
-			super.state(startBeforeEnd, PERIOD_END, "administrator.banner.form.error.end-before-start");
+		if (!(super.getBuffer().getErrors().hasErrors("startDisplay") || super.getBuffer().getErrors().hasErrors("instantiationMoment"))) {
+			super.state(MomentHelper.isAfterOrEqual(object.getInstantiationMoment(), minDate) && MomentHelper.isBeforeOrEqual(object.getInstantiationMoment(), maxDate), "instantiationMoment", "administrator.banner.form.error.moment-out-of-range");
+			super.state(MomentHelper.isAfterOrEqual(object.getStartDisplay(), minDate) && MomentHelper.isBeforeOrEqual(object.getStartDisplay(), maxDate), "startDisplay", "administrator.banner.form.error.start-out-of-range");
 
-			if (startBeforeEnd) {
-				final boolean startOneWeekBeforeEndMinimum = MomentHelper.isLongEnough(object.getStartDisplay(), object.getEndDisplay(), 7, ChronoUnit.DAYS);
+			super.state(MomentHelper.isAfterOrEqual(object.getStartDisplay(), object.getInstantiationMoment()), "startDisplay", "administrator.banner.form.error.invalid-start");
+		}
 
-				super.state(startOneWeekBeforeEndMinimum, PERIOD_END, "administrator.banner.form.error.small-display-period");
-			}
+		if (!(super.getBuffer().getErrors().hasErrors("endDisplay") || super.getBuffer().getErrors().hasErrors("startDisplay"))) {
+			Date minimunDuration;
+			minimunDuration = MomentHelper.deltaFromMoment(object.getStartDisplay(), 7, ChronoUnit.DAYS);
+			super.state(MomentHelper.isAfterOrEqual(object.getEndDisplay(), minimunDuration), "endDisplay", "administrator.banner.form.error.invalid-end");
 
-			if (!super.getBuffer().getErrors().hasErrors("instantiation")) {
-				final boolean startAfterInstantiation = MomentHelper.isAfter(object.getStartDisplay(), object.getInstantiationMoment());
-				super.state(startAfterInstantiation, PERIOD_START, "administrator.banner.form.error.start-before-instantiation");
-			}
+			super.state(MomentHelper.isAfterOrEqual(object.getEndDisplay(), minDate) && MomentHelper.isBeforeOrEqual(object.getEndDisplay(), maxDate), "endDisplay", "administrator.banner.form.error.end-out-of-range");
 		}
 	}
 
