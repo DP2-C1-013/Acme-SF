@@ -38,11 +38,20 @@ public interface SponsorSponsorshipRepository extends AbstractRepository {
 	@Query("SELECT COALESCE(SUM((i.quantity.amount + i.tax * i.quantity.amount)), -1) FROM Invoice i WHERE i.sponsorship.id = :id and i.draftMode = false")
 	Double findSumAmountInvoicesBySponsorshipId(int id);
 
+	@Query("SELECT COALESCE(SUM((i.quantity.amount + i.tax * i.quantity.amount)), -1) FROM Invoice i WHERE i.sponsorship.id = :id")
+	Double findSumAmountAllInvoicesBySponsorshipId(int id);
+
 	@Query("SELECT DISTINCT i FROM Invoice i WHERE i.sponsorship.id = :id")
 	Collection<Invoice> findManyInvoicesBySponsorshipId(int id);
 
+	@Query("SELECT COUNT(i) FROM Invoice i WHERE i.sponsorship.id = :id")
+	Integer findNumberInvoicesBySponsorshipId(int id);
+
 	@Query("SELECT COUNT(i) FROM Invoice i WHERE i.sponsorship.id = :id and i.draftMode = false")
 	Integer findNumberPublishedInvoicesBySponsorshipId(int id);
+
+	@Query("SELECT COUNT(i) FROM Invoice i WHERE i.sponsorship.id = :id and i.draftMode = true")
+	Integer findNumberUnpublishedInvoicesBySponsorshipId(int id);
 
 	@Query("SELECT DISTINCT i.quantity.currency FROM Invoice i WHERE i.sponsorship.id = :id")
 	Collection<String> findManyCurrenciesInInvoiceBySponsorshipId(int id);

@@ -52,12 +52,6 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findOneCodeAuditById(id);
-		List<AuditMark> marks = this.repository.findMarkModeByCodeAudit(object.getId());
-		if (marks.size() > 0) {
-			AuditMark mode = marks.get(0);
-			object.setMark(mode);
-			this.repository.save(object);
-		}
 
 		super.getBuffer().addData(object);
 	}
@@ -74,6 +68,11 @@ public class AuditorCodeAuditShowService extends AbstractService<Auditor, CodeAu
 		projects = SelectChoices.from(this.repository.findAllProjects(), "code", object.getProject());
 
 		dataset = super.unbind(object, "code", "executionDate", "type", "correctiveActions", "mark", "link", "draftMode");
+		List<AuditMark> marks = this.repository.findMarkModeByCodeAudit(object.getId());
+		if (marks.size() > 0) {
+			AuditMark mode = marks.get(0);
+			dataset.put("mark", mode);
+		}
 		dataset.put("types", choices);
 		dataset.put("projects", projects);
 

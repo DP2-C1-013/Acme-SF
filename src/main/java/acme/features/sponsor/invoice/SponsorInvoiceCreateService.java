@@ -33,7 +33,11 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 	public void authorise() {
 		boolean status;
 
-		status = super.getRequest().getPrincipal().hasRole(Sponsor.class);
+		int sponsorshipId = this.getRequest().getData("sponsorshipId", int.class);
+		int sponsorId = this.getRequest().getPrincipal().getActiveRoleId();
+		Sponsorship sponsorship = this.repository.findOneSponsorshipById(sponsorshipId);
+
+		status = super.getRequest().getPrincipal().hasRole(Sponsor.class) && sponsorship.getSponsor().getId() == sponsorId;
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -85,7 +89,7 @@ public class SponsorInvoiceCreateService extends AbstractService<Sponsor, Invoic
 
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("quantity")) {
+		if (!(super.getBuffer().getErrors().hasErrors("quantity") || super.getBuffer().getErrors().hasErrors("tax"))) {
 			Double amount = object.getQuantity().getAmount();
 			SponsorshipType type = object.getSponsorship().getType();
 			super.state((amount > 0. && type.equals(SponsorshipType.Financial) || amount.equals(0.) && type.equals(SponsorshipType.In_kind)) && amount <= 1000000.00, "quantity", "sponsor.invoice.form.error.invalid-quantity");
