@@ -26,14 +26,14 @@ public class AuditorAuditRecordListService extends AbstractService<Auditor, Audi
 	public void authorise() {
 		boolean status;
 		int codeAuditId;
-		int sponsorId;
+		int auditorId;
 
 		codeAuditId = this.getRequest().getData("codeAuditId", int.class);
-		sponsorId = this.getRequest().getPrincipal().getActiveRoleId();
+		auditorId = this.getRequest().getPrincipal().getActiveRoleId();
 
 		Collection<AuditRecord> auditRecords = this.repository.findManyAuditRecordsByCodeAuditId(codeAuditId);
 
-		boolean validCodeAuditId = auditRecords.stream().allMatch(auditRecord -> auditRecord.getCodeAudit().getAuditor().getId() == sponsorId);
+		boolean validCodeAuditId = auditRecords.stream().allMatch(auditRecord -> auditRecord.getCodeAudit().getAuditor().getId() == auditorId);
 
 		status = super.getRequest().getPrincipal().hasRole(Auditor.class) && validCodeAuditId;
 

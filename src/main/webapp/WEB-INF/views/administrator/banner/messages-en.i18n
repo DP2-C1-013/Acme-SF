@@ -27,3 +27,7 @@ administrator.banner.form.label.link = Link
 administrator.banner.list.button.update = Update
 administrator.banner.list.button.delete = Delete
 administrator.banner.list.button.create = Create
+
+administrator.banner.form.error.end-before-start = The end date must be after the start date
+administrator.banner.form.error.small-display-period = The end date must be at least a week after the start date
+administrator.banner.form.error.start-before-instantiation = The start date must be after the instantiation moment
