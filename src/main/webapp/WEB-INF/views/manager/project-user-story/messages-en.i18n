@@ -16,3 +16,5 @@ manager.projectuserstory.form.error.delete-published-project = You can not modif
 
 manager.projectuserstory.form.error.notnull.project = Select a project
 manager.projectuserstory.form.error.notnull.userstory = Select an user story
+
+manager.link.form.error.wrong-manager = Wrong manager
