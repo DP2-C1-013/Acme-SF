@@ -27,3 +27,7 @@ administrator.banner.form.label.link = Enlace
 administrator.banner.list.button.update = Modificar
 administrator.banner.list.button.delete = Eliminar
 administrator.banner.list.button.create = Crear
+
+administrator.banner.form.error.end-before-start = La fecha de finalización debe ser posterior a la fecha de inicio
+administrator.banner.form.error.small-display-period = La fecha de finalización debe ser al menos una semana posterior a la fecha de inicio
+administrator.banner.form.error.start-before-instantiation = La fecha de inicio debe ser posterior al momento de instanciación
