@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>558</x>
+      <y>144</y>
+      <w>360</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Project
+--
++code: String {Pattern("[A-Z]{3}-[0-9]{4}"), NotBlank, Unique}
++title: String {NotBlank, Length(max=75)}
++abstractText: String {NotBlank, Length(max=100)}
++hasFatalErrors: Boolean {NotNull}
++cost: Double {NotNull, Min(0)}
++link: String {URL}
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>495</x>
+      <y>396</y>
+      <w>477</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+TrainingModule
+--
++ code: String {NotBlank, Unique, Pattern("[A-Z]{1,3}-[0-9]{3}")}
++ creationMoment: Date {PastOrPresent, Temporal(TemporalType.TIMESTAMP)}
++ details: String {NotBlank, Size(max = 101)}
++ difficultyLevel: DifficultyLevel
++ updateMoment: Date {PastOrPresent, Temporal(TemporalType.TIMESTAMP)}
++ optionalLink: String {URL}
++ estimatedTotalTime: Integer
++ draftMode: Boolean {NotNull}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>720</x>
+      <y>270</y>
+      <w>45</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+m1=1
+m2=0..n</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>567</x>
+      <y>648</y>
+      <w>396</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+TrainingSession
+--
++ code: String {Pattern("TS-[A-Z]{1,3}-[0-9]{3}"), NotBlank, Unique}
++ startDate: Date {Temporal(TemporalType.TIMESTAMP)}
++ endDate: Date {Temporal(TemporalType.TIMESTAMP)}
++ location: String {Size(max = 76), NotBlank}
++ instructor: String  {Size(max = 76), NotBlank}
++ contactEmail: String {NotBlank, Email}
++ optionalLink: String {URL}
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>702</x>
+      <y>549</y>
+      <w>27</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-x
+
+
+
+
+
+
+*</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>387</x>
+      <y>684</y>
+      <w>144</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>The period must be at 
+least one week ahead 
+the training module
+creation moment, at 
+least one week long.
+To do that, there are
+two date attributes.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>522</x>
+      <y>693</y>
+      <w>63</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>351</x>
+      <y>189</y>
+      <w>135</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enumerate&gt;&gt;
+DifficultyLevel
+--
+Basic
+Intermediate
+Advanced</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>162</x>
+      <y>405</y>
+      <w>297</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+DeveloperDashboard
+--
++ numTrainingModulesUpdateMoment: Integer
++ numTrainingSessionsLink: Integer
++ averageTimeTrainingModules: Double
++ deviationTimeTrainingModules: Double
++ minimumTimeTrainingModules: Double
++ maximumTimeTrainingModules: Double</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>954</x>
+      <y>207</y>
+      <w>351</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
+Developer
+--
++ degree: String {NotBlank, Length(max=75)}
++ specialisation: String {NotBlank, Length(max=100)}
++ skills: String {NotBlank, Length(max=100)}
++ email: String {NotBlank, Email}
++ optionalLink: String {URL}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>963</x>
+      <y>315</y>
+      <w>189</w>
+      <h>153</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-x
+m1=1
+m2=0..*
+manages v</panel_attributes>
+    <additional_attributes>120.0;10.0;120.0;140.0;10.0;140.0</additional_attributes>
+  </element>
+</diagram>
